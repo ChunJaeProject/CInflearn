@@ -2,6 +2,5 @@ package dto;
 
 public class ssdasa {
 
-	asdasdad
-	
+	나는천잰새아
 }
