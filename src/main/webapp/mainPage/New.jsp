@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-dasdsad
+<h2>mainPage 브랜치</h2>
 </body>
 </html>
