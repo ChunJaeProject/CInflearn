@@ -7,6 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
 <h2>¸àÅä ÆäÀÌÁö</h2>
 </body> 
+=======
+
+
+<h2>Â¸Ã Ã…Ã¤ Ã†Ã¤Ã€ÃŒÃÃ¶</h2>
+</body>
+
+>>>>>>> 370de363bc807313cbcdb8742ad2596bd4b66cef
 </html>
