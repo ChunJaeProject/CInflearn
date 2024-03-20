@@ -2,5 +2,5 @@ package dto;
 
 public class ssdasa {
 
-	나는천잰새아
+	String a = "나는천잰새아";
 }
