@@ -1,0 +1,121 @@
+#searchBar{
+    width: 120px;
+    height: 44px;
+    background-color: white;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+#searchBtn{
+    height: 44px;
+    width: 60px;
+    border: 1px solid #ddd;
+}
+#searchBtn:hover{
+    cursor: pointer;
+}
+#sortList{
+    padding: 0 10px;
+    width: 180px;
+    height: 44px;
+    background-color: white;
+    margin :16px 0;
+    border:1px solid #ddd;
+}
+#searchForm{
+    background-color: rgb(248, 249, 250);
+}
+#categoryHeader{
+    border:1px solid #ddd;
+    height: 44px;
+    text-align: center;
+    line-height: 44px;
+}
+#categoryBox{
+    line-height: 30px;
+    background-color: white;
+    padding: 10px;
+    border:1px solid #ddd;
+}
+#resetBtn{
+    border: rgb(248, 249, 250);
+    height: 20px;
+}
+#resetBtn:hover{
+    cursor: pointer;
+    
+}
+
+#mentoring_contents_area{
+    padding : 0 20px;
+}
+.mentoring_content{
+    height: 250px;
+}
+.mentoring_content_wrap{
+    border-radius: 15px;
+    background-color: white;
+    border:1px solid #ddd;
+    transition: 0.15s linear;
+}
+.mentoring_content_wrap:hover{
+    transform: translateY(-10px);
+    cursor: pointer;
+    
+}
+#popupContainer{
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#popup{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    width: 500px;
+    text-align: center;
+    
+}
+#curr_mentoringInfo p{
+    line-height: 30px;
+}
+.popupTitle{
+    height: 30px;
+    margin-bottom: 30px;
+}
+.star{
+    color: red;
+}
+#popup_infor_sign{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    text-align: center;
+}
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+#popup_infor{
+    height: 500px;
+}
+#mentoring_sign_form p{
+    text-align: left;
+    padding-left: 30px;
+}
+#mentoring_sign_form input:last-child{
+    position: relative;
+    top: 20px;
+    margin-bottom: 20px;
+}
