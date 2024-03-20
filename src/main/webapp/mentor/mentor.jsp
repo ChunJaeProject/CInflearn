@@ -12,23 +12,7 @@
 </head>
 <body>
 <div id="container">
-    <header id="header">
-        <div id="logo"></div>
-        <div id="menuBox">
-            <nav id="menu">
-                <ul id="menuUl">
-                    <li>멘토링</li>
-                    <li>질문&답변</li>
-                    <li>강의평</li>
-                    <li>멘토링후기</li>
-                </ul>
-            </nav>
-        </div>
-        <div id="headerBtnBox">
-            <button>로그인</button>
-            <button>회원가입</button>
-        </div>
-    </header> 
+    <%@ include file="../common/header.jsp" %>
     <!-- jsp에서 include해서 사용 -->
     <main id="contents">
         <section id="contents_top_area" class="cal_h100">
@@ -277,18 +261,7 @@
         </div>
         
     </main>
-    <footer id="footer">
-        <img src="../img/inflearn.png" alt="My Image" width="250px" height="60px" color="black">
-        &nbsp; 개인정보 처리방침 |&nbsp;이용약관 <br>
-        <section class="footerWrap">
-         
-            <p class="copyright">(주)인프랩 | 대표자: 이형주 | 사업자번호: 499-81-00612 사업자 정보 확인<br>
-                통신판매업: 2018-성남분당B-0062 | 개인정보보호책임자: 이동욱 | 이메일: info@inflearn.com<br>
-                전화번호: 070-4948-1181 | 주소: 경기도 성남시 분당구 대왕판교로 660 유스페이스 1A동 405호<br>
-                ©INFLAB. ALL RIGHTS RESERVED
-                </p>
-        </section>
-    </footer>
+    <%@ include file="../common/footer.jsp" %>
 </div>
 
 <script>
