@@ -13,5 +13,5 @@ public class LoginDAO extends JDBConnect {
 	public LoginDAO(ServletContext application) {
 		super(application);
 	
-}
+	}
 }

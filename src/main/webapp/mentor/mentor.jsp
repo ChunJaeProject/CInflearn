@@ -1,3 +1,6 @@
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="dao.MentoringDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
@@ -11,6 +14,11 @@
     <link rel="stylesheet" href="../css/mentor/mentoring.css">
 </head>
 <body>
+<%
+	MentoringDAO mtDAO = new MentoringDAO();
+	Map<String, Object> params = new HashMap<String, Object>();
+	System.out.println(mtDAO.MentoringTotalCount(params));
+%>
 <div id="container">
     <%@ include file="../common/header.jsp" %>
     <!-- jsp에서 include해서 사용 -->
