@@ -17,7 +17,7 @@
     </div>
     
     <div class="sing_up">
-        <form class = "signfrm">
+        <form class = "signfrm" name="signfrm"  id ="signfrm" method="post" action ="regist.do">
        
             <label for="email" class="form_email">이메일</label><br>
            
@@ -31,7 +31,7 @@
        
             <input type="password" placeholder="*******"><br><br><br>
           
-            <input type="button" class ="sign_button" value="회원가입"> <br><br>
+            <input type="button"   name ="sign_button" id = "sign_button" value="회원가입"> <br><br>
     
             <span class="terms">가입 시 <a href="#">서비스이용약관</a>, <a href="#">개인정보처리방침</a>에 동의합니다.</span>
         </form>
@@ -43,7 +43,14 @@
    
    <Script>
    
+   const uSubmit = document.querySelector("#sign_button");
+   
+   uSubmit.addEventListener("click",function (e){
+		document.signfrm.submit();
+	},false);
+   
    </Script>
+   
    
 </body>
 </html>

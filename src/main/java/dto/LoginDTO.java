@@ -1,6 +1,6 @@
 package dto;
 
-public class MemberDTO {
+public class LoginDTO {
 
 	private int no;
 	private String email;
@@ -8,7 +8,7 @@ public class MemberDTO {
 	/**
 	 * @return the no
 	 */
-	public MemberDTO(){}
+	public LoginDTO(){}
 	
 	public int getNo() {
 		return no;
