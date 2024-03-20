@@ -53,10 +53,12 @@ public class MentoringDAO extends JDBConnect {
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				MentoringDTO dto = new MentoringDTO();
-				dto.MentoringDTO
 				
-				list.add(dto);
 			}
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		return list;
 	}
 }
