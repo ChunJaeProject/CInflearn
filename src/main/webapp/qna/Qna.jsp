@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,12 +10,9 @@
     <link rel="stylesheet" href="../css/qna/qna.css">
     <link rel="stylesheet" href="../css/common/frame.css">
     <style>
-        #header {
-        background-color:#1dc078;
-        }
         #contents_top_area {
             background-color: rgb(201, 194, 194);
-            border: 1px solid #000;
+            border: 1px solid #ccc;
             width: 1200px;
             margin: 0 auto;
         }
@@ -32,17 +28,17 @@
 </head>
 <body>
     <div id="container">
-        <header id="header">헤더</header>
+        <%@ include file="../common/header.jsp" %>
         <div id="contents_top_area" class="cal_h100">
-            <p style="font-size: large; font-weight: bold;padding-top: 10px;">묻고 답해요</p>
-            <br><p>126만명의 커뮤니티 !! 함께 토론해봐요.</p>
+            <p style="font-size: large; font-weight: bold;">묻고 답해요</p>
+            <p>126만명의 커뮤니티 !! 함께 토론해봐요.</p>
         </div>
         <section id="section">
             <div id="sidebar_left">
                 <ul id="sidebar_ul">
-                    <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="qna.html">질문과 답변</a></li>
-                    <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="review.html">수강평</a></li>
-                    <li style="padding: 10px; font-size: small;"><a href="mentoringReview.html">멘토링 후기</a></li>
+                    <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="QnA.jsp">질문과 답변</a></li>
+                    <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="Review.jsp">수강평</a></li>
+                    <li style="padding: 10px; font-size: small;"><a href="MentoringReview.jsp">멘토링 후기</a></li>
                 </ul>
             </div>
             <div id="content">
@@ -69,15 +65,15 @@
                 <div class="question">          
                     <div class="qTitle">
                         <span id="solve">해결됨</span>
-                        <a href ="qnaDetail.html">&nbsp;<span style="font-weight: bold;">제목</span></a>
+                        <a href ="QnADetail.jsp">&nbsp;<span style="font-weight: bold;">제목</span></a>
                     </div><br>
                     <p class="qContent">질문내용</p><br>
                     <div class="qTag"><span>태그1</span><span>태그2</span></div><br>
                     <div id="bottom">
                         <p class="qName">닉네임 | 작성 시간</p><br>
                         <div class="qBtn">
-                            <img src="/img/like.png" width="20px">&nbsp;0&nbsp;&nbsp;
-                            <img src="img/comment.png" width="20px">&nbsp;0&nbsp;&nbsp;
+                            <img src="../assets/image/like.png" width="20px">&nbsp;0&nbsp;&nbsp;
+                            <img src="../assets/image/comment.png" width="20px">&nbsp;0&nbsp;&nbsp;
                         </div>
                     </div>                  
                 </div>
@@ -91,8 +87,8 @@
                     <div id="bottom">
                         <p class="qName">닉네임 | 작성 시간</p><br>
                         <div class="qBtn">
-                            <img src="/img/like.png" width="20px">&nbsp;0&nbsp;&nbsp;
-                            <img src="img/comment.png" width="20px">&nbsp;0&nbsp;&nbsp;
+                            <img src="../assets/image/like.png" width="20px">&nbsp;0&nbsp;&nbsp;
+                            <img src="../assets/image/comment.png" width="20px">&nbsp;0&nbsp;&nbsp;
                         </div>
                     </div>                  
                 </div>
@@ -109,13 +105,12 @@
             </div>
             
         </section>
-
-        <footer id="footer">푸터</footer>
+        <%@ include file="../common/footer.jsp" %>
     </div>
 <script>
     document.querySelector("#btn_write").addEventListener("click", function(){
         alert("로그인 후 이용하세요.");
-        location.href="write.html";
+        location.href="Write.jsp";
     });
 </script>
 </body>

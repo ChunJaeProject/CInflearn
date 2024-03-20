@@ -1,12 +1,4 @@
-#header {
-background-color:#1dc078;
-}
-#section {
-    width: 900px;
-    height: calc(var(--header-height) + 800px);
-    padding-top: calc(var(--header-height) + 20px) ;
-    margin: 0 auto;
-}
+
 #qTitle {
     border-bottom: 1px solid #ccc;
 }
@@ -39,10 +31,11 @@ h3 {
 }
 #Writer {
     border: 1px solid #ccc;
-    position: fixed;
-    right: 250px;
-    top:100px;
     padding: 20px;
+    float:right;
+    position: fixed;
+    top:100px;
+    right:20px;
 }
 #box {
     border-bottom: 1px solid #ccc;
