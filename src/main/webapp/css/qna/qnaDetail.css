@@ -1,0 +1,88 @@
+#header {
+background-color:#1dc078;
+}
+#section {
+    width: 900px;
+    height: calc(var(--header-height) + 800px);
+    padding-top: calc(var(--header-height) + 20px) ;
+    margin: 0 auto;
+}
+#qTitle {
+    border-bottom: 1px solid #ccc;
+}
+h3 {
+    margin-bottom: 10px;
+}
+#qTitle {
+    padding: 10px;
+}
+#aContent {
+    display: flex;
+}
+.qTag span {
+    background-color: #ccc;
+    border-radius: 20px;
+    padding: 5px;
+    margin-right: 5px;
+    font-size: small;
+}
+.aContent{
+    border-bottom: 1px solid #ccc;
+    padding: 20px;
+}
+.aContent #person {
+    background-color: #ccc;
+    border: none;
+    border-radius: 30px;
+    font-size: small;
+    padding: 4px;
+}
+#Writer {
+    border: 1px solid #ccc;
+    position: fixed;
+    right: 250px;
+    top:100px;
+    padding: 20px;
+}
+#box {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+#box1 {
+    padding: 30px;   
+}
+#likeFrm {
+    margin-bottom: 30px;
+}
+#qContent {
+    display: flex;
+}
+#qContent p {
+    margin-left: 20px;
+}
+#box2 {
+    display: flex;
+}
+#box2 a:link, a:visited {
+    color: black;
+}
+#answer {
+    padding-top: 20px;
+}
+#answerWrite {
+    width: 500px;
+    height: 40px;
+}
+#btn_answer {
+    width: 100px;
+    height: 40px;
+    padding-bottom: 4px;
+}
+#time {
+    font-size: small;
+}
+#btn_go {
+    margin-top: 20px;
+    width: 200px;
+    height: 30px;
+}
