@@ -31,6 +31,7 @@ public class JDBConnect {
 			
 		}
 	}
+	
 	public JDBConnect(String driver, String url, String dbId, String dbPwd) {
 		try {
 			Class.forName(driver);
@@ -59,6 +60,8 @@ public class JDBConnect {
 			e.printStackTrace();
 		}
 	}
+	
+	
 	public void close() {
 		try {
 			if(rs!=null) rs.close();
