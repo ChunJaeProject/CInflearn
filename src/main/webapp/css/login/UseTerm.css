@@ -1,0 +1,63 @@
+ a{
+        text-decoration-line: none;
+    }
+    .bb{
+    padding:3px;
+    margin-left: 23px;
+}
+    .use_term{
+        width: 600px;
+            margin:20px auto;
+    }
+    .term_menu{
+         display: flex;
+        justify-content: center;
+        width: 100%;
+        height:100px;
+     
+        
+    }
+    .term_ul{
+      
+        display: flex;
+        justify-content: center;
+        width: 570px;
+       
+    }
+    .term_ul li{
+        height: 40px;
+        width: 150px;
+        float: left;
+        list-style: none;
+        
+    }
+    .person_term{
+        display: none;
+    }
+    .bb{
+    padding:6px;
+    color:green;
+    font-weight: bold ;
+    
+    
+}
+    .person_term{
+        width: 600px;
+         margin:20px auto;
+    }
+    .li0{
+        border-bottom: 1px solid black;
+    }
+    .li3{
+        border-bottom: 1px solid black;
+    }
+    .li1{
+        font-size:15px; 
+        border-bottom: 1px solid black;
+    }
+    .li2{
+        font-size:15px;
+        border-top:1px solid black;
+        border-right:1px solid black;
+        border-left:1px solid black;
+    }

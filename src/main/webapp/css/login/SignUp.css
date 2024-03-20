@@ -1,0 +1,35 @@
+  .sign_title
+    {
+        width: 300px;
+        margin : 0px auto;
+    }
+    .signfrm{
+        width: 300px;
+        height: 500px;
+
+        margin : 0px auto;
+        padding :10px;
+    }
+    .signfrm input[type=email],input[type=password]{
+        border : 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 13px;
+        padding: 5px;
+        width:270px;
+        height: 25px;
+        margin-top: 5px;
+        
+    }
+    .sign_button{
+        width:280px;
+       
+    }
+    .sign_title{
+        width: 300px;
+        height: 100px;
+        text-align: center;
+    }
+    .terms{
+        font-size:11px;
+        text-align: center;
+    }
