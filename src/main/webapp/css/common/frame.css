@@ -1,0 +1,172 @@
+:root {
+    --header-height : 64px;
+}
+
+#container {
+    width: 100%;
+}
+#header {
+    width: 100%;
+    min-width: 1200px;
+    height: 64px;
+    padding: 0 20px;
+    position: fixed;
+    display: flex;
+    line-height: 64px;
+    background-color: white;
+    justify-content: space-between;
+    z-index: 9999;
+}
+#header #logo{
+    height: 60px;
+    width: 180px;
+    background-color: red;
+    background-size: contain;
+    background-image: url("/img/inflearn_logo.png");
+}
+#header #menuBox{
+    width: fit-content;
+    height: 34px;
+    line-height: 64px;
+}
+#header #headerBtnBox{
+    height: 64px;
+    width: fit-content
+}
+#header #headerBtnBox button{
+    width: 80px;
+    height: 40px;
+}
+#header li{
+    float: left;
+    padding: 0 20px;
+}
+#header li:hover{
+    cursor: pointer;
+    color: rgb(47, 201, 122);
+}
+#contents {
+    width: 100%;
+}
+.contents_wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#contents_top_area {
+    margin: 0 auto;
+    width: 1200px;
+    line-height: 20px;
+    padding-top: 100px;
+}
+#contents_top_area *{
+    width: fit-content;
+}
+#contents_top_Btn_Box{
+    float: right;
+}
+#contents_top_Btn_Box button{
+    border-radius: 5px;
+    width: 150px;
+    height: 40px;
+}
+#contents_top_Btn_Box button:hover{
+    cursor: pointer;
+}
+.cal_h320 {
+    height: calc(var(--header-height) + 320px);
+}
+
+.cal_h100 {
+    height: calc(var(--header-height) + 100px);
+}
+
+
+#sidebar_area {
+    float: left;
+    width: 200px;
+    height: 100%;
+    padding-top: 35px;
+}
+#sidebar {
+    height: 100%;
+}
+#contents_area {
+    width: 100%;
+    float: left;
+}
+
+/* .wd1000 {
+    width: 1000px;
+} */
+
+.wd100p {
+    width: 100%;
+}
+
+#contents_info_wrap {
+    height: 35px;
+    text-align: center;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+.lecture_content_wrap, .mentoring_content_wrap, .qna_content_wrap,
+.lecture_review_content_wrap, .mentoring_review_content_wrap {
+    text-align: center;
+    border: 1px solid #181818;
+}
+
+.lecture_review_content_wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.lecture_review_content {
+ width: 100%;
+}
+
+.lecture_img_wrap {
+    width: 350px;
+}
+
+.h330 {
+    height: 330px;
+}
+
+.h250 {
+    height: 250px;
+}
+.w400{
+    width: 400px;
+}
+.h45 {
+    height: 45px;
+}
+.h30 {
+    height: 30px;
+}
+.h160 {
+    height: 160px;
+}
+
+.popular_tag_area {
+    width: 200px;
+}
+
+.paging_area {
+    height: 35px;
+    text-align: center;
+}
+#footer {
+    width: 100%;
+    height: 180px;
+    background-color: #303740;
+    color: #FFFFFF;
+}
+
