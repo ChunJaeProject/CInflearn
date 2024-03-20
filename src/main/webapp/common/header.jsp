@@ -111,7 +111,7 @@
    <div id="login_popupContainer"> 
         <div class="modal_signUp"> 
             <div class="close_div"> 
-                <button class="close-btn" id="closePopup"> X</button> 
+                <button class="close-btn" id="closeLoginPopup"> X</button> 
             </div>  
             <div class="header_logo"> 
                 <img src="../images/inflearn_logo.png" alt="My Image" width="200px" height="60px"> 
@@ -137,7 +137,7 @@
         lButton.addEventListener("click",function(e){ 
             login_popupContainer.style.display="block"; 
         });  
-        document.getElementById("closePopup").addEventListener("click",function(e){ 
+        document.getElementById("closeLoginPopup").addEventListener("click",function(e){ 
             login_popupContainer.style.display="none"; 
         });
     </Script>
