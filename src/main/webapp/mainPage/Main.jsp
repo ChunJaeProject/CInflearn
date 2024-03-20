@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>인프런 | 라이프타임 커리어 플랫폼</title>
-    <link rel="stylesheet" href="../css/common/common.css">
+    <link rel="stylesheet" href="../css/common/base.css">
+    <link rel="stylesheet" href="../css/common/frame.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -18,8 +19,7 @@
 호버하면 강의 상세정보나오는데(강의제목, 난이도, 카테고리(2차가 보임), 태그)
 -->
 <div id="container">
-    <header id="header">헤더 영역</header> 
-    <!-- jsp에서 include해서 사용 -->
+    <%@ include file="../common/header.jsp" %>
     <main id="contents">
         <section id="contents_top_area" class="cal_h320">
             <div id="img_slide">
