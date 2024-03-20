@@ -1,0 +1,169 @@
+/* contents_top_area */
+#img_slide {
+    position: relative;
+    background: url("../assets/image/main_banner01.png") center no-repeat;
+    height: 100%;
+}
+
+#slide_btn_wrap {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background-color: rgba(48, 55, 64, 0.8);
+    border-radius: 10px;
+    width: 150px;
+    height: 35px;
+
+    display: flex;
+    justify-content: space-evenly;
+
+    text-align: center;
+    line-height: 35px;
+    color: #ffffff;
+}
+
+#slide_btn_wrap #prev_slide_btn, #slide_btn_wrap #next_slide_btn {
+    cursor: pointer;
+}
+
+#slide_btn_wrap #prev_slide_btn:hover {
+    transform: translateX(-5%);
+}
+
+#slide_btn_wrap #next_slide_btn:hover {
+    transform: translateX(5%);
+}
+
+/* sidebar_area */
+.contents_wrap {
+    padding-bottom: 48px;
+}
+#sidebar_area {
+    margin-left: 24px;
+}
+#category_depth1 > li  {
+    border: 1px solid rgba(24, 24, 24, 0.2);
+    padding: 15px 0 15px 15px;
+}
+
+#category_depth1 > li li:first-child {
+    margin-top: 15px;
+    border-top: 1px solid rgba(24, 24, 24, 0.2);
+}
+
+#category_depth2 {
+    display: none;
+}
+
+#category_depth2 li {
+    padding: 15px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(24, 24, 24, 0.2);
+}
+
+#category_depth2 li:last-child {
+    border-bottom: none;
+}
+
+/* contents_area */
+#contents_area {
+    width: 1000px;
+    margin: 0 24px;
+}
+#contents_info_wrap {
+    display: flex;
+    justify-content: space-between;
+}
+#technology_search_wrap {
+    float: left;
+    margin-right: 24px;
+}
+
+#lecture_search_wrap {
+    float: left;
+}
+
+#technology_search_wrap input, #lecture_search_wrap input {
+    height: 35px;
+    vertical-align: middle;
+    border: 1px solid rgba(24, 24, 24, 0.2);
+    border-radius: 5px;
+    padding: 0px 12px;
+}
+
+.lecture_content_wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 12px 12px 24px;
+    padding: 12px;
+    height: 280px;
+    border: 1px solid rgba(24, 24, 24, 0.2);
+    border-radius: 5%;
+}
+
+.lecture_content_hover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 12px;
+    color: transparent;
+    z-index: 10;
+}
+
+.lecture_content_hover .lecture_title {
+    font-size: 18px;
+    margin-bottom: 24px;
+}
+
+.lecture_content_hover .difficulty_grade {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.lecture_content_hover .technology_tag {
+    font-size: 12px;
+}
+
+.lecture_content_hover:hover {
+    color: #ffffff;
+    background-color:  rgba(24, 24, 24, 0.8);
+    cursor: pointer;
+}
+
+.lecture_content {
+    padding: 4px;
+    position: relative;
+}
+.lecture_img {
+    height: 140px;
+    margin-bottom: 8px;
+    width: 100%;
+}
+.lecture_img img {
+    width: 100%;
+}
+.lecture_title {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.lecture_professor {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: rgba(24, 24, 24, 0.5);
+}
+
+.lecture_grade {
+    color: #e6c406;
+    margin-bottom: 8px;
+}
