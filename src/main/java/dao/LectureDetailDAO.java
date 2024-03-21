@@ -7,7 +7,6 @@ import java.util.Vector;
 import common.JDBConnect;
 import dto.LectureDTO;
 import jakarta.servlet.ServletContext;
-import model2.bbs.BbsDTO;
 
 public class LectureDetailDAO extends JDBConnect {
 	public LectureDetailDAO() {}
@@ -53,11 +52,6 @@ public class LectureDetailDAO extends JDBConnect {
 		return dto;
 		}
 
-		
-		
-	}
-		
 
-		
-	}
 }
+

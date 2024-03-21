@@ -115,7 +115,7 @@
                 <button class="close-btn" id="closeLoginPopup"> X</button> 
             </div>  
             <div class="header_logo"> 
-                <img src="../images/inflearn_logo.png" alt="My Image" width="200px" height="60px"> 
+                <img src="../assets/image/inflearn_logo.png" alt="My Image" width="200px" height="60px"> 
             </div>  
             <div class="sign_div"> 
             
