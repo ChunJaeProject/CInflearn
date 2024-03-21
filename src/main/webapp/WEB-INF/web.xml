@@ -25,24 +25,4 @@
     <param-name>dbPwd</param-name>
     <param-value>1234</param-value>
   </context-param>
-  <servlet>
-    <description></description>
-    <display-name>MentoringController</display-name>
-    <servlet-name>MentoringController</servlet-name>
-    <servlet-class>controller.MentoringController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>MentoringController</servlet-name>
-    <url-pattern>/mentor/mentor.do</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>MentoringRegistController</display-name>
-    <servlet-name>MentoringRegistController</servlet-name>
-    <servlet-class>controller.MentoringRegistController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>MentoringRegistController</servlet-name>
-    <url-pattern>/mentor/mentoringRegist.do</url-pattern>
-  </servlet-mapping>
 </web-app>
