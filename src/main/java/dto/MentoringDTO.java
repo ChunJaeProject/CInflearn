@@ -13,6 +13,7 @@ public class MentoringDTO {
 	private String mentoring_name;
 	private String mentoring_intro;
 	private String job_code;
+	private String job_title;
 	private int member_no;
 	
 	public MentoringDTO(){}
@@ -151,6 +152,12 @@ public class MentoringDTO {
 	/**
 	 * @return the member_no
 	 */
+	public String getJob_title() {
+		return job_title;
+	}
+	public void setJob_title(String job_title) {
+		this.job_title = job_title;
+	}
 	public int getMember_no() {
 		return member_no;
 	}

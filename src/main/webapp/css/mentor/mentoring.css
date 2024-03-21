@@ -119,3 +119,7 @@
     top: 20px;
     margin-bottom: 20px;
 }
+.paging_num:hover{
+	cursor:pointer;
+	color:red;
+}
