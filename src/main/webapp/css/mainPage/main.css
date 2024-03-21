@@ -125,7 +125,8 @@
     margin-bottom: 24px;
 }
 
-.lecture_content_hover .difficulty_grade {
+.lecture_content_hover .difficulty_grade,
+.lecture_content_hover .category {
     font-size: 14px;
     margin-bottom: 4px;
 }
@@ -166,4 +167,9 @@
 .lecture_grade {
     color: #e6c406;
     margin-bottom: 8px;
+}
+
+.no_result {
+	text-align: center;
+	padding: 100px;
 }

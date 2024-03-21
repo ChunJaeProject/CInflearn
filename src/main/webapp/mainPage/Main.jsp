@@ -35,7 +35,7 @@
                             <i class="fa fa-code" aria-hidden="true"></i>
                             개발 · 프로그래밍
                             <ul class="category_depth2" >
-                                <li><input type="button" value="웹 개발"></li>
+                                <li>웹 개발</li>
                                 <li>프론트엔드</li>
                                 <li>백엔드</li>
                                 <li>풀스택</li>
@@ -180,13 +180,14 @@
                         </div>
                     </form>             
                 </div>
-                <div id="lecture_contents_area" class="grid">
-                    <c:choose>
+                <c:choose>
 						<c:when test="${not empty lectureList}">
 							<c:forEach var="lectureList" items="${ lectureList }" varStatus="loop">
+						    <div id="lecture_contents_area" class="grid">
 			                    <article class="lecture_content_wrap h330">
 			                        <a href="#" class="lecture_content_hover">
 			                            <p class="lecture_title">${ lectureList.lecture_title }</p>
+			                            <p class="category">${ lectureList.category2 }</p>
 			                            <p class="difficulty_grade">${ lectureList.difficulty_grade }</p>
 			                            <p class="technology_tag">${ lectureList.technology_tag }</p>
 			                        </a>
@@ -203,16 +204,14 @@
 			                            </p>
 			                        </div>
 			                    </article>
-							</c:forEach>
-						</c:when>
- 						<c:otherwise>
-			                    <article class="lecture_content_wrap h330">
-			                        내용이 없습니다.
-			                    </article>
-						</c:otherwise>
+                			</div>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<div class="no_result">해당하는 강좌가 없습니다🥹</div>
+					</c:otherwise>
 				</c:choose>				
                     
-                </div>
                 <div class="paging_area">
                     페이징 영역
                 </div>
@@ -241,11 +240,16 @@ categoryDepth1DOM.addEventListener("click", function(e) {
 const category_list = document.querySelectorAll(".category_depth2 li");
 for(i=0;i<category_list.length;i++){
 	category_list[i].addEventListener("click",function(e){
-		const category = this.textContent;
-		console.log(this.textContent);
+		const category2 = this.textContent;
+		location.href = "/ChunjaeProject/mainPage/Main.do?category2=" + category2;
 
 	}, false);
 }
+
+
+
+
+
 </script>
 </body>
 </html>
