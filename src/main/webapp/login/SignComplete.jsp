@@ -8,16 +8,15 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/login/SignComplete.css">
 </head>
-<style>
-   
- 
-</style>
+
 <body>
-  
+<%
+String id = request.getParameter("email");
+%>  
     <div class="content">
      
         
-            000님의 <br>    
+            <%=id %>님의 <br>    
                 인프런 회원가입을 축하합니다🎉<br><br>
 
                 반가워요. 인프런에 오신것을 환영해요🖐🏻<br>

@@ -12,6 +12,7 @@ import java.io.IOException;
 import dao.LoginDAO;
 import dto.LoginDTO;
 
+//회원등록
 @WebServlet("/login/regist.do")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,6 +23,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		req.getRequestDispatcher("./SignUp.jsp").forward(req, resp);
+
 	}
 
 	/**
@@ -30,8 +32,9 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String email = req.getParameter("email");
+		
 		String password = req.getParameter("password");
-
+		
 		LoginDTO dto = new LoginDTO();
 
 		dto.setEmail(email);
@@ -39,14 +42,16 @@ public class LoginServlet extends HttpServlet {
 		LoginDAO dao =  new LoginDAO();
 		int result = dao.LoginRegist(dto);
 		req.setAttribute("result" ,result);
+		req.setAttribute("email", email);
 		
 		if(result==1) {
-			resp.sendRedirect("./SignComplete.jsp");
+			req.getRequestDispatcher("./SignComplete.do").forward(req, resp);
 		}
 		else {
 			System.out.println("글쓰기에 실패하였습니다.");
 			resp.sendRedirect("./SignUp.jsp");
 	}
+
 		
 	}
 

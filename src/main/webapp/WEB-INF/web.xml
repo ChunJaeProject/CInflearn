@@ -35,4 +35,14 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginingServlet</display-name>
+    <servlet-name>LoginingServlet</servlet-name>
+    <servlet-class>controller.LoginingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginingServlet</servlet-name>
+    <url-pattern>/LoginingServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
