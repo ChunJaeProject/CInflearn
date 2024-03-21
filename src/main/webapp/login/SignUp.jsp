@@ -21,11 +21,11 @@
        
             <label for="email" class="form_email">이메일</label><br>
            
-            <input type="email" placeholder="example@inflab.com"><br><br><br>
+            <input type="email" name ="email" placeholder="example@inflab.com"><br><br><br>
            
             <label for="password" class="form_email">비밀번호</label><br>
        
-            <input type="password" placeholder="*******"><br><br><br>
+            <input type="password" name ="password" placeholder="*******"><br><br><br>
             
             <label for="passwordConfirm" class="form_emailConfirm">비밀번호 확인</label><br>
        
