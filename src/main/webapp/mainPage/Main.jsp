@@ -30,7 +30,7 @@
             <section id="sidebar_area">
                 <aside id="sidebar">
                     <ul id="category_depth1">
-                        <li class="total_lecture"><i class="fa fa-bars" aria-hidden="true"></i> 전체 강의</li>
+                        <li id="total_lecture"><i class="fa fa-bars" aria-hidden="true"></i> 전체 강의</li>
                         <li>
                             <i class="fa fa-code" aria-hidden="true"></i>
                             개발 · 프로그래밍
@@ -181,9 +181,9 @@
                     </form>             
                 </div>
                 <c:choose>
-						<c:when test="${not empty lectureList}">
+					<c:when test="${not empty lectureList}">
+					    <div id="lecture_contents_area" class="grid">
 							<c:forEach var="lectureList" items="${ lectureList }" varStatus="loop">
-						    <div id="lecture_contents_area" class="grid">
 			                    <article class="lecture_content_wrap h330">
 			                        <a href="#" class="lecture_content_hover">
 			                            <p class="lecture_title">${ lectureList.lecture_title }</p>
@@ -204,8 +204,8 @@
 			                            </p>
 			                        </div>
 			                    </article>
-                			</div>
-						</c:forEach>
+							</c:forEach>
+						</div>
 					</c:when>
 					<c:otherwise>
 						<div class="no_result">해당하는 강좌가 없습니다🥹</div>
@@ -227,8 +227,11 @@ imgSlideDom.addEventListener("click", function(e) {
 }, false);
 
 const categoryDepth1DOM = document.querySelector("#category_depth1");
+const totalLectureDOM = document.querySelector("#total_lecture");
 categoryDepth1DOM.addEventListener("click", function(e) {
-    if (!(document.querySelector("#total_lecture") == e.target) && e.target.tagName == "LI") {
+	if (totalLectureDOM == e.target) {
+		location.href = "/ChunjaeProject/mainPage/Main.do";
+	} else if (e.target.tagName == "LI") {
         if (e.target.children[0].tagName == "I") {
               if (!e.target.children[1].style.display || e.target.children[1].style.display == "none" ) {
                 e.target.children[1].style.display = "block";
