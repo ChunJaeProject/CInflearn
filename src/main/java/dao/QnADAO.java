@@ -99,11 +99,10 @@ public class QnADAO extends JDBConnect {
 				dto.setAnswer(rs.getString("answer"));
 				dto.setSolution_state(rs.getString("solution_state"));
 				dto.setLike(rs.getInt("like"));
-<<<<<<< HEAD
-				dto.setReg_date(rs.getLocalDateTime("reg_date"));
-=======
+
+
 				dto.setReg_date(rs.getDate(null));
->>>>>>> dto
+
 			}
 		}
 		catch(Exception e) {
@@ -112,8 +111,7 @@ public class QnADAO extends JDBConnect {
 		}
 		return dto;
 	 }
-<<<<<<< HEAD
-=======
+
 	 
 	 public void QnARegist(QnADTO dto) {
 		 StringBuilder sb  = new StringBuilder();
@@ -168,5 +166,5 @@ public class QnADAO extends JDBConnect {
 		 }
 		 return result;
 	 }
->>>>>>> dto
+
 }
