@@ -23,8 +23,8 @@ public class LoginDAO extends JDBConnect {
 	public int LoginRegist(LoginDTO dto) {
 		int result =0;
 		StringBuilder sb = new StringBuilder();
-		sb.append("INSERT INTO inflearn (email,password)");
-		sb.append(" VALUES (?, ?, now())");
+		sb.append("INSERT INTO tbl_member (email,password)");
+		sb.append(" VALUES (?, ?)");
 		try {
 		psmt =conn.prepareStatement(sb.toString());
 		
