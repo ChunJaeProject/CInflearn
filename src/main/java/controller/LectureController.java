@@ -62,16 +62,14 @@ public class LectureController extends HttpServlet {
 		params.put("lecture_search_word", lecture_search_word);
 		params.put("total_count", total_count);
 		
-		System.out.println("category2 : " + category2);
-		
 		List<LectureDTO> lectureList = dao.lectureList(params);
 		
 		dao.close();
 		
-		/*
-		 * for(int i=0; i<lectureList.size(); i++) {
-		 * System.out.print(lectureList.get(i).getLecture_title()); }
-		 */
+	
+//		for(int i=0; i<lectureCategoryFilterList.size(); i++) {
+//		System.out.print(lectureCategoryFilterList.get(i)); }
+		 
 		req.setAttribute("lectureList", lectureList);
 		req.setAttribute("params", params);
 		

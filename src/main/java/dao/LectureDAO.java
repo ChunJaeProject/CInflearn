@@ -65,7 +65,12 @@ public class LectureDAO extends JDBConnect {
 			sb.append(" LIKE '%" + map.get("lecture_search_word") + "%'");
 		}
 		
+		if ( map.get("category2") != "" && map.get("category2") != null) {
+			sb.append(" WHERE category2 =" + "'" + map.get("category2") + "'"); 
+		}
+	
 		sb.append(" ORDER BY lecture_no DESC");
+		System.out.println(sb.toString());
 		
 		try {
 			psmt = conn.prepareStatement(sb.toString());
