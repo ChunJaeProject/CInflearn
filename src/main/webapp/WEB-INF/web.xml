@@ -25,4 +25,14 @@
     <param-name>dbPwd</param-name>
     <param-value>1234</param-value>
   </context-param>
+  <servlet>
+    <description></description>
+    <display-name>QnaWriteServlet</display-name>
+    <servlet-name>QnaWriteServlet</servlet-name>
+    <servlet-class>controller.QnaWriteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QnaWriteServlet</servlet-name>
+    <url-pattern>/QnaWriteServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
