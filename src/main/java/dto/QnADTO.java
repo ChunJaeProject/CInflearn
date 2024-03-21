@@ -1,6 +1,5 @@
 package dto;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class QnADTO {
@@ -14,6 +13,7 @@ public class QnADTO {
 	private int like;
 	private Date reg_date;
 	private String email;
+	private int member_no;
 	
 	public QnADTO(){}
 	/**
@@ -123,5 +123,17 @@ public class QnADTO {
 	 */
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	/**
+	 * @return the member_no
+	 */
+	public int getMember_no() {
+		return member_no;
+	}
+	/**
+	 * @param member_no the member_no to set
+	 */
+	public void setMember_no(int member_no) {
+		this.member_no = member_no;
 	}
 }

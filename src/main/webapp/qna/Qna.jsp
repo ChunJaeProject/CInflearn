@@ -42,16 +42,16 @@
         <section id="section">
             <div id="sidebar_left">
                 <ul id="sidebar_ul">
-                    <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="QnA.jsp">질문과 답변</a></li>
+                    <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="Qna.do">질문과 답변</a></li>
                     <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="Review.jsp">수강평</a></li>
                     <li style="padding: 10px; font-size: small;"><a href="MentoringReview.jsp">멘토링 후기</a></li>
                 </ul>
             </div>
             <div id="content">
                 <ul id="content_ul" >
-                    <li><a href="#">전체(${total_count })</a></li>
-                    <li><a href="#">미해결(개수)</a></li>
-                    <li><a href="#">해결됨(개수)</a></li>
+                    <li><a href="#">전체(${maps.total_count })</a></li>
+                    <li><a href="#">미해결(${maps.unsolve_count })</a></li>
+                    <li><a href="#">해결됨(${maps.solve_count })</a></li>
                 </ul>
                 <hr>
             <div id ="search">
@@ -74,16 +74,16 @@
 					<c:forEach var="list" items="${QnAList }" varStatus="loop">
 					<div class="question">          
 	                    <div class="qTitle">
-	                        <span id="solve">해결됨 : ${list.solution_state}</span>
-	                        <a href ="QnADetail.jsp?idx=${list.no }">&nbsp;<span style="font-weight: bold;">제목 : ${list.question_title }</span></a>
+	                        <span id="solve">해결 : ${list.solution_state}</span>
+	                        <a href ="QnaDetail.do?idx=${list.no }">&nbsp;<span style="font-weight: bold;">${list.question_title }</span></a>
 	                    </div><br>
-	                    <p class="qContent">질문내용 : ${list.question_content }</p><br>
-	                    <div class="qTag"><span>태그 : ${list.question_hashtag }</span></div><br>
+	                    <p class="qContent">${list.question_content }</p><br>
+	                    <div class="qTag"><span>${list.question_hashtag }</span></div><br>
 	                    <div id="bottom">
 	                        <p class="qName">닉네임 : ${list.email } | 작성 시간 : ${list.reg_date }</p><br>
 	                        <div class="qBtn">
 	                            <img src="../assets/image/like.png" width="20px">&nbsp;0&nbsp;&nbsp;
-	                            <img src="../assets/image/comment.png" width="20px">&nbsp;0&nbsp;&nbsp;
+	                            <img src="../assets/image/comment.png" width="20px">&nbsp;1&nbsp;&nbsp;
 	                        </div>
 	                    </div>                  
                 	</div>

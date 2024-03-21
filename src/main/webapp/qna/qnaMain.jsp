@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<a href ="../qna/Qna.do">qna게시판이동</a>
 
-<a href ="./QnA.do">qna로 이동</a>
 </body>
 </html>
