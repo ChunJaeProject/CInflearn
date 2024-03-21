@@ -177,22 +177,25 @@ public class QnADAO extends JDBConnect {
 	 }
 
 	 //게시글 등록
-	 public void QnARegist(QnADTO dto) {
+	 public int QnARegist(QnADTO dto) {
+		 int result=0;
 		 StringBuilder sb  = new StringBuilder();
-		 sb.append("INSERT INTO tbl_qna(question_title, question_hashtag, question_content,reg_date) VALUES(?,?,?, NOW())");
+		 sb.append("INSERT INTO tbl_qna(question_title, question_content, reg_date, member_no) VALUES(?,?, NOW(),?)");
 		 
 		 try {
 			 psmt = conn.prepareStatement(sb.toString());
 			 psmt.setString(1, dto.getQuestion_title());
-			 psmt.setString(2, dto.getQuestion_hashtag());
-			 psmt.setString(3, dto.getQuestion_content());
+			 psmt.setString(2, dto.getQuestion_content());
+			 psmt.setInt(3, dto.getMember_no());
 			 
-			 psmt.executeUpdate();
+			 result = psmt.executeUpdate();
+		
 		 } 
 		 catch(Exception e) {
 			 System.out.print("게시물 등록 에러");
 			 e.printStackTrace();
 		 }
+		 return result;
 	 }
 	 
 	 //게시글 삭제
