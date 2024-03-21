@@ -99,7 +99,11 @@ public class QnADAO extends JDBConnect {
 				dto.setAnswer(rs.getString("answer"));
 				dto.setSolution_state(rs.getString("solution_state"));
 				dto.setLike(rs.getInt("like"));
+<<<<<<< HEAD
 				dto.setReg_date(rs.getLocalDateTime("reg_date"));
+=======
+				dto.setReg_date(rs.getDate(null));
+>>>>>>> dto
 			}
 		}
 		catch(Exception e) {
@@ -108,4 +112,61 @@ public class QnADAO extends JDBConnect {
 		}
 		return dto;
 	 }
+<<<<<<< HEAD
+=======
+	 
+	 public void QnARegist(QnADTO dto) {
+		 StringBuilder sb  = new StringBuilder();
+		 sb.append("INSERT INTO tbl_qna(question_title, question_hashtag, question_content,reg_date) VALUES(?,?,?, NOW())");
+		 
+		 try {
+			 psmt = conn.prepareStatement(sb.toString());
+			 psmt.setString(1, dto.getQuestion_title());
+			 psmt.setString(2, dto.getQuestion_hashtag());
+			 psmt.setString(3, dto.getQuestion_content());
+			 
+			 psmt.executeUpdate();
+		 } 
+		 catch(Exception e) {
+			 System.out.print("게시물 등록 에러");
+			 e.printStackTrace();
+		 }
+	 }
+	 public int QnADelete(int no) {
+		 int result = 0;
+		 StringBuilder sb = new StringBuilder();
+		 sb.append("DELETE FROM tbl_qna WHREE no=");
+		 
+		 try {
+			 psmt = conn.prepareStatement(sb.toString());
+			 psmt.setInt(1, no);
+			 
+			 result = psmt.executeUpdate();
+		 }
+		 catch(Exception e) {
+			 System.out.print("게시물 삭제 에러");
+			 e.printStackTrace();
+		 }
+		 return result;
+	 }
+	 
+	 public int QnAModify(QnADTO dto) {
+		 int result = 0;
+		 StringBuilder sb = new StringBuilder();
+		 sb.append("UPDATE tbl_qna SET question_title=?, question_hashtag=?, question_content=?, reg_date= now()");
+		 sb.append(" WHERE no=?");
+		 
+		 try {
+			 psmt = conn.prepareStatement(sb.toString());
+			 psmt.setString(1, dto.getQuestion_title());
+			 psmt.setString(2, dto.getQuestion_hashtag());
+			 psmt.setString(3, dto.getQuestion_content());
+		 }
+		 catch(Exception e) {
+			 System.out.print("게시물 수정 에러");
+			 e.printStackTrace();
+		 }
+		 return result;
+	 }
+>>>>>>> dto
 }

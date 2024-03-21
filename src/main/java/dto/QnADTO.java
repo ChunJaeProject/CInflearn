@@ -1,6 +1,7 @@
 package dto;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class QnADTO {
 
@@ -11,7 +12,7 @@ public class QnADTO {
 	private String answer;
 	private String solution_state;
 	private int like;
-	private LocalDateTime reg_date;
+	private Date reg_date;
 	private String email;
 	
 	public QnADTO(){}
@@ -102,13 +103,13 @@ public class QnADTO {
 	/**
 	 * @return the reg_date
 	 */
-	public LocalDateTime getReg_date() {
+	public Date getReg_date() {
 		return reg_date;
 	}
 	/**
 	 * @param reg_date the reg_date to set
 	 */
-	public void setReg_date(LocalDateTime reg_date) {
+	public void setReg_date(Date reg_date) {
 		this.reg_date = reg_date;
 	}
 	/**
