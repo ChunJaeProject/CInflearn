@@ -99,6 +99,23 @@ public class LoginDAO extends JDBConnect {
 		}
 		return dto;
 	}
+	public int memberDelete(String email, String password) {
+		int result =0;
+		try {
+			StringBuilder sb = new StringBuilder();
+			sb.append("DELETE FROM tbl_member WHERE email =?");
+			sb.append(" AND password = ?");
+			psmt = conn.prepareStatement(sb.toString());
+			psmt.setString(1, email);
+			psmt.setString(2, password);
+			
+			result = psmt.executeUpdate();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 	
 	
