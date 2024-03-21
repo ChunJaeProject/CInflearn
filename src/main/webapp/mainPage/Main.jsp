@@ -1,5 +1,8 @@
+<%@page import="dto.LectureDTO"%>
+<%@page import="dao.LectureDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,12 +15,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<!--
-메인페이지
-강의 전체보기/ 강의 상세페이지/ 회원가입페이지/ 개인정보/ 이용약관 
-강의 전체보기(강의 이미지, 강의명, 강사명, 별점)
-호버하면 강의 상세정보나오는데(강의제목, 난이도, 카테고리(2차가 보임), 태그)
--->
 <div id="container">
     <%@ include file="../common/header.jsp" %>
     <main id="contents">
@@ -172,247 +169,50 @@
             </section>
             <section id="contents_area">
                 <div id="contents_info_wrap">
-                    <p>총 게시글 00</p>
-                    <form action="" id="lecture_frm" name="lecture_frm">
+                    <p>총 게시글 ${ lectureList.size() }</p>
+                    <form action="" id="lecture_frm" name="lecture_frm" method="get">
                         <div id="technology_search_wrap">
-                            <input id="technology_search" name="technology_search" type="text" placeholder="기술검색">
-                            <input id="technology_search_btn" name="technology_search_btn" type="button" value="검색">
+                            <input id="technology_search_word" name="technology_search_word" type="text" placeholder="기술검색" value="">
+                            <input id="technology_search_btn" name="technology_search_btn" type="submit" value="검색">
                         </div>
                         <div id="lecture_search_wrap">
-                            <input id="lecture_search" name="lecture_search" type="text" placeholder="강의명/강사명검색">
-                            <input id="lecture_btn" name="lecture_btn" type="button" value="검색">
+                            <input id="lecture_search_word" name="lecture_search_word" type="text" placeholder="강의명/강사명검색">
+                            <input id="lecture_btn" name="lecture_btn" type="submit" value="검색">
                         </div>
-                    </form>
+                    </form>             
                 </div>
                 <div id="lecture_contents_area" class="grid">
-                    <article class="lecture_content_wrap h330">
-                        <a href="#" class="lecture_content_hover">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="difficulty_grade">입문</p>
-                            <p class="technology_tag">HTML/CSS</p>
-                        </a>
-                        <a href="#" class="lecture_img"><img src="https://cdn.inflearn.com/public/courses/325307/course_cover/587aaeec-bee9-4c1e-9c90-9ae48b20f109/inflearn-original-web-ef.png" alt=""></a>
-                        <div class="lecture_content">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="lecture_professor">얄팍한 코딩사전</p>
-                            <p class="lecture_grade">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </p>
-                        </div>
-                    </article>
-                    <article class="lecture_content_wrap h330">
-                        <a href="#" class="lecture_content_hover">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="difficulty_grade">입문</p>
-                            <p class="technology_tag">HTML/CSS</p>
-                        </a>
-                        <a href="#" class="lecture_img"><img src="https://cdn.inflearn.com/public/courses/325307/course_cover/587aaeec-bee9-4c1e-9c90-9ae48b20f109/inflearn-original-web-ef.png" alt=""></a>
-                        <div class="lecture_content">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="lecture_professor">얄팍한 코딩사전</p>
-                            <p class="lecture_grade">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </p>
-                        </div>
-                    </article>
-                    <article class="lecture_content_wrap h330">
-                        <a href="#" class="lecture_content_hover">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="difficulty_grade">입문</p>
-                            <p class="technology_tag">HTML/CSS</p>
-                        </a>
-                        <a href="#" class="lecture_img"><img src="https://cdn.inflearn.com/public/courses/325307/course_cover/587aaeec-bee9-4c1e-9c90-9ae48b20f109/inflearn-original-web-ef.png" alt=""></a>
-                        <div class="lecture_content">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="lecture_professor">얄팍한 코딩사전</p>
-                            <p class="lecture_grade">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </p>
-                        </div>
-                    </article>
-                    <article class="lecture_content_wrap h330">
-                        <a href="#" class="lecture_content_hover">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="difficulty_grade">입문</p>
-                            <p class="technology_tag">HTML/CSS</p>
-                        </a>
-                        <a href="#" class="lecture_img"><img src="https://cdn.inflearn.com/public/courses/325307/course_cover/587aaeec-bee9-4c1e-9c90-9ae48b20f109/inflearn-original-web-ef.png" alt=""></a>
-                        <div class="lecture_content">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="lecture_professor">얄팍한 코딩사전</p>
-                            <p class="lecture_grade">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </p>
-                        </div>
-                    </article>
-                    <article class="lecture_content_wrap h330">
-                        <a href="#" class="lecture_content_hover">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="difficulty_grade">입문</p>
-                            <p class="technology_tag">HTML/CSS</p>
-                        </a>
-                        <a href="#" class="lecture_img"><img src="https://cdn.inflearn.com/public/courses/325307/course_cover/587aaeec-bee9-4c1e-9c90-9ae48b20f109/inflearn-original-web-ef.png" alt=""></a>
-                        <div class="lecture_content">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="lecture_professor">얄팍한 코딩사전</p>
-                            <p class="lecture_grade">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </p>
-                        </div>
-                    </article>
-                    <article class="lecture_content_wrap h330">
-                        <a href="#" class="lecture_content_hover">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="difficulty_grade">입문</p>
-                            <p class="technology_tag">HTML/CSS</p>
-                        </a>
-                        <a href="#" class="lecture_img"><img src="https://cdn.inflearn.com/public/courses/325307/course_cover/587aaeec-bee9-4c1e-9c90-9ae48b20f109/inflearn-original-web-ef.png" alt=""></a>
-                        <div class="lecture_content">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="lecture_professor">얄팍한 코딩사전</p>
-                            <p class="lecture_grade">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </p>
-                        </div>
-                    </article>
-                    <article class="lecture_content_wrap h330">
-                        <a href="#" class="lecture_content_hover">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="difficulty_grade">입문</p>
-                            <p class="technology_tag">HTML/CSS</p>
-                        </a>
-                        <a href="#" class="lecture_img"><img src="https://cdn.inflearn.com/public/courses/325307/course_cover/587aaeec-bee9-4c1e-9c90-9ae48b20f109/inflearn-original-web-ef.png" alt=""></a>
-                        <div class="lecture_content">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="lecture_professor">얄팍한 코딩사전</p>
-                            <p class="lecture_grade">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </p>
-                        </div>
-                    </article>
-                    <article class="lecture_content_wrap h330">
-                        <a href="#" class="lecture_content_hover">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="difficulty_grade">입문</p>
-                            <p class="technology_tag">HTML/CSS</p>
-                        </a>
-                        <a href="#" class="lecture_img"><img src="https://cdn.inflearn.com/public/courses/325307/course_cover/587aaeec-bee9-4c1e-9c90-9ae48b20f109/inflearn-original-web-ef.png" alt=""></a>
-                        <div class="lecture_content">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="lecture_professor">얄팍한 코딩사전</p>
-                            <p class="lecture_grade">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </p>
-                        </div>
-                    </article>
-                    <article class="lecture_content_wrap h330">
-                        <a href="#" class="lecture_content_hover">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="difficulty_grade">입문</p>
-                            <p class="technology_tag">HTML/CSS</p>
-                        </a>
-                        <a href="#" class="lecture_img"><img src="https://cdn.inflearn.com/public/courses/325307/course_cover/587aaeec-bee9-4c1e-9c90-9ae48b20f109/inflearn-original-web-ef.png" alt=""></a>
-                        <div class="lecture_content">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="lecture_professor">얄팍한 코딩사전</p>
-                            <p class="lecture_grade">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </p>
-                        </div>
-                    </article>
-                    <article class="lecture_content_wrap h330">
-                        <a href="#" class="lecture_content_hover">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="difficulty_grade">입문</p>
-                            <p class="technology_tag">HTML/CSS</p>
-                        </a>
-                        <a href="#" class="lecture_img"><img src="https://cdn.inflearn.com/public/courses/325307/course_cover/587aaeec-bee9-4c1e-9c90-9ae48b20f109/inflearn-original-web-ef.png" alt=""></a>
-                        <div class="lecture_content">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="lecture_professor">얄팍한 코딩사전</p>
-                            <p class="lecture_grade">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </p>
-                        </div>
-                    </article>
-                    <article class="lecture_content_wrap h330">
-                        <a href="#" class="lecture_content_hover">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="difficulty_grade">입문</p>
-                            <p class="technology_tag">HTML/CSS</p>
-                        </a>
-                        <a href="#" class="lecture_img"><img src="https://cdn.inflearn.com/public/courses/325307/course_cover/587aaeec-bee9-4c1e-9c90-9ae48b20f109/inflearn-original-web-ef.png" alt=""></a>
-                        <div class="lecture_content">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="lecture_professor">얄팍한 코딩사전</p>
-                            <p class="lecture_grade">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </p>
-                        </div>
-                    </article>
-                                        <article class="lecture_content_wrap h330">
-                        <a href="#" class="lecture_content_hover">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="difficulty_grade">입문</p>
-                            <p class="technology_tag">HTML/CSS</p>
-                        </a>
-                        <a href="#" class="lecture_img"><img src="https://cdn.inflearn.com/public/courses/325307/course_cover/587aaeec-bee9-4c1e-9c90-9ae48b20f109/inflearn-original-web-ef.png" alt=""></a>
-                        <div class="lecture_content">
-                            <p class="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
-                            <p class="lecture_professor">얄팍한 코딩사전</p>
-                            <p class="lecture_grade">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </p>
-                        </div>
-                    </article>
+                    <c:choose>
+						<c:when test="${not empty lectureList}">
+							<c:forEach var="lectureList" items="${ lectureList }" varStatus="loop">
+			                    <article class="lecture_content_wrap h330">
+			                        <a href="#" class="lecture_content_hover">
+			                            <p class="lecture_title">${ lectureList.lecture_title }</p>
+			                            <p class="difficulty_grade">${ lectureList.difficulty_grade }</p>
+			                            <p class="technology_tag">${ lectureList.technology_tag }</p>
+			                        </a>
+			                        <a href="#" class="lecture_img"><img src="${ lectureList.image }" alt=""></a>
+			                        <div class="lecture_content">
+			                            <p class="lecture_title">${ lectureList.lecture_title }</p>
+			                            <p class="lecture_professor">${ lectureList.professor }</p>
+			                            <p class="lecture_grade">
+			                                <i class="fa fa-star" aria-hidden="true"></i>
+			                                <i class="fa fa-star" aria-hidden="true"></i>
+			                                <i class="fa fa-star" aria-hidden="true"></i>
+			                                <i class="fa fa-star" aria-hidden="true"></i>
+			                                <i class="fa fa-star-o" aria-hidden="true"></i>
+			                            </p>
+			                        </div>
+			                    </article>
+							</c:forEach>
+						</c:when>
+ 						<c:otherwise>
+			                    <article class="lecture_content_wrap h330">
+			                        내용이 없습니다.
+			                    </article>
+						</c:otherwise>
+				</c:choose>				
+                    
                 </div>
                 <div class="paging_area">
                     페이징 영역
@@ -421,7 +221,7 @@
         </div>
         
     </main>
-    <footer id="footer">푸터영역</footer>
+    <%@ include file="../common/footer.jsp" %>
     <script src="../js/main.js"></script>
 </div>
 </body>
