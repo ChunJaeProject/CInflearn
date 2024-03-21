@@ -34,22 +34,29 @@ public class MentoringController extends HttpServlet {
 		int page_block_start = 1;
 		int page_block_end = 1;
 		
-		String[] category = null;
-		
-		
-		category = req.getParameterValues("cate");
-		if(category!=null)
-			System.out.println(category.toString());
 		
 		Map<String, Object> params = new HashMap<String, Object>();
+		
+		String[] category = null;
+		String append_category="";
+		
+		category = req.getParameterValues("cate");
+		if(category!=null) {
+			for(int i=0;i<category.length-1;i++) {
+				append_category += category[i] + ", ";
+			}
+			append_category += category[category.length-1];
+			System.out.println(append_category);
+			params.put("append_category", append_category);
+		}
+		
+		
 		
 		String search_word = req.getParameter("search_word");
 		page_no = (req.getParameter("page_no")!=null) ? Integer.parseInt(req.getParameter("page_no")) : 1;
 		page_skip_cnt = (page_no-1)*page_size;
 		
-		if(search_word != null) {
-			params.put("search_word", search_word);
-		}
+		
 		params.put("page_skip_cnt", page_skip_cnt);
 		params.put("page_size", page_size);
 		params.put("page_no",page_no);
@@ -73,12 +80,19 @@ public class MentoringController extends HttpServlet {
 		params.put("page_block_end", page_block_end);
 		
 		String pagingArea = "";
-		if(search_word != null) {
-			pagingArea = CommonPage.pagingArea(total_page, page_no, page_block_start, page_block_end, "/ChunjaeProject/mentor/mentor.do?search_word="+search_word +"&" );
+		String pageUri = "/ChunjaeProject/mentor/mentor.do?";
+		if(search_word != null ) {
+			pageUri = pageUri + search_word +"&";
 		}
-		else {
-			pagingArea = CommonPage.pagingArea(total_page, page_no, page_block_start, page_block_end, "/ChunjaeProject/mentor/mentor.do?" );
+		if(category != null) {
+			String categoryStr = "";
+			for(int i=0;i<category.length;i++) {
+				categoryStr += "cate="+category[i] + "&"; 
+			}
+			pageUri = pageUri + categoryStr;
 		}
+		pagingArea = CommonPage.pagingArea(total_page, page_no, page_block_start, page_block_end, pageUri );
+		
 		params.put("paging", pagingArea);
 		
 		req.setAttribute("params", params);

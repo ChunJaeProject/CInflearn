@@ -7,6 +7,7 @@ public class CommonPage {
 		StringBuilder sb = new StringBuilder();
 		String tmpLinkURL = (linkUrl!=null&&!linkUrl.isEmpty()?linkUrl:"?");
 		
+		System.out.print(linkUrl);
 		
 		
 		sb.append((page_no>1? "<a href='"+tmpLinkURL+"page_no=1'><strong><<</strong></a>&nbsp;&nbsp;" : "<<&nbsp;&nbsp;"));
