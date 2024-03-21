@@ -25,14 +25,4 @@
     <param-name>dbPwd</param-name>
     <param-value>1234</param-value>
   </context-param>
-  <servlet>
-    <description></description>
-    <display-name>MentoringReviewServlet</display-name>
-    <servlet-name>MentoringReviewServlet</servlet-name>
-    <servlet-class>controller.MentoringReviewServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>MentoringReviewServlet</servlet-name>
-    <url-pattern>/MentoringReviewServlet</url-pattern>
-  </servlet-mapping>
 </web-app>

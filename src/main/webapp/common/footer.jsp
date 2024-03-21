@@ -9,7 +9,7 @@
 </head>
 <body>
 	<footer id="footer">
-        <img src="../image/login/inflearn.png" alt="My Image" width="250px" height="60px"  color="black">
+        <img src="../assets/image/inflearn.png" alt="My Image" width="250px" height="60px"  color="black">
         &nbsp; 개인정보 처리방침 |&nbsp;이용약관 <br>
         <section class="footerWrap">
          

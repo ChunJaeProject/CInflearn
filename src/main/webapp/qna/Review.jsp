@@ -5,6 +5,7 @@
 <%@page import="java.util.Map"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="dao.ReviewDAO"%>
+<%@ include file="../common/top.jsp" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +67,7 @@
 			</c:otherwise>
 			</c:choose>
                 <div class="paging_area">
-                    페이징 영역
+                    ${maps.paging }
                 </div>
             </div>
         </section>

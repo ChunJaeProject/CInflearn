@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class LectureReviewDTO {
 
-	private int review_no;
+	private int idx;
 	private String writer;
 	private Date reg_date;
 	private String content;
@@ -18,13 +18,13 @@ public class LectureReviewDTO {
 	 * @return the no
 	 */
 	public int getNo() {
-		return review_no;
+		return idx;
 	}
 	/**
 	 * @param no the no to set
 	 */
-	public void setNo(int review_no) {
-		this.review_no = review_no;
+	public void setNo(int idx) {
+		this.idx = idx;
 	}
 	/**
 	 * @return the writer

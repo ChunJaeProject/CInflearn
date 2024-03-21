@@ -6,6 +6,7 @@
 <%@page import="java.util.Map"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="dao.QnADAO"%>
+<%@ include file="../common/top.jsp" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">

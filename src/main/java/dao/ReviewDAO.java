@@ -45,6 +45,8 @@ public class ReviewDAO extends JDBConnect {
 
 		sb.append("SELECT * ");
 		sb.append("	FROM tbl_review");
+		sb.append(" ORDER BY idx DESC ");
+		sb.append(" limit " + map.get("page_skip_cnt") + ", 4");
 
 		
 		try {
@@ -53,7 +55,7 @@ public class ReviewDAO extends JDBConnect {
 			
 			while(rs.next()) {
 				LectureReviewDTO dto = new LectureReviewDTO();
-				//dto.setNo(rs.getInt("review_no"));
+				dto.setNo(rs.getInt("idx"));
 				dto.setWriter(rs.getString("writer"));
 				dto.setReg_date(rs.getDate("reg_date"));
 				dto.setContent(rs.getString("content"));
