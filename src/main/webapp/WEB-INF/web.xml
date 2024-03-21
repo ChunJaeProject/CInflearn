@@ -25,34 +25,4 @@
     <param-name>dbPwd</param-name>
     <param-value>1234</param-value>
   </context-param>
-  <servlet>
-    <description></description>
-    <display-name>LoginServlet</display-name>
-    <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>controller.LoginServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>LoginServlet</servlet-name>
-    <url-pattern>/LoginServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>LoginingServlet</display-name>
-    <servlet-name>LoginingServlet</servlet-name>
-    <servlet-class>controller.LoginingServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>LoginingServlet</servlet-name>
-    <url-pattern>/LoginingServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>QnAController</display-name>
-    <servlet-name>QnAController</servlet-name>
-    <servlet-class>controller.QnAController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>QnAController</servlet-name>
-    <url-pattern>/QnAController</url-pattern>
-  </servlet-mapping>
 </web-app>
