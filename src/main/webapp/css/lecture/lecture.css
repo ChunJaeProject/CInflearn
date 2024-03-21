@@ -1,0 +1,239 @@
+/* contents_top_area */
+#contents_top_area {
+    background-color: #303740;
+    color: #ffffff;
+    padding-top: 0;
+    width: 100%
+}
+
+#lecture_info {
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.content_left_area {
+    float: left;
+    width: 400px;
+    padding: 100px 12px 12px 12px;
+    margin-left: 32px;
+}
+
+.content_left_area img {
+    width: 100%;
+    border-radius: 5%;
+}
+
+.content_right_area {
+    padding-top: 100px;
+    margin-left: 32px;
+    float: left;
+}
+
+#category {
+    font-size: 14px;
+    margin: 36px 0 6px;
+}
+
+#lecture_title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 40px
+}
+
+#lecture_review_info i {
+    margin-bottom: 8px;
+    color: #e6c406;
+}
+#professor {
+    margin-bottom: 12px;
+}
+
+#technology_tag {
+    display: flex;
+}
+.fa-hashtag {
+    vertical-align: middle;
+}
+
+#tag_wrap {
+    display: flex;
+    margin-left: 6px;
+}
+
+#tag_wrap li {
+    margin-right: 4px;
+    padding: 4px 12px;
+    border-radius: 10px;
+    background-color: #cccccc;
+    color: #303740;
+    font-size: 14px;
+}
+
+#tag_wrap li:hover {
+    background-color: #1dc078;
+    color: #ffffff;
+}
+
+
+/* contents_wrap */
+.contents_wrap {
+    display: flex;
+    justify-content: flex-start;
+    width: 1200px;
+    padding-top: 0px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#fixed_side_bar {
+    padding: 24px 32px;
+    position: fixed;
+    top: 100px;
+    right: 50px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 2px 2px 5px #303740;
+}
+
+#fixed_side_bar li {
+    font-size: 14px;
+    color: #a9a9a9;
+    line-height: 1.5;
+}
+
+#fixed_side_bar li span {
+    font-size: 16px;
+    font-weight: bold;
+    color: #696969;
+}
+
+#contents_info_wrap {
+    height: 35px;
+    line-height: 35px;
+    margin: 12px 0 36px;
+    text-align: start;
+}
+
+#contents_info_wrap a {
+    padding: 0 24px;
+}
+
+#contents_info_wrap .selected_info {
+    font-weight: bold;
+    color: #303740;
+    border-bottom: 3px solid #303740;
+}
+
+#lecture_detail {
+    height: 300px;
+    margin-bottom: 48px;
+}
+
+#lecture_curriculum {
+    margin-bottom: 48px;
+}
+
+.curriculum_info, .review_info {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 24px;
+}
+
+.curriculum_info span, .review_info span {
+    padding-left: 6px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #a9a9a9;
+}
+
+.curriculum_section_wrap {
+    width: 500px;
+    margin-bottom: 48px;
+}
+
+.curriculum_section_wrap li {
+    border: 1px solid #a9a9a9;
+    padding: 12px 6px;
+}
+
+.review_info_wrap {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #303740;
+}
+
+.star_avg_wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.left_area {
+    text-align: center;
+    width: 150px;
+    margin-right: 24px;
+}
+
+.star_avg {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.star_avg_icon {
+    color: #e6c406;
+}
+
+.right_area {
+    margin-left: 24px;
+}
+
+progress {
+    width: 300px;
+    color: #303740;
+}
+
+progress.best_progress {
+    color: #e6c406;
+}
+
+.review_content_wrap {
+    margin-bottom: 96px;
+}
+
+.review_content {
+    width: 100%;
+    border-bottom: 1px solid #303740;
+    padding: 0 0 24px 12px;
+    margin-bottom: 24px;
+}
+
+#review_grade {
+    margin-bottom: 12px;
+}
+
+#review_detail {
+    height: 85px;
+    font-size: 14px;
+    color: #696969;
+}
+
+#review_reg_date {
+    font-size: 12px;
+    color: #a9a9a9;
+}
+
+.more_review_btn_wrap {
+    width: 100%;
+}
+
+#more_review_btn {
+    display: block;
+    margin: 0 auto;
+    padding: 12px 0px;
+    width: 45%;
+    border-radius: 10px;
+    border: 1px solid #a9a9a9;
+}
+
+
+
