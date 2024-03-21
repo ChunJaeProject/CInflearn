@@ -5,8 +5,10 @@ import java.util.Map;
 import java.util.Vector;
 
 import common.JDBConnect;
+import dto.LoginDTO;
 import dto.QnADTO;
 import jakarta.servlet.ServletContext;
+
 
 public class QnADAO extends JDBConnect {
 
@@ -236,5 +238,54 @@ public class QnADAO extends JDBConnect {
 		 }
 		 return result;
 	 }
+
+	public QnADTO qnaView(int idx) {
+		QnADTO dto = new QnADTO();
+		//1. 쿼리문 만들기
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT *");
+		sb.append(" FROM tbl_qna");
+		sb.append(" WHERE no = ?");
+		//2. 커넥션 만들기
+		try {
+			psmt =conn.prepareStatement(sb.toString()); //DB 커넥션에 맺기-
+			psmt.setInt(1, idx); // ? 에 값 동적처리
+			
+			rs = psmt.executeQuery();
+			// 칼럼이 존재한다면
+			if(rs.next()) {
+				dto.setQuestion_title(rs.getString("question_title"));
+				dto.setQuestion_content(rs.getString("question_content"));
+
+			}
+		}catch(Exception e) {
+			System.out.println(" 게시판 데이터 조회 오류");
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+	
+	public int qnaUpdate(QnADTO dto) {
+		int result =0;
+		StringBuilder sb = new StringBuilder();
+		sb.append("UPDATE tbl_qna SET question_title = ?, question_content =?,reg_date = now()");
+		sb.append(" WHERE no = ? ");
+		
+		
+		try {
+		psmt =conn.prepareStatement(sb.toString());
+		
+		psmt.setString(1,  dto.getQuestion_title());
+		psmt.setString(2,  dto.getQuestion_content());
+		psmt.setInt(3,  dto.getNo());
+		result = psmt.executeUpdate();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("result : "+ result);
+		return result;
+		}
 
 }

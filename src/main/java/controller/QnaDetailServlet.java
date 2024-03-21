@@ -7,6 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import common.CommonUtil;
 import dao.QnADAO;
@@ -19,7 +21,7 @@ public class QnaDetailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int no = CommonUtil.parseInt(req.getParameter("no"));
 		QnADTO QnADetail = new QnADTO();
-		
+		Map<String, Object> params = new HashMap<String,Object>();
 		if(no > 0) {
 			QnADAO dao = new QnADAO();
 			QnADetail = dao.QnADetail(no);
@@ -31,7 +33,6 @@ public class QnaDetailServlet extends HttpServlet {
 		String question_title ="";
 		String question_hashtag ="";
 		String question_content ="";
-		String solution_state = "";
 		String answer="";
 		
 		if(QnADetail != null) {
@@ -44,6 +45,14 @@ public class QnaDetailServlet extends HttpServlet {
 			answer = QnADetail.getAnswer();
 		}
 		
+		params.put("idx",no);
+		System.out.println("params.idx 값 : " +params.get("idx"));
+		params.put("question_title",question_title);
+		params.put("question_hashtag",question_hashtag);
+		params.put("question_content",question_content);
+		params.put("answer",answer);
+			
+		req.setAttribute("params", params);
 		req.setAttribute("QnADetail", QnADetail);
 		req.getRequestDispatcher("/qna/QnaDetail.jsp").forward(req, resp);
 		
