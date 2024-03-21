@@ -36,7 +36,7 @@
         <section id="section">
             <div id="sidebar_left">
                 <ul id="sidebar_ul">
-                    <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="QnA.jsp">질문과 답변</a></li>
+                    <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="Qna.jsp">질문과 답변</a></li>
                     <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="Review.jsp">수강평</a></li>
                     <li style="padding: 10px; font-size: small;"><a href="MentoringReview.jsp">멘토링 후기</a></li>
                 </ul>
@@ -48,35 +48,50 @@
                     <li><a href="#">해결됨(개수)</a></li>
                 </ul>
                 <hr>
-                <div id ="search">
-                    <form>
-                    <input type="text" id="search_title" name="search_title" value="" maxlength="100" placeholder=" 궁금한 질문을 검색해보세요 !">
-                    <input type="submit" id="btn_search" name="btn_search" value="검색"><br>
-                    <input type="text" id="search_hash" name="search_hash" value="" maxlength="100" placeholder=" # 태그로 검색해보세요 !">
-                    <input type="reset" id="btn_reset" name="btn_reset" value="초기화"><br>
-                    </form>
-                </div>
-                <ul id="order_ul">
-                    <li><a href="#">최신순</a></li>
-                    <li><a href="#" style="margin-right: 415px;">좋아요순</a></li>
-                    <input type="button" id="btn_write" name="btn_write" value="글쓰기"><br> 
-                </ul>
-                <hr>
-                <div class="question">          
-                    <div class="qTitle">
-                        <span id="solve">해결됨</span>
-                        <a href ="QnADetail.jsp">&nbsp;<span style="font-weight: bold;">제목</span></a>
-                    </div><br>
-                    <p class="qContent">질문내용</p><br>
-                    <div class="qTag"><span>태그1</span><span>태그2</span></div><br>
-                    <div id="bottom">
-                        <p class="qName">닉네임 | 작성 시간</p><br>
-                        <div class="qBtn">
-                            <img src="../assets/image/like.png" width="20px">&nbsp;0&nbsp;&nbsp;
-                            <img src="../assets/image/comment.png" width="20px">&nbsp;0&nbsp;&nbsp;
-                        </div>
-                    </div>                  
-                </div>
+            <div id ="search">
+                <form>
+                <input type="text" id="search_title" name="search_title" value="" maxlength="100" placeholder=" 궁금한 질문을 검색해보세요 !">
+                <input type="submit" id="btn_search" name="btn_search" value="검색"><br>
+                <input type="text" id="search_hash" name="search_hash" value="" maxlength="100" placeholder=" # 태그로 검색해보세요 !">
+                <input type="reset" id="btn_reset" name="btn_reset" value="초기화"><br>
+                </form>
+            </div>
+            <ul id="order_ul">
+                <li><a href="#">최신순</a></li>
+                <li><a href="#" style="margin-right: 415px;">좋아요순</a></li>
+                <input type="button" id="btn_write" name="btn_write" value="글쓰기"><br> 
+            </ul>
+            <hr>
+                
+                ----------
+           	<c:choose>
+				<c:when test="${not empty aa }">
+					<c:forEach var="list" items="${aa }" varStatus="loop">
+					<div class="question">          
+	                    <div class="qTitle">
+	                        <span id="solve">해결됨 : ${list.solution_state}</span>
+	                        <a href ="QnaDetail.jsp">&nbsp;<span style="font-weight: bold;">제목 : ${list.question_title }</span></a>
+	                    </div><br>
+	                    <p class="qContent">질문내용 : ${list.question_content }</p><br>
+	                    <div class="qTag"><span>태그 : ${list.question_hashtag }</span></div><br>
+	                    <div id="bottom">
+	                        <p class="qName">닉네임 : ${list.member_no } | 작성 시간 : ${list.reg_date }</p><br>
+	                        <div class="qBtn">
+	                            <img src="../assets/image/like.png" width="20px">&nbsp;0&nbsp;&nbsp;
+	                            <img src="../assets/image/comment.png" width="20px">&nbsp;0&nbsp;&nbsp;
+	                        </div>
+	                    </div>                  
+                	</div>
+					</c:forEach>
+				</c:when>
+			<c:otherwise>
+				<div class="question" style="text-align: center; padding: 40px; border-bottom: 1px solid #ccc;">
+                 	<p>아직 관련 글이 없습니다. 첫 글을 남겨주세요!</p>
+	             </div>
+			</c:otherwise>
+			</c:choose>
+                -----------------
+                
                 <div class="question">          
                     <div class="qTitle">
                         <span id="unsolve">미해결</span>
@@ -92,9 +107,7 @@
                         </div>
                     </div>                  
                 </div>
-                <div class="question" style="text-align: center; padding: 40px; border-bottom: 1px solid #ccc;">
-                    <p>아직 관련 글이 없습니다. 첫 글을 남겨주세요!</p>
-                </div>
+                
                 <div class="paging_area">
                     페이징 영역
                 </div>
