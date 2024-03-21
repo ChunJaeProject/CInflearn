@@ -12,7 +12,7 @@ public class QnADTO {
 	private String solution_state;
 	private int like;
 	private Date reg_date;
-	private String email;
+	//private String email;
 	private int member_no;
 	
 	public QnADTO(){}
@@ -115,15 +115,15 @@ public class QnADTO {
 	/**
 	 * @return the email
 	 */
-	public String getEmail() {
-		return email;
-	}
-	/**
-	 * @param email the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
+//	public String getEmail() {
+//		return email;
+//	}
+//	/**
+//	 * @param email the email to set
+//	 */
+//	public void setEmail(String email) {
+//		this.email = email;
+//	}
 	/**
 	 * @return the member_no
 	 */

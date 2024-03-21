@@ -25,4 +25,8 @@
     <param-name>dbPwd</param-name>
     <param-value>1234</param-value>
   </context-param>
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> qnaDetail
 </web-app>

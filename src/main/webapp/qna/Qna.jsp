@@ -75,12 +75,12 @@
 					<div class="question">          
 	                    <div class="qTitle">
 	                        <span id="solve">해결 : ${list.solution_state}</span>
-	                        <a href ="QnaDetail.do?idx=${list.no }">&nbsp;<span style="font-weight: bold;">${list.question_title }</span></a>
+	                        <a href ="QnaDetail.do?no=${list.no }">&nbsp;<span style="font-weight: bold;">${list.question_title }</span></a>
 	                    </div><br>
 	                    <p class="qContent">${list.question_content }</p><br>
 	                    <div class="qTag"><span>${list.question_hashtag }</span></div><br>
 	                    <div id="bottom">
-	                        <p class="qName">닉네임 : ${list.email } | 작성 시간 : ${list.reg_date }</p><br>
+	                        <p class="qName">닉네임 : | 작성 시간 : ${list.reg_date }</p><br>
 	                        <div class="qBtn">
 	                            <img src="../assets/image/like.png" width="20px">&nbsp;0&nbsp;&nbsp;
 	                            <img src="../assets/image/comment.png" width="20px">&nbsp;1&nbsp;&nbsp;
