@@ -52,7 +52,8 @@ public class MentoringDAO extends JDBConnect {
 			sb.append(" WHERE " + map.get("search_category"));
 			sb.append(" LIKE '%" + map.get("search_word") + "%'");
 		}
-		
+		sb.append(" ORDER BY mentoring_no DESC");
+		sb.append(" LIMIT "+map.get("page_skip_cnt")+ ", "+map.get("page_size"));
 		System.out.println(sb.toString());
 		
 		try {
