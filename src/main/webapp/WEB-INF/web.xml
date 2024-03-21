@@ -45,4 +45,14 @@
     <servlet-name>LoginingServlet</servlet-name>
     <url-pattern>/LoginingServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>QnAController</display-name>
+    <servlet-name>QnAController</servlet-name>
+    <servlet-class>controller.QnAController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QnAController</servlet-name>
+    <url-pattern>/QnAController</url-pattern>
+  </servlet-mapping>
 </web-app>
