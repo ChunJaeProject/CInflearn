@@ -53,17 +53,17 @@
     border-top: 1px solid rgba(24, 24, 24, 0.2);
 }
 
-#category_depth2 {
+.category_depth2 {
     display: none;
 }
 
-#category_depth2 li {
+.category_depth2 li {
     padding: 15px;
     font-size: 14px;
     border-bottom: 1px solid rgba(24, 24, 24, 0.2);
 }
 
-#category_depth2 li:last-child {
+.category_depth2 li:last-child {
     border-bottom: none;
 }
 

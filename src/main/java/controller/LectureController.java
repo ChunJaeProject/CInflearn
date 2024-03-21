@@ -23,12 +23,12 @@ public class LectureController extends HttpServlet {
     }
     
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("123");
 		int lecture_no = 1;
 		String lecture_title = "";
 		String image = "";
 		String professor = "";
-		String difficulty_grade = ""; 
+		String category2 = "";
+		String difficulty_grade = "";
 		String technology_tag = "";
 		String technology_search_word = "";
 		String lecture_search_word = "";
@@ -43,17 +43,18 @@ public class LectureController extends HttpServlet {
 		lecture_title = req.getParameter("lecture_title");
 		image = req.getParameter("image");
 		professor = req.getParameter("professor");
+		category2 = req.getParameter("category2");
 		difficulty_grade = req.getParameter("difficulty_grade");
+		technology_search_word = req.getParameter("technology_search_word");
 		lecture_search_word = req.getParameter("lecture_search_word");
 		
 		total_count = dao.lectureTotalCount(params);
-		System.out.println(total_count);
-		System.out.println(technology_search_word);
 		
 		params.put("lecture_no", lecture_no);
 		params.put("lecture_title", lecture_title);
 		params.put("image", image);
 		params.put("professor", professor);
+		params.put("category2", category2);
 		params.put("difficulty_grade", difficulty_grade);
 		params.put("technology_tag", technology_tag);
 		params.put("total_count", total_count);
@@ -61,13 +62,16 @@ public class LectureController extends HttpServlet {
 		params.put("lecture_search_word", lecture_search_word);
 		params.put("total_count", total_count);
 		
+		System.out.println("category2 : " + category2);
+		
 		List<LectureDTO> lectureList = dao.lectureList(params);
 		
 		dao.close();
 		
-		for(int i=0; i<lectureList.size(); i++) {
-			System.out.print(lectureList.get(i).getLecture_title());
-		}
+		/*
+		 * for(int i=0; i<lectureList.size(); i++) {
+		 * System.out.print(lectureList.get(i).getLecture_title()); }
+		 */
 		req.setAttribute("lectureList", lectureList);
 		req.setAttribute("params", params);
 		
