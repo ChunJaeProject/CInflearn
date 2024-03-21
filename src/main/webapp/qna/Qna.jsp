@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@page import="dto.QnADTO"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="dao.QnADAO"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,14 +42,14 @@
         <section id="section">
             <div id="sidebar_left">
                 <ul id="sidebar_ul">
-                    <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="Qna.jsp">질문과 답변</a></li>
+                    <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="QnA.jsp">질문과 답변</a></li>
                     <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="Review.jsp">수강평</a></li>
                     <li style="padding: 10px; font-size: small;"><a href="MentoringReview.jsp">멘토링 후기</a></li>
                 </ul>
             </div>
             <div id="content">
                 <ul id="content_ul" >
-                    <li><a href="#">전체(개수)</a></li>
+                    <li><a href="#">전체(${total_count })</a></li>
                     <li><a href="#">미해결(개수)</a></li>
                     <li><a href="#">해결됨(개수)</a></li>
                 </ul>
@@ -62,20 +68,19 @@
                 <input type="button" id="btn_write" name="btn_write" value="글쓰기"><br> 
             </ul>
             <hr>
-                
-                ----------
+
            	<c:choose>
-				<c:when test="${not empty aa }">
-					<c:forEach var="list" items="${aa }" varStatus="loop">
+				<c:when test="${not empty QnAList }">
+					<c:forEach var="list" items="${QnAList }" varStatus="loop">
 					<div class="question">          
 	                    <div class="qTitle">
 	                        <span id="solve">해결됨 : ${list.solution_state}</span>
-	                        <a href ="QnaDetail.jsp">&nbsp;<span style="font-weight: bold;">제목 : ${list.question_title }</span></a>
+	                        <a href ="QnADetail.jsp?idx=${list.no }">&nbsp;<span style="font-weight: bold;">제목 : ${list.question_title }</span></a>
 	                    </div><br>
 	                    <p class="qContent">질문내용 : ${list.question_content }</p><br>
 	                    <div class="qTag"><span>태그 : ${list.question_hashtag }</span></div><br>
 	                    <div id="bottom">
-	                        <p class="qName">닉네임 : ${list.member_no } | 작성 시간 : ${list.reg_date }</p><br>
+	                        <p class="qName">닉네임 : ${list.email } | 작성 시간 : ${list.reg_date }</p><br>
 	                        <div class="qBtn">
 	                            <img src="../assets/image/like.png" width="20px">&nbsp;0&nbsp;&nbsp;
 	                            <img src="../assets/image/comment.png" width="20px">&nbsp;0&nbsp;&nbsp;
@@ -90,33 +95,15 @@
 	             </div>
 			</c:otherwise>
 			</c:choose>
-                -----------------
                 
-                <div class="question">          
-                    <div class="qTitle">
-                        <span id="unsolve">미해결</span>
-                        <a href ="#">&nbsp;<span style="font-weight: bold;">제목</span></a>
-                    </div><br>
-                    <p class="qContent">질문내용</p><br>
-                    <div class="qTag"><span>태그1</span><span>태그2</span></div><br>
-                    <div id="bottom">
-                        <p class="qName">닉네임 | 작성 시간</p><br>
-                        <div class="qBtn">
-                            <img src="../assets/image/like.png" width="20px">&nbsp;0&nbsp;&nbsp;
-                            <img src="../assets/image/comment.png" width="20px">&nbsp;0&nbsp;&nbsp;
-                        </div>
-                    </div>                  
-                </div>
-                
-                <div class="paging_area">
-                    페이징 영역
-                </div>
+            <div class="paging_area">
+                페이징 영역
+            </div>
             </div>
             <div id="sidebar_right">
                 <p>인기태그</p><br>
                 <span>태그1</span><span>태그2</span><br><br><span>태그3</span><span>태그4</span><br><br><span>태그5</span>
             </div>
-            
         </section>
         <%@ include file="../common/footer.jsp" %>
     </div>

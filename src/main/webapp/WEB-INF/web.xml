@@ -47,6 +47,7 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+<<<<<<< HEAD
     <display-name>Loginout</display-name>
     <servlet-name>Loginout</servlet-name>
     <servlet-class>controller.Loginout</servlet-class>
@@ -54,5 +55,14 @@
   <servlet-mapping>
     <servlet-name>Loginout</servlet-name>
     <url-pattern>/Loginout</url-pattern>
+=======
+    <display-name>QnAController</display-name>
+    <servlet-name>QnAController</servlet-name>
+    <servlet-class>controller.QnAController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QnAController</servlet-name>
+    <url-pattern>/QnAController</url-pattern>
+>>>>>>> qna
   </servlet-mapping>
 </web-app>

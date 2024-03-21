@@ -89,7 +89,7 @@
         }
     }, false);
     document.querySelector("#btn_go").addEventListener("click", function(){
-        location.href="Qna.jsp";
+        location.href="QnA.jsp";
     });
     
     //좋아요 버튼

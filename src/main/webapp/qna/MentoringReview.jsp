@@ -27,7 +27,7 @@
         <section id="section">
             <div id="sidebar_left">
                 <ul id="sidebar_ul">
-                    <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="Qna.jsp">질문과 답변</a></li>
+                    <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="QnA.jsp">질문과 답변</a></li>
                     <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="Review.jsp">수강평</a></li>
                     <li style="padding: 10px; font-size: small;"><a href="MentoringReview.jsp">멘토링 후기</a></li>
                 </ul>

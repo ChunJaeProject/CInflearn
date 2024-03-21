@@ -16,6 +16,7 @@ public class QnADAO extends JDBConnect {
 		super(application);
 	}
 	
+	
 	public int QnATotalCount(Map<String, Object> map) {
 		int total_count = 0;
 		
@@ -41,13 +42,17 @@ public class QnADAO extends JDBConnect {
 		return total_count;
 	}
 	
-	public List<QnADTO> qnaList(Map<String, Object> map){
+	//게시판 리스트
+	public List<QnADTO> QnAList(Map<String, Object> map){
 		List<QnADTO> list = new Vector<QnADTO>();
 		
 		StringBuilder sb = new StringBuilder();
 		sb.append("SELECT no, question_title, question_content, question_hashtag");
 		sb.append(", answer, solution_state, like, reg_date, member_no");
 		sb.append("	FROM tbl_qna");
+		
+		sb.append("SELECT email FROM tbl_member AS tm");
+		sb.append(" INNER JOIN tbl_qna AS tq ON tm.member_no = tq.member_no");
 		
 		if(map.get("btn_search") != null){
 			sb.append(" LIKE '%"+map.get("btn_search") + "%'");
@@ -79,7 +84,8 @@ public class QnADAO extends JDBConnect {
 		return list;	
 	}
 	
-	 public QnADTO qnaDetail(int no) {
+	//게시판 게시글 조회
+	 public QnADTO QnADetail(int no) {
 		 QnADTO dto = new QnADTO();
 		 
 		 StringBuilder sb = new StringBuilder();
@@ -112,7 +118,7 @@ public class QnADAO extends JDBConnect {
 		return dto;
 	 }
 
-	 
+	 //게시글 등록
 	 public void QnARegist(QnADTO dto) {
 		 StringBuilder sb  = new StringBuilder();
 		 sb.append("INSERT INTO tbl_qna(question_title, question_hashtag, question_content,reg_date) VALUES(?,?,?, NOW())");
@@ -130,10 +136,12 @@ public class QnADAO extends JDBConnect {
 			 e.printStackTrace();
 		 }
 	 }
+	 
+	 //게시글 삭제
 	 public int QnADelete(int no) {
 		 int result = 0;
 		 StringBuilder sb = new StringBuilder();
-		 sb.append("DELETE FROM tbl_qna WHREE no=");
+		 sb.append("DELETE FROM tbl_qna WHREE no=?");
 		 
 		 try {
 			 psmt = conn.prepareStatement(sb.toString());
@@ -148,6 +156,7 @@ public class QnADAO extends JDBConnect {
 		 return result;
 	 }
 	 
+	 //게시글 수정
 	 public int QnAModify(QnADTO dto) {
 		 int result = 0;
 		 StringBuilder sb = new StringBuilder();
