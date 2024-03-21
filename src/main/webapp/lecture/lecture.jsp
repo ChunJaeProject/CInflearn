@@ -13,7 +13,7 @@
 </head>
 <body>
 <div id="container">
-    <header id="header">헤더 영역</header>
+    <%@ include file="../common/header.jsp" %>
     <main id="contents">
         <section id="contents_top_area" class="cal_h320">
             <div id="lecture_info">
@@ -173,7 +173,7 @@
             </section>
         </div>
     </main>
-    <footer id="footer">푸터영역</footer>
+    <%@ include file="../common/footer.jsp" %>
 </div>
 </body>
 </html>
