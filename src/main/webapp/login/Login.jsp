@@ -105,7 +105,8 @@
         </div>
         <div id="headerBtnBox">
             <button class ="headerLogin">로그인</button>
-            <button>회원가입</button>
+            <button class="registMember">회원가입</button>
+            <button class=headerLogout> 로그아웃</button>
         </div>
     </header>
    <div id="login_popupContainer"> 
@@ -135,6 +136,11 @@
     <Script>
      	let login_button = document.querySelector(".form_login");  
      	let singup_button = document.querySelector(".form_signup");  
+     	let logout_button = document.querySelector(".headerLogout");  
+     	
+     	logout_button.addEventListener("click",function(e){ 
+    		location.href="./logout.do";
+        });  
      	
      	login_button.addEventListener("click",function(e){ 
               document.sign_form.submit();

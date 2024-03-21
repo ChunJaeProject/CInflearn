@@ -8,10 +8,11 @@
 </head>
 <body>
 <%
-String id = (String)session.getAttribute("userId");
+/* String id = (String)session.getAttribute("userId"); */
+String id =(String)session.getAttribute("userId") != null ? (String)session.getAttribute("userId") : "고객님";
 %>
 
-<%=id %>님 환영합니다
+<%=id %> 환영합니다
 
 </body>
 </html>

@@ -45,4 +45,14 @@
     <servlet-name>LoginingServlet</servlet-name>
     <url-pattern>/LoginingServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Loginout</display-name>
+    <servlet-name>Loginout</servlet-name>
+    <servlet-class>controller.Loginout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Loginout</servlet-name>
+    <url-pattern>/Loginout</url-pattern>
+  </servlet-mapping>
 </web-app>
