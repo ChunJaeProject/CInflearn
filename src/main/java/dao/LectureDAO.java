@@ -52,22 +52,20 @@ public class LectureDAO extends JDBConnect {
 		List<LectureDTO> lecture_list = new Vector<LectureDTO>();
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT lecture_no, lecture_title, image, professor, difficulty_grade, technology_tag");
+		sb.append("SELECT lecture_no, lecture_title, image, professor, category2, difficulty_grade, technology_tag");
 		sb.append(" FROM tbl_lecture");
-		if ( map.get("technology_search_word") != "" ) {
+		if ( map.get("technology_search_word") != "" && map.get("technology_search_word") != null ) {
 			sb.append(" WHERE technology_tag ");
 			sb.append(" LIKE '%" + map.get("technology_search_word") + "%'");
 		}
-		else if ( map.get("lecture_search_word") != null ) {
+		if ( map.get("lecture_search_word") != "" && map.get("lecture_search_word") != null ) {
 			sb.append(" WHERE lecture_title ");
 			sb.append(" LIKE '%" + map.get("lecture_search_word") + "%'");
 			sb.append(" OR professor ");
 			sb.append(" LIKE '%" + map.get("lecture_search_word") + "%'");
 		}
-		sb.append(" ORDER BY lecture_no DESC");
 		
-		System.out.println("sql : " + sb.toString());
-		System.out.println("map.get(\"technology_search_word\") : " + map.get("technology_search_word"));
+		sb.append(" ORDER BY lecture_no DESC");
 		
 		try {
 			psmt = conn.prepareStatement(sb.toString());
@@ -81,6 +79,7 @@ public class LectureDAO extends JDBConnect {
 				dto.setProfessor(rs.getString("professor"));
 				dto.setDifficulty_grade(rs.getString("difficulty_grade"));
 				dto.setTechnology_tag(rs.getString("technology_tag"));
+				dto.setCategory2(rs.getString("category2"));
 				lecture_list.add(dto);
 			}
 		}

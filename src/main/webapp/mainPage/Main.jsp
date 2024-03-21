@@ -11,7 +11,7 @@
     <title>인프런 | 라이프타임 커리어 플랫폼</title>
     <link rel="stylesheet" href="../css/common/base.css">
     <link rel="stylesheet" href="../css/common/frame.css">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/mainPage/main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -35,8 +35,8 @@
                         <li>
                             <i class="fa fa-code" aria-hidden="true"></i>
                             개발 · 프로그래밍
-                            <ul id="category_depth2">
-                                <li>웹 개발</li>
+                            <ul class="category_depth2" >
+                                <li><input type="button" value="웹 개발"></li>
                                 <li>프론트엔드</li>
                                 <li>백엔드</li>
                                 <li>풀스택</li>
@@ -58,7 +58,7 @@
                         <li>
                             <i class="fa fa-gamepad" aria-hidden="true"></i>
                             게임 개발
-                            <ul id="category_depth2">
+                            <ul class="category_depth2">
                                 <li>게임 아트 · 그래픽</li>
                                 <li>게임 기획</li>
                                 <li>기타 (게임 개발)</li>
@@ -67,7 +67,7 @@
                         <li>
                             <i class="fa fa-database" aria-hidden="true"></i>
                             데이터 사이언스
-                            <ul id="category_depth2">
+                            <ul class="category_depth2">
                                 <li>데이터 분석</li>
                                 <li>데이터 엔지니어링</li>
                                 <li>자격증 (데이터 사이언스)</li>
@@ -77,7 +77,7 @@
                         <li>
                             <i class="fa fa-assistive-listening-systems" aria-hidden="true"></i>
                             인공지능
-                            <ul id="category_depth2">
+                            <ul class="category_depth2">
                                 <li>딥러닝 · 머신러닝</li>
                                 <li>컴퓨터 비전</li>
                                 <li>자연어 처리</li>
@@ -87,7 +87,7 @@
                         <li>
                             <i class="fa fa-shield" aria-hidden="true"></i>
                             보안 · 네트워크
-                            <ul id="category_depth2">
+                            <ul class="category_depth2">
                                 <li>보안</li>
                                 <li>네트워크</li>
                                 <li>시스템</li>
@@ -100,7 +100,7 @@
                         <li>
                             <i class="fa fa-bullseye" aria-hidden="true"></i>
                             비즈니스 · 마케팅
-                            <ul id="category_depth2">
+                            <ul class="category_depth2">
                                 <li>오피스</li>
                                 <li>마케팅</li>
                                 <li>기획 · 전략 · PM</li>
@@ -113,7 +113,7 @@
                         <li>
                             <i class="fa fa-desktop" aria-hidden="true"></i>
                             하드웨어
-                            <ul id="category_depth2">
+                            <ul class="category_depth2">
                                 <li>컴퓨터 구조</li>
                                 <li>임베디드 · IoT</li>
                                 <li>반도체</li>
@@ -126,7 +126,7 @@
                         <li>
                             <i class="fa fa-paint-brush" aria-hidden="true"></i>
                             디자인
-                            <ul id="category_depth2">
+                            <ul class="category_depth2">
                                 <li>CAD · 3D 모델링</li>
                                 <li>UX/UI</li>
                                 <li>그래픽 디자인</li>
@@ -139,7 +139,7 @@
                         <li>
                             <i class="fa fa-globe" aria-hidden="true"></i>
                             학문 · 외국어
-                            <ul id="category_depth2">
+                            <ul class="category_depth2">
                                 <li>수학</li>
                                 <li>외국어</li>
                                 <li>기타 (학문 · 외국어)</li>
@@ -148,7 +148,7 @@
                         <li>
                             <i class="fa fa-compass" aria-hidden="true"></i>
                             커리어
-                            <ul id="category_depth2">
+                            <ul class="category_depth2">
                                 <li>취업 · 이직</li>
                                 <li>개인 브랜딩</li>
                                 <li>창업</li>
@@ -158,7 +158,7 @@
                         <li>
                             <i class="fa fa-book" aria-hidden="true"></i>
                             자기계발
-                            <ul id="category_depth2">
+                            <ul class="category_depth2">
                                 <li>금융 · 재테크</li>
                                 <li>교양</li>
                             </ul>
@@ -219,10 +219,34 @@
                 </div>
             </section>
         </div>
-        
     </main>
     <%@ include file="../common/footer.jsp" %>
-    <script src="../js/main.js"></script>
 </div>
+<script>
+const imgSlideDom = document.querySelector("#img_slide");
+imgSlideDom.addEventListener("click", function(e) {
+    imgSlideDom.style.background = "url('../assets/image/main_banner02.png') center"
+}, false);
+
+const categoryDepth1DOM = document.querySelector("#category_depth1");
+categoryDepth1DOM.addEventListener("click", function(e) {
+    if (!(document.querySelector("#total_lecture") == e.target) && e.target.tagName == "LI") {
+        if (e.target.children[0].tagName == "I") {
+              if (!e.target.children[1].style.display || e.target.children[1].style.display == "none" ) {
+                e.target.children[1].style.display = "block";
+             } else e.target.children[1].style.display = "none";
+          }
+      }
+}, false)
+    
+const category_list = document.querySelectorAll(".category_depth2 li");
+for(i=0;i<category_list.length;i++){
+	category_list[i].addEventListener("click",function(e){
+		const category = this.textContent;
+		console.log(this.textContent);
+
+	}, false);
+}
+</script>
 </body>
 </html>
