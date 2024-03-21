@@ -44,6 +44,7 @@ public class QnaDetailServlet extends HttpServlet {
 			answer = QnADetail.getAnswer();
 		}
 		
+		
 		req.setAttribute("QnADetail", QnADetail);
 		req.getRequestDispatcher("/qna/QnaDetail.jsp").forward(req, resp);
 		
