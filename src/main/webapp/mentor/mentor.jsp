@@ -38,7 +38,8 @@
             <section id="sidebar_area">
                 <aside id="sidebar">
                     <form action="" id="searchForm" name="searchForm">
-                        <input type="text" id="searchBar" name="searchBar"><button id="searchBtn">검색</button>
+                        <input type="text" name="search_word" id="search_word" value="">
+                        <input type="submit" id="searchBtn" value="검색">
                         <select id="sortList">
                             <option >최근 등록순</option>
                             <option >인기순</option>
@@ -241,6 +242,10 @@
                 popups[j].style.display="none";
         popups[2].style.display="block";
     });
+//     document.getElementById("searchBtn").addEventListener("click",function(e){
+//     	e.preventDefault();
+    	
+//     });
     
     document.querySelector("#btn_submit").addEventListener("click", function(e) {
         e.preventDefault();

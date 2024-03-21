@@ -24,12 +24,12 @@ public class MentoringController extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		System.out.println("123");
 		int total_count = 0;
 		int page_no = 1;
 		int page_size = 12;
 		int total_page = 1;
-		int page_skip_cnt = 10;
+		int page_skip_cnt = 12;
 		int page_block_size = 10;
 		int page_block_start = 1;
 		int page_block_end = 1;
@@ -37,13 +37,11 @@ public class MentoringController extends HttpServlet {
 		
 		Map<String, Object> params = new HashMap<String, Object>();
 		
-		String search_category = req.getParameter("search_category");
 		String search_word = req.getParameter("search_word");
 		page_no = (req.getParameter("page_no")!=null) ? Integer.parseInt(req.getParameter("page_no")) : 1;
 		page_skip_cnt = (page_no-1)*page_size;
 		
-		if(search_category !=null && search_word != null) {
-			params.put("search_category", search_category);
+		if(search_word != null) {
 			params.put("search_word", search_word);
 		}
 		params.put("page_skip_cnt", page_skip_cnt);
@@ -68,7 +66,13 @@ public class MentoringController extends HttpServlet {
 		params.put("page_block_start", page_block_start);
 		params.put("page_block_end", page_block_end);
 		
-		String pagingArea = CommonPage.pagingArea(total_page, page_no, page_block_start, page_block_end, "/ChunjaeProject/mentor/mentor.do?" );
+		String pagingArea = "";
+		if(search_word != null) {
+			pagingArea = CommonPage.pagingArea(total_page, page_no, page_block_start, page_block_end, "/ChunjaeProject/mentor/mentor.do?search_word="+search_word +"&" );
+		}
+		else {
+			pagingArea = CommonPage.pagingArea(total_page, page_no, page_block_start, page_block_end, "/ChunjaeProject/mentor/mentor.do?" );
+		}
 		params.put("paging", pagingArea);
 		
 		req.setAttribute("params", params);

@@ -48,9 +48,10 @@ public class MentoringDAO extends JDBConnect {
 		sb.append("on tm.job_code = tj.job_code ");
 		
 		
-		if(map.get("search_category") != null && map.get("search_word") != null ) {
-			sb.append(" WHERE " + map.get("search_category"));
+		if(map.get("search_word") != null ) {
+			sb.append(" WHERE " + "mentoring_name");
 			sb.append(" LIKE '%" + map.get("search_word") + "%'");
+			sb.append(" or member_name LIKE '%" + map.get("search_word") + "%'");
 		}
 		sb.append(" ORDER BY mentoring_no DESC");
 		sb.append(" LIMIT "+map.get("page_skip_cnt")+ ", "+map.get("page_size"));
