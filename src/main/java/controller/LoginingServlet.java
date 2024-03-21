@@ -13,6 +13,7 @@ import java.io.IOException;
 import dao.LoginDAO;
 import dto.LoginDTO;
 
+//로그인
 @WebServlet("/login/loging.do")
 public class LoginingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,7 +27,7 @@ public class LoginingServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		System.out.println("들어옴");
 		HttpSession session = req.getSession();
 		
 		String id = req.getParameter("email");
