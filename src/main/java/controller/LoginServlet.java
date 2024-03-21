@@ -12,6 +12,7 @@ import java.io.IOException;
 import dao.LoginDAO;
 import dto.LoginDTO;
 
+//회원등록
 @WebServlet("/login/regist.do")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

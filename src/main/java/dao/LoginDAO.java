@@ -11,6 +11,7 @@ import jakarta.servlet.ServletContext;
 
 
 
+
 public class LoginDAO extends JDBConnect {
 
 	public LoginDAO() {
@@ -71,4 +72,35 @@ public class LoginDAO extends JDBConnect {
 
 		return list;
 	}
+	//로그인 확인
+	public LoginDTO getMemberInfo(String id, String pwd) {
+		
+		LoginDTO dto = new LoginDTO();
+	
+		String sql = "SELECT * FROM tbl_member WHERE `email` = ? "; //pwd는 넣으면 안됨 (하이재킹 당할 수 있음)
+	System.out.println(sql);
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, id);
+		
+			rs = psmt.executeQuery(); //select는 query
+		
+			if(rs.next()) {
+				if(rs.getString("password").equals(pwd)) {  //DB pwd와 입력한 pwd가 다르면 dto에 set을 안하니 null이 return
+					dto.setEmail(rs.getString("email"));
+					dto.setPassword(rs.getString("password"));
+				}
+
+				}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
+	
+	
+	
+	
 }
