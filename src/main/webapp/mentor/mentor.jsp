@@ -48,16 +48,16 @@
                             <span>분야별</span>
                         </div>
                         <div id="categoryBox">
-                            <input type="checkbox"> 개발 · 프로그래밍<br>
-                            <input type="checkbox"> 게임 개발<br>
-                            <input type="checkbox"> 데이터 사이언스<br>
-                            <input type="checkbox"> 인공지능<br>
-                            <input type="checkbox"> 보안 / 네트워크<br>
-                            <input type="checkbox"> 비즈니스 / 마케팅<br>
-                            <input type="checkbox"> 하드웨어<br>
-                            <input type="checkbox"> 학문 / 외국어<br>
-                            <input type="checkbox"> 커리어<br>
-                            <input type="checkbox"> 자기계발<br>
+                            <input type="checkbox" name ="cate" value="1"> 개발 · 프로그래밍<br>
+                            <input type="checkbox" name ="cate" value="2"> 게임 개발<br>
+                            <input type="checkbox" name ="cate" value="3"> 데이터 사이언스<br>
+                            <input type="checkbox" name ="cate" value="4"> 인공지능<br>
+                            <input type="checkbox" name ="cate" value="5"> 보안 / 네트워크<br>
+                            <input type="checkbox" name ="cate" value="6"> 비즈니스 / 마케팅<br>
+                            <input type="checkbox" name ="cate" value="7"> 하드웨어<br>
+                            <input type="checkbox" name ="cate" value="8"> 학문 / 외국어<br>
+                            <input type="checkbox" name ="cate" value="9"> 커리어<br>
+                            <input type="checkbox" name ="cate" value="10"> 자기계발<br>
                         </div>
                         <input id="resetBtn" type="reset" value="필터 초기화">
                     </form>

@@ -34,6 +34,12 @@ public class MentoringController extends HttpServlet {
 		int page_block_start = 1;
 		int page_block_end = 1;
 		
+		String[] category = null;
+		
+		
+		category = req.getParameterValues("cate");
+		if(category!=null)
+			System.out.println(category.toString());
 		
 		Map<String, Object> params = new HashMap<String, Object>();
 		
