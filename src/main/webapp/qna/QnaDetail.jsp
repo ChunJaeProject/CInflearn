@@ -37,24 +37,24 @@
         <section id="section"> 
             <div id="box">
                 <div id="qTitle">
-                    <h3>${QnADetail.question_title } </h3>
+                    <h3>${params.question_title } </h3>
                     <p>${QnADetail.reg_date }</p>
                 </div>
                 <div id="box1">
                     <div id="qContent">
                         <form id="likeFrm" name="likeFrm"  action="../qna/delete.do">
-							<input type="hidden" name="no" value="${QnADetail.no}"/>
+							<input type="hidden" name="no" value="${params.no}"/>
                             <input type="image" src="../assets/image/like.png" id="btn_like" name="btn_like" alt="좋아요" onclick="count('plus')"><br><br>   
                             <div id="result">0</div><br>   
                             <input type="image" src="../assets/image/hate.png" id="btn_hate" name="btn_hate" alt="싫어요" onclick="count('minus')"><br>    
                         <input type="button" id="btn_delete" name="btn_delete" value="삭제" >
                         </form>
-                        <p>${QnADetail.question_content }</p>             
+                        <p>${params.question_content }</p>             
                     </div>
                     <div id="box2">
                         <input type="image" src="../assets/image/uncheck.png" id="btn_check" name="btn_check" alt="해결" style="margin-right: 20px;">
                         <div class="qTag" style="margin-right: 600px; margin-top: 5px;"><span>${QnADetail.question_hashtag }</span></div><br>
-                        <div style="margin-top: 5px;"><a href="Modify.jsp">수정</a>&nbsp;|&nbsp;
+                        <div style="margin-top: 5px;"><input type="button" name ="btn_update"  id="btn_update" value="수정하기">&nbsp;|&nbsp;
                         </div>
                     </div>
                 </div>
@@ -133,5 +133,10 @@
 		
 		document.likeFrm.submit();
 	}, false);
+    
+    document.querySelector("#btn_update").addEventListener("click",function(e){
+		window.location = "../qna/Modify.do?no=${params.idx}"; 
+
+	 },false);
 </script>
 </html>
