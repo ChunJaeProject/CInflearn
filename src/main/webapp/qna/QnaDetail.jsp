@@ -37,22 +37,25 @@
         <section id="section"> 
             <div id="box">
                 <div id="qTitle">
-                    <h3>제목 : ${QnADetail.question_title }</h3>
-                    <p>작성시간 : ${QnADetail.reg_date }</p>
+                    <h3>${QnADetail.question_title } </h3>
+                    <p>${QnADetail.reg_date }</p>
                 </div>
                 <div id="box1">
                     <div id="qContent">
-                        <form id="likeFrm" name="likeFrm">
+                        <form id="likeFrm" name="likeFrm"  action="../qna/delete.do">
+							<input type="hidden" name="no" value="${QnADetail.no}"/>
                             <input type="image" src="../assets/image/like.png" id="btn_like" name="btn_like" alt="좋아요" onclick="count('plus')"><br><br>   
                             <div id="result">0</div><br>   
                             <input type="image" src="../assets/image/hate.png" id="btn_hate" name="btn_hate" alt="싫어요" onclick="count('minus')"><br>    
+                        <input type="button" id="btn_delete" name="btn_delete" value="삭제" >
                         </form>
-                        <p>글내용 : ${QnADetail.question_content }</p>             
+                        <p>${QnADetail.question_content }</p>             
                     </div>
                     <div id="box2">
                         <input type="image" src="../assets/image/uncheck.png" id="btn_check" name="btn_check" alt="해결" style="margin-right: 20px;">
-                        <div class="qTag" style="margin-right: 600px; margin-top: 5px;"><span>태그 : ${QnADetail.question_hashtag }</span></div><br>
-                        <div style="margin-top: 5px;"><a href="Modify.jsp">수정</a>&nbsp;|&nbsp;<a href="delete.jsp">삭제</a></div>
+                        <div class="qTag" style="margin-right: 600px; margin-top: 5px;"><span>${QnADetail.question_hashtag }</span></div><br>
+                        <div style="margin-top: 5px;"><a href="Modify.jsp">수정</a>&nbsp;|&nbsp;
+                        </div>
                     </div>
                 </div>
             </div>
@@ -108,21 +111,6 @@
     });
     
     //좋아요 버튼
-    /* let like = document.querySelector("#btn_like");
-    let hate = document.querySelector("#btn_hate");
-    let num = 0;
-    like.addEventListener("click", function(e) {
-    	e.preventDefault();
-    	num++;
-    	console.log(num);
-    }, false);
-    
-    hate.addEventListener("click", function(e) {
-    	e.preventDefault();
-    	num--;
-    }, false); */
-    
-    //좋아요 버튼
     function count(type) {
     	const resultElment = document.getElementById('result');
     	let number = resultElment.innerText;
@@ -137,5 +125,13 @@
     	
     	resultElment.innerText = number;
     }
+    //삭제 기능
+    document.querySelector("#btn_delete").addEventListener("click", function(e) {
+		alert("글을 삭제하시겠습니까?");
+		console.log(${QnADelete.no});
+		//location.href = "delete.do?no="+${QnADelete.no};
+		
+		document.likeFrm.submit();
+	}, false);
 </script>
 </html>

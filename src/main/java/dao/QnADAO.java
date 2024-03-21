@@ -199,7 +199,7 @@ public class QnADAO extends JDBConnect {
 	 public int QnADelete(int no) {
 		 int result = 0;
 		 StringBuilder sb = new StringBuilder();
-		 sb.append("DELETE FROM tbl_qna WHREE no=?");
+		 sb.append("DELETE FROM tbl_qna WHERE no=?");
 		 
 		 try {
 			 psmt = conn.prepareStatement(sb.toString());
