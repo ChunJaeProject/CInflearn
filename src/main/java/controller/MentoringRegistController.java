@@ -10,7 +10,7 @@ import java.io.IOException;
 import dao.MentoringDAO;
 import dto.MentoringDTO;
 
-
+@WebServlet("/mentor/mentoringRegist.do")
 public class MentoringRegistController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

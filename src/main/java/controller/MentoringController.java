@@ -16,6 +16,7 @@ import dto.MentoringDTO;
 /**
  * Servlet implementation class MentoringController
  */
+@WebServlet("/mentor/mentor.do")
 public class MentoringController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
