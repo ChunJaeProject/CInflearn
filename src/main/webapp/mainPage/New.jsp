@@ -12,7 +12,7 @@
 String id =(String)session.getAttribute("userId") != null ? (String)session.getAttribute("userId") : "고객님";
 %>
 
-<%=id %> 환영합니다
-
+<%=id %> 환영합니다.
+<a href="../common/header.jsp" > 안녕</a>
 </body>
 </html>

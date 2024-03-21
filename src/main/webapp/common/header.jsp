@@ -94,6 +94,12 @@
 </style>
 </head>
 <body>
+<%
+
+String id =((String) session.getAttribute("userId") != null ? (String) session.getAttribute("userId") : "고객");
+
+
+%>
 	 <header id="header">
         <div id="logo"></div>
         <div id="menuBox">
@@ -107,38 +113,55 @@
             </nav>
         </div>
         <div id="headerBtnBox">
-            <button class ="headerLogin">로그인</button>
+
+			<button class="login_btn"  value = "<%=id.equals("고객") ? "로그인" : "로그아웃" %>"><%= id.equals("고객") ? "로그인" : "로그아웃" %></button>
+
+
             <button>회원가입</button>
+  
         </div>
     </header>
-   <div id="login_popupContainer"> 
+<div id="login_popupContainer"> 
         <div class="modal_signUp"> 
             <div class="close_div"> 
-                <button class="close-btn" id="closeLoginPopup"> X</button>
-                <div class="header_logo">
-                	<img src="../assets/image/inflearn_logo.png" alt="My Image" width="200px" height="60px"> 
-            	</div>  
-            </div>
-            <div class="sign_div">
-               	<form class="sign_form">
-                   	<div class="form_input_block"> 
-                       	<input type="email" placeholder="이메일" id="form_email" class="form_email" >  
-                       	<input type="password" id = "form_password" class="form_password" value="" placeholder="비밀번호">  
-                   	</div> 
-	               	<div class="form_btn">
-	                   	<button class="form_login ">로그인</button> 
-	               		<button class="form_signup">회원가입</button> 
-	               	</div>               	
-               	</form>
-           	</div> 
+                <button class="close-btn" id="closeLoginPopup"> X</button> 
+            </div>  
+            <div class="header_logo"> 
+                <img src="../images/inflearn_logo.png" alt="My Image" width="200px" height="60px"> 
+            </div>  
+            <div class="sign_div"> 
+            
+                <form class="sign_form"  name ="sign_form" method="post"  action="/login/loging.do" > 
+                    <div class="form_input_block"> 
+                        <input type="email"  name = "email" placeholder="이메일" id="form_email" class="form_email" >  
+                        <input type="password"  name ="password" id = "form_password" class="form_password" value="" placeholder="비밀번호">  
+                    </div> 
+                
+                    <div> 
+                        <button class="form_login ">로그인</button> 
+                    </div> 
+                    <button class="form_signup" >회원가입</button> 
+                </form>
+            </div> 
         </div> 
     </div>
     <Script>
         let login_popupContainer = document.getElementById("login_popupContainer"); 
-        let lButton = document.querySelector(".headerLogin");  
-        lButton.addEventListener("click",function(e){ 
-            login_popupContainer.style.display="block"; 
+        let login_btn = document.querySelector(".login_btn");
+       
+        
+        login_btn.addEventListener("click",function(e){ 
+
+			if(login_btn.value ==="로그인"){
+    	        login_popupContainer.style.display="block"; 
+  				}
+			else{
+				location.href="../login/logout.do";
+			}
         });  
+      
+      	
+      	
         document.getElementById("closeLoginPopup").addEventListener("click",function(e){ 
             login_popupContainer.style.display="none"; 
         });
