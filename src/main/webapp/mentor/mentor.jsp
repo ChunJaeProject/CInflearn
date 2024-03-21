@@ -38,7 +38,8 @@
             <section id="sidebar_area">
                 <aside id="sidebar">
                     <form action="" id="searchForm" name="searchForm">
-                        <input type="text" id="searchBar" name="searchBar"><button id="searchBtn">검색</button>
+                        <input type="text" name="search_word" id="search_word" value="">
+                        <input type="submit" id="searchBtn" value="검색">
                         <select id="sortList">
                             <option >최근 등록순</option>
                             <option >인기순</option>
@@ -103,13 +104,7 @@
                     </c:choose>
                 </div>
                 <div class="paging_area">
-                    <%
-                    	for(int i=1;i<=10;i++){	
-                    %>
-                    		<a href="/ChunjaeProject/mentor/mentor.do?page=<%=i%>" class="paging_num"> <%=i%> </a>
-                    <% 
-                    	}
-                    %>
+                    ${params.paging}
                 </div>
             </section>
         </div>
@@ -182,7 +177,28 @@
                     </div>
                 </div>
                 <div id="popup_sign" class="popup_contents">
-                    <div class="popupTitle">멘토링 신청</div>
+                    <div class="popupTitle">멘토링 신청(1/2)</div>
+                    <form id="sign_frm" name="sign_frm" action="" method="post">
+				        <h3>-날짜 선택 <span style="color:red">*</span></h3>
+				        <select id ="date">
+				            <option value="choice" selected>날짜 선택</option>
+				            <option value="date_0">3월 5일</option>
+				        </select>
+				        <h3>-실명 <span style="color:red">*</span></h3>
+				        <input type="text" id="name" name="name" placeholder="실명을 입력해주세요." maxlength="10">
+				        <h3>-연락 가능한 이메일 <span style="color:red">*</span></h3>
+				        <input type="email" id="email" name="email" placeholder="자주 사용하는 이메일을 입력해주세요." maxlength="200">
+				        <h3>-연락 가능한 연락처 <span style="color:red">*</span></h3>
+				        <input type="tel" id="tel" name="tel" placeholder="하이픈 없이 휴대폰 번호 입력" maxlength="11">
+				        <h3>-남길 메시지 <span style="color:red">*</span></h3>
+				        <textarea id="msg" name="msg" placeholder="300자 이내로 입력해주세요." maxlength="300" cols="40" rows="10"></textarea>
+				        <br>
+				        <div id="btn">
+				            <input type="reset" id="btn_reset" name="btn_reset" value="취소">
+				            <input type="submit" id="btn_submit" name="btn_submit" value="다음으로">
+				        </div>
+				    </form>
+                    
                 </div>
             </div>
             
@@ -226,6 +242,47 @@
                 popups[j].style.display="none";
         popups[2].style.display="block";
     });
+//     document.getElementById("searchBtn").addEventListener("click",function(e){
+//     	e.preventDefault();
+    	
+//     });
+    
+    document.querySelector("#btn_submit").addEventListener("click", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        // let date = document.querySelector("#date");
+        // if(date.value === "choice") {
+        //     alrert("날짜를 선택해주세요.");
+        //     date.focus();
+        //     return false;
+        // }
+        let id = document.querySelector("#name");
+        if(id.value.length < 2) {
+            alert("이름은 2자 이상 입력해주세요.");
+            id.focus();
+            return false;
+        }
+        let email = document.querySelector("#email");
+        if(!(email.value.includes('@')) && !(email.value.includes('.')) && email.value.length =="") {
+            alert("올바른 이메일 형식으로 입력해주세요.");
+            email.focus();
+            return false;
+        }
+        let tel = document.querySelector("#tel");
+        if(tel.value.includes('-') || tel.value.length =="") {
+            alert("하이픈 없이 입력해주세요.");
+            tel.focus();
+            return false;
+        }
+        let msg = document.querySelector("#msg");
+        if(msg.value.length > 300 || msg.value.length =="") {
+            alert("300자 이내로 작성해주세요.");
+            msg.focus();
+            return false;
+        }
+        let frm = document.querySelector("#btn_submit");
+        frm.submit();
+    }, false);
 </script>
 </body>
 </html>

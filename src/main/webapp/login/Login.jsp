@@ -139,7 +139,7 @@
      	let logout_button = document.querySelector(".headerLogout");  
      	
      	logout_button.addEventListener("click",function(e){ 
-    		location.href="./logout.do";
+    		location.href="login/logout.do";
         });  
      	
      	login_button.addEventListener("click",function(e){ 
