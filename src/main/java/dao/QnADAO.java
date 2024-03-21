@@ -143,12 +143,16 @@ public class QnADAO extends JDBConnect {
 		 QnADTO dto = new QnADTO();
 		 
 		 StringBuilder sb = new StringBuilder();
-		sb.append("SELECT no, question_title, question_content, question_hashtag");
-		sb.append(", answer, solution_state, like, reg_date, member_no");
+		//sb.append("SELECT no, question_title, question_content, question_hashtag");
+		//sb.append(", answer, solution_state, like, reg_date, member_no");
+		sb.append("SELECT * ");
 		sb.append("	FROM tbl_qna");
+		sb.append(" WHERE no = ?");
 		
 		try {
 			psmt = conn.prepareStatement(sb.toString());
+			psmt.setInt(1, no);
+			
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
@@ -161,7 +165,7 @@ public class QnADAO extends JDBConnect {
 				dto.setLike(rs.getInt("like"));
 
 
-				dto.setReg_date(rs.getDate(null));
+				dto.setReg_date(rs.getDate("reg_date"));
 
 			}
 		}
