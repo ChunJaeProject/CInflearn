@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class LectureReviewDTO {
 
-	private int no;
+	private int review_no;
 	private String writer;
 	private LocalDateTime reg_date;
 	private String content;
@@ -17,13 +17,13 @@ public class LectureReviewDTO {
 	 * @return the no
 	 */
 	public int getNo() {
-		return no;
+		return review_no;
 	}
 	/**
 	 * @param no the no to set
 	 */
-	public void setNo(int no) {
-		this.no = no;
+	public void setNo(int review_no) {
+		this.review_no = review_no;
 	}
 	/**
 	 * @return the writer
