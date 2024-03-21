@@ -27,42 +27,22 @@
   </context-param>
   <servlet>
     <description></description>
-    <display-name>LoginServlet</display-name>
-    <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>controller.LoginServlet</servlet-class>
+    <display-name>MentoringController</display-name>
+    <servlet-name>MentoringController</servlet-name>
+    <servlet-class>controller.MentoringController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>LoginServlet</servlet-name>
-    <url-pattern>/LoginServlet</url-pattern>
+    <servlet-name>MentoringController</servlet-name>
+    <url-pattern>/mentor/mentor.do</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>LoginingServlet</display-name>
-    <servlet-name>LoginingServlet</servlet-name>
-    <servlet-class>controller.LoginingServlet</servlet-class>
+    <display-name>MentoringRegistController</display-name>
+    <servlet-name>MentoringRegistController</servlet-name>
+    <servlet-class>controller.MentoringRegistController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>LoginingServlet</servlet-name>
-    <url-pattern>/LoginingServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-<<<<<<< HEAD
-    <display-name>Loginout</display-name>
-    <servlet-name>Loginout</servlet-name>
-    <servlet-class>controller.Loginout</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Loginout</servlet-name>
-    <url-pattern>/Loginout</url-pattern>
-=======
-    <display-name>QnAController</display-name>
-    <servlet-name>QnAController</servlet-name>
-    <servlet-class>controller.QnAController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>QnAController</servlet-name>
-    <url-pattern>/QnAController</url-pattern>
->>>>>>> qna
+    <servlet-name>MentoringRegistController</servlet-name>
+    <url-pattern>/mentor/mentoringRegist.do</url-pattern>
   </servlet-mapping>
 </web-app>
