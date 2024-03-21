@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.Vector;
 
 import common.JDBConnect;
-import dto.LoginDTO;
 import dto.QnADTO;
 import jakarta.servlet.ServletContext;
 

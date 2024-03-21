@@ -1,12 +1,13 @@
 package dto;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class LectureReviewDTO {
 
 	private int review_no;
 	private String writer;
-	private LocalDateTime reg_date;
+	private Date reg_date;
 	private String content;
 	private int star;
 	private int lecture_no;
@@ -40,13 +41,13 @@ public class LectureReviewDTO {
 	/**
 	 * @return the reg_date
 	 */
-	public LocalDateTime getReg_date() {
+	public Date getReg_date() {
 		return reg_date;
 	}
 	/**
 	 * @param reg_date the reg_date to set
 	 */
-	public void setReg_date(LocalDateTime reg_date) {
+	public void setReg_date(Date reg_date) {
 		this.reg_date = reg_date;
 	}
 	/**

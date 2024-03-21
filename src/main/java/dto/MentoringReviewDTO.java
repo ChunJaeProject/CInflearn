@@ -1,87 +1,52 @@
 package dto;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class MentoringReviewDTO {
 
-	private int no;
+	private int mentoring_review_no;
 	private int mentoring_no;
-	private LocalDateTime reg_date;
+	private Date reg_date;
 	private String content;
 	private int grade;
-	private String mentoring_name;
+	private String writer;
 	
-	public MentoringReviewDTO(){}
-	/**
-	 * @return the no
-	 */
-	public int getNo() {
-		return no;
+	public int getMentoring_review_no() {
+		return mentoring_review_no;
 	}
-	/**
-	 * @param no the no to set
-	 */
-	public void setNo(int no) {
-		this.no = no;
+	public void setMentoring_review_no(int mentoring_review_no) {
+		this.mentoring_review_no = mentoring_review_no;
 	}
-	/**
-	 * @return the mentoring_no
-	 */
 	public int getMentoring_no() {
 		return mentoring_no;
 	}
-	/**
-	 * @param mentoring_no the mentoring_no to set
-	 */
 	public void setMentoring_no(int mentoring_no) {
 		this.mentoring_no = mentoring_no;
 	}
-	/**
-	 * @return the reg_date
-	 */
-	public LocalDateTime getReg_date() {
+	public Date getReg_date() {
 		return reg_date;
 	}
-	/**
-	 * @param reg_date the reg_date to set
-	 */
-	public void setReg_date(LocalDateTime reg_date) {
+	public void setReg_date(Date reg_date) {
 		this.reg_date = reg_date;
 	}
-	/**
-	 * @return the content
-	 */
 	public String getContent() {
 		return content;
 	}
-	/**
-	 * @param content the content to set
-	 */
 	public void setContent(String content) {
 		this.content = content;
 	}
-	/**
-	 * @return the grade
-	 */
 	public int getGrade() {
 		return grade;
 	}
-	/**
-	 * @param grade the grade to set
-	 */
 	public void setGrade(int grade) {
 		this.grade = grade;
 	}
-	/**
-	 * @return the mentoring_name
-	 */
-	public String getMentoring_name() {
-		return mentoring_name;
+	public String getWriter() {
+		return writer;
 	}
-	/**
-	 * @param mentoring_name the mentoring_name to set
-	 */
-	public void setMentoring_name(String mentoring_name) {
-		this.mentoring_name = mentoring_name;
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
+	
+	
 }

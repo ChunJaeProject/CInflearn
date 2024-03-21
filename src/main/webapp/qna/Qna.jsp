@@ -43,8 +43,8 @@
             <div id="sidebar_left">
                 <ul id="sidebar_ul">
                     <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="Qna.do">질문과 답변</a></li>
-                    <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="Review.jsp">수강평</a></li>
-                    <li style="padding: 10px; font-size: small;"><a href="MentoringReview.jsp">멘토링 후기</a></li>
+                    <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="Review.do">수강평</a></li>
+                    <li style="padding: 10px; font-size: small;"><a href="MentoringReview.do">멘토링 후기</a></li>
                 </ul>
             </div>
             <div id="content">
@@ -110,7 +110,7 @@
 <script>
     document.querySelector("#btn_write").addEventListener("click", function(){
         alert("로그인 후 이용하세요.");
-        location.href="Write.jsp";
+        location.href="Write.do";
     });
 </script>
 </body>
