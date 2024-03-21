@@ -199,6 +199,7 @@ String id =((String) session.getAttribute("userId") != null ? (String) session.g
      </div>
     
     <Script>
+    	const menu_link = ["../mentor/mentor.do"];
         let login_popupContainer = document.getElementById("login_popupContainer"); 
         let out_popupContainer = document.getElementById("out_popupContainer"); 
         let member_out  = document.querySelector(".member_out");
@@ -209,6 +210,12 @@ String id =((String) session.getAttribute("userId") != null ? (String) session.g
         
         let login_btn = document.querySelector(".login_btn");
         let out_btn =document.querySelector(".out_btn");
+        const menu_li = document.querySelectorAll("#menuUl li");
+        menu_li[0].addEventListener("click", function(e){
+        	window.location.href = menu_link[0];
+        });
+        
+        
         
        if(out_btn){
         out_btn.addEventListener("click",function(e){ 
