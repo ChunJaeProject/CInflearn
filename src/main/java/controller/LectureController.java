@@ -33,6 +33,7 @@ public class LectureController extends HttpServlet {
 		String technology_search_word = "";
 		String lecture_search_word = "";
 		
+		
 		int total_count = 0;
 		
 		LectureDAO dao = new LectureDAO();
