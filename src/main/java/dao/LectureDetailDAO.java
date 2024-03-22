@@ -15,47 +15,44 @@ public class LectureDetailDAO extends JDBConnect {
 		super(application);
 	}
 	
-	public LectureDTO lectureDetailView(int idx) {
-		LectureDTO dto = new LectureDTO();
+public List<LectureDTO> getLectureInfo(int no) {
+		
+		List<LectureDTO> lecture_list = new Vector<LectureDTO>();
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT lecture_no, lecture_title, image, professor, category1, category2");
-		sb.append(", technology_tag, lecture_detail, lecture_period");
-		sb.append(", certificate_yn, difficulty_grade, regist_date");
-		sb.append(" FROM tbl_lecture");
-		sb.append(" WHERE lecture_no = ?");
-		
-		
-	
+		sb.append("SELECT tl.lecture_no, lecture_title, image, professor, category2, difficulty_grade, technology_tag,"
+				+ " tc.curriculum_no, tc.curriculum_name, curriculum_time");
+		sb.append(" FROM tbl_lecture as tl INNER JOIN tbl_curriculum as tc");
+		sb.append(" ON tl.lecture_no = tc.lecture_no");
+		sb.append(" WHERE tl.lecture_no = " + no);
+		System.out.println(sb.toString());
 		try {
 			psmt = conn.prepareStatement(sb.toString());
-			psmt.setInt(1, idx);
 			rs = psmt.executeQuery();
-			
-			System.out.println("regist_date : "+ rs.getString("regist_date"));
-			
-			if (rs.next()) {
+			while(rs.next()) {
+				LectureDTO dto = new LectureDTO();
 				dto.setLecture_no(rs.getInt("lecture_no"));
 				dto.setLecture_title(rs.getString("lecture_title"));
 				dto.setImage(rs.getString("image"));
 				dto.setProfessor(rs.getString("professor"));
-				dto.setCategory1(rs.getString("category1"));
-				dto.setCategory2(rs.getString("category2"));
-				dto.setTechnology_tag(rs.getString("technology_tag"));
-				dto.setLecture_detail(rs.getString("lecture_detail"));
-				dto.setLecture_period(rs.getString("lecture_period"));
-				dto.setCertificate_yn(rs.getString("certificate_yn"));
 				dto.setDifficulty_grade(rs.getString("difficulty_grade"));
-				/* dto.setRegist_date(rs.getDate("regist_date")); */
+				dto.setTechnology_tag(rs.getString("technology_tag"));
+				dto.setCategory2(rs.getString("category2"));
+				dto.setCurriculum_no(rs.getInt("curriculum_no"));
+				dto.setCurriculum_name(rs.getString("curriculum_name"));
+				dto.setCurriculum_time(rs.getString("curriculum_time"));
+				
+				lecture_list.add(dto);
 			}
-		}
-		catch (Exception e) {
-			System.out.println("게시판 데이터 조회 오류");
-			e.printStackTrace();
+		}catch(Exception e) {
+			
+			System.out.println("강의 리스트 조회 에러 :" + e.getMessage());
 		}
 		
-		return dto;
-		}
+		
+		return lecture_list;
+		
+	}
 
 
 }

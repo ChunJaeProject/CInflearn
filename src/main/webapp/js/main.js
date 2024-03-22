@@ -32,3 +32,11 @@ for(i=0;i<category_list.length;i++){
 		location.href = "/ChunjaeProject/mainPage/Main.do?category2=" + category2;
 	}, false);
 }
+const lecture_list = document.querySelectorAll(".lecture_content_wrap");
+const lecture_idx = document.querySelectorAll(".lecture_idx");
+//for(i=0;i<lecture_list.length;i++){
+//	lecture_list[i].addEventListener("click",function(e){
+//		console.log(lecture_idx[i]);
+//		window.location.href = "/ChunjaeProject/lecture/lecture.do?no=" + lecture_idx[i];
+//	});
+//}

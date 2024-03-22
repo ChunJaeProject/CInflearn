@@ -8,9 +8,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import dao.LectureDAO;
 import dao.LectureDetailDAO;
+import dto.LectureDTO;
 
 @WebServlet("/lecture/lecture.do")
 public class LectureDetailController extends HttpServlet {
@@ -34,7 +37,12 @@ public class LectureDetailController extends HttpServlet {
 		String certificate_yn = "";
 		String difficulty_grade = "";
 		
+
+		lecture_no = Integer.parseInt(req.getParameter("no"));
+		
 		LectureDetailDAO dao = new LectureDetailDAO();
+		
+		List<LectureDTO> lectureList = dao.getLectureInfo(lecture_no);
 		
 		Map<String, Object> params = new HashMap<String, Object>();
 		
@@ -62,10 +70,10 @@ public class LectureDetailController extends HttpServlet {
 //		dao.close();
 //		
 //		 
-//		req.setAttribute("lectureList", lectureList);
-//		req.setAttribute("params", params);
-//		
-//		req.getRequestDispatcher("/lecture/lecture.jsp").forward(req, resp);
+		req.setAttribute("lectureList", lectureList);
+		//req.setAttribute("params", params);
+		
+		req.getRequestDispatcher("/lecture/lecture.jsp").forward(req, resp);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

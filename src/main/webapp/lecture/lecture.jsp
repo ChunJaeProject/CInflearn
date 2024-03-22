@@ -18,11 +18,11 @@
         <section id="contents_top_area2" class="cal_h320">
             <div id="lecture_info">
                 <div class="content_left_area" style="width: 400px">
-                    <img class="lecture_thumbnail" src="https://cdn.inflearn.com/public/courses/328592/cover/b8957940-b416-4f31-8ae1-1cd2c5b29f3a/HTML-CSS--IFL.png" style="width: 100%" alt="">
+                    <img class="lecture_thumbnail" src="${lectureList[0].image }" style="width: 100%" alt="">
                 </div>
                 <div class="content_right_area">
                     <p id="category">개발 · 프로그래밍 > 웹 개발</p>
-                    <p id="lecture_title">제대로 파는 HTML CSS - by 얄코</p>
+                    <p id="lecture_title">${lectureList[0].lecture_title }</p>
                     <div id="lecture_review_info">
                         <i class="fa fa-star" aria-hidden="true"></i>
                         <i class="fa fa-star" aria-hidden="true"></i>
@@ -32,7 +32,7 @@
                         <span>(4.2) / 00개의 수강평</span>
                     </div>
                     <div id="professor">
-                        <i class="fa fa-user" aria-hidden="true"> 얄팍한 코딩사전</i>
+                        <i class="fa fa-user" aria-hidden="true"> ${lectureList[0].professor }</i>
                     </div>
                     <div id="technology_tag">
                         <i class="fa fa-hashtag" aria-hidden="true"></i>
@@ -71,6 +71,7 @@
                                 <p class="curriculum_info">커리큘럼 <span>총 000개 00시간 00분의 수업</span></p>
                                 <ul class="curriculum_section_wrap">
                                     <li id="section_title"><i class="fa fa-caret-down" aria-hidden="true"></i> 섹션<span id="section_code">${section_code}</span>. ${section_title}<span id="section_time">${section_time}</span></li>
+                                    
                                     <li id="section_title"><i class="fa fa-caret-down" aria-hidden="true"></i> 섹션<span id="section_code">1</span>. &lt;갖다 놓는&gt; HTML<span id="section_time">00:00</span></li>
                                     <li id="section_title"><i class="fa fa-caret-down" aria-hidden="true"></i> 섹션<span id="section_code">2</span>. &lt;꾸미는&gt; CSS<span id="section_time">00:00</span></li>
                                     <li id="section_title"><i class="fa fa-caret-down" aria-hidden="true"></i> 섹션<span id="section_code">3</span>. HTML 더 깊이 알아보기<span id="section_time">00:00</span></li>

@@ -15,6 +15,9 @@ public class LectureDTO {
 	private String lecture_period;
 	private String certificate_yn;
 	private String difficulty_grade;
+	private int curriculum_no;
+	private String curriculum_name;
+	private String curriculum_time;
 	private LocalDateTime regist_date;
 	
 	public LectureDTO(){}
@@ -161,6 +164,48 @@ public class LectureDTO {
 	 */
 	public void setRegist_date(LocalDateTime regist_date) {
 		this.regist_date = regist_date;
+	}
+	/**
+	 * @return the curriculum_no
+	 */
+	public int getCurriculum_no() {
+		return curriculum_no;
+	}
+	/**
+	 * @param curriculum_no the curriculum_no to set
+	 */
+	public void setCurriculum_no(int curriculum_no) {
+		this.curriculum_no = curriculum_no;
+	}
+	/**
+	 * @return the curriculum_name
+	 */
+	public String getCurriculum_name() {
+		return curriculum_name;
+	}
+	/**
+	 * @param curriculum_name the curriculum_name to set
+	 */
+	public void setCurriculum_name(String curriculum_name) {
+		this.curriculum_name = curriculum_name;
+	}
+	/**
+	 * @return the curriculum_time
+	 */
+	public String getCurriculum_time() {
+		return curriculum_time;
+	}
+	/**
+	 * @param curriculum_time the curriculum_time to set
+	 */
+	public void setCurriculum_time(String curriculum_time) {
+		this.curriculum_time = curriculum_time;
+	}
+	/**
+	 * @return the certificate_yn
+	 */
+	public String getCertificate_yn() {
+		return certificate_yn;
 	}
 	
 	

@@ -12,10 +12,14 @@
     <link rel="stylesheet" href="../css/common/frame.css">
     <link rel="stylesheet" href="../css/mainPage/main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    
+    </style>
 </head>
 <body>
+<%@ include file="../common/header.jsp" %>
+<%@ include file="../common/top.jsp" %>
 <div id="container">
-    <%@ include file="../common/header.jsp" %>
     <main id="contents">
         <section id="img_slide">
     		<div class="slide_wrapper">
@@ -197,8 +201,8 @@
 					    <div id="lecture_contents_area" class="grid">
 							<c:forEach var="lectureList" items="${ lectureList }" varStatus="loop">
 			                    <article class="lecture_content_wrap">
-			                        <a href="#" class="lecture_content_hover">
-			                            <p class="lecture_title">${ lectureList.lecture_title }</p>
+			                        <a href="/ChunjaeProject/lecture/lecture.do?no=${lectureList.lecture_no }" class="lecture_content_hover">
+			                        	<p class="lecture_title">${ lectureList.lecture_title }</p>
 			                            <p class="category">${ lectureList.category2 }</p>
 			                            <p class="difficulty_grade">${ lectureList.difficulty_grade }</p>
 			                            <p class="technology_tag">${ lectureList.technology_tag }</p>
@@ -225,7 +229,7 @@
 				</c:choose>				
                     
                 <div class="paging_area">
-                    페이징 영역
+                    ${params.paging}
                 </div>
             </section>
         </div>
