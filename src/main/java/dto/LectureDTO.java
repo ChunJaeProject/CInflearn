@@ -13,7 +13,7 @@ public class LectureDTO {
 	private String technology_tag;
 	private String lecture_detail;
 	private String lecture_period;
-	private boolean certificate_yn;
+	private String certificate_yn;
 	private String difficulty_grade;
 	private LocalDateTime regist_date;
 	
@@ -129,13 +129,13 @@ public class LectureDTO {
 	/**
 	 * @return the certificate_yn
 	 */
-	public boolean isCertificate_yn() {
+	public String isCertificate_yn() {
 		return certificate_yn;
 	}
 	/**
 	 * @param certificate_yn the certificate_yn to set
 	 */
-	public void setCertificate_yn(boolean certificate_yn) {
+	public void setCertificate_yn(String certificate_yn) {
 		this.certificate_yn = certificate_yn;
 	}
 	/**

@@ -23,12 +23,17 @@ public class LectureDetailDAO extends JDBConnect {
 		sb.append(", technology_tag, lecture_detail, lecture_period");
 		sb.append(", certificate_yn, difficulty_grade, regist_date");
 		sb.append(" FROM tbl_lecture");
-		sb.append(" WHERE idx = ?");
+		sb.append(" WHERE lecture_no = ?");
 		
+		
+	
 		try {
 			psmt = conn.prepareStatement(sb.toString());
 			psmt.setInt(1, idx);
 			rs = psmt.executeQuery();
+			
+			System.out.println("regist_date : "+ rs.getString("regist_date"));
+			
 			if (rs.next()) {
 				dto.setLecture_no(rs.getInt("lecture_no"));
 				dto.setLecture_title(rs.getString("lecture_title"));
@@ -39,9 +44,9 @@ public class LectureDetailDAO extends JDBConnect {
 				dto.setTechnology_tag(rs.getString("technology_tag"));
 				dto.setLecture_detail(rs.getString("lecture_detail"));
 				dto.setLecture_period(rs.getString("lecture_period"));
-				dto.setCertificate_yn(rs.getBoolean("certificate_yn"));
+				dto.setCertificate_yn(rs.getString("certificate_yn"));
 				dto.setDifficulty_grade(rs.getString("difficulty_grade"));
-//				dto.setRegist_date(rs.getDate("regist_date"));
+				/* dto.setRegist_date(rs.getDate("regist_date")); */
 			}
 		}
 		catch (Exception e) {

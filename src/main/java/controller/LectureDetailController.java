@@ -8,11 +8,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import dao.LectureDAO;
-import dto.LectureDTO;
+import dao.LectureDetailDAO;
 
 @WebServlet("/lecture/lecture.do")
 public class LectureDetailController extends HttpServlet {
@@ -23,22 +21,23 @@ public class LectureDetailController extends HttpServlet {
     }
     
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		int lecture_no = 1;
-//		String lecture_title = "";
-//		String image = "";
-//		String professor = "";
-//		String category2 = "";
-//		String difficulty_grade = "";
-//		String technology_tag = "";
-//		String technology_search_word = "";
-//		String lecture_search_word = "";
-//		
-//		int total_count = 0;
-//		
-//		LectureDAO dao = new LectureDAO();
-//
-//		Map<String, Object> params = new HashMap<String, Object>();
-//		
+		
+		int lecture_no = 1;
+		String lecture_title = "";
+		String image = "";
+		String professor = "";
+		String category1 = "";
+		String category2 = "";
+		String technology_tag = "";
+		String lecture_detail = "";
+		String lecture_period = "";
+		String certificate_yn = "";
+		String difficulty_grade = "";
+		
+		LectureDetailDAO dao = new LectureDetailDAO();
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		
 //		lecture_no = (req.getParameter("lecture_no") != null ? Integer.parseInt(req.getParameter("lecture_no")) : 0);
 //		lecture_title = req.getParameter("lecture_title");
 //		image = req.getParameter("image");
