@@ -118,6 +118,7 @@ public class MentoringDAO extends JDBConnect {
 			e.printStackTrace();
 			return 0;
 		}
+	}
 		
 		public MentoringDTO mentoringView(int idx) {
 			MentoringDTO dto = new MentoringDTO();
