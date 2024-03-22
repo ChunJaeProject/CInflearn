@@ -9,19 +9,27 @@
  <link rel="stylesheet" href="../css/common/frame.css">
  <link rel="stylesheet" href="../css/qna/write.css">
  <style>
+	 #container {
+	 	height: 900px;
+	 }
       #section {
           width: 100%;
           height:700px;
           padding-top: calc(var(--header-height) + 50px) ;
           margin: 0 auto;
+          display : flex;
+          justify-content: center;
       }
       #content {
 	    border: 1px solid #ccc;
 	    border-radius: 7px;
 	  }
 	  #btnDiv{
-	  width:500px;
-	  margin : 0px auto;
+		  width:500px;
+		  margin : 0px auto;
+		  display : flex;
+	      justify-content: center;
+	      margin-bottom: 50px;
 	  }
  </style>
 </head>
