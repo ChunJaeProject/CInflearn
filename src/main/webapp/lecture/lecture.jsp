@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix = "c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +23,7 @@
                     <img class="lecture_thumbnail" src="${lectureList[0].image }" style="width: 100%" alt="">
                 </div>
                 <div class="content_right_area">
-                    <p id="category">개발 · 프로그래밍 > 웹 개발</p>
+                    <p id="category">${lectureList[0].category1 } > ${lectureList[0].category2}</p>
                     <p id="lecture_title">${lectureList[0].lecture_title }</p>
                     <div id="lecture_review_info">
                         <i class="fa fa-star" aria-hidden="true"></i>
@@ -37,7 +39,7 @@
                     <div id="technology_tag">
                         <i class="fa fa-hashtag" aria-hidden="true"></i>
                         <ul id="tag_wrap">
-                            <li>HTML/CSS</li>
+                            <li>${lectureList[0].technology_tag }</li>
                             <li>태그2</li>
                             <li>태그3</li>
                         </ul>
@@ -50,11 +52,11 @@
                 <div id="contents_info_wrap">
                     <div id="fixed_side_bar">
                         <ul>
-                            <li><span>지식공유자 : </span>지식공유자1</li>
-                            <li>총 <span>000개</span>의 수업 (000시간)</li>
-                            <li><span>수강기한 : </span>무제한</li>
-                            <li><span>수료증 : </span>발급</li>
-                            <li><span>난이도 : </span>입문</li>
+                            <li><span>지식공유자 : </span>${lectureList[0].professor }</li>
+                            <li>총 <span> ${fn:length(lectureList)}개</span></li>
+                            <li><span>수강기한 : </span>${lectureList[0].lecture_period }</li>
+                            <li><span>수료증 : </span>${lectureList[0].certificate_yn}</li>
+                            <li><span>난이도 : </span>${lectureList[0].difficulty_grade}</li>
                         </ul>
                     </div>
                     <a href="#lecture_detail" class="selected_info">강의소개</a> |
@@ -65,19 +67,16 @@
                     <article class="lecture_content">
                         <div class="lecture_info">
                             <div id="lecture_detail">
-                                <p>강의 소개 내용</p>
+                                <p>${lectureList[0].lecture_detail}</p>
                             </div>
                             <div id="lecture_curriculum">
-                                <p class="curriculum_info">커리큘럼 <span>총 000개 00시간 00분의 수업</span></p>
+                                <p class="curriculum_info">커리큘럼 <span>총 ${fn:length(lectureList) }개</span></p>
                                 <ul class="curriculum_section_wrap">
-                                    <li id="section_title"><i class="fa fa-caret-down" aria-hidden="true"></i> 섹션<span id="section_code">${section_code}</span>. ${section_title}<span id="section_time">${section_time}</span></li>
+                                	<li id="section_title"><i class="fa fa-caret-down" aria-hidden="true"></i> 섹션<span id="section_code">${section_code}</span>. ${section_title}<span id="section_time">${section_time}</span></li>
+                                	<c:forEach var="item" items="${lectureList }" varStatus="loop" >
+                                		<li id="section_title"><i class="fa fa-caret-down" aria-hidden="true"></i> 섹션<span id="section_code">${loop.count }</span>. ${item.curriculum_name }<span id="section_time"> ${item.curriculum_time }</span></li>
+                                	</c:forEach>
                                     
-                                    <li id="section_title"><i class="fa fa-caret-down" aria-hidden="true"></i> 섹션<span id="section_code">1</span>. &lt;갖다 놓는&gt; HTML<span id="section_time">00:00</span></li>
-                                    <li id="section_title"><i class="fa fa-caret-down" aria-hidden="true"></i> 섹션<span id="section_code">2</span>. &lt;꾸미는&gt; CSS<span id="section_time">00:00</span></li>
-                                    <li id="section_title"><i class="fa fa-caret-down" aria-hidden="true"></i> 섹션<span id="section_code">3</span>. HTML 더 깊이 알아보기<span id="section_time">00:00</span></li>
-                                    <li id="section_title"><i class="fa fa-caret-down" aria-hidden="true"></i> 섹션<span id="section_code">4</span>. CSS 더 깊이 알아보기<span id="section_time">00:00</span></li>
-                                    <li id="section_title"><i class="fa fa-caret-down" aria-hidden="true"></i> 섹션<span id="section_code">5</span>. 파이널 프로젝트<span id="section_time">00:00</span></li>
-                                    <li id="section_title"><i class="fa fa-caret-down" aria-hidden="true"></i> 섹션<span id="section_code">6</span>. 강의를 마무리하며<span id="section_time">00:00</span></li>
                                 </ul>
                             </div>
                             <div id="lecture_review">
