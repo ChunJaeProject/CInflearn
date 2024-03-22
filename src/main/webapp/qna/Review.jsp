@@ -64,7 +64,8 @@
 		                       <p>${list.content}</p><br><br>
 		                       <p id="bottom">작성자 : ${list.writer } |  강의명 : </p>
 		                   </div>
-			                   <div id="box2"><input type="image" id="btn_go" name="btn_go" src="../assets/image/java.png" width="300px" height="200px"></div>
+		                   		
+			                   <div id="box2"><input type="image" id="btn_go" name="btn_go" src="${list.image }" width="300px" height="200px"></div>
 			               </div>
 					</c:forEach>
 				</c:when>
