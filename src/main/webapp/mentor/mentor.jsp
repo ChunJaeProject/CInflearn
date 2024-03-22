@@ -360,10 +360,10 @@
         popups[2].style.display="block";
     });
     
-     document.getElementById("searchBtn").addEventListener("click",function(e){
-		e.preventDefault();
+//      document.getElementById("searchBtn").addEventListener("click",function(e){
+// 		e.preventDefault();
     	
-	});
+// 	});
     
      document.querySelector("#btn_next").addEventListener("click", function(e) {
         e.preventDefault();
