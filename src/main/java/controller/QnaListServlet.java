@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import common.CommonPage;
 import dao.QnADAO;
 import dto.QnADTO;
 import jakarta.servlet.ServletException;
@@ -19,11 +20,20 @@ public class QnaListServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+		
 		int total_count = 0;
+		int page_no = 1;
+		int page_size = 5;
+		int total_page = 1;
+		int page_skip_cnt = 5;
+		int page_block_size = 10;
+		int page_block_start = 1;
+		int page_block_end = 1;
+		
 		int solve_count = 0;
 		int unsolve_count = 0;
-		
+		String solve = req.getParameter("solve");
+		String search_word = req.getParameter("search_title");
 		Map<String, Object> maps = new HashMap<String, Object>();
 		/*
 		 * String search_title = req.getParameter("search_title"); String search_hash =
@@ -33,19 +43,58 @@ public class QnaListServlet extends HttpServlet {
 		 * search_hash); }
 		 */
 		
+		page_no = (req.getParameter("page_no")!=null) ? Integer.parseInt(req.getParameter("page_no")) : 1;
+		page_skip_cnt = (page_no-1)*page_size;
+		
+		maps.put("pageNo", page_no);
+		maps.put("page_size", page_size);
+		maps.put("page_skip_cnt", page_skip_cnt);
+		
 		//DAO 생성
 		QnADAO dao = new QnADAO();
 		total_count = dao.QnATotalCount(maps);
+		
+		if(solve !=null && solve!= "") {
+			System.out.println(solve);
+			maps.put("solve", solve);
+		}
+		if(search_word != null && search_word !="") {
+			maps.put("search_word", search_word);
+		}
+		
+		
+		
+		total_page = (int)Math.ceil(total_count/(double)page_size);
+		page_block_size = 10;
+		page_block_start = (int)Math.floor((page_no-1)/(double)page_size)*page_size +1;
+		page_block_end = (int)Math.ceil(page_no/(double)page_size)*page_size;
+		page_block_end = (page_block_end>total_page?total_page:page_block_end);
+		
+		maps.put("total_count", total_count);
+		maps.put("total_page", total_page);
+		maps.put("page_block_size", page_block_size);
+		maps.put("page_block_start", page_block_start);
+		maps.put("page_block_end", page_block_end);
+		
 		solve_count = dao.QnASolveCount(maps);
 		unsolve_count = dao.QnAUnsolveCount(maps);
-		
 		List<QnADTO> QnAList = dao.QnAList(maps);
 		
 		dao.close();
 		
-		maps.put("total_count", total_count);
-		maps.put("solve_count", solve_count);
-		maps.put("unsolve_count", unsolve_count);
+		String pagingArea = "";
+		String pageUri = "/ChunjaeProject/qna/Qna.do?";
+		
+		if(solve !=null) {
+			pageUri = pageUri + "solve=" +solve + "&";
+			
+		}
+		if(search_word !=null) {
+			pageUri = pageUri + "search_title=" + search_word + "&";
+		}
+		pagingArea = CommonPage.pagingArea(total_page, page_no, page_block_start, page_block_end, pageUri );
+		
+		maps.put("paging", pagingArea);
 		
 		req.setAttribute("QnAList", QnAList);
 		req.setAttribute("maps", maps);

@@ -21,22 +21,21 @@ public class ReviewServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-		int total_count =0;
-		//페이징
+		int total_count = 0;
+		int page_no = 1;
+		int page_size = 5;
 		int total_page = 1;
-		int pageNo = Integer.parseInt(req.getParameter("pageNo")==null ? "1":req.getParameter("pageNo"));
-		int pageBlock = Integer.parseInt(req.getParameter("pageBlock")==null ? "1":req.getParameter("pageBlock"));
-		int page_size = 10;
-		int page_skip_cnt = 10;
+		int page_skip_cnt = 5;
 		int page_block_size = 10;
 		int page_block_start = 1;
 		int page_block_end = 1;
-		int page_start = (pageBlock-1)*10+1;
-		int page_end = pageBlock*10;
 		
 		Map<String, Object> maps = new HashMap<String, Object>();
-		page_skip_cnt = (pageNo-1)*page_size;
-		maps.put("pageNo", pageNo);
+		
+		page_no = (req.getParameter("page_no")!=null) ? Integer.parseInt(req.getParameter("page_no")) : 1;
+		page_skip_cnt = (page_no-1)*page_size;
+		
+		maps.put("pageNo", page_no);
 		maps.put("page_size", page_size);
 		maps.put("page_skip_cnt", page_skip_cnt);
 		
@@ -47,27 +46,25 @@ public class ReviewServlet extends HttpServlet {
 		
 		dao.close();
 
-		if(total_count%10 == 0){
-			total_page = total_count/10;
-		}else{
-			total_page = total_count/10 + 1;
-		}
 		
-		page_block_start = (int)(Math.ceil(pageNo / (double)page_block_size) -1 ) * 10 + 1;
-		page_block_end = (int)Math.ceil(pageNo / (double)page_block_size) * 10;
-		page_block_end = page_block_end > total_page ? total_page : page_block_end;
+		total_page = (int)Math.ceil(total_count/(double)page_size);
+		page_block_size = 10;
+		page_block_start = (int)Math.floor((page_no-1)/(double)page_size)*page_size +1;
+		page_block_end = (int)Math.ceil(page_no/(double)page_size)*page_size;
+		page_block_end = (page_block_end>total_page?total_page:page_block_end);
 		
 		maps.put("total_count", total_count);
 		maps.put("total_page", total_page);
-		maps.put("page_block_start", page_block_start);
 		maps.put("page_block_size", page_block_size);
+		maps.put("page_block_start", page_block_start);
 		maps.put("page_block_end", page_block_end);
-		maps.put("page_start", page_start);
-		maps.put("page_end", page_end);
 		
 		
 	
-		String pagingArea = CommonPage.pagingArea(total_page, pageNo, page_block_start, page_block_end, "Review.do");
+		String pagingArea = "";
+		String pageUri = "/ChunjaeProject/qna/Review.do?";
+		
+		pagingArea = CommonPage.pagingArea(total_page, page_no, page_block_start, page_block_end, pageUri );
 		maps.put("paging", pagingArea);
 		
 		req.setAttribute("LectureReviewList", LectureReviewList);

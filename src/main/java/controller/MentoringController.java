@@ -60,6 +60,7 @@ public class MentoringController extends HttpServlet {
 		params.put("page_skip_cnt", page_skip_cnt);
 		params.put("page_size", page_size);
 		params.put("page_no",page_no);
+		
 		MentoringDAO dao = new MentoringDAO();
 		total_count = dao.MentoringTotalCount(params);
 		

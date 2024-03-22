@@ -29,49 +29,53 @@
 <body>
     <div id="container">
         <%@ include file="../common/header.jsp" %>
-        <div id="contents_top_area" class="cal_h100">
-            <br><span style="font-size: large; font-weight: bold;padding-top: 10px;">멘토링 후기</span><span>(${maps.total_count})</span>
-        </div>
-        <section id="section">
-            <div id="sidebar_left">
-                <ul id="sidebar_ul">
-                    <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="Qna.do">질문과 답변</a></li>
-                    <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="Review.do">수강평</a></li>
-                    <li style="padding: 10px; font-size: small;"><a href="MentoringReview.do">멘토링 후기</a></li>
-                </ul>
-            </div>
-            <div id="content">
-                <c:choose>
-				<c:when test="${not empty MentoringReviewList }">
-					<c:forEach var="list" items="${MentoringReviewList }" varStatus="loop">
-						<div class="review">
-		                   <div id="box1">
-		                       <div id="star">
-		                           <i class="fa fa-star" aria-hidden="true"></i>
-		                           <i class="fa fa-star" aria-hidden="true"></i>
-		                           <i class="fa fa-star" aria-hidden="true"></i>
-		                           <i class="fa fa-star" aria-hidden="true"></i>
-		                           <i class="fa fa-star-o" aria-hidden="true"></i>
-		                       </div>
-		                       <br><br>
-		                       <p>${list.content}</p><br><br>
-		                       <p id="bottom">작성자 : ${list.writer }</p>
-		                   </div>	                   
-			               </div>
-					</c:forEach>
-				</c:when>
-			<c:otherwise>
-				<div class="question" style="text-align: center; padding: 40px; border-bottom: 1px solid #ccc;">
-                 	<p>아직 관련 글이 없습니다. 첫 글을 남겨주세요!</p>
-	             </div>
-			</c:otherwise>
-			</c:choose>
-            <div class="paging_area">
-                페이징 영역
-            </div>
-            </div>
-        </section>
+        <main id="contents">
+	        <div id="contents_top_area" class="cal_h100">
+	            <br><span style="font-size: large; font-weight: bold;padding-top: 10px;">멘토링 후기</span><span>(${maps.total_count})</span>
+	        </div>
+        	<section id="section">
+            	<div id="sidebar_left">
+	                <ul id="sidebar_ul">
+	                    <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="Qna.do">질문과 답변</a></li>
+	                    <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="Review.do">수강평</a></li>
+	                    <li style="padding: 10px; font-size: small;"><a href="MentoringReview.do">멘토링 후기</a></li>
+	                </ul>
+	            </div>
+	            <div id="content">
+	                <c:choose>
+						<c:when test="${not empty MentoringReviewList }">
+							<c:forEach var="list" items="${MentoringReviewList }" varStatus="loop">
+								<div class="review">
+				                   <div id="box1">
+				                       <div id="star">
+				                           <c:forEach begin="1" end = "${list.grade}" step="1" >
+		                       					<i class="fa fa-star" aria-hidden="true"></i>
+		                       				</c:forEach>
+		                       				<c:forEach begin="${list.grade}" end ="4" step="1" >
+	                       						<i class="fa fa-star-o" aria-hidden="true"></i>
+		                       				</c:forEach>
+				                       </div>
+				                       <br><br>
+				                       <p>${list.content}</p><br><br>
+				                       <p id="bottom">작성자 : ${list.writer }</p>
+				                   </div>	                   
+					              </div>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<div class="question" style="text-align: center; padding: 40px; border-bottom: 1px solid #ccc;">
+			                 	<p>아직 관련 글이 없습니다. 첫 글을 남겨주세요!</p>
+				            </div>
+						</c:otherwise>
+					</c:choose>
+		            <div class="paging_area">
+		                ${maps.paging }
+		            </div>
+            	</div>
+        	</section>
+        </main>
         <%@ include file="../common/footer.jsp" %>
     </div>
+    
 </body>
 </html>

@@ -46,7 +46,7 @@ public class ReviewDAO extends JDBConnect {
 		sb.append("SELECT * ");
 		sb.append("	FROM tbl_review");
 		sb.append(" ORDER BY idx DESC ");
-		sb.append(" limit " + map.get("page_skip_cnt") + ", 4");
+		sb.append(" limit " + map.get("page_skip_cnt") + ", " + map.get("page_size"));
 
 		
 		try {
