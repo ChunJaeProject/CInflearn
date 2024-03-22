@@ -11,6 +11,7 @@
  <style>
       #section {
           width: 1200px;
+          height:1000px;
           padding-top: calc(var(--header-height) + 50px) ;
           margin: 0 auto;
       }
@@ -31,7 +32,7 @@
                 <span style="vertical-align: top; color: red;">*</span> 
                 <textarea id="content" name="content" maxlength="3000" style="width:700px; height:400px " placeholder="-학습 관련 질문을 남겨주세요. 상세히 작성하면 더 좋아요!&#13;&#10-먼저 유사한 질문이 있었는지 검색해보세요.&#13;&#10-서로 예의를 지키며 존중하는 문화를 만들어가요."
                 ></textarea><br><br>
-                <div id ="btn">
+                <div id ="btnDiv">
                     <input type="reset" id="btn_reset" name="btn_reset" value="취소">&nbsp;
                     <input type="submit" id="btn_submit" name="btn_submit" value="등록">
                 </div>
