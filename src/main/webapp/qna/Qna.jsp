@@ -90,7 +90,7 @@
                  	<p>아직 관련 글이 없습니다. 첫 글을 남겨주세요!</p>
 	             </div>
 			</c:otherwise>
-			</c:choose>
+			</c:choose>	
                 
             <div class="paging_area">
                 ${maps.paging}

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../css/common/base.css">
     <link rel="stylesheet" href="../css/qna/qnaDetail.css">
     <link rel="stylesheet" href="../css/common/frame.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <style>
 		#section {
 		    width: 900px;
@@ -24,13 +25,42 @@
 		    padding-top: calc(var(--header-height) + 20px) ;
 		    margin: 0 auto;
 		}
+		.commentList{
+			height:80px;
+			width:500px;
+			border :1px solid gray;
+			padding :10px;
+			border-radius:10px;
+			}
+			p{
+			width: 200px;
+			}
+			#btn_delete {
+				width: 80px;
+			    height: 35px;
+			    background-color: darkgrey;
+			    color: #fff;
+			    border: none;
+			    border-radius: 8px;
+			}
+			#btn_update {
+				width: 100px;
+			    height: 35px;
+			    background-color: #1dc078;
+			    color: #fff;
+			    border: none;
+			    border-radius: 8px;
+			}
+			#btn_write input:active {
+				color : #ccc;
+			}
     </style>
 </head>
 <body>
     <div id="container">
         <%@ include file="../common/header.jsp" %>
         <div id="Writer">
-                <h4>작성자 닉네임</h4><br>
+                <h4>닉네임</h4><br>
                 <p style="font-size: small; color:darkgray; font-weight: bold;">작성한 질문수 (개수)</p><br>
                 <img src="../assets/image/check.png" style="width: 20px;">&nbsp;<span style="color:dimgrey; font-weight: bold;">해결 여부</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>${QnADetail.solution_state }</span><br>
                 <input type="button" id="btn_go" name="btn_go" value="목록으로">
@@ -43,55 +73,60 @@
                 </div>
                 <div id="box1">
                     <div id="qContent">
-                        <form id="likeFrm" name="likeFrm"  action="../qna/delete.do">
-							<input type="hidden" name="no" value="${params.no}"/>
+                        <form id="likeFrm" name="likeFrm"   >
+							<input type="hidden" name="no" value="${params.idx}"/>
                             <input type="image" src="../assets/image/like.png" id="btn_like" name="btn_like" alt="좋아요" onclick="count('plus')"><br><br>   
                             <div id="result">0</div><br>   
                             <input type="image" src="../assets/image/hate.png" id="btn_hate" name="btn_hate" alt="싫어요" onclick="count('minus')"><br>    
-                        	<input type="button" id="btn_delete" name="btn_delete" value="삭제" >
+                        	
                         </form>
                         <p>${params.question_content }</p>             
                     </div>
                     <div id="box2">
                         <input type="image" src="../assets/image/uncheck.png" id="btn_check" name="btn_check" alt="해결" style="margin-right: 20px;">
                         <div class="qTag" style="margin-right: 600px; margin-top: 5px;"><span>${QnADetail.question_hashtag }</span></div><br>
-                        <div style="margin-top: 5px;"><input type="button" name ="btn_update"  id="btn_update" value="수정하기">&nbsp;|&nbsp;
+                        <div id ="btn_write" style="margin-top: 5px;">
+                        <input type="button" name ="btn_update"  id="btn_update" value="수정하기">&nbsp;|&nbsp;
+                        <input type="button" id="btn_delete" name="btn_delete" value="삭제" >
                         </div>
                     </div>
                 </div>
             </div>
             <div id="answer">
-            	<span style="font-weight: bold;">답변</span><span style="color:#1dc078 ;">(개수)</span><br><br>
+            	<form name = "commentSubmit"  id="commentSubmit" method="post" action="../qna/comment.do?no=${params.idx }">
+        
+            	<span style="font-weight: bold;">답변</span><span style="color:#1dc078 ;"> 개수 : ${params.total_count}</span><br><br>
 	            <input type="text" id="answerWrite" name="answerWrite" placeholder="답변을 작성해보세요." maxlength="300">
 	            <input type="submit" id="btn_answer" name="btn_answer" value="댓글 등록"><br><br>
-                <form>
-                <c:choose>
-				<c:when test="${not empty QnAList }">
-					<c:forEach var="list" items="${QnAList }" varStatus="loop">
-	                    <div class="aContent">
-	                        <p><b>답변자 닉네임</b>&nbsp;&nbsp;<span id="time">작성시간</span></p><br>
-	                        <p>댓글내용 : ${QnAList.answer}</p>
-	                    </div>
-	                    <div class="aContent">
-	                        <p><b>질문자 닉네임</b>&nbsp;&nbsp;<span id="person">질문자</span>&nbsp;<span id="time">작성시간</span></p><br>
-	                        <p>댓글내용</p>
-	                    </div>
-					</c:forEach>
-				</c:when>
-				<c:otherwise>
-					<div class="aContent" style="text-align: center; padding: 40px;">
-	                       <p>답변을 기다리고 있는 질문이에요.</p>
-	                       <p>첫번째 답변을 남겨보세요!</p>
-	                </div>
-				</c:otherwise>
-				</c:choose>
-                </form>
+	            </form>
+	            <div class="commentList">
+	           <c:forEach var="dto" items="${commList}" varStatus="status">
+                <div class="userInfo">
+                
+               <span class="user"> <i class="fa fa-user" aria-hidden="true"></i>   ${dto.email} &nbsp;   </span> <span class="reg" style="margin-right:10px;"> ${dto.reg_date } </span><Br><br>
+      			<span class= "commetValue">    ${dto.content} </span>
+      			</div>
+
+
+    </c:forEach>
+	        
+	            </div>
+	         
+                
             </div>
         </section> 
         <%@ include file="../common/footer.jsp" %>
     </div>
 </body>
 <script>
+	//댓글 등록
+/* 	let commetReg = document.querySelector("#btn_answer");
+	commetReg.addEventListenr("click",function(e){
+		location.href="../qna/comment.do?no=${params.idx}";
+
+		
+	})
+ */
 	//해결 체크 버튼
     let check = document.querySelector("#btn_check");
     let flag = 1;
@@ -129,10 +164,10 @@
     //삭제 기능
     document.querySelector("#btn_delete").addEventListener("click", function(e) {
 		alert("글을 삭제하시겠습니까?");
-		console.log(${QnADelete.no});
+		window.location = "../qna/delete.do?no=${params.idx}"; 
 		//location.href = "delete.do?no="+${QnADelete.no};
-		
-		document.likeFrm.submit();
+
+	/* 	 document.likeFrm.submit();  */
 	}, false);
     
     document.querySelector("#btn_update").addEventListener("click",function(e){
