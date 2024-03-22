@@ -70,11 +70,11 @@ text-decoration: underline}
            	
             <label for="password" class="form_email">비밀번호</label><br>
        
-            <input type="password" name ="password" id="password" class="password" placeholder="*******"><i class="fa fa-eye fa-lg"  id ="mask1"style="cursor:pointer; margin-left:10px;"></i><br><br><br>
+            <input type="password" name ="password" id="password" class="password" placeholder="*******"><i class="fa fa-eye fa-lg"  id ="mask3"style="cursor:pointer; margin-left:10px;"></i><br><br><br>
             
             <label for="passwordConfirm" class="form_emailConfirm">비밀번호 확인</label><br>
        
-            <input type="password" id="passwordConfirm" class="form_emailConfirm" placeholder="*******"><i class="fa fa-eye fa-lg"  id ="mask2"style="cursor:pointer; margin-left:10px;"></i>
+            <input type="password" id="passwordConfirm" class="form_emailConfirm" placeholder="*******"><i class="fa fa-eye fa-lg"  id ="mask4"style="cursor:pointer; margin-left:10px;"></i>
           	<p id="passwordMessage"></p>
             <input type="button"   name ="sign_button" id = "sign_button" value="회원가입"> <br><br>
     
@@ -90,11 +90,13 @@ text-decoration: underline}
 </body>
  <Script>
  
- const mask1 = document.querySelector("#mask1");
- const mask2 = document.querySelector("#mask2");
+ const mask3 = document.querySelector("#mask3");
+ const mask4 = document.querySelector("#mask4");
+ 
  const pwd1 = document.querySelector("#password");
  const pwdCfrm = document.querySelector("#passwordConfirm");
- mask1.addEventListener("click",function(e){
+ 
+ mask3.addEventListener("click",function(e){
  	if(pwd1.type==="password"){
  	pwd1.type="text";
  	}
@@ -104,7 +106,7 @@ text-decoration: underline}
 
  	});
  
- mask2.addEventListener("click",function(e){
+ mask4.addEventListener("click",function(e){
 	 	if(pwdCfrm.type==="password"){
 	 		pwdCfrm.type="text";
 	 	}
