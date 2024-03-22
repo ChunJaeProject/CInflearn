@@ -50,17 +50,17 @@
             </div>
             <div id="content">
                 <ul id="content_ul" >
-                    <li><a href="#">전체(${maps.total_count })</a></li>
-                    <li><a href="#">미해결(${maps.unsolve_count })</a></li>
-                    <li><a href="#">해결됨(${maps.solve_count })</a></li>
+                    <li><a href="Qna.do">전체(${maps.total_count })</a></li>
+                    <li><a href="Qna.do?solve=N">미해결(${maps.unsolve_count })</a></li>
+                    <li><a href="Qna.do?solve=Y">해결됨(${maps.solve_count })</a></li>
                 </ul>
                 <hr>
             <div id ="search">
-                <form>
-                <input type="text" id="search_title" name="search_title" value="" maxlength="100" placeholder=" 궁금한 질문을 검색해보세요 !">
-                <input type="submit" id="btn_search" name="btn_search" value="검색"><br>
-                <input type="text" id="search_hash" name="search_hash" value="" maxlength="100" placeholder=" # 태그로 검색해보세요 !">
-                <input type="reset" id="btn_reset" name="btn_reset" value="초기화"><br>
+                <form action =>
+	                <input type="text" id="search_title" name="search_title" value="" maxlength="100" placeholder=" 궁금한 질문을 검색해보세요 !">
+	                <input type="submit" id="btn_search" name="btn_search" value="검색"><br>
+	                <input type="text" id="search_hash" name="search_hash" value="" maxlength="100" placeholder=" # 태그로 검색해보세요 !">
+	                <input type="reset" id="btn_reset" name="btn_reset" value="초기화"><br>
                 </form>
             </div>
             <ul id="order_ul">
@@ -98,7 +98,7 @@
 			</c:choose>
                 
             <div class="paging_area">
-                페이징 영역
+                ${maps.paging}
             </div>
             </div>
             <div id="sidebar_right">

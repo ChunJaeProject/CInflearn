@@ -96,10 +96,18 @@ public class QnADAO extends JDBConnect {
 		//sb.append("SELECT no, question_title, question_content, question_hashtag");
 		//sb.append(", answer, solution_state, like, reg_date, member_no");
 	
-		sb.append("SELECT * ");
+		sb.append("SELECT *");
 		sb.append("	FROM tbl_qna");
-		
-		
+		sb.append(" WHERE 1 = 1");
+		if(map.get("solve")!=null) {
+			sb.append(" AND solution_state = " + "'" + map.get("solve") +"'");
+		}
+		if(map.get("search_word")!=null) {
+			sb.append(" AND question_title LIKE '%" + map.get("search_word") + "%'");
+		}
+		sb.append(" ORDER BY no DESC ");
+		sb.append(" limit " + map.get("page_skip_cnt") + ", " + map.get("page_size"));
+		System.out.println(sb.toString());
 		//sb.append("SELECT email FROM tbl_member AS tm");
 		//sb.append(" INNER JOIN tbl_qna AS tq ON tm.member_no = tq.member_no");
 		

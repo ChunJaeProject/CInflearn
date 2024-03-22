@@ -46,11 +46,19 @@
 						<div class="review">
 		                   <div id="box1">
 		                       <div id="star">
-		                           <i class="fa fa-star" aria-hidden="true"></i>
-		                           <i class="fa fa-star" aria-hidden="true"></i>
-		                           <i class="fa fa-star" aria-hidden="true"></i>
-		                           <i class="fa fa-star" aria-hidden="true"></i>
-		                           <i class="fa fa-star-o" aria-hidden="true"></i>
+		                       		<c:forEach begin="1" end = "${list.star}" step="1" >
+		                       			<i class="fa fa-star" aria-hidden="true"></i>
+		                       		</c:forEach>
+		                       		<c:forEach begin="${list.star}" end ="4" step="1" >
+		                       			<i class="fa fa-star-o" aria-hidden="true"></i>
+		                       		</c:forEach>
+		                       			
+		                       
+<!-- 		                           <i class="fa fa-star" aria-hidden="true"></i> -->
+<!-- 		                           <i class="fa fa-star" aria-hidden="true"></i> -->
+<!-- 		                           <i class="fa fa-star" aria-hidden="true"></i> -->
+<!-- 		                           <i class="fa fa-star" aria-hidden="true"></i> -->
+<!-- 		                           <i class="fa fa-star-o" aria-hidden="true"></i> -->
 		                       </div>
 		                       <br><br>
 		                       <p>${list.content}</p><br><br>

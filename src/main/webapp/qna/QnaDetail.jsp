@@ -48,7 +48,7 @@
                             <input type="image" src="../assets/image/like.png" id="btn_like" name="btn_like" alt="좋아요" onclick="count('plus')"><br><br>   
                             <div id="result">0</div><br>   
                             <input type="image" src="../assets/image/hate.png" id="btn_hate" name="btn_hate" alt="싫어요" onclick="count('minus')"><br>    
-                        <input type="button" id="btn_delete" name="btn_delete" value="삭제" >
+                        	<input type="button" id="btn_delete" name="btn_delete" value="삭제" >
                         </form>
                         <p>${params.question_content }</p>             
                     </div>
