@@ -1,3 +1,4 @@
+<%@page import="java.util.Arrays"%>
 <%@page import="dto.MentoringDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
@@ -130,6 +131,16 @@
 </head>
 <body>
 <%
+	String search_value = request.getParameter("search_word");
+	search_value = search_value != null ? search_value: ""; 
+// 	String[] category_value = null;
+// 	category_value = request.getParameterValues("cate");
+	
+// 	String[] category_check = new String[10];
+	
+// 	for(int i=0;i<category_value.length;i++){
+// 		category_check[Integer.parseInt(category_value[i])] = "checked";
+// 	}
 	
 %>
 <div id="container">
@@ -150,7 +161,7 @@
             <section id="sidebar_area">
                 <aside id="sidebar">
                     <form action="" id="searchForm" name="searchForm">
-                        <input type="text" name="search_word" id="search_word" value="">
+                        <input type="text" name="search_word" id="search_word" value="<%=search_value%>">
                         <input type="submit" id="searchBtn" value="검색">
                         <select id="sortList">
                             <option >최근 등록순</option>

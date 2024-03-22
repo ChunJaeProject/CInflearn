@@ -24,7 +24,7 @@ public class MentoringController extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("123");
+		
 		int total_count = 0;
 		int page_no = 1;
 		int page_size = 12;
@@ -83,7 +83,7 @@ public class MentoringController extends HttpServlet {
 		String pagingArea = "";
 		String pageUri = "/ChunjaeProject/mentor/mentor.do?";
 		if(search_word != null ) {
-			pageUri = pageUri + search_word +"&";
+			pageUri = pageUri + "search_word="  + search_word +"&";
 		}
 		if(category != null) {
 			String categoryStr = "";
