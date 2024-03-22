@@ -63,8 +63,8 @@
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<div class="question" style="text-align: center; padding: 40px; border-bottom: 1px solid #ccc;">
-			                 	<p>아직 관련 글이 없습니다. 첫 글을 남겨주세요!</p>
+							<div class="question" style="text-align: center; padding: 40px; ">
+			                 	<p style="border-bottom: 1px solid #ccc;">아직 관련 글이 없습니다. 첫 글을 남겨주세요!</p>
 				            </div>
 						</c:otherwise>
 					</c:choose>
