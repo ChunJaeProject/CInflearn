@@ -1,16 +1,15 @@
 package dto;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class LectureReviewDTO {
 
-	private int idx;
+	private int lecture_no;
 	private String writer;
 	private Date reg_date;
 	private String content;
 	private int star;
-	private int lecture_no;
+	private String image ;
 	private int member_no;
 	
 	public LectureReviewDTO(){}
@@ -18,13 +17,13 @@ public class LectureReviewDTO {
 	 * @return the no
 	 */
 	public int getNo() {
-		return idx;
+		return lecture_no;
 	}
 	/**
 	 * @param no the no to set
 	 */
-	public void setNo(int idx) {
-		this.idx = idx;
+	public void setNo(int lecture_no) {
+		this.lecture_no = lecture_no;
 	}
 	/**
 	 * @return the writer
@@ -97,6 +96,18 @@ public class LectureReviewDTO {
 	 */
 	public void setMember_no(int member_no) {
 		this.member_no = member_no;
+	}
+	/**
+	 * @return the image
+	 */
+	public String getImage() {
+		return image;
+	}
+	/**
+	 * @param image the image to set
+	 */
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 }
