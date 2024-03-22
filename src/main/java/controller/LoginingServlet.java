@@ -27,14 +27,13 @@ public class LoginingServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("들어옴");
+
 		HttpSession session = req.getSession();
 		
 		String id = req.getParameter("email");
 		String pwd = req.getParameter("password");
 		
-		System.out.println(id);
-		System.out.println(pwd);
+
 
 		LoginDAO dao = new LoginDAO() ;
 		LoginDTO dto = dao.getMemberInfo(id,pwd);
@@ -44,12 +43,12 @@ public class LoginingServlet extends HttpServlet {
 		if(dto != null && dto.getEmail() !=null){
 			session.setAttribute("userId",dto.getEmail()); //성공한 변수를 모든 페이지에 사용하려고 session객체를 사용
 	
-			resp.sendRedirect("../mainPage/New.jsp");
+			resp.sendRedirect("../mainPage/Main.jsp");
 		}
 
 		else{
-			req.setAttribute("errMsgPwd","비밀번호 오류입니다.");
-			req.getRequestDispatcher("../mainPage/New.jsp").forward(req,resp);
+			req.setAttribute("loginError", "아이디와 비밀번호가 맞지 않습니다.");
+			req.getRequestDispatcher("../mainPage/Main.jsp").forward(req,resp);
 		}
 	}
 

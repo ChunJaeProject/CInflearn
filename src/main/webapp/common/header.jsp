@@ -119,7 +119,11 @@
         text-align: center
         }
 </style>
+ <link rel="stylesheet" href="../css/common/base.css">
+    <link rel="stylesheet" href="../css/qna/qna.css">
+    <link rel="stylesheet" href="../css/common/frame.css">
 </head>
+
 <body>
 <%
 
@@ -140,16 +144,12 @@ String id =((String) session.getAttribute("userId") != null ? (String) session.g
             </nav>
         </div>
         <div id="headerBtnBox">
-
+			<span><%=id %>님 환영합니다</span>
 			<button class="login_btn"  value = "<%=id.equals("고객") ? "로그인" : "로그아웃" %>"><%= id.equals("고객") ? "로그인" : "로그아웃" %></button>
 			
+			<button class="out_btn"  value = "<%=id.equals("고객") ? "회원가입" : "회원탈퇴" %>"><%= id.equals("고객") ? "회원가입" : "회원탈퇴" %></button>
 
-            <button>회원가입</button>
-      <% if (!id.equals("고객")){
-      
-      %>
-            <button class ="out_btn">회원탈퇴</button>
-  <% }%>
+
         </div>
     </header>
 <div id="login_popupContainer"> 
@@ -164,14 +164,17 @@ String id =((String) session.getAttribute("userId") != null ? (String) session.g
             
                 <form class="sign_form"  name ="sign_form" method="post"  action="../login/loging.do" > 
                     <div class="form_input_block"> 
-                        <input type="email"  name = "email" placeholder="이메일" id="form_email" class="form_email" >  
+                        <input type="text"  name = "email" placeholder="이메일" id="form_email" class="form_email" >  
                         <input type="password"  name ="password" id = "form_password" class="form_password" value="" placeholder="비밀번호">  
                     </div> 
                 
                     <div> 
                         <button class="form_login ">로그인</button> 
                     </div> 
-                    <button class="form_signup" >회원가입</button> 
+                     <% if(request.getAttribute("loginError") != null) { %>
+        <p style="color:red;"><%= request.getAttribute("loginError") %></p>
+    <% } %>
+                    
                 </form>
             </div> 
         </div> 
@@ -198,8 +201,24 @@ String id =((String) session.getAttribute("userId") != null ? (String) session.g
         </div>
      </div>
     
-    <Script>
-    	const menu_link = ["../mentor/mentor.do"];
+        <Script>
+        const menu_link = ["../mentor/mentor.do", "../qna/Qna.do", "../qna/Review.do","../qna/MentoringReview.do"];
+        const menu_li = document.querySelectorAll("#menuUl li");
+        menu_li[0].addEventListener("click", function(e){
+        	window.location.href = menu_link[0];
+        });
+        menu_li[1].addEventListener("click", function(e){
+        	window.location.href = menu_link[1];
+        });
+        menu_li[2].addEventListener("click", function(e){
+        	window.location.href = menu_link[2];
+        });
+        menu_li[3].addEventListener("click", function(e){
+        	window.location.href = menu_link[3];
+        });
+        document.getElementById("logo").addEventListener("click",function(e){
+        	window.location.href = "../mainPage/Main.do"
+        });
         let login_popupContainer = document.getElementById("login_popupContainer"); 
         let out_popupContainer = document.getElementById("out_popupContainer"); 
         let member_out  = document.querySelector(".member_out");
@@ -210,29 +229,34 @@ String id =((String) session.getAttribute("userId") != null ? (String) session.g
         
         let login_btn = document.querySelector(".login_btn");
         let out_btn =document.querySelector(".out_btn");
-        const menu_li = document.querySelectorAll("#menuUl li");
-        menu_li[0].addEventListener("click", function(e){
-        	window.location.href = menu_link[0];
-        });
-        
-        
-        
-       if(out_btn){
-        out_btn.addEventListener("click",function(e){ 
-        	out_popupContainer.style.display="block"; 
-        });  
-       }
        
+        
+        //로그인,로그아웃
         login_btn.addEventListener("click",function(e){ 
 
 			if(login_btn.value ==="로그인"){
     	        login_popupContainer.style.display="block"; 
   				}
+			
 			else{
-				console.log("로그인완료");
-				location.href="/login/logout.do";
+				
+				location.href="../login/logout.do";
 			}
         });  
+        
+        //회원가입, 회원탈퇴
+       
+            out_btn.addEventListener("click",function(e){ 
+            	if(out_btn.value==="회원가입"){
+            		location.href="../login/regist.do";
+            	}
+            	else{
+            	
+            		out_popupContainer.style.display="block"; 
+            	}
+            	
+            });  
+        
       
      
         document.getElementById("closeLoginPopup").addEventListener("click",function(e){ 
@@ -243,5 +267,6 @@ String id =((String) session.getAttribute("userId") != null ? (String) session.g
             out_popupContainer.style.display="none"; 
         });
     </Script>
+    
 </body>
 </html>

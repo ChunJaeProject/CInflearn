@@ -21,13 +21,13 @@ String id = request.getParameter("email");
 
                 반가워요. 인프런에 오신것을 환영해요🖐🏻<br>
                 앞으로 인프런과 함께 차근 차근 성장해봐요!!<br>
-                인프런은 000님의 성장을 응원합니다!<br><br>
+                인프런은 회원님의 성장을 응원합니다!<br><br>
 
                 다시 한번 가입해주셔서 감사합니다. 🙇🏻<br><br>
 
         </div>
-       <div class="toButton">
-        <button class="toMain">인프런 이용하러가기</button>
+      <div class="toButton">
+        <button class="toMain" onclick="location.href='../mainPage/Main.do'">인프런 이용하러가기</button>
        </div>
     </div>
     </div>
