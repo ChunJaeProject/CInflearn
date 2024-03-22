@@ -34,6 +34,7 @@ public class QnaListServlet extends HttpServlet {
 
 		String solve = req.getParameter("solve");
 		String search_word = req.getParameter("search_title");
+		
 		Map<String, Object> maps = new HashMap<String, Object>();
 		/*
 		 * String search_title = req.getParameter("search_title"); String search_hash =
@@ -111,9 +112,10 @@ public class QnaListServlet extends HttpServlet {
 			pageUri = pageUri + "solve=" +solve + "&";
 		}
 		if(search_word !=null) {
-			pageUri = pageUri + "search_title=" + search_word + "&";
-			
+			pageUri = pageUri + "search_title=" + search_word + "&";	
 		}
+		
+		
 		pagingArea = CommonPage.pagingArea(total_page, page_no, page_block_start, page_block_end, pageUri );
 		
 		maps.put("paging", pagingArea);
