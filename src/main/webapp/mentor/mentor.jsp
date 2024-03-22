@@ -4,7 +4,6 @@
 <%@page import="java.util.Map"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="dao.MentoringDAO"%>
-<%@ include file="../common/top.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
@@ -114,10 +113,6 @@
 		font-weight: bold;
     	font-size: medium;
 	}
-	#contents_top_area {
-        background-color: rgb(201, 194, 194);
-        border: 1px solid #ccc;
-    }
     #contents_top_Btn_Box {
     	margin-right : 10px;
     }
@@ -130,6 +125,9 @@
     <link rel="stylesheet" href="../css/mentor/mentoring.css">
 </head>
 <body>
+<%@ include file="../common/header.jsp" %>
+<%@ include file="../common/top.jsp" %>
+
 <%
 	String search_value = request.getParameter("search_word");
 	search_value = search_value != null ? search_value: ""; 
@@ -144,11 +142,9 @@
 	
 %>
 <div id="container">
-    <%@ include file="../common/header.jsp" %>
-    <!-- jsp에서 include해서 사용 -->
     <main id="contents">
-        <section id="contents_top_area" class="cal_h100">
-            <div  id="contents_top_area_text">
+        <section id="contents_top_area_wrap" class="cal_h200">
+            <div  id="contents_top_area">
             	<span style="font-size: large; font-weight: bold;">멘토링</span><br>
             	<span>업계 선배, 동료들과 만나 서로의 인사이트를 나누어 보아요! 더 빨리, 더 멀리 갈 수 있어요!</span>
             	<div id="contents_top_Btn_Box">
@@ -194,42 +190,31 @@
                 	<br>
                     <p style="text-align: left;">&nbsp;&nbsp;총 게시글 00<p>
                 </div>
-                <div id="mentoring_contents_area" class="grid">
-                
-<!--                     <article class="mentoring_content_wrap h250">    -->
-<!--                         <div class="mentoring_content"> -->
-<!--                             <p class="mentoring_title">멘토링명</p> -->
-<!--                             <p class="mentoring_job_title">직무</p> -->
-<!--                             <p class="mentoring_career">겅력</p> -->
-<!--                             <p class="mentoring_now_job">현직</p> -->
-<!--                             <p class="mentoring_member_name">멘토실명</p> -->
-<!--                             <p hidden>멘토링 소개</p> -->
-<!--                         </div> -->
-<!--                     </article> -->
-                    <c:choose>
-                    	<c:when test= "${not empty mentoringList}">
-                    		<c:forEach var="list" items="${mentoringList}" varStatus="loop">
+                   <c:choose>
+                   	<c:when test= "${not empty mentoringList}">
+	                   	<div id="mentoring_contents_area" class="grid">
+	                   		<c:forEach var="list" items="${mentoringList}" varStatus="loop">
 	                    		<article class="mentoring_content_wrap h250">	
 	                    			<div class="mentoring_content">
 	                    				<br><br>
 			                            <p class="mentoring_title" style="font-weight:bold; font-size:large;">${list.mentoring_name }</p><br><br>
-			                            <p class="mentoring_job_title">현직 : ${list.job }</p><br>
-			                            <p class="mentoring_career">경력 : ${list.career }</p><br>
-			                            <p class="mentoring_now_job">직무 : ${list.job_title }</p><br>
+			                            <p class="mentoring_job_title">현직 : ${list.job}</p><br>
+			                            <p class="mentoring_career">경력 : ${list.career}</p><br>
+			                            <p class="mentoring_now_job">직무 : ${list.job_title}</p><br>
 			                            <p>---------------------</p>
-			                            <p class="mentoring_member_name">${list.member_name }</p>
+			                            <p class="mentoring_member_name">${list.member_name}</p>
 			                            <p hidden>${list.mentoring_intro }</p>
 			                            <p hidden>${list.member_no}</p>
 	                        		</div>
 	                        	</article>
-                    		</c:forEach>
-                    	</c:when>
-                    	<c:otherwise>
-                    		<article class="mentoring_content_wrap h250">
-                    		</article>
-                    	</c:otherwise>
-                    </c:choose>
-                </div>
+	                   		</c:forEach>
+	                   	</div>
+                   	</c:when>
+                   	<c:otherwise>
+               			<div class="no_result">해당하는 멘토링이 없습니다🥹</div>
+                   	</c:otherwise>
+                   </c:choose>
+
                 <div class="paging_area">
                     ${params.paging}
                 </div>
@@ -237,11 +222,12 @@
         </div>
         
         <div id="popupContainer">
-            <div id="popup">
-                <span id="closePopup" class="close-btn">×</span>
-
+            <div id="closePopup">
+               	<span class="close_btn">×</span>
                 <div id="popup_create" class="popup_contents">
-                    <div class="popupTitle"><h2 style="border-bottom : 2px solid #1dc078; font-size:large; padding:5px;">멘토링 개설 신청서</h2></div>
+                    <div class="popupTitle">
+                    	<h2 style="border-bottom : 2px solid #1dc078; font-size:large; padding:5px;">멘토링 개설 신청서</h2>
+                    </div>
                     <form action="/ChunjaeProject/mentor/mentoringRegist.do" id="mentoring_sign_form" name="metoring_sign_form" method="post">
                         <ul>
                         		<p id="member_no" name="member_no" value="${session.member_no }" hidden></p>
@@ -280,7 +266,7 @@
                                 </select>
                             <br><br>
                             <li><p>멘토링 기간 <span class="star">*</span></p></li><br>
-                                <input name = "startDate" id = "endDate" type="date"> ~ <input name="endDate" id= "endDate" type="date">
+                                <input name = "startDate" id = "startDate" type="date"> ~ <input name="endDate" id= "endDate" type="date">
                             <br><br>
                             <li><p>멘토링 명 <span class="star">*</span></p></li><br>
                                 <input class="h30 w400" type="text" name="mentoringName" id="mentoringName" maxlength="100" placeholder="100자 이내로 입력해주세요">
@@ -294,11 +280,11 @@
                 <div id="popup_infor" class="popup_contents">
                     <div class="popupTitle"><h2 style="border-bottom : 2px solid #1dc078; font-size:large; padding : 15px;">멘토링 소개</h2></div>
                     <div id="curr_mentoringInfo">
-                        <p id="popupMentorName"></p>
-                        <p id="popupMentoringName"></p>
-                        <p id="popupMentorJob"></p>
-                        <p id="popupMentorCarear"></p>
-                        <p id="popupMentoringInfor"></p>
+                        <p id="popupMentorName">${list.member_name }</p>
+                        <p id="popupMentoringName">${list.mentoring_name}</p>
+                        <p id="popupMentorJob">${list.job_title }</p>
+                        <p id="popupMentorCarear">${list.career}</p>
+                        <p id="popupMentoringInfor">${list.mentoring_intro}</p>                 
                     </div>
                     <div id="popup_infor_sign">
                         <button id="popup_infor_sign_Btn">신청하기</button>
@@ -344,26 +330,44 @@
     for(i=0;i<contents.length;i++){
         contents[i].addEventListener("click",function(e){
             popupContainer.style.display="block";
-            for(j=0;j<popups.length;j++)
-                popups[j].style.display="none";
-            popups[1].style.display="block";
-            let mentoringContents = this.children;
-            let curr_mentoringInfo = document.querySelectorAll('#curr_mentoringInfo p');
-            curr_mentoringInfo[0].textContent = mentoringContents[4].textContent;
-            curr_mentoringInfo[1].textContent = mentoringContents[0].textContent;
-            curr_mentoringInfo[2].textContent = mentoringContents[3].textContent;
-            curr_mentoringInfo[3].textContent = mentoringContents[2].textContent;
-            curr_mentoringInfo[4].textContent = mentoringContents[5].textContent;
-        });
+            for(j=0;j<popups.length;j++) {
+            	popups[j].style.display="none";
+                popups[1].style.display="block";
+                let mentoringContents = this.children;
+                
+
+                let curr_mentoringInfo = document.querySelectorAll('#curr_mentoringInfo p');
+                
+                
+                for (let i = 0; i < mentoringContents.length; i++) {
+                	console.log("mentoringContents: " + mentoringContents[i].textContent);
+                }
+                
+                for (let i = 0; i <curr_mentoringInfo.length; i++) {
+                	console.log("curr_mentoringInfo:" + curr_mentoringInfo[i].textContent)
+                }
+                
+                
+                
+                
+                curr_mentoringInfo[0].textContent = mentoringContents[2].textContent;
+                curr_mentoringInfo[1].textContent = mentoringContents[5].textContent;
+                curr_mentoringInfo[2].textContent = mentoringContents[7].textContent;
+                curr_mentoringInfo[3].textContent = mentoringContents[9].textContent;
+                curr_mentoringInfo[4].textContent = mentoringContents[13].textContent;
+            }
+            
+        }, false);
     }
     document.getElementById("closePopup").addEventListener("click",function(e){
         popupContainer.style.display="none";
     });
     document.getElementById("mentoringCreate_Btn").addEventListener("click",function(e){
-        for(j=0;j<popups.length;j++)
-                popups[j].style.display="none";
-        popupContainer.style.display="block";
-        popups[0].style.display="block";
+        for(j=0;j<popups.length;j++) {
+            popups[j].style.display="none";
+            popupContainer.style.display="block";
+            popups[0].style.display="block";
+        }
     });
     document.getElementById("popup_infor_sign_Btn").addEventListener("click",function(e){
         for(j=0;j<popups.length;j++)

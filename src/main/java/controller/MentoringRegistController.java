@@ -20,7 +20,7 @@ public class MentoringRegistController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String carear = req.getParameter("carear");
+		String career = req.getParameter("career");
 		String job = req.getParameter("job");
 		String email = req.getParameter("email");
 		String name = req.getParameter("name");
@@ -33,7 +33,7 @@ public class MentoringRegistController extends HttpServlet {
 		
 		MentoringDTO dto = new MentoringDTO();
 		
-		dto.setCareer(carear);
+		dto.setCareer(career);
 		dto.setJob(job);
 		dto.setMember_email(email);
 		dto.setMember_name(name);
