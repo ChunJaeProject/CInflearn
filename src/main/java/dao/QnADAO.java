@@ -1,10 +1,12 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
 import common.JDBConnect;
+import dto.CommentDTO;
 import dto.QnADTO;
 import jakarta.servlet.ServletContext;
 
@@ -147,8 +149,8 @@ public class QnADAO extends JDBConnect {
 		return list;	
 	}
 	
-	//게시판 게시글 조회
-	 public QnADTO QnADetail(int no) {
+	//게시판 게시글,댓글조회
+	public QnADTO QnADetail(int no) {
 		 QnADTO dto = new QnADTO();
 		 
 		 StringBuilder sb = new StringBuilder();

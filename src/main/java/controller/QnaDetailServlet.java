@@ -8,10 +8,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import common.CommonUtil;
+import dao.CommentDAO;
 import dao.QnADAO;
+import dto.CommentDTO;
 import dto.QnADTO;
 
 @WebServlet("/qna/QnaDetail.do")
@@ -21,7 +24,15 @@ public class QnaDetailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int no = CommonUtil.parseInt(req.getParameter("no"));
 		QnADTO QnADetail = new QnADTO();
+		CommentDAO cdao = new CommentDAO();
 		Map<String, Object> params = new HashMap<String,Object>();
+
+		Map<String, Object> cparams = new HashMap<String,Object>(); //댓글파람
+		List<CommentDTO> commList = cdao.commentList(cparams,no);
+	
+		int total_count = cdao.commentCount(params,no); //댓글 수
+		
+		
 		if(no > 0) {
 			QnADAO dao = new QnADAO();
 			QnADetail = dao.QnADetail(no);
@@ -51,10 +62,14 @@ public class QnaDetailServlet extends HttpServlet {
 		params.put("question_hashtag",question_hashtag);
 		params.put("question_content",question_content);
 		params.put("answer",answer);
+		params.put("total_count", total_count);
 			
+		req.setAttribute("commList", commList);
 		req.setAttribute("params", params);
 		req.setAttribute("QnADetail", QnADetail);
 		req.getRequestDispatcher("/qna/QnaDetail.jsp").forward(req, resp);
+
+
 		
 	}
 
