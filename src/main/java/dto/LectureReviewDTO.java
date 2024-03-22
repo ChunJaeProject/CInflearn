@@ -11,6 +11,7 @@ public class LectureReviewDTO {
 	private int star;
 	private String image ;
 	private int member_no;
+	private String lecture_title;
 	
 	public LectureReviewDTO(){}
 	/**
@@ -108,6 +109,18 @@ public class LectureReviewDTO {
 	 */
 	public void setImage(String image) {
 		this.image = image;
+	}
+	/**
+	 * @return the lecture_title
+	 */
+	public String getLecture_title() {
+		return lecture_title;
+	}
+	/**
+	 * @param lecture_title the lecture_title to set
+	 */
+	public void setLecture_title(String lecture_title) {
+		this.lecture_title = lecture_title;
 	}
 	
 }

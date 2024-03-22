@@ -31,6 +31,9 @@
             color:#1dc078;
             font-weight: bold;
         }
+        .qBtn {
+		    margin-left: 500px;
+		}
     </style>
 </head>
 <body>

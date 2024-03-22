@@ -61,6 +61,7 @@ public class ReviewDAO extends JDBConnect {
 				dto.setContent(rs.getString("content"));
 				dto.setStar(rs.getInt("star"));
 				dto.setImage(rs.getString("image"));
+				dto.setLecture_title(rs.getString("lecture_title"));
 				//dto.setLecture_no(rs.getInt("lecture_no"));
 				//dto.setMember_no(rs.getInt("member_no"));
 			

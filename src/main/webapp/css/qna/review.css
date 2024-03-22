@@ -14,12 +14,12 @@
 }
 #section {
     width: 1200px;
-    height: 1005px;    
+    height : 100%;   
     margin : 0 auto;      
 }
 #sidebar_left {
     width: 147px;
-    height: 1000px;
+    height: 1350px; 
     float: left;         
     border: 1px solid #ccc;
     margin: 2px 4px;
@@ -81,11 +81,8 @@
 .review {
     display: grid;
     grid-template-columns: 700px 300px;
-    grid-template-rows: 200px;
+    grid-template-rows: 250px;
     grid-template-areas: "box1 box2";
-}
-#bottom {
-    margin-top: 35px;
 }
 #star {
     font-size: 25px;
