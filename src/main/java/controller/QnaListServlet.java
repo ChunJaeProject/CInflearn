@@ -78,8 +78,10 @@ public class QnaListServlet extends HttpServlet {
 		
 		solve_count = dao.QnASolveCount(maps);
 		unsolve_count = dao.QnAUnsolveCount(maps);
-		List<QnADTO> QnAList = dao.QnAList(maps);
+		maps.put("solve_count", solve_count);
+		maps.put("unsolve_count", unsolve_count);
 		
+		List<QnADTO> QnAList = dao.QnAList(maps);
 		dao.close();
 		
 		String pagingArea = "";
