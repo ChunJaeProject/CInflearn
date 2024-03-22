@@ -39,7 +39,7 @@ public class MemberOut extends HttpServlet {
 		if(result>0  ){
 			session.removeAttribute("userId");
 			req.setAttribute("message", "삭제완료");
-			req.getRequestDispatcher("/login/LeaveMemberComplete.jsp").forward(req, resp);
+			resp.sendRedirect("../mainPage/Main.jsp");
 		
 			dao.close();
 		

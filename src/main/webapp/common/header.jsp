@@ -7,6 +7,7 @@
             height: 1200px; 
             background-color: azure; 
         } 
+      
         #login_popupContainer{
             position: fixed; 
             display: none; 
@@ -42,7 +43,9 @@
             width: 500px; 
             height: 350px;  
             position:absolute; 
-            top:50%; left:50%; 
+            top:50%; 
+            text-align :center;
+            left:50%; 
             transform: translate(-50%,-50%); 
             z-index: 1000; 
             background: #fff; 
@@ -55,6 +58,7 @@
             margin: 0 auto; 
             height: 30px; 
             width: 500px;
+      
         } 
         .close_button svg{ 
             float: right;
@@ -66,6 +70,7 @@
             width: 500px;
         } */
         .header_logo img {
+        	
         	display: block;
         	margin: 0 auto;
         }
@@ -81,11 +86,7 @@
         .form_btn {
         	margin-top: 48px;
         }
-        .form_login{
-            width:300px; 
-            height: 40px;
-            margin: 0 auto 5px;
-        } 
+     
         .form_signup{ 
             margin: 0 auto;
             width: 300px; 
@@ -99,13 +100,15 @@
             width: 100%;
         }   
         #form_email{ 
-            height: 30px; 
+            height: 45px; 
             width:400px; 
+            padding: 10px;
         } 
         #form_password{ 
             margin-top:10px; 
-            height: 30px; 
+            height: 45px; 
             width:400px;
+              padding: 10px;
         } 
         .close-btn { 
             position: absolute; 
@@ -113,15 +116,64 @@
             right: 10px; 
             font-size: 20px; 
             cursor: pointer;
+                  border : none;
+            background:white;
         }
      
         .out_div{
         text-align: center
         }
+        .form_login{
+        width:400px;
+        height:45px;
+        margin-top:10px;
+        color:white;
+        border : none;
+        border-radius :5px;
+        background : rgb(14,192,12);
+        }
+        .header_logo{
+        margin-top:45px;
+        }
+    
+        .password_div{
+        width:450px;
+        margin-left:38px;
+        }
+ 
+        #form_password2{	
+            width:400px;
+        height:45px;
+        margin-top:10px;
+        padding: 5px;
+        }
+        .member_out{
+           width:400px;
+        height:45px;
+        margin-top:10px;
+        background :  rgb(14,192,12);
+        color : white;
+        border : none;
+        border-radius :10px;
+        cursor :pointer;
+        }
+        .form_cancel{
+	         border-radius :10px;
+	         width:400px;
+	         height:45px;
+	         margin-top:10px;
+	         background :  rgb(14,192,12);
+	         color : white;
+	         border : none;
+	         cursor :pointer;
+        }
+        
 </style>
  <link rel="stylesheet" href="../css/common/base.css">
     <link rel="stylesheet" href="../css/qna/qna.css">
     <link rel="stylesheet" href="../css/common/frame.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> 
+    
 </head>
 
 <body>
@@ -158,17 +210,20 @@ String id =((String) session.getAttribute("userId") != null ? (String) session.g
                 <button class="close-btn" id="closeLoginPopup"> X</button> 
             </div>  
             <div class="header_logo"> 
-                <img src="../images/inflearn_logo.png" alt="My Image" width="200px" height="60px"> 
+                <img src="../assets/image/inflearn_logo.png" alt="My Image" width="200px" height="60px"> 
             </div>  
             <div class="sign_div"> 
             
                 <form class="sign_form"  name ="sign_form" method="post"  action="../login/loging.do" > 
                     <div class="form_input_block"> 
-                        <input type="text"  name = "email" placeholder="이메일" id="form_email" class="form_email" >  
-                        <input type="password"  name ="password" id = "form_password" class="form_password" value="" placeholder="비밀번호">  
+                        <input type="text"  name = "email" placeholder="이메일" id="form_email" class="form_email" > 
+                        <div class="password_div">
+                        <input type="password"  name ="password" id = "form_password" class="form_password" value="" placeholder="비밀번호">  <i class="fa fa-eye fa-lg"  id ="mask1"style="cursor:pointer;"></i>
+                   </div>
                     </div> 
                 
                     <div> 
+           
                         <button class="form_login ">로그인</button> 
                     </div> 
                      <% if(request.getAttribute("loginError") != null) { %>
@@ -185,14 +240,15 @@ String id =((String) session.getAttribute("userId") != null ? (String) session.g
              <div class="close_div">
                  <button class="close-btn" id="closePopupp"> X</button>
             </div>
-     
+			<Div style= "height: 50px;">
+			</Div>
             <h2>회원탈퇴</h2>
-            <h4>정말로 떠나실건가요?</h4>
-     
+            <h4>정말로 떠나실건가요?</h4><Br>
+     		
         <div class="out_div">
             <form class="out_form"  name="out_form"  action="../login/memberOut.do" method="post">
-                 <input type="password" name="password" id = "form_password2" class="form_password" value=""  placeholder="비밀번호">
-                 <span style="font-size:11px;"> 탈퇴 시 작성한 게시글을 삭제되지 않습니다.</span><br><br>
+                 <input type="password" name="password" id = "form_password2" class="form_password2" value=""  placeholder="비밀번호"><i class="fa fa-eye fa-lg"  id ="mask2" style="cursor:pointer; margin-left :5px; margin-right: -30px;	"></i><br><br>
+                 <span style="font-size:11px; color:red"> 탈퇴 시 작성한 게시글을 삭제되지 않습니다.</span><br><br>
                  <button class="member_out ">정말로 탈퇴하기</button><br>
                  <button class="form_cancel">취소</button>
      
@@ -202,6 +258,32 @@ String id =((String) session.getAttribute("userId") != null ? (String) session.g
      </div>
     
         <Script>
+        
+        //비밀번호 마스킹 
+        const mask1 = document.querySelector("#mask1");
+        const mask2 = document.querySelector("#mask2");
+        const pwd = document.querySelector("#form_password");
+        const pwd2 = document.querySelector("#form_password2");
+        mask1.addEventListener("click",function(e){
+        	if(pwd.type==="password"){
+        	pwd.type="text";
+        	}
+        	else{
+        		pwd.type="password";
+        	}
+
+        	});
+        
+        mask2.addEventListener("click",function(e){
+        	if(pwd2.type==="password"){
+        	pwd2.type="text";
+        	}
+        	else{
+        		pwd2.type="password";
+        	}
+
+        	});
+      
         const menu_link = ["../mentor/mentor.do", "../qna/Qna.do", "../qna/Review.do","../qna/MentoringReview.do"];
         const menu_li = document.querySelectorAll("#menuUl li");
         menu_li[0].addEventListener("click", function(e){
@@ -244,7 +326,7 @@ String id =((String) session.getAttribute("userId") != null ? (String) session.g
 			}
         });  
         
-        //회원가입, 회원탈퇴
+  
        
             out_btn.addEventListener("click",function(e){ 
             	if(out_btn.value==="회원가입"){
@@ -257,13 +339,19 @@ String id =((String) session.getAttribute("userId") != null ? (String) session.g
             	
             });  
         
-      
+
      
         document.getElementById("closeLoginPopup").addEventListener("click",function(e){ 
             login_popupContainer.style.display="none"; 
         });
         
         document.querySelector("#closePopupp").addEventListener("click",function(e){ 
+            out_popupContainer.style.display="none"; 
+        });
+        
+        
+        document.querySelector(".form_cancel").addEventListener("click",function(e){ 
+        	e.preventDefault();
             out_popupContainer.style.display="none"; 
         });
     </Script>
