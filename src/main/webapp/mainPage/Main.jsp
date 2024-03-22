@@ -196,7 +196,7 @@
 					<c:when test="${not empty lectureList}">
 					    <div id="lecture_contents_area" class="grid">
 							<c:forEach var="lectureList" items="${ lectureList }" varStatus="loop">
-			                    <article class="lecture_content_wrap h330">
+			                    <article class="lecture_content_wrap">
 			                        <a href="#" class="lecture_content_hover">
 			                            <p class="lecture_title">${ lectureList.lecture_title }</p>
 			                            <p class="category">${ lectureList.category2 }</p>

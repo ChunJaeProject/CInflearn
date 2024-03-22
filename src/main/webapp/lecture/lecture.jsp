@@ -15,7 +15,7 @@
 <div id="container">
     <%@ include file="../common/header.jsp" %>
     <main id="contents">
-        <section id="contents_top_area" class="cal_h320">
+        <section id="contents_top_area2" class="cal_h320">
             <div id="lecture_info">
                 <div class="content_left_area" style="width: 400px">
                     <img class="lecture_thumbnail" src="https://cdn.inflearn.com/public/courses/328592/cover/b8957940-b416-4f31-8ae1-1cd2c5b29f3a/HTML-CSS--IFL.png" style="width: 100%" alt="">
