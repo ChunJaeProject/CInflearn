@@ -280,11 +280,11 @@
                 <div id="popup_infor" class="popup_contents">
                     <div class="popupTitle"><h2 style="border-bottom : 2px solid #1dc078; font-size:large; padding : 15px;">멘토링 소개</h2></div>
                     <div id="curr_mentoringInfo">
-                        <p id="popupMentorName">${list.member_name }</p>
-                        <p id="popupMentoringName">${list.mentoring_name}</p>
-                        <p id="popupMentorJob">${list.job_title }</p>
-                        <p id="popupMentorCarear">${list.career}</p>
-                        <p id="popupMentoringInfor">${list.mentoring_intro}</p>                 
+                        <p id="popupMentorName"></p>
+                        <p id="popupMentoringName"></p>
+                        <p id="popupMentorJob"></p>
+                        <p id="popupMentorCarear"></p>
+                        <p id="popupMentoringInfor"></p>                 
                     </div>
                     <div id="popup_infor_sign">
                         <button id="popup_infor_sign_Btn">신청하기</button>
@@ -334,26 +334,12 @@
             	popups[j].style.display="none";
                 popups[1].style.display="block";
                 let mentoringContents = this.children;
-                
-
                 let curr_mentoringInfo = document.querySelectorAll('#curr_mentoringInfo p');
-                
-                
-                for (let i = 0; i < mentoringContents.length; i++) {
-                	console.log("mentoringContents: " + mentoringContents[i].textContent);
-                }
-                
-                for (let i = 0; i <curr_mentoringInfo.length; i++) {
-                	console.log("curr_mentoringInfo:" + curr_mentoringInfo[i].textContent)
-                }
-                
-                
-                
-                
-                curr_mentoringInfo[0].textContent = mentoringContents[2].textContent;
-                curr_mentoringInfo[1].textContent = mentoringContents[5].textContent;
-                curr_mentoringInfo[2].textContent = mentoringContents[7].textContent;
-                curr_mentoringInfo[3].textContent = mentoringContents[9].textContent;
+
+                curr_mentoringInfo[0].textContent = mentoringContents[12].textContent;
+                curr_mentoringInfo[1].textContent = mentoringContents[2].textContent;
+                curr_mentoringInfo[2].textContent = mentoringContents[9].textContent;
+                curr_mentoringInfo[3].textContent = mentoringContents[7].textContent;
                 curr_mentoringInfo[4].textContent = mentoringContents[13].textContent;
             }
             
