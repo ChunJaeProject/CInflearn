@@ -34,6 +34,7 @@ public class QnaListServlet extends HttpServlet {
 
 		String solve = req.getParameter("solve");
 		String search_word = req.getParameter("search_title");
+		int like =Integer.parseInt(req.getParameter("like") != null ?req.getParameter("like") : "1");
 		
 		Map<String, Object> maps = new HashMap<String, Object>();
 		/*
@@ -62,6 +63,9 @@ public class QnaListServlet extends HttpServlet {
 		}
 		if(search_word != null && search_word !="") {
 			maps.put("search_word", search_word);
+		}
+		if(like != 0) {
+			maps.put("like", like);
 		}
 		
 
@@ -114,7 +118,9 @@ public class QnaListServlet extends HttpServlet {
 		if(search_word !=null) {
 			pageUri = pageUri + "search_title=" + search_word + "&";	
 		}
-		
+		if(like == 1 ) {
+			pageUri = pageUri + "like=1" + "&";
+		}
 		
 		pagingArea = CommonPage.pagingArea(total_page, page_no, page_block_start, page_block_end, pageUri );
 		

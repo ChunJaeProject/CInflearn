@@ -59,7 +59,7 @@
                 </form>
             </div>
             <ul id="order_ul">
-                <li><a href="#">최신순</a></li>
+                <li><a href="Qna.do">최신순</a></li>
                 <li><a href="Qna.do?like=1" style="margin-right: 415px;">좋아요순</a></li>
                 <input type="button" id="btn_write" name="btn_write" value="글쓰기"><br> 
             </ul>

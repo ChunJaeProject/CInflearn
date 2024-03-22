@@ -108,7 +108,12 @@ public class QnADAO extends JDBConnect {
 		if(map.get("search_word")!=null) {
 			sb.append(" AND question_title LIKE '%" + map.get("search_word") + "%'");
 		}
-		sb.append(" ORDER BY no DESC ");
+		if(map.get("like")!=null) {
+			sb.append(" ORDER BY `like` DESC ");
+		} else {
+			sb.append(" ORDER BY no DESC ");
+		}
+		
 		sb.append(" limit " + map.get("page_skip_cnt") + ", " + map.get("page_size"));
 		
 		

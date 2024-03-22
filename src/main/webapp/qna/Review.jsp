@@ -34,13 +34,14 @@
             <br><span style="font-size: large; font-weight: bold;">수강평</span><span>(${maps.total_count})</span>
         </div>
         <section id="section">
-            <div id="sidebar_left">
+            <div id="sidebar_left" style="height: 1390px;">
                 <ul id="sidebar_ul">
                     <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="Qna.do">질문과 답변</a></li>
                     <li style="border-bottom: 1px solid #ccc; width:100px; padding: 10px; font-size: small;"><a href="Review.do">수강평</a></li>
                     <li style="padding: 10px; font-size: small;"><a href="MentoringReview.do">멘토링 후기</a></li>
                 </ul>
             </div>
+            <div id="content" style="width:1049px;">
              <c:choose>
 				<c:when test="${not empty LectureReviewList }">
 					<c:forEach var="list" items="${LectureReviewList }" varStatus="loop">
@@ -53,17 +54,10 @@
 		                       		<c:forEach begin="${list.star}" end ="4" step="1" >
 		                       			<i class="fa fa-star-o" aria-hidden="true"></i>
 		                       		</c:forEach>
-		                       			
-		                       
-<!-- 		                           <i class="fa fa-star" aria-hidden="true"></i> -->
-<!-- 		                           <i class="fa fa-star" aria-hidden="true"></i> -->
-<!-- 		                           <i class="fa fa-star" aria-hidden="true"></i> -->
-<!-- 		                           <i class="fa fa-star" aria-hidden="true"></i> -->
-<!-- 		                           <i class="fa fa-star-o" aria-hidden="true"></i> -->
 		                       </div>
 		                       <br><br>
 		                       <p>${list.content}</p><br><br>
-		                       <p id="bottom">작성자 : ${list.writer } <p>  
+		                       <p id="bottom" style="border-bottom: none;">작성자 : ${list.writer } <p>  
 		                       <p> 강의명 : ${list.lecture_title } </p>
 		                   </div>
 		                   		
