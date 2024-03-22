@@ -3,6 +3,7 @@
 <%@page import="java.util.Map"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="dao.MentoringDAO"%>
+<%@ include file="../common/top.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
@@ -10,6 +11,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>
+	#sumbit1 input[type=submit] {
+		width: 150px;
+	    height: 40px;
+	    background-color: #1dc078;
+	    border: none;
+	    color: #fff;
+	    border-radius: 8px;
+	}
+	#sumbit1 input:active {
+	    color: #ccc;
+	}
+	#btn input[type=reset] {
+		width: 80px;
+	    height: 35px;
+	    background-color: darkgrey;
+	    color: #fff;
+	    border: none;
+	    border-radius: 8px;
+	}
+	#btn input[type=submit] {
+		width: 100px;
+	    height: 35px;
+	    background-color: #1dc078;
+	    color: #fff;
+	    border: none;
+	    border-radius: 8px;
+	}
+	#btn searchBtn {
+		width: 100px;
+	    height: 35px;
+	    background-color: #1dc078;
+	    color: #fff;
+	    border: none;
+	    border-radius: 8px;
+	}
+	#btn input:active {
+	    color: #ccc;
+	}
+	#popup_infor_sign button {
+		width: 100px;
+	    height: 35px;
+	    background-color: #1dc078;
+	    color: #fff;
+	    border: none;
+	    border-radius: 8px;
+	}
+	#popup_infor_sign button:active {
+	    color: #ccc;
+	}
+	#sign_frm select {
+		width: 150px;
+	    height: 30px;
+	}
+	#sign_frm input[type=text],input[type=email],input[type=tel]  {
+		width: 300px;
+	    height: 30px;
+	    border-radius: 8px;
+	    border: 1px solid #CCC;
+	}
+	#sign_frm textarea {
+		border-radius: 8px;
+	    border: 1px solid #CCC;
+	}
+	#mentoringCreate_Btn {
+		background-color: #1dc078;
+	    color: #fff;
+	    border: none;
+	    border-radius: 8px;
+	}
+	#mentoringReview_Btn {
+		background-color: darkgrey;
+	    color: #fff;
+	    border: none;
+	    border-radius: 8px;
+	}
+	#contents_top_Btn_Box button:active {
+	    color: #ccc;
+	}
+	#categoryHeader {
+		background-color: darkgrey;
+	    color: #fff;
+	}
+	#searchForm input[type=text] {
+		width: 112px;
+    	height: 41px;
+    	border-radius: 8px;
+	    border: 1px solid #CCC;
+	}	
+	#searchForm input[type=submit] {
+		background-color: darkgrey;
+	    color: #fff;
+	    border: none;
+	    border-radius: 8px;
+	}
+	#searchForm input:active {
+	    color: #ccc;
+	}
+	#searchForm input[type=reset] {
+		font-weight: bold;
+    	font-size: medium;
+	}
+	#contents_top_area {
+        background-color: rgb(201, 194, 194);
+        border: 1px solid #ccc;
+    }
+    #contents_top_Btn_Box {
+    	margin-right : 10px;
+    }
+</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>선배와 동료들에게 조언을 구해보세요. - 멘토링 | 인프런</title>
@@ -27,12 +138,13 @@
     <main id="contents">
         <section id="contents_top_area" class="cal_h100">
             <div  id="contents_top_area_text">
-            멘토링
-            </div>
-            <div id="contents_top_Btn_Box">
-                <button id="mentoringCreate_Btn">멘토링 개설</button>
-                <button id="mentoringReview_Btn">멘토링 후기보기</button>
-            </div>
+            	<span style="font-size: large; font-weight: bold;">멘토링</span><br>
+            	<span>업계 선배, 동료들과 만나 서로의 인사이트를 나누어 보아요! 더 빨리, 더 멀리 갈 수 있어요!</span>
+            	<div id="contents_top_Btn_Box">
+	                <button id="mentoringCreate_Btn">멘토링 개설</button>
+	                <button id="mentoringReview_Btn">멘토링 후기보기</button>
+            	</div>
+            </div>   
         </section>
         <div class="contents_wrap">
             <section id="sidebar_area">
@@ -59,6 +171,7 @@
                             <input type="checkbox" name ="cate" value="9"> 커리어<br>
                             <input type="checkbox" name ="cate" value="10"> 자기계발<br>
                         </div>
+                        <img src="../assets/image/reset.png" width="17px">
                         <input id="resetBtn" type="reset" value="필터 초기화">
                     </form>
 
@@ -67,7 +180,8 @@
             </section>
             <section id="contents_area" class="wd1000">
                 <div id="contents_info_wrap">
-                    게시글 수, 검색 필터 영역
+                	<br>
+                    <p style="text-align: left;">&nbsp;&nbsp;총 게시글 00<p>
                 </div>
                 <div id="mentoring_contents_area" class="grid">
                 
@@ -86,10 +200,12 @@
                     		<c:forEach var="list" items="${mentoringList}" varStatus="loop">
 	                    		<article class="mentoring_content_wrap h250">	
 	                    			<div class="mentoring_content">
-			                            <p class="mentoring_title">${list.mentoring_name }</p>
-			                            <p class="mentoring_job_title">${list.job }</p>
-			                            <p class="mentoring_career">${list.career }</p>
-			                            <p class="mentoring_now_job">${list.job_title }</p>
+	                    				<br><br>
+			                            <p class="mentoring_title" style="font-weight:bold; font-size:large;">${list.mentoring_name }</p><br><br>
+			                            <p class="mentoring_job_title">현직 : ${list.job }</p><br>
+			                            <p class="mentoring_career">경력 : ${list.career }</p><br>
+			                            <p class="mentoring_now_job">직무 : ${list.job_title }</p><br>
+			                            <p>---------------------</p>
 			                            <p class="mentoring_member_name">${list.member_name }</p>
 			                            <p hidden>${list.mentoring_intro }</p>
 			                            <p hidden>${list.member_no}</p>
@@ -108,12 +224,13 @@
                 </div>
             </section>
         </div>
+        
         <div id="popupContainer">
             <div id="popup">
                 <span id="closePopup" class="close-btn">×</span>
 
                 <div id="popup_create" class="popup_contents">
-                    <div class="popupTitle">멘토링 개설 신청서</div>
+                    <div class="popupTitle"><h2 style="border-bottom : 2px solid #1dc078; font-size:large; padding:5px;">멘토링 개설 신청서</h2></div>
                     <form action="/ChunjaeProject/mentor/mentoringRegist.do" id="mentoring_sign_form" name="metoring_sign_form" method="post">
                         <ul>
                         		<p id="member_no" name="member_no" value="${session.member_no }" hidden></p>
@@ -160,11 +277,11 @@
                             <li><p>멘토링 소개 <span class="star">*</span></p></li><br>
                                 <textarea name="mentoringInfo" id="mentoringInfo" class="w400" cols="30" rows="5" style="resize: none;" placeholder="300자 이내 입력" maxlength="300"></textarea>
                         </ul>
-                        <input type="submit" value="제출하기">
+                        <div id="sumbit1"><input type="submit" value="제출하기"></div>
                     </form>
                 </div>
                 <div id="popup_infor" class="popup_contents">
-                    <div class="popupTitle">멘토링 소개</div>
+                    <div class="popupTitle"><h2 style="border-bottom : 2px solid #1dc078; font-size:large; padding : 15px;">멘토링 소개</h2></div>
                     <div id="curr_mentoringInfo">
                         <p id="popupMentorName"></p>
                         <p id="popupMentoringName"></p>
@@ -176,26 +293,26 @@
                         <button id="popup_infor_sign_Btn">신청하기</button>
                     </div>
                 </div>
-                <div id="popup_sign" class="popup_contents">
-                    <div class="popupTitle">멘토링 신청(1/2)</div>
+                <div id="popup_sign" class="popup_contents" style="height: 600px; line-height: 30px;">
+                    <div class="popupTitle"><h2 style="display : block; border-bottom : 2px solid #1dc078; font-size:large; padding : 10px;">멘토링 신청(1/2)</h2></div>
                     <form id="sign_frm" name="sign_frm" action="" method="post">
 				        <h3>-날짜 선택 <span style="color:red">*</span></h3>
 				        <select id ="date">
 				            <option value="choice" selected>날짜 선택</option>
 				            <option value="date_0">3월 5일</option>
-				        </select>
+				        </select><br>
 				        <h3>-실명 <span style="color:red">*</span></h3>
-				        <input type="text" id="name" name="name" placeholder="실명을 입력해주세요." maxlength="10">
+				        <input type="text" id="ap_name" name="ap_name" placeholder="실명을 입력해주세요." maxlength="10"><br>
 				        <h3>-연락 가능한 이메일 <span style="color:red">*</span></h3>
-				        <input type="email" id="email" name="email" placeholder="자주 사용하는 이메일을 입력해주세요." maxlength="200">
+				        <input type="email" id="ap_email" name="ap_email" placeholder="자주 사용하는 이메일을 입력해주세요." maxlength="200"><br>
 				        <h3>-연락 가능한 연락처 <span style="color:red">*</span></h3>
-				        <input type="tel" id="tel" name="tel" placeholder="하이픈 없이 휴대폰 번호 입력" maxlength="11">
+				        <input type="tel" id="ap_tel" name="ap_tel" placeholder="하이픈 없이 휴대폰 번호 입력" maxlength="11"><br>
 				        <h3>-남길 메시지 <span style="color:red">*</span></h3>
-				        <textarea id="msg" name="msg" placeholder="300자 이내로 입력해주세요." maxlength="300" cols="40" rows="10"></textarea>
-				        <br>
+				        <textarea id="ap_msg" name="ap_msg" placeholder="300자 이내로 입력해주세요." maxlength="300" cols="40" rows="10"></textarea>
+				        <br><br>
 				        <div id="btn">
 				            <input type="reset" id="btn_reset" name="btn_reset" value="취소">
-				            <input type="submit" id="btn_submit" name="btn_submit" value="다음으로">
+				            <input type="submit" id="btn_next" name="btn_next" value="다음으로">
 				        </div>
 				    </form>
                     
@@ -242,12 +359,13 @@
                 popups[j].style.display="none";
         popups[2].style.display="block";
     });
-//     document.getElementById("searchBtn").addEventListener("click",function(e){
-//     	e.preventDefault();
-    	
-//     });
     
-    document.querySelector("#btn_submit").addEventListener("click", function(e) {
+     document.getElementById("searchBtn").addEventListener("click",function(e){
+		e.preventDefault();
+    	
+	});
+    
+     document.querySelector("#btn_next").addEventListener("click", function(e) {
         e.preventDefault();
         e.stopPropagation();
         // let date = document.querySelector("#date");
@@ -256,31 +374,31 @@
         //     date.focus();
         //     return false;
         // }
-        let id = document.querySelector("#name");
+        let id = document.querySelector("#ap_name");
         if(id.value.length < 2) {
             alert("이름은 2자 이상 입력해주세요.");
             id.focus();
             return false;
         }
-        let email = document.querySelector("#email");
+        let email = document.querySelector("#ap_email");
         if(!(email.value.includes('@')) && !(email.value.includes('.')) && email.value.length =="") {
             alert("올바른 이메일 형식으로 입력해주세요.");
             email.focus();
             return false;
         }
-        let tel = document.querySelector("#tel");
+        let tel = document.querySelector("#ap_tel");
         if(tel.value.includes('-') || tel.value.length =="") {
             alert("하이픈 없이 입력해주세요.");
             tel.focus();
             return false;
         }
-        let msg = document.querySelector("#msg");
+        let msg = document.querySelector("#ap_msg");
         if(msg.value.length > 300 || msg.value.length =="") {
             alert("300자 이내로 작성해주세요.");
             msg.focus();
             return false;
         }
-        let frm = document.querySelector("#btn_submit");
+        let frm = document.querySelector("#sign_frm");
         frm.submit();
     }, false);
 </script>
