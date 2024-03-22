@@ -17,14 +17,26 @@
 <div id="container">
     <%@ include file="../common/header.jsp" %>
     <main id="contents">
-        <section id="contents_top_area" class="cal_h320">
-            <div id="img_slide">
-                <div id="slide_btn_wrap">
-                    <a href="#" id="prev_slide_btn">◀</a>
-                    <a>1 / 8</a>
-                    <a href="#" id="next_slide_btn">▶</a>
-                </div>
+        <section id="img_slide">
+    		<div class="slide_wrapper">
+	            <ul class="slides">
+	                <li><img src="../assets/image/main_banner01.png" alt=""></li>
+	                <li><img src="../assets/image/main_banner02.png" alt=""></li>
+	                <li><img src="../assets/image/main_banner03.png" alt=""></li>
+	                <li><img src="../assets/image/main_banner04.png" alt=""></li>
+	                <li><img src="../assets/image/main_banner05.png" alt=""></li>
+	                <li><img src="../assets/image/main_banner06.png" alt=""></li>
+	                <li><img src="../assets/image/main_banner07.png" alt=""></li>
+	                <li><img src="../assets/image/main_banner08.png" alt=""></li>
+	                <li><img src="../assets/image/main_banner09.png" alt=""></li>
+	            </ul>
+	        <div class="controls">
+                <a href="#" id="prev_slide_btn">◀</a>
+                <a>1 / 9</a>
+                <a href="#" id="next_slide_btn">▶</a>
             </div>
+        	</div>
+
         </section>
         <div class="contents_wrap">
             <section id="sidebar_area">
@@ -220,39 +232,6 @@
     </main>
     <%@ include file="../common/footer.jsp" %>
 </div>
-<script>
-const imgSlideDom = document.querySelector("#img_slide");
-imgSlideDom.addEventListener("click", function(e) {
-    imgSlideDom.style.background = "url('../assets/image/main_banner02.png') center"
-}, false);
-
-const categoryDepth1DOM = document.querySelector("#category_depth1");
-const totalLectureDOM = document.querySelector("#total_lecture");
-categoryDepth1DOM.addEventListener("click", function(e) {
-	if (totalLectureDOM == e.target) {
-		location.href = "/ChunjaeProject/mainPage/Main.do";
-	} else if (e.target.tagName == "LI") {
-        if (e.target.children[0].tagName == "I") {
-              if (!e.target.children[1].style.display || e.target.children[1].style.display == "none" ) {
-                e.target.children[1].style.display = "block";
-             } else e.target.children[1].style.display = "none";
-          }
-      }
-}, false)
-    
-const category_list = document.querySelectorAll(".category_depth2 li");
-for(i=0;i<category_list.length;i++){
-	category_list[i].addEventListener("click",function(e){
-		const category2 = this.textContent;
-		location.href = "/ChunjaeProject/mainPage/Main.do?category2=" + category2;
-
-	}, false);
-}
-
-
-
-
-
-</script>
+<script src="../js/main.js"></script>
 </body>
 </html>
