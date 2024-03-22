@@ -60,7 +60,7 @@
             </div>
             <ul id="order_ul">
                 <li><a href="#">최신순</a></li>
-                <li><a href="#" style="margin-right: 415px;">좋아요순</a></li>
+                <li><a href="Qna.do?like=1" style="margin-right: 415px;">좋아요순</a></li>
                 <input type="button" id="btn_write" name="btn_write" value="글쓰기"><br> 
             </ul>
             <hr>
@@ -78,7 +78,7 @@
 	                    <div id="bottom">
 	                        <p class="qName">닉네임 : ${list.nickname} | 작성 시간 : ${list.reg_date }</p><br>
 	                        <div class="qBtn">
-	                            <img src="../assets/image/like.png" width="20px">&nbsp;0&nbsp;&nbsp;
+	                            <img src="../assets/image/like.png" width="20px">&nbsp;${list.like }&nbsp;&nbsp;
 	                            <img src="../assets/image/comment.png" width="20px">&nbsp;1&nbsp;&nbsp;
 	                        </div>
 	                    </div>                  
@@ -101,7 +101,7 @@
 	            <c:choose>
 					<c:when test="${not empty QnAList }">
 						<c:forEach var="list" items="${QnAList }" varStatus="loop">
-				                <span>${list.question_hashtag }</span><br><br>
+				            <span>${list.question_hashtag }</span><br><br>
 						</c:forEach>
 					</c:when>
 					<c:otherwise>

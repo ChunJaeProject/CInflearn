@@ -29,11 +29,6 @@
     background-color: #1dc078;
     color: #fff;
 }
-#btn {
-    float: right;
-    margin-top: 10px;
-    margin-right: 110px;
-}
 #btn input:active {
     color: #000;
 }
