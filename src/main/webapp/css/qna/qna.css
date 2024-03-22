@@ -18,7 +18,7 @@
 }
 #sidebar_left {
     width: 147px;
-    height : 1500px;
+    height : 1050px;
     float: left;         
     border: 1px solid #ccc;
     margin: 2px 4px;
@@ -33,12 +33,19 @@
     text-decoration: none;
 
 }
-#sidebar_ul a:hover, a:focus {
+#sidebar_ul li a:hover, a:focus {
     color:#1dc078;
     font-weight: bold;
-    background-color: rgba(222, 242, 222, 0.2);
 }
-#sidebar_ul a:active, a:target {
+#sidebar_ul li a:active, a:target {
+    color:#1dc078;
+    font-weight: bold;
+}
+#content_ul li a:hover, a:focus {
+    color:#1dc078;
+    font-weight: bold;
+}
+#content_ul li a:active, a:target {
     color:#1dc078;
     font-weight: bold;
 }

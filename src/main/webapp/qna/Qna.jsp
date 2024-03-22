@@ -23,14 +23,6 @@
             width: 1200px;
             margin: 0 auto;
         }
-        #sidebar_ul li a:hover, a:focus {
-            color:#1dc078;
-            font-weight: bold;
-        }
-        #sidebar_ul li a:active, a:target {
-            color:#1dc078;
-            font-weight: bold;
-        }
         .qBtn {
 		    margin-left: 500px;
 		}
