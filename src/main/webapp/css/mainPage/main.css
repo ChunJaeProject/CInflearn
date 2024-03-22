@@ -1,11 +1,35 @@
 /* contents_top_area */
-#img_slide {
-    position: relative;
-    background: url("../assets/image/main_banner01.png") center no-repeat;
-    height: 100%;
+#container {
+	overflow: hidden;
 }
 
-#slide_btn_wrap {
+#img_slide {
+	height: 300px;
+	margin-top: var(--header-height);
+	position: relative;
+}
+
+.slide_wrapper {
+	position: relative;
+	height: 100%;
+} 
+
+.slides {
+	position: relative;
+	height: 100%;
+}
+
+.slides.animated {
+	transition: 0.5s ease-out;
+}
+
+.slides li {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.controls {
     position: absolute;
     bottom: 10px;
     left: 50%;
@@ -24,21 +48,25 @@
     color: #ffffff;
 }
 
-#slide_btn_wrap #prev_slide_btn, #slide_btn_wrap #next_slide_btn {
+.controls a:link, .controls a:visited {
+	color: inherit;
+}
+
+.controls #prev_slide_btn, #slide_btn_wrap #next_slide_btn {
     cursor: pointer;
 }
 
-#slide_btn_wrap #prev_slide_btn:hover {
+.controls #prev_slide_btn:hover {
     transform: translateX(-5%);
 }
 
-#slide_btn_wrap #next_slide_btn:hover {
+.controls #next_slide_btn:hover {
     transform: translateX(5%);
 }
 
 /* sidebar_area */
 .contents_wrap {
-    padding-bottom: 48px;
+    padding: 48px 0;
 }
 #sidebar_area {
     margin-left: 24px;
