@@ -32,6 +32,8 @@ public class QnaListServlet extends HttpServlet {
 		
 		int solve_count = 0;
 		int unsolve_count = 0;
+
+
 		String solve = req.getParameter("solve");
 		String search_word = req.getParameter("search_title");
 		Map<String, Object> maps = new HashMap<String, Object>();
@@ -62,9 +64,20 @@ public class QnaListServlet extends HttpServlet {
 			maps.put("search_word", search_word);
 		}
 		
+
 		
+		if(solve !=null) {	
+			if(solve.equals("Y")) {
+				total_count = dao.QnASolveCount(maps);
+			} else if(solve.equals("N")) {
+				total_count = dao.QnAUnsolveCount(maps);
+			}
+			
+		}
 		
+		//페이지 수
 		total_page = (int)Math.ceil(total_count/(double)page_size);
+		
 		page_block_size = 10;
 		page_block_start = (int)Math.floor((page_no-1)/(double)page_size)*page_size +1;
 		page_block_end = (int)Math.ceil(page_no/(double)page_size)*page_size;
@@ -76,10 +89,12 @@ public class QnaListServlet extends HttpServlet {
 		maps.put("page_block_start", page_block_start);
 		maps.put("page_block_end", page_block_end);
 		
+		//해결/미해결 카운트
 		solve_count = dao.QnASolveCount(maps);
 		unsolve_count = dao.QnAUnsolveCount(maps);
 		maps.put("solve_count", solve_count);
 		maps.put("unsolve_count", unsolve_count);
+		
 		
 		List<QnADTO> QnAList = dao.QnAList(maps);
 		dao.close();
@@ -90,9 +105,12 @@ public class QnaListServlet extends HttpServlet {
 		if(solve !=null) {
 			pageUri = pageUri + "solve=" +solve + "&";
 			
+			total_count = dao.QnAUnsolveCount(maps);
+			
 		}
 		if(search_word !=null) {
 			pageUri = pageUri + "search_title=" + search_word + "&";
+			
 		}
 		pagingArea = CommonPage.pagingArea(total_page, page_no, page_block_start, page_block_end, pageUri );
 		
