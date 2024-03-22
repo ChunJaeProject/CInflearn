@@ -7,8 +7,6 @@ import java.util.Vector;
 import common.JDBConnect;
 import dto.MentoringDTO;
 import jakarta.servlet.ServletContext;
-import jakarta.servlet.http.HttpServlet;
-import model2.bbs.BbsDTO;
 
 public class MentoringDAO extends JDBConnect {
 	public MentoringDAO(){}
@@ -118,46 +116,6 @@ public class MentoringDAO extends JDBConnect {
 			e.printStackTrace();
 			return 0;
 		}
-		
-		public MentoringDTO mentoringView(int idx) {
-			MentoringDTO dto = new MentoringDTO();
-			
-			StringBuilder sb = new StringBuilder();
-			sb.append("SELECT idx, ref_idx, level_idx, sort_order");
-			sb.append(", user_id, title, content, read_cnt");
-			sb.append(", display_date, reg_date, modify_date");
-			/* sb.append(", file_path, file_name, file_ext, file_size"); */
-			sb.append(" FROM tbl_bbs");
-			sb.append(" WHERE idx = ?");
-			
-			try {
-				psmt = conn.prepareStatement(sb.toString());
-				psmt.setInt(1, idx); // WHERE idx = ?에 매개변수로 받은 idx를 넣으라는 것
-				rs = psmt.executeQuery();
-				if (rs.next()) {
-					dto.setIdx(rs.getInt("idx"));
-					dto.setRef_idx(rs.getInt("ref_idx"));
-					dto.setLevel_idx(rs.getInt("level_idx"));
-					dto.setSort_order(rs.getInt("sort_order"));
-					dto.setUser_id(rs.getString("user_id"));
-					dto.setTitle(rs.getString("title"));
-					dto.setContent(rs.getString("content"));
-					dto.setRead_cnt(rs.getInt("read_cnt"));
-					dto.setDisplay_date(rs.getString("display_date"));
-					dto.setReg_date(rs.getDate("reg_date"));
-					dto.setModify_date(rs.getDate("modify_date"));
-				}
-			}
-			catch (Exception e) {
-				System.out.println("게시판 데이터 조회 오류");
-				e.printStackTrace();
-			}
-			
-			return dto;
-		
-		
-		
-		
 	}
 }
 
