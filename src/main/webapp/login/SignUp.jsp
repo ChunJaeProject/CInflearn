@@ -7,10 +7,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/login/SignUp.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> 
+<style>
+.main{
+padding-top:100px;
+height:800px;
+}
+#email{
+ border-radius : 5px;
+         border : 1px solid #ced4da;
+           box-shadow: 0  1px #ced4da;
+           height:45px;
+           width:300px;
+     
+}
+#password{
+ border-radius : 5px;
+         border : 1px solid #ced4da;
+           box-shadow: 0  1px #ced4da;
+           height:45px;
+           width:300px;
+}
+#passwordConfirm{
+ border-radius : 5px;
+         border : 1px solid #ced4da;
+           box-shadow: 0  1px #ced4da;
+           height:45px;
+           width:300px;}
+#sign_button{
+	width:300px;
+	height:45px;
+	margin-top:20px;
+	color:white;
+        border : none;
+        border-radius :5px;
+        background : rgb(14,192,12);
+}
+.term{
+
+text-decoration: underline}
+</style>
+
 </head>
 
 <body>
-   <div class="content">
+ <%@ include file="../common/header.jsp" %>
+   <div class="main">
+   
     <div class="sign_title">
     <h2>회원가입</h2>
     <h3>인프런에서 가치를 높이세요.</h3>
@@ -23,28 +66,54 @@
            
            
             <input type="email" name ="email" id="email"placeholder="example@inflab.com">
-           	<p> </p>
+           	<p> </p><br>
            	
             <label for="password" class="form_email">비밀번호</label><br>
        
-            <input type="password" name ="password" id="password" class="password" placeholder="*******"><br><br><br>
+            <input type="password" name ="password" id="password" class="password" placeholder="*******"><i class="fa fa-eye fa-lg"  id ="mask1"style="cursor:pointer; margin-left:10px;"></i><br><br><br>
             
             <label for="passwordConfirm" class="form_emailConfirm">비밀번호 확인</label><br>
        
-            <input type="password" id="passwordConfirm" class="form_emailConfirm" placeholder="*******">
+            <input type="password" id="passwordConfirm" class="form_emailConfirm" placeholder="*******"><i class="fa fa-eye fa-lg"  id ="mask2"style="cursor:pointer; margin-left:10px;"></i>
           	<p id="passwordMessage"></p>
             <input type="button"   name ="sign_button" id = "sign_button" value="회원가입"> <br><br>
     
-            <span class="terms">가입 시 <a href="./UseTerm.jsp">서비스이용약관</a>, <a href="./PersonalTerm.jsp">개인정보처리방침</a>에 동의합니다.</span>
+            <span class="terms">가입 시 <a href="./PersonalTerm.jsp" class="term">개인정보처리방침</a>, <a href="./UseTerm.jsp" class="term">서비스이용약관</a>에 동의합니다.</span>
         </form>
 
        
 
 
    </div>
- 
+   </div>
+     <%@ include file="../common/footer.jsp" %>
 </body>
  <Script>
+ 
+ const mask1 = document.querySelector("#mask1");
+ const mask2 = document.querySelector("#mask2");
+ const pwd1 = document.querySelector("#password");
+ const pwdCfrm = document.querySelector("#passwordConfirm");
+ mask1.addEventListener("click",function(e){
+ 	if(pwd1.type==="password"){
+ 	pwd1.type="text";
+ 	}
+ 	else{
+ 		pwd1.type="password";
+ 	}
+
+ 	});
+ 
+ mask2.addEventListener("click",function(e){
+	 	if(pwdCfrm.type==="password"){
+	 		pwdCfrm.type="text";
+	 	}
+	 	else{
+	 		pwdCfrm.type="password";
+	 	}
+
+	 	});
+ 
  const emailInput = document.querySelector('#email');
  const p = document.querySelector('p');
 
@@ -58,7 +127,7 @@
 
  //비밀번호 유효성검사 
  function validatePassword(password) {
-	    const regex = /^(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,15}$/;
+	    const regex = /^(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,32}$/;
 	    return regex.test(password);
 	}
  
@@ -70,7 +139,7 @@
          p.textContent = '이메일 형식입니다';
      } else {
          p.style.color = 'red';
-         p.textContent = '이메일 형식이 아닙니다';
+         p.textContent = '이메일 형식이 올바르지 않습니다.';
      }
  });
 
@@ -84,7 +153,7 @@
      // 먼저 비밀번호 유효성 검사를 수행
      if (!validatePassword(password.value)) {
          passwordMessage.style.color = 'red';
-         passwordMessage.textContent = '비밀번호는 6글자 이상 15글자 이하이며, 특수 문자를 포함해야 합니다.';
+         passwordMessage.textContent = '비밀번호는 8글자 이상 32글자 이하이며, 특수 문자를 포함해야 합니다.';
      } else {
          // 비밀번호 유효성 검사를 통과한 경우, 비밀번호 일치 여부 검사
          if (password.value === passwordConfirm.value) {
@@ -92,7 +161,7 @@
              passwordMessage.textContent = '비밀번호가 올바릅니다.';
          } else {
              passwordMessage.style.color = 'red';
-             passwordMessage.textContent = '비밀번호를 다시 확인해주세요.';
+             passwordMessage.textContent = '비밀번호가 일치하지 않습니다.';
          }
      }
  }

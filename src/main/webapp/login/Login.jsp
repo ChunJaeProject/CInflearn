@@ -87,7 +87,9 @@
             right: 10px; 
             font-size: 20px; 
             cursor: pointer;
-        }
+            }
+        
+        
 </style>
 </head>
 <body>
@@ -121,8 +123,8 @@
             
                 <form class="sign_form"  name ="sign_form" method="post"  action="loging.do" > 
                     <div class="form_input_block"> 
-                        <input type="email"  name = "email" placeholder="이메일" id="form_email" class="form_email" >  
-                        <input type="password"  name ="password" id = "form_password" class="form_password" value="" placeholder="비밀번호">  
+                        <input type="email"  name = "email" placeholder="이메일" id="form_email" class="form_email"  >  
+                        <input type="password"  name ="password" id = "form_password" class="form_password" value="" placeholder="비밀번호"  >  
                     </div> 
                 
                     <div> 

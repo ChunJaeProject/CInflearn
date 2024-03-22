@@ -4,11 +4,13 @@
         margin : 0px auto;
     }
     .signfrm{
-        width: 300px;
-        height: 500px;
+        width: 450px;
+        height: 800px;
 
-        margin : 0px auto;
+
+        margin : 10px auto;
         padding :10px;
+        margin-right:650px;
     }
     .signfrm input[type=email],input[type=password]{
         border : 1px solid #ccc;
@@ -33,3 +35,4 @@
         font-size:11px;
         text-align: center;
     }
+  

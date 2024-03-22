@@ -7,10 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/login/PersonalTerm.css">
+    <Style>
+    .main{
+height:800px;
+
+}
+.content2{
+height:100px}
+    
+.term{
+text-decoration: underline;
+}
+    </Style>
 </head>
 
 <body>
-   <div class ="content">
+ <%@ include file="../common/header.jsp" %>
+   <div class="content2">
+   </div>
+   <div class ="main">
     <div class="term_menu">
         <ul class="term_ul">
             <li class="li0"></li>
@@ -29,7 +44,7 @@
         본 개인정보처리방침은 정부의 법률 및 지침 변경이나 "회사"의 내부 방침 변경 등으로 인하여 수시로 변경될 수 있으며, <br>
         변경될 경우 변경된 개인정보처리방침을 "회사"가 제공하는 서비스 페이지에 공지하도록 하겠습니다.<br>
         </span><br><br>
-        <a href="https://www.inflearn.com/policy/privacy">이용약관 바로가기</a>
+        <a href="https://www.inflearn.com/policy/privacy"  class="term">개인정보처리방침 바로가기</a>
     </div>
     <div class="use_term">
         <span>
@@ -40,7 +55,7 @@
              이용자가 이용함에 있어 회사와 이용자 간의 권리,<br>
              의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.<br>
         </span><br><br>
-        <a href="https://www.inflearn.com/policy/terms-of-service">이용약관 바로가기</a>
+        <a href="https://www.inflearn.com/policy/terms-of-service"  class="term" >이용약관 바로가기</a>
     
     </div>
    
@@ -48,7 +63,7 @@
    </div>
    <footer>
     
-        <link rel="import" href="./footer.html">
+  <%@ include file="../common/footer.jsp" %>
     
    </footer>
 </body>
