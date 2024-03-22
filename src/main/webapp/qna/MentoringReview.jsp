@@ -5,7 +5,6 @@
 <%@page import="java.util.Map"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="dao.MentoringReviewDAO"%>
-<%@ include file="../common/top.jsp" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,8 +26,9 @@
     </style>
 </head>
 <body>
+<%@ include file="../common/top.jsp" %>
+<%@ include file="../common/header.jsp" %>
     <div id="container">
-        <%@ include file="../common/header.jsp" %>
         <main id="contents">
 	        <div id="contents_top_area" class="cal_h100">
 	            <br><span style="font-size: large; font-weight: bold;padding-top: 10px;">멘토링 후기</span><span>(${maps.total_count})</span>
