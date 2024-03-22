@@ -22,6 +22,8 @@ public class QnaListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		int total_count = 0;
+		int solve_count = 0;
+		int unsolve_count = 0;
 		int page_no = 1;
 		int page_size = 5;
 		int total_page = 1;
@@ -29,10 +31,6 @@ public class QnaListServlet extends HttpServlet {
 		int page_block_size = 10;
 		int page_block_start = 1;
 		int page_block_end = 1;
-		
-		int solve_count = 0;
-		int unsolve_count = 0;
-
 
 		String solve = req.getParameter("solve");
 		String search_word = req.getParameter("search_title");
@@ -55,6 +53,7 @@ public class QnaListServlet extends HttpServlet {
 		//DAO 생성
 		QnADAO dao = new QnADAO();
 		total_count = dao.QnATotalCount(maps);
+		int real_total_count = dao.QnATotalCount(maps);
 		
 		if(solve !=null && solve!= "") {
 			System.out.println(solve);
@@ -65,7 +64,7 @@ public class QnaListServlet extends HttpServlet {
 		}
 		
 
-		
+		//미해결 해결 페이지 카운트
 		if(solve !=null) {	
 			if(solve.equals("Y")) {
 				total_count = dao.QnASolveCount(maps);
@@ -75,6 +74,10 @@ public class QnaListServlet extends HttpServlet {
 			
 		}
 		
+		//서치 후 페이징 카운트...ㅠㅠ
+		
+		
+		
 		//페이지 수
 		total_page = (int)Math.ceil(total_count/(double)page_size);
 		
@@ -83,6 +86,8 @@ public class QnaListServlet extends HttpServlet {
 		page_block_end = (int)Math.ceil(page_no/(double)page_size)*page_size;
 		page_block_end = (page_block_end>total_page?total_page:page_block_end);
 		
+		
+		maps.put("real_total_count", real_total_count);
 		maps.put("total_count", total_count);
 		maps.put("total_page", total_page);
 		maps.put("page_block_size", page_block_size);
@@ -104,9 +109,6 @@ public class QnaListServlet extends HttpServlet {
 		
 		if(solve !=null) {
 			pageUri = pageUri + "solve=" +solve + "&";
-			
-			total_count = dao.QnAUnsolveCount(maps);
-			
 		}
 		if(search_word !=null) {
 			pageUri = pageUri + "search_title=" + search_word + "&";

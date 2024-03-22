@@ -5,7 +5,6 @@
 <%@page import="java.util.Map"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="dao.QnADAO"%>
-<%@ include file="../common/top.jsp" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,13 +23,14 @@
             margin: 0 auto;
         }
         .qBtn {
-		    margin-left: 500px;
+		    margin-left: 470px;
 		}
     </style>
 </head>
 <body>
+<%@ include file="../common/header.jsp" %>
+<%@ include file="../common/top.jsp" %>
     <div id="container">
-        <%@ include file="../common/header.jsp" %>
         <div id="contents_top_area" class="cal_h100">
             <p style="font-size: large; font-weight: bold;">묻고 답해요</p>
             <p>126만명의 커뮤니티 !! 함께 토론해봐요.</p>
@@ -45,7 +45,7 @@
             </div>
             <div id="content">
                 <ul id="content_ul" >
-                    <li><a href="Qna.do">전체(${maps.total_count })</a></li>
+                    <li><a href="Qna.do">전체(${maps.real_total_count })</a></li>
                     <li><a href="Qna.do?solve=N">미해결(${maps.unsolve_count })</a></li>
                     <li><a href="Qna.do?solve=Y">해결됨(${maps.solve_count })</a></li>
                 </ul>
@@ -76,7 +76,7 @@
 	                    <p class="qContent">${list.question_content }</p><br>
 	                    <div class="qTag"><span>${list.question_hashtag }</span></div><br>
 	                    <div id="bottom">
-	                        <p class="qName">닉네임 : | 작성 시간 : ${list.reg_date }</p><br>
+	                        <p class="qName">닉네임 : ${list.nickname} | 작성 시간 : ${list.reg_date }</p><br>
 	                        <div class="qBtn">
 	                            <img src="../assets/image/like.png" width="20px">&nbsp;0&nbsp;&nbsp;
 	                            <img src="../assets/image/comment.png" width="20px">&nbsp;1&nbsp;&nbsp;
@@ -97,9 +97,19 @@
             </div>
             </div>
             <div id="sidebar_right">
-                <p>인기태그</p><br>
-                <span>태그1</span><span>태그2</span><br><br><span>태그3</span><span>태그4</span><br><br><span>태그5</span>
-            </div>
+            	<p>인기태그</p><br>
+	            <c:choose>
+					<c:when test="${not empty QnAList }">
+						<c:forEach var="list" items="${QnAList }" varStatus="loop">
+				                <span>${list.question_hashtag }</span><br><br>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<span>태그2</span><br><br><span>태그3</span><span>태그4</span><br><br><span>태그5</span>
+					</c:otherwise>
+				</c:choose>
+			</div>
+	            
         </section>
         <%@ include file="../common/footer.jsp" %>
     </div>
