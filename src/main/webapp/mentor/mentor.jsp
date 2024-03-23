@@ -23,7 +23,7 @@ pageEncoding="UTF-8"%>
         #sumbit1 input:active {
             color: #ccc;
         }
-        #btn input[type=reset] {
+        #btn input[type=reset], #btn input[type=button] {
             width: 80px;
             height: 35px;
             background-color: darkgrey;
@@ -220,7 +220,7 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                                         <p>---------------------</p>
                                         <p class="mentoring_member_name">${list.member_name }</p>
                                         <p hidden>${list.mentoring_intro }</p>
-                                        <p hidden>${list.member_no}</p>
+                                        <p hidden>${list.member_no}</p>	
                                     </div>
                                 </article>
                             </c:forEach>
@@ -239,7 +239,7 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
 
         <div id="popupContainer">
             <div id="popup">
-                <span id="closePopup" class="close-btn">×</span>
+                <span id="closePopup" class="close_btn">×</span>
 
                 <div id="popup_create" class="popup_contents">
                     <div class="popupTitle"><h2 style="border-bottom : 2px solid #1dc078; font-size:large; padding:5px;">멘토링 개설 신청서</h2></div>
@@ -247,9 +247,9 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                         <ul>
                             <p id="member_no" name="member_no" value="${session.member_no }" hidden></p>
                             <li><p>경력(택 1) <span class="star">*</span></p></li><br>
-                            <input type="radio" name="carear" id="carear_0" value="신입(1~3년)"><label for="carear_0"> 신입(1~3년)</label>
-                            <input type="radio" name="carear" id="carear_1" value="미들(4~9년)"><label for="carear_1"> 미들(4~9년)</label>
-                            <input type="radio" name="carear" id="carear_2" value="시니어(10년 이상)"><label for="carear_2"> 시니어(10년 이상)</label>
+                            <input type="radio" name="career" id="career_0" value="신입(1~3년)"><label for="career_0"> 신입(1~3년)</label>
+                            <input type="radio" name="career" id="career_1" value="미들(4~9년)"><label for="career_1"> 미들(4~9년)</label>
+                            <input type="radio" name="career" id="career_2" value="시니어(10년 이상)"><label for="career_2"> 시니어(10년 이상)</label>
                             <br><br>
                             <li><p>현직(택 1) <span class="star">*</span></p></li><br>
                             <input type="radio" name="job" id="job_0" value="현직(대기업)"><label for="job_0"> 현직(대기업)</label>
@@ -298,7 +298,7 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                         <p id="popupMentorName"></p>
                         <p id="popupMentoringName"></p>
                         <p id="popupMentorJob"></p>
-                        <p id="popupMentorCarear"></p>
+                        <p id="popupMentorcareer"></p>
                         <p id="popupMentoringInfor"></p>
                     </div>
                     <div id="popup_infor_sign">
@@ -324,10 +324,34 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                         <br><br>
                         <div id="btn">
                             <input type="reset" id="btn_reset" name="btn_reset" value="취소">
-                            <input type="submit" id="btn_next" name="btn_next" value="다음으로">
+                            <input type="button" id="btn_next" name="btn_next" value="다음으로">
                         </div>
                     </form>
-
+                </div>
+                <div id="popup_sign2" class="popup_contents" style="height: 600px; line-height: 30px;">
+                    <div class="popupTitle"><h2 style="display : block; border-bottom : 2px solid #1dc078; font-size:large; padding : 10px;">신청 확인(2/2)</h2></div>
+                    <form id="sign_frm2" name="sign_frm2" action="/ChunjaeProject/mentor/mentoringSignUp.do" method="post">
+                         <div id="confirm_view">
+	                       	<p style="font-weight:bold;">멘토링 명</p>
+	                       	<p>멘토링명 표시</p>
+	                       	<p style="font-weight:bold;">멘토 명</p>
+	                       	<p>멘토 실명 표시</p>
+	                       	<p style="font-weight:bold;">날짜 선택</p>
+	                       	<p>0000-00-00</p>
+	                       	<p style="font-weight:bold;">멘티 명</p>
+	                       	<p>멘티 실명 표시</p>
+	                       	<p style="font-weight:bold;">연락가능한 메일</p>
+	                       	<p>asdf@gmail.com</p>
+	                       	<p style="font-weight:bold;">연락 가능한 연락처</p>
+	                       	<p>000-1234-5678</p>
+	             			<p style="font-weight:bold;">남길메시지</p>
+	                       	<p>메시지내용</p>
+	                       	<div id="btn">
+	                            <input type="button" id="btn_prev" name="btn_prev" value="이전">
+	                            <input type="submit" id="btn_submit" name="btn_submit" value="신청하기">
+	                        </div>
+                       	</div>
+                    </form>
                 </div>
             </div>
 
@@ -431,12 +455,42 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
             msg.focus();
             return false;
         }
-        let frm = document.querySelector("#sign_frm");
-        frm.submit();
+        for(j=0;j<popups.length;j++)
+           	popups[j].style.display="none";
+            popups[3].style.display="block";
+            
+            
+            
+/* 멘토링 신청 내용을 어떻게 가져다가 쓰지?
+			for(i=0;i<contents.length;i++){
+            contents[i].addEventListener("click",function(e){
+                popupContainer.style.display="block";
+                for(j=0;j<popups.length;j++)
+                    popups[j].style.display="none";
+                popups[1].style.display="block";
+                let mentoringContents = this.children;
+                let curr_mentoringInfo = document.querySelectorAll('#curr_mentoringInfo p');
+
+                curr_mentoringInfo[0].textContent = mentoringContents[12].textContent;
+                curr_mentoringInfo[1].textContent = mentoringContents[2].textContent;
+                curr_mentoringInfo[2].textContent = mentoringContents[9].textContent;
+                curr_mentoringInfo[3].textContent = mentoringContents[7].textContent;
+                curr_mentoringInfo[4].textContent = mentoringContents[13].textContent;
+            });
+        } */
+            
+        /* frm.submit(); */
     }, false);
+    
+    document.querySelector("#btn_prev").addEventListener("click", function(e) {
+    	for(j=0;j<popups.length;j++)
+           	popups[j].style.display="none";
+            popups[2].style.display="block";
+    });
+    
     document.querySelector("#mentoringReview_Btn").addEventListener("click", function(e) {
         location.href="../qna/MentoringReview.do";
-    })
+    });
 </script>
 </body>
 </html>
