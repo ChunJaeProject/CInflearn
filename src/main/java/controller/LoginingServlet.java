@@ -48,8 +48,9 @@ public class LoginingServlet extends HttpServlet {
 		}
 
 		else{
-			req.setAttribute("loginError", "아이디와 비밀번호가 맞지 않습니다.");
-			req.getRequestDispatcher("../mainPage/Main.do").forward(req,resp);
+			System.out.println("로그인실패");
+			session.setAttribute("loginError", "아이디와 비밀번호가 맞지 않습니다."); // 세션에 메시지 저장
+			resp.sendRedirect("../mainPage/Main.do");
 		}
 	}
 
