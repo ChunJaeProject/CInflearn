@@ -70,11 +70,11 @@ public class QnaDetailServlet extends HttpServlet {
 		params.put("question_content",question_content);
 		params.put("answer",answer);
 		params.put("total_count", total_count);
-<<<<<<< HEAD
+
 		params.put("memberNo", member_no);
-=======
+
 		params.put("nickname", nickname);
->>>>>>> newwww
+
 			
 		req.setAttribute("commList", commList);
 		req.setAttribute("params", params);
