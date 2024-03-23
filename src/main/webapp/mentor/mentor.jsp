@@ -139,7 +139,8 @@
 // 	for(int i=0;i<category_value.length;i++){
 // 		category_check[Integer.parseInt(category_value[i])] = "checked";
 // 	}
-	
+
+	String sessionId =((String) session.getAttribute("userId") != null ? (String) session.getAttribute("userId") : "고객");
 %>
 <div id="container">
     <main id="contents">
@@ -324,6 +325,10 @@
 </div>
 
 <script>
+	
+	//멘토링개설 세션처리
+	var sessionId = '<%= sessionId %>';
+
     let popupContainer = document.getElementById("popupContainer");
     let contents = document.getElementsByClassName("mentoring_content");
     let popups = document.getElementsByClassName("popup_contents");
@@ -349,15 +354,31 @@
         popupContainer.style.display="none";
     });
     document.getElementById("mentoringCreate_Btn").addEventListener("click",function(e){
-        for(j=0;j<popups.length;j++) {
+        //세션처리
+          if(sessionId === '고객') {
+        // 비로그인시  mentor 페이지로 이동
+        alert("로그인이 필요합니다.")
+        location.href='../mentor/mentor.do';
+          }
+          else{
+    	for(j=0;j<popups.length;j++) {
             popups[j].style.display="none";
             popupContainer.style.display="block";
             popups[0].style.display="block";
         }
+          }
     });
     document.getElementById("popup_infor_sign_Btn").addEventListener("click",function(e){
-        for(j=0;j<popups.length;j++)
+        //세션처리
+         if(sessionId === '고객') {
+       
+        alert("로그인이 필요합니다.")
+        location.href='../mentor/mentor.do';
+          }
+         else{
+    	for(j=0;j<popups.length;j++)
                 popups[j].style.display="none";
+         }
         popups[2].style.display="block";
     });
     
