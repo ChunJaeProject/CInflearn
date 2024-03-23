@@ -45,9 +45,7 @@ public class QnaDetailServlet extends HttpServlet {
 		String question_hashtag ="";
 		String question_content ="";
 		String answer="";
-
 		int member_no =1;
-
 		String nickname="";
 
 		
@@ -70,9 +68,7 @@ public class QnaDetailServlet extends HttpServlet {
 		params.put("question_content",question_content);
 		params.put("answer",answer);
 		params.put("total_count", total_count);
-
 		params.put("memberNo", member_no);
-
 		params.put("nickname", nickname);
 
 			

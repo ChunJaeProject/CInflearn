@@ -95,25 +95,18 @@ public class QnADAO extends JDBConnect {
 		
 		StringBuilder sb = new StringBuilder();
 		
-		//sb.append("SELECT no, question_title, question_content, question_hashtag");
-		//sb.append(", answer, solution_state, like, reg_date, member_no");
-	
-
-		sb.append(" SELECT Q.*, SUBSTRING_INDEX(M.email, '@', 1) AS nickname");
+		sb.append("SELECT Q.no, Q.question_title, Q.question_content, Q.question_hashtag");
+		sb.append(", Q.answer, Q.solution_state, Q.like, Q.reg_date, Q.member_no");
+		sb.append(", SUBSTRING_INDEX(M.email, '@', 1) AS nickname");
 		sb.append("	FROM tbl_qna AS Q");
 		sb.append(" INNER JOIN tbl_member AS M ON Q.member_no = M.member_no");
+		
 		if(map.get("solve")!=null) {
 			sb.append(" AND solution_state = " + "'" + map.get("solve") +"'");
 		}
 		if(map.get("search_word")!=null) {
 			sb.append(" AND question_title LIKE '%" + map.get("search_word") + "%'");
 		}
-		/*
-		 * if(map.get("like")!=null) { sb.append(" ORDER BY `like` DESC "); } else
-		 * if(map.get("like") == null){
-		 */
-		//sb.append(" ORDER BY reg_date DESC ");
-		//}
 		if(map.get("like") != null) {
 		    sb.append(" ORDER BY Q.like DESC");
 		} else {
@@ -154,12 +147,12 @@ public class QnADAO extends JDBConnect {
 	
 	//게시판 게시글,댓글조회
 	public QnADTO QnADetail(int no) {
-		 QnADTO dto = new QnADTO();
+		QnADTO dto = new QnADTO();
 		 
-		 StringBuilder sb = new StringBuilder();
-		//sb.append("SELECT no, question_title, question_content, question_hashtag");
-		//sb.append(", answer, solution_state, like, reg_date, member_no");
-		sb.append(" SELECT Q.*, SUBSTRING_INDEX(M.email, '@', 1) AS nickname");
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT Q.no, Q.question_title, Q.question_content, Q.question_hashtag");
+		sb.append(", Q.answer, Q.solution_state, Q.like, Q.reg_date, Q.member_no");
+		sb.append(", SUBSTRING_INDEX(M.email, '@', 1) AS nickname");
 		sb.append("	FROM tbl_qna AS Q");
 		sb.append(" INNER JOIN tbl_member AS M ON Q.member_no = M.member_no");
 		sb.append(" WHERE no = ?");
