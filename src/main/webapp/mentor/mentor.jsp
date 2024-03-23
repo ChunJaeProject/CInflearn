@@ -378,7 +378,7 @@
          else{
     	for(j=0;j<popups.length;j++)
                 popups[j].style.display="none";
-         }
+         }	
         popups[2].style.display="block";
     });
     
