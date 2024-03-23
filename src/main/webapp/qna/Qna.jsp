@@ -69,7 +69,7 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
             <%if (!sessionId.equals("고객")) { %>
                 <input type="button" id="btn_write" name="btn_write" value="글쓰기" onclick="location.href='../qna/Write.do';"><br> 
             <%}  else {%>  
-              <input type="button" id="btn_write" name="btn_write" value="글쓰기" onclick="alert('로그인 후 이용해주세요.'); location.href='../mainPage/Main.do';"><br> 
+              <input type="button" id="btn_write" name="btn_write" value="글쓰기" onclick="alert('로그인 후 이용해주세요.'); location.href='../qna/Qna.do';"><br> 
                <%} %>
             </ul>
             <hr>
