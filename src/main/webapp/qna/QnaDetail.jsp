@@ -122,7 +122,7 @@
 	})
  */
  
- 
+
 	//해결 체크 버튼
     let check = document.querySelector("#btn_check");
     let flag = 1;
@@ -159,8 +159,32 @@
     }
     //삭제 기능
     document.querySelector("#btn_delete").addEventListener("click", function(e) {
-		alert("글을 삭제하시겠습니까?");
-		window.location = "../qna/delete.do?no=${params.idx}"; 
+    	  var sessionMemberNo = '<%=session.getAttribute("memberNo")%>';
+          
+          // 글 작성자의 회원 번호 가져오기 (서버로부터 전달받은 파라미터 사용)
+          var authorMemberNo = '<%=((HashMap)request.getAttribute("params")).get("memberNo")%>';
+    	
+          if(!sessionMemberNo) {
+              // sessionMemberNo가 null이거나 빈 문자열인 경우, 로그인되지 않은 상태
+              alert("로그인이 필요합니다.");
+              return; // 이후의 코드 실행을 중단
+          }
+          
+          
+          if(sessionMemberNo === authorMemberNo) {
+              // 회원 번호가 일치할 경우 삭제 확인
+              if(confirm("삭제하시겠습니까?")) {
+                  alert("정상적으로 삭제되었습니다.");
+                  
+                  // 삭제 처리를 위한 서버 요청 URL로 이동
+                  window.location = "../qna/delete.do?no=${params.idx}"; 
+              }
+          } else {
+              // 회원 번호가 일치하지 않을 경우
+              alert("본인만 삭제가 가능합니다.");
+          }
+    	
+		
 		//location.href = "delete.do?no="+${QnADelete.no};
 
 	/* 	 document.likeFrm.submit();  */
@@ -173,6 +197,12 @@
         
         // 글 작성자의 회원 번호 가져오기 (서버로부터 전달받은 파라미터 사용)
         var authorMemberNo = '<%=((HashMap)request.getAttribute("params")).get("memberNo")%>';
+        
+        if(!sessionMemberNo) {
+            // sessionMemberNo가 null이거나 빈 문자열인 경우, 로그인되지 않은 상태
+            alert("로그인이 필요합니다.");
+            return; // 이후의 코드 실행을 중단
+        }
         
         if(sessionMemberNo === authorMemberNo) {
 			window.location = "../qna/Modify.do?no=${params.idx}"; 
