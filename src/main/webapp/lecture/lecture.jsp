@@ -36,8 +36,8 @@
                         	<i class="fa fa-star" aria-hidden="true"></i>
                         </c:forEach>
                         <span>(
-							<fmt:formatNumber value="${total/fn:length(lectureReviewList)}" pattern  ="0.0" var="avg"/>
-							<c:out value="${avg}"/>) / ${fn:length(lectureReviewList) }개의 수강평
+							<fmt:formatNumber value="${empty lectureReviewList?0: total/fn:length(lectureReviewList)}" pattern  ="0.0" var="avg"/>
+							<c:out value="${avg eq '0.0'?0:avg }"/>) / ${fn:length(lectureReviewList) }개의 수강평
 						</span>
                     </div>
                     <div id="professor">
@@ -97,7 +97,7 @@
                                         <div class="left_area">
                                             <p class="star_avg">
                                             	
-												<c:out value="${avg}"/>
+												<c:out value="${avg eq '0.0'?0:avg }"/>
                                             </p>
                                             <p class="star_avg_icon">
                                             	<c:forEach begin="1" end="${total/fn:length(lectureReviewList)}" step="1">
@@ -135,20 +135,53 @@
                                 </div>
                                 <div class="review_content_wrap">
                                     
-                                    <c:forEach var="item" items = "${lectureReviewList}">
-                                    	<div class="review_content">
-                                        <p class="review_member_name">${item.writer}</p>
-                                        <div id="review_grade">
-                                        	<c:forEach begin="1" end="${item.star}" step="1">
-                                           		<i class="fa fa-star" aria-hidden="true"></i>
-                                            </c:forEach>
-                                        </div>
-                                        <div id="review_detail">
-                                            <p>${item.comment}</p>
-                                        </div>
-                                        <p id="review_reg_date">${item.review_reg_date}</p>
-                                    </div>
-                                    </c:forEach>
+<%-- 					                                    <c:choose> --%>
+<%-- 					                   	<c:when test= "${not empty mentoringList}"> --%>
+<!-- 						                   	<div id="mentoring_contents_area" class="grid"> -->
+<%-- 						                   		<c:forEach var="list" items="${mentoringList}" varStatus="loop"> --%>
+<!-- 						                    		<article class="mentoring_content_wrap h250">	 -->
+<!-- 						                    			<div class="mentoring_content"> -->
+<!-- 						                    				<br><br> -->
+<%-- 								                            <p class="mentoring_title" style="font-weight:bold; font-size:large;">${list.mentoring_name }</p><br><br> --%>
+<%-- 								                            <p class="mentoring_job_title">현직 : ${list.job}</p><br> --%>
+<%-- 								                            <p class="mentoring_career">경력 : ${list.career}</p><br> --%>
+<%-- 								                            <p class="mentoring_now_job">직무 : ${list.job_title}</p><br> --%>
+<!-- 								                            <p>---------------------</p> -->
+<%-- 								                            <p class="mentoring_member_name">${list.member_name}</p> --%>
+<%-- 								                            <p hidden>${list.mentoring_intro }</p> --%>
+<%-- 								                            <p hidden>${list.member_no}</p> --%>
+<!-- 						                        		</div> -->
+<!-- 						                        	</article> -->
+<%-- 						                   		</c:forEach> --%>
+<!-- 						                   	</div> -->
+<%-- 					                   	</c:when> --%>
+<%-- 					                   	<c:otherwise> --%>
+<!-- 					               			<div class="no_result">해당하는 멘토링이 없습니다🥹</div> -->
+<%-- 					                   	</c:otherwise> --%>
+<%-- 					                   </c:choose> --%>
+                                    <c:choose>
+	                                    <c:when test= "${not empty lectureReviewList}">
+		                                    <c:forEach var="item" items = "${lectureReviewList}">
+		                                    	<div class="review_content">
+		                                        <p class="review_member_name">${item.writer}</p>
+		                                        <div id="review_grade">
+		                                        	<c:forEach begin="1" end="${item.star}" step="1">
+		                                           		<i class="fa fa-star" aria-hidden="true"></i>
+		                                            </c:forEach>
+		                                        </div>
+		                                        <div id="review_detail">
+		                                            <p>${item.comment}</p>
+		                                        </div>
+		                                        <p id="review_reg_date">${item.review_reg_date}</p>
+		                                    </div>
+		                                    </c:forEach>
+	                                    </c:when>
+	                                    <c:otherwise>
+	                                    	<div class="review_content">
+	                                    		<p>등록된 수강평이 없습니다.</p>
+	                                    	</div>
+	                                    </c:otherwise>
+                                    </c:choose>
 <%-- 									<c:set var="item1" value="${lectureReviewList}"/> --%>
 <!--                                     <div class="more_review_btn_wrap"> -->
 <%--                                         <button id="more_review_btn">${item1[0].star }</button> --%>

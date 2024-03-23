@@ -184,7 +184,7 @@
             </section>
             <section id="contents_area">
                 <div id="contents_info_wrap">
-                    <p>총 게시글 ${ lectureList.size() }</p>
+                    <p>총 게시글 ${ params.total_count }</p>
                     <form action="" id="lecture_frm" name="lecture_frm" method="get">
                         <div id="technology_search_wrap">
                             <input id="technology_search_word" name="technology_search_word" type="text" placeholder="기술검색" value="">
@@ -212,13 +212,16 @@
 			                            <p class="lecture_title">${ lectureList.lecture_title }</p>
 			                            <p class="lecture_professor">${ lectureList.professor }</p>
 			                            <p class="lecture_grade">
-			                                <i class="fa fa-star" aria-hidden="true"></i>
-			                                <i class="fa fa-star" aria-hidden="true"></i>
-			                                <i class="fa fa-star" aria-hidden="true"></i>
-			                                <i class="fa fa-star" aria-hidden="true"></i>
-			                                <i class="fa fa-star-o" aria-hidden="true"></i>
+			                            	<c:forEach begin="1" end = "${lectureList.star}" step="1" >
+				                       			<i class="fa fa-star" aria-hidden="true"></i>
+				                       		</c:forEach>
+				                       		<c:forEach begin="${lectureList.star}" end ="4" step="1" >
+				                       			<i class="fa fa-star-o" aria-hidden="true"></i>
+				                       		</c:forEach>
+
 			                            </p>
 			                        </div>
+			                        
 			                    </article>
 							</c:forEach>
 						</div>
@@ -236,6 +239,39 @@
     </main>
     <%@ include file="../common/footer.jsp" %>
 </div>
-<script src="../js/main.js"></script>
+<!-- <script src="../js/main.js"></script> -->
+<script>
+const categoryDepth1DOM = document.querySelector("#category_depth1");
+const totalLectureDOM = document.querySelector("#total_lecture");
+categoryDepth1DOM.addEventListener("click", function(e) {
+	if (totalLectureDOM == e.target) {
+		location.href = "/ChunjaeProject/mainPage/Main.do";
+	} else if (e.target.tagName == "LI") {
+        if (e.target.children[0].tagName == "I") {
+              if (!e.target.children[1].style.display || e.target.children[1].style.display == "none" ) {
+                e.target.children[1].style.display = "block";
+             } else e.target.children[1].style.display = "none";
+          }
+      }
+}, false)
+    
+const category_list = document.querySelectorAll(".category_depth2 li");
+for(i=0;i<category_list.length;i++){
+	category_list[i].addEventListener("click",function(e){
+		const category2 = this.textContent;
+		location.href = "/ChunjaeProject/mainPage/Main.do?category2=" + category2;
+	}, false);
+}
+const lecture_list = document.querySelectorAll(".lecture_content_wrap");
+const lecture_idx = document.querySelectorAll(".lecture_idx");
+
+</script>
+
+
+
+
+
+
+
 </body>
 </html>
