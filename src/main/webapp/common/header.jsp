@@ -226,8 +226,8 @@ String id =((String) session.getAttribute("userId") != null ? (String) session.g
            
                         <button class="form_login ">로그인</button> 
                     </div> 
-                     <% if(request.getAttribute("loginError") != null) { %>
-        <p style="color:red;"><%= request.getAttribute("loginError") %></p>
+                     <% if(session.getAttribute("loginError") != null) { %>
+        <p style="color:red;"><%= session.getAttribute("loginError") %></p>
     <% } %>
                     
                 </form>

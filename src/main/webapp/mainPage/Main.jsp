@@ -19,7 +19,7 @@
 <body>
 <%@ include file="../common/header.jsp" %>
 <%@ include file="../common/top.jsp" %>
-<div id="container">
+<div id="container">	
     <main id="contents">
         <section id="img_slide">
     		<div class="slide_wrapper">
