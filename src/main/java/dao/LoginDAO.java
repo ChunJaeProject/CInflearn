@@ -90,6 +90,7 @@ public class LoginDAO extends JDBConnect {
 				if(rs.getString("password").equals(pwd)) {  //DB pwd와 입력한 pwd가 다르면 dto에 set을 안하니 null이 return
 					dto.setEmail(rs.getString("email"));
 					dto.setPassword(rs.getString("password"));
+					dto.setNo(rs.getInt("member_no"));
 				}
 
 				}

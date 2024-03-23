@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -36,12 +36,15 @@ public class CommentServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		//세션 처리
+		HttpSession session = req.getSession();
+		
 		int qna_no  = Integer.parseInt(req.getParameter("no"));
 
 
 		String content = req.getParameter("answerWrite");
-		int member_no = 2;
+		int member_no = (int)(session.getAttribute("memberNo"));
+		
 
 		CommentDTO dto = new CommentDTO ();
 		

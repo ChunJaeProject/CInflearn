@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -24,10 +24,15 @@ public class QnaWriteServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//세션에서 맴버정보 가져오기
+		HttpSession session = req.getSession();
+		
 		
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-		int member_no = 2;
+		int member_no = (int)(session.getAttribute("memberNo"));
+		
+		
 
 		QnADTO dto = new QnADTO ();
 		dto.setQuestion_title(title);

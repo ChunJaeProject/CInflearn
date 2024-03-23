@@ -45,6 +45,7 @@ public class QnaDetailServlet extends HttpServlet {
 		String question_hashtag ="";
 		String question_content ="";
 		String answer="";
+		int member_no =1;
 		
 		if(QnADetail != null) {
 			no = QnADetail.getNo();
@@ -54,6 +55,7 @@ public class QnaDetailServlet extends HttpServlet {
 			question_content = (question_content!=null ?question_content.replace("\n\r", "<br>") : "");
 			question_content = (question_content!=null ?question_content.replace(" ", "&nbsp;") : "");
 			answer = QnADetail.getAnswer();
+			member_no = QnADetail.getMember_no();
 		}
 		
 		params.put("idx",no);
@@ -63,6 +65,7 @@ public class QnaDetailServlet extends HttpServlet {
 		params.put("question_content",question_content);
 		params.put("answer",answer);
 		params.put("total_count", total_count);
+		params.put("memberNo", member_no);
 			
 		req.setAttribute("commList", commList);
 		req.setAttribute("params", params);

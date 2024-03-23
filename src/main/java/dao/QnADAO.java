@@ -173,7 +173,8 @@ public class QnADAO extends JDBConnect {
 				dto.setAnswer(rs.getString("answer"));
 				dto.setSolution_state(rs.getString("solution_state"));
 				dto.setLike(rs.getInt("like"));
-
+				dto.setMember_no(rs.getInt("member_no"));
+				
 
 				dto.setReg_date(rs.getDate("reg_date"));
 
@@ -264,6 +265,7 @@ public class QnADAO extends JDBConnect {
 			if(rs.next()) {
 				dto.setQuestion_title(rs.getString("question_title"));
 				dto.setQuestion_content(rs.getString("question_content"));
+				dto.setMember_no(rs.getInt("member_no"));
 
 			}
 		}catch(Exception e) {

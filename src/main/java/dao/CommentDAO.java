@@ -53,7 +53,7 @@ public class CommentDAO extends JDBConnect {
 			sb.append(" WHERE A.qna_no = ?");
 			sb.append(" ORDER BY A.no DESC");
 			
-			System.out.println(sb.toString());
+		
 
 			try {
 				String sql = sb.toString();

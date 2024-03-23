@@ -127,6 +127,8 @@
 		
 	})
  */
+ 
+ 
 	//해결 체크 버튼
     let check = document.querySelector("#btn_check");
     let flag = 1;
@@ -170,8 +172,22 @@
 	/* 	 document.likeFrm.submit();  */
 	}, false);
     
+    //수정하기
     document.querySelector("#btn_update").addEventListener("click",function(e){
-		window.location = "../qna/Modify.do?no=${params.idx}"; 
+    	  // 세션에서 회원 번호 가져오기
+        var sessionMemberNo = '<%=session.getAttribute("memberNo")%>';
+        
+        // 글 작성자의 회원 번호 가져오기 (서버로부터 전달받은 파라미터 사용)
+        var authorMemberNo = '<%=((HashMap)request.getAttribute("params")).get("memberNo")%>';
+        
+        if(sessionMemberNo === authorMemberNo) {
+			window.location = "../qna/Modify.do?no=${params.idx}"; 
+        }
+        else {
+            
+           alert("본인만 수정할 수 있습니다.");
+           window.location = "../qna/QnaDetail.do?no=${params.idx}";  
+        }
 
 	 },false);
 </script>
