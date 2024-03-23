@@ -179,13 +179,12 @@ public class QnADAO extends JDBConnect {
 				dto.setAnswer(rs.getString("answer"));
 				dto.setSolution_state(rs.getString("solution_state"));
 				dto.setLike(rs.getInt("like"));
-<<<<<<< HEAD
+
 				dto.setMember_no(rs.getInt("member_no"));
 				
 
-=======
 				dto.setNickname(rs.getString("nickname"));
->>>>>>> newwww
+
 				dto.setReg_date(rs.getDate("reg_date"));
 
 			}
