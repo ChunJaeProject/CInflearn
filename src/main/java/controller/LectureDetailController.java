@@ -26,16 +26,6 @@ public class LectureDetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		int lecture_no = 1;
-		String lecture_title = "";
-		String image = "";
-		String professor = "";
-		String category1 = "";
-		String category2 = "";
-		String technology_tag = "";
-		String lecture_detail = "";
-		String lecture_period = "";
-		String certificate_yn = "";
-		String difficulty_grade = "";
 		
 
 		lecture_no = Integer.parseInt(req.getParameter("no"));
@@ -46,6 +36,7 @@ public class LectureDetailController extends HttpServlet {
 		
 		Map<String, Object> params = new HashMap<String, Object>();
 		
+		List<LectureDTO> lectureReviewList = dao.getLectureReview(lecture_no);
 //		lecture_no = (req.getParameter("lecture_no") != null ? Integer.parseInt(req.getParameter("lecture_no")) : 0);
 //		lecture_title = req.getParameter("lecture_title");
 //		image = req.getParameter("image");
@@ -69,8 +60,9 @@ public class LectureDetailController extends HttpServlet {
 //		
 //		dao.close();
 //		
-//		 
+//		
 		req.setAttribute("lectureList", lectureList);
+		req.setAttribute("lectureReviewList", lectureReviewList);
 		//req.setAttribute("params", params);
 		
 		req.getRequestDispatcher("/lecture/lecture.jsp").forward(req, resp);

@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
@@ -15,8 +16,8 @@ public class LectureDetailDAO extends JDBConnect {
 		super(application);
 	}
 	
-public List<LectureDTO> getLectureInfo(int no) {
-		
+	public List<LectureDTO> getLectureInfo(int no) {
+			
 		List<LectureDTO> lecture_list = new Vector<LectureDTO>();
 		
 		StringBuilder sb = new StringBuilder();
@@ -26,10 +27,11 @@ public List<LectureDTO> getLectureInfo(int no) {
 				+ " tc.curriculum_no, tc.curriculum_name, curriculum_time");
 		sb.append(" FROM tbl_lecture as tl INNER JOIN tbl_curriculum as tc");
 		sb.append(" ON tl.lecture_no = tc.lecture_no");
-		sb.append(" WHERE tl.lecture_no = " + no);
+		sb.append(" WHERE tl.lecture_no = ?");
 		System.out.println(sb.toString());
 		try {
 			psmt = conn.prepareStatement(sb.toString());
+			psmt.setInt(1, no);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				LectureDTO dto = new LectureDTO();
@@ -59,7 +61,44 @@ public List<LectureDTO> getLectureInfo(int no) {
 		return lecture_list;
 		
 	}
-
+	public List<LectureDTO> getLectureReview(int no){
+		List<LectureDTO> lecture_list = new Vector<LectureDTO>();
+		StringBuilder sb = new StringBuilder();
+		
+		int[] starCount = new int[6];
+		
+		sb.append("SELECT tl.lecture_no, tr.star, tr.content, tr.writer, tr.reg_date");
+		sb.append(" FROM tbl_lecture as tl INNER JOIN tbl_review as tr");
+		sb.append(" ON tl.lecture_no = tr.lecture_no");
+		sb.append(" WHERE tl.lecture_no = ?");
+		
+		System.out.println(sb.toString());
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			psmt.setInt(1, no);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				starCount[rs.getInt("star")]++;
+			}
+			rs.beforeFirst();
+			while(rs.next()) {
+				LectureDTO dto = new LectureDTO();
+				dto.setLecture_no(rs.getInt("lecture_no"));
+				dto.setStar(rs.getInt("star"));
+				dto.setStarCount((Arrays.toString(starCount)).substring(4, 17));
+				dto.setComment(rs.getString("content"));
+				dto.setWriter(rs.getString("writer"));
+				dto.setReview_reg_date(rs.getDate("reg_date"));
+				lecture_list.add(dto);
+			}
+			System.out.println(lecture_list.get(0).getStarCount());
+		}catch(Exception e) {
+			System.out.println("수강평 불러오기 중 에러 발생");
+			e.printStackTrace();
+		}
+		
+		return lecture_list;
+	}
 
 }
 

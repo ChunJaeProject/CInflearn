@@ -2,6 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix = "c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,12 +27,18 @@
                     <p id="category">${lectureList[0].category1 } > ${lectureList[0].category2}</p>
                     <p id="lecture_title">${lectureList[0].lecture_title }</p>
                     <div id="lecture_review_info">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                        <span>(4.2) / 00개의 수강평</span>
+                    	<c:set var = "total" value = "0" />
+							<c:forEach var="item" items="${lectureReviewList}" varStatus="status">
+								<fmt:parseNumber value="${item.star}" var="star"/>
+								<c:set var= "total" value="${total + star}"/>
+							</c:forEach>
+                    	<c:forEach begin="1" end="${total/fn:length(lectureReviewList)}" step="1">
+                        	<i class="fa fa-star" aria-hidden="true"></i>
+                        </c:forEach>
+                        <span>(
+							<fmt:formatNumber value="${total/fn:length(lectureReviewList)}" pattern  ="0.0" var="avg"/>
+							<c:out value="${avg}"/>) / ${fn:length(lectureReviewList) }개의 수강평
+						</span>
                     </div>
                     <div id="professor">
                         <i class="fa fa-user" aria-hidden="true"> ${lectureList[0].professor }</i>
@@ -39,9 +46,9 @@
                     <div id="technology_tag">
                         <i class="fa fa-hashtag" aria-hidden="true"></i>
                         <ul id="tag_wrap">
-                            <li>${lectureList[0].technology_tag }</li>
-                            <li>태그2</li>
-                            <li>태그3</li>
+                       		<c:forTokens var="item" items="${lectureList[0].technology_tag}" delims=",">
+                       			<li>${item}</li>
+                       		</c:forTokens>
                         </ul>
                     </div>
                 </div>
@@ -72,99 +79,80 @@
                             <div id="lecture_curriculum">
                                 <p class="curriculum_info">커리큘럼 <span>총 ${fn:length(lectureList) }개</span></p>
                                 <ul class="curriculum_section_wrap">
-                                	<li id="section_title"><i class="fa fa-caret-down" aria-hidden="true"></i> 섹션<span id="section_code">${section_code}</span>. ${section_title}<span id="section_time">${section_time}</span></li>
+                                	<li id="section_title">
+<!--                                 		<i class="fa fa-caret-down" aria-hidden="true"></i> -->
+                                		 섹션<span id="section_code">${section_code}</span>. ${section_title}<span id="section_time">${section_time}</span></li>
                                 	<c:forEach var="item" items="${lectureList }" varStatus="loop" >
-                                		<li id="section_title"><i class="fa fa-caret-down" aria-hidden="true"></i> 섹션<span id="section_code">${loop.count }</span>. ${item.curriculum_name }<span id="section_time"> ${item.curriculum_time }</span></li>
+                                		<li id="section_title">
+<!--                                 		<i class="fa fa-caret-down" aria-hidden="true"></i> -->
+                                		 섹션<span id="section_code">${loop.count }</span>. ${item.curriculum_name }<span id="section_time"> ${item.curriculum_time }</span></li>
                                 	</c:forEach>
                                     
                                 </ul>
                             </div>
                             <div id="lecture_review">
                                 <div class="review_info_wrap">
-                                    <p class="review_info">수강평 <span>총 000개</span></p>
+                                    <p class="review_info">수강평 <span>총 ${fn:length(lectureReviewList) }개</span></p>
                                     <div class="star_avg_wrap">
                                         <div class="left_area">
-                                            <p class="star_avg">4.5</p>
+                                            <p class="star_avg">
+                                            	
+												<c:out value="${avg}"/>
+                                            </p>
                                             <p class="star_avg_icon">
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                            	<c:forEach begin="1" end="${total/fn:length(lectureReviewList)}" step="1">
+                                            		<i class="fa fa-star" aria-hidden="true"></i>
+                                            	</c:forEach>
                                             </p>
                                         </div>
                                         <div class="right_area">
                                             <div class="progress_bar_wrap">
+                                            	
+                                            	<c:set var="starcount" value="${fn:split(lectureReviewList[0].starCount,', ')}" />
                                                 <div class="progress_bar">
                                                     <span class="progress_bar_name">5점</span>
-                                                    <progress class="best_progress" max="53" value="36"></progress>
+                                                    <progress class="best_progress" max="${fn:length(lectureReviewList)}" value="${starcount[4] }"></progress>
                                                 </div>
                                                 <div class="progress_bar">
                                                     <span class="progress_bar_name">4점</span>
-                                                    <progress max="53" value="11"></progress>
+                                                    <progress max="${fn:length(lectureReviewList)}" value="${starcount[3] }"></progress>
                                                 </div>
                                                 <div class="progress_bar">
                                                     <span class="progress_bar_name">3점</span>
-                                                    <progress max="53" value="2"></progress>
+                                                    <progress max="${fn:length(lectureReviewList)}" value="${starcount[2] }"></progress>
                                                 </div>
                                                 <div class="progress_bar">
                                                     <span class="progress_bar_name">2점</span>
-                                                    <progress max="53" value="2"></progress>
+                                                    <progress max="${fn:length(lectureReviewList)}" value="${starcount[1] }"></progress>
                                                 </div>
                                                 <div class="progress_bar">
                                                     <span class="progress_bar_name">1점</span>
-                                                    <progress max="53" value="2"></progress>
+                                                    <progress max="${fn:length(lectureReviewList)}" value="${starcount[0] }"></progress>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="review_content_wrap">
-                                    <div class="review_content">
-                                        <p class="review_member_name">작성자명</p>
+                                    
+                                    <c:forEach var="item" items = "${lectureReviewList}">
+                                    	<div class="review_content">
+                                        <p class="review_member_name">${item.writer}</p>
                                         <div id="review_grade">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        	<c:forEach begin="1" end="${item.star}" step="1">
+                                           		<i class="fa fa-star" aria-hidden="true"></i>
+                                            </c:forEach>
                                         </div>
                                         <div id="review_detail">
-                                            <p>수강평 내용</p>
+                                            <p>${item.comment}</p>
                                         </div>
-                                        <p id="review_reg_date">작성일</p>
+                                        <p id="review_reg_date">${item.review_reg_date}</p>
                                     </div>
-                                    <div class="review_content">
-                                        <p class="review_member_name">작성자명</p>
-                                        <div id="review_grade">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </div>
-                                        <div id="review_detail">
-                                            <p>수강평 내용</p>
-                                        </div>
-                                        <p id="review_reg_date">작성일</p>
-                                    </div>
-                                    <div class="review_content">
-                                        <p class="review_member_name">작성자명</p>
-                                        <div id="review_grade">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </div>
-                                        <div id="review_detail">
-                                            <p>수강평 내용</p>
-                                        </div>
-                                        <p id="review_reg_date">작성일</p>
-                                    </div>
-                                    <div class="more_review_btn_wrap">
-                                        <button id="more_review_btn">수강평 더보기</button>
-                                    </div>
+                                    </c:forEach>
+<%-- 									<c:set var="item1" value="${lectureReviewList}"/> --%>
+<!--                                     <div class="more_review_btn_wrap"> -->
+<%--                                         <button id="more_review_btn">${item1[0].star }</button> --%>
+<!--                                     </div> -->
                                 </div>
                             </div>
                         </div>
