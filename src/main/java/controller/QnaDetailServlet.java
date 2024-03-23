@@ -45,7 +45,11 @@ public class QnaDetailServlet extends HttpServlet {
 		String question_hashtag ="";
 		String question_content ="";
 		String answer="";
+<<<<<<< HEAD
 		int member_no =1;
+=======
+		String nickname="";
+>>>>>>> newwww
 		
 		if(QnADetail != null) {
 			no = QnADetail.getNo();
@@ -54,6 +58,7 @@ public class QnaDetailServlet extends HttpServlet {
 			question_content = QnADetail.getQuestion_content();
 			question_content = (question_content!=null ?question_content.replace("\n\r", "<br>") : "");
 			question_content = (question_content!=null ?question_content.replace(" ", "&nbsp;") : "");
+			nickname = QnADetail.getNickname();
 			answer = QnADetail.getAnswer();
 			member_no = QnADetail.getMember_no();
 		}
@@ -65,7 +70,11 @@ public class QnaDetailServlet extends HttpServlet {
 		params.put("question_content",question_content);
 		params.put("answer",answer);
 		params.put("total_count", total_count);
+<<<<<<< HEAD
 		params.put("memberNo", member_no);
+=======
+		params.put("nickname", nickname);
+>>>>>>> newwww
 			
 		req.setAttribute("commList", commList);
 		req.setAttribute("params", params);

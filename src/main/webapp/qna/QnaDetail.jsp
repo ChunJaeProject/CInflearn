@@ -60,8 +60,8 @@
     <div id="container">
         <%@ include file="../common/header.jsp" %>
         <div id="Writer">
-                <h4>닉네임</h4><br>
-                <p style="font-size: small; color:darkgray; font-weight: bold;">작성한 질문수 (개수)</p><br>
+	             <h4>${params.nickname }</h4><br>
+	            <p style="font-size: small; color:darkgray; font-weight: bold;">작성한 질문수 (개수)</p><br>
                 <img src="../assets/image/check.png" style="width: 20px;">&nbsp;<span style="color:dimgrey; font-weight: bold;">해결 여부</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>${QnADetail.solution_state }</span><br>
                 <input type="button" id="btn_go" name="btn_go" value="목록으로">
          </div>
@@ -102,17 +102,11 @@
 	            <div class="commentList">
 	           <c:forEach var="dto" items="${commList}" varStatus="status">
                 <div class="userInfo">
-                
-               <span class="user"> <i class="fa fa-user" aria-hidden="true"></i>   ${dto.email} &nbsp;   </span> <span class="reg" style="margin-right:10px;"> ${dto.reg_date } </span><Br><br>
-      			<span class= "commetValue">    ${dto.content} </span>
+	               <span class="user"> <i class="fa fa-user" aria-hidden="true"></i>   ${dto.email} &nbsp;   </span> <span class="reg" style="margin-right:10px;"> ${dto.reg_date } </span><Br><br>
+	      			<span class= "commetValue">    ${dto.content} </span>
       			</div>
-
-
-    </c:forEach>
-	        
-	            </div>
-	         
-                
+    			</c:forEach>
+	            </div>  
             </div>
         </section> 
         <%@ include file="../common/footer.jsp" %>
