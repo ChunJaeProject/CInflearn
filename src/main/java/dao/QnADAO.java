@@ -108,15 +108,19 @@ public class QnADAO extends JDBConnect {
 		if(map.get("search_word")!=null) {
 			sb.append(" AND question_title LIKE '%" + map.get("search_word") + "%'");
 		}
-		if(map.get("like")!=null) {
-			sb.append(" ORDER BY `like` DESC ");
+		/*
+		 * if(map.get("like")!=null) { sb.append(" ORDER BY `like` DESC "); } else
+		 * if(map.get("like") == null){
+		 */
+		//sb.append(" ORDER BY reg_date DESC ");
+		//}
+		if(map.get("like") != null) {
+		    sb.append(" ORDER BY Q.like DESC");
 		} else {
-			sb.append(" ORDER BY no DESC ");
+		    sb.append(" ORDER BY Q.reg_date DESC");
 		}
 		
 		sb.append(" limit " + map.get("page_skip_cnt") + ", " + map.get("page_size"));
-		
-		
 		
 		System.out.println(sb.toString());
 
@@ -155,9 +159,11 @@ public class QnADAO extends JDBConnect {
 		 StringBuilder sb = new StringBuilder();
 		//sb.append("SELECT no, question_title, question_content, question_hashtag");
 		//sb.append(", answer, solution_state, like, reg_date, member_no");
-		sb.append("SELECT * ");
-		sb.append("	FROM tbl_qna");
+		sb.append(" SELECT Q.*, SUBSTRING_INDEX(M.email, '@', 1) AS nickname");
+		sb.append("	FROM tbl_qna AS Q");
+		sb.append(" INNER JOIN tbl_member AS M ON Q.member_no = M.member_no");
 		sb.append(" WHERE no = ?");
+		System.out.println(sb.toString());
 		
 		try {
 			psmt = conn.prepareStatement(sb.toString());
@@ -173,8 +179,7 @@ public class QnADAO extends JDBConnect {
 				dto.setAnswer(rs.getString("answer"));
 				dto.setSolution_state(rs.getString("solution_state"));
 				dto.setLike(rs.getInt("like"));
-
-
+				dto.setNickname(rs.getString("nickname"));
 				dto.setReg_date(rs.getDate("reg_date"));
 
 			}
