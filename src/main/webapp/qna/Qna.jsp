@@ -127,6 +127,7 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
       
         location.href="Write.do";
     });
+   s
     
     document.querySelector("#btn_nowrite").addEventListener("click", function(){
         alert('로그인 후 이용해주세요.');
