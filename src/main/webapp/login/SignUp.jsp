@@ -11,7 +11,8 @@
 <style>
 .main{
 padding-top:100px;
-height:800px;
+width: 1200px;
+margin: 0 auto;
 }
 #email{
  border-radius : 5px;

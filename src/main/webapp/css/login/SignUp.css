@@ -1,16 +1,13 @@
-  .sign_title
-    {
-        width: 300px;
-        margin : 0px auto;
+	.sing_up {
+    	height: 450px;
+    	position: relative;
     }
     .signfrm{
-        width: 450px;
-        height: 800px;
-
-
-        margin : 10px auto;
-        padding :10px;
-        margin-right:650px;
+        margin: 0px auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
     .signfrm input[type=email],input[type=password]{
         border : 1px solid #ccc;
@@ -27,8 +24,6 @@
        
     }
     .sign_title{
-        width: 300px;
-        height: 100px;
         text-align: center;
     }
     .terms{
