@@ -43,7 +43,9 @@ public class LoginingServlet extends HttpServlet {
 		if(dto != null && dto.getEmail() !=null){
 			session.setAttribute("userId",dto.getEmail()); //성공한 변수를 모든 페이지에 사용하려고 session객체를 사용
 			session.setAttribute("memberNo", dto.getNo()); //맴버 no 세션에 저장
-			
+			if(session.getAttribute("loginError") != null ) {
+			session.removeAttribute("loginError");
+			}
 			resp.sendRedirect("../mainPage/Main.do");
 		}
 
