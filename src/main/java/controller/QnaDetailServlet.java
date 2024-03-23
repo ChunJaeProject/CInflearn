@@ -45,11 +45,11 @@ public class QnaDetailServlet extends HttpServlet {
 		String question_hashtag ="";
 		String question_content ="";
 		String answer="";
-<<<<<<< HEAD
+
 		int member_no =1;
-=======
+
 		String nickname="";
->>>>>>> newwww
+
 		
 		if(QnADetail != null) {
 			no = QnADetail.getNo();
