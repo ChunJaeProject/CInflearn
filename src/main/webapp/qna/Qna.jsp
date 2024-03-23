@@ -28,6 +28,11 @@
     </style>
 </head>
 <body>
+
+<%
+String sessionId =((String) session.getAttribute("userId") != null ? (String) session.getAttribute("userId") : "고객");
+%>
+
 <%@ include file="../common/header.jsp" %>
 <%@ include file="../common/top.jsp" %>
     <div id="container">
@@ -61,7 +66,11 @@
             <ul id="order_ul">
                 <li><a href="Qna.do">최신순</a></li>
                 <li><a href="Qna.do?like=1" style="margin-right: 415px;">좋아요순</a></li>
-                <input type="button" id="btn_write" name="btn_write" value="글쓰기"><br> 
+            <%if (!sessionId.equals("고객")) { %>
+                <input type="button" id="btn_write" name="btn_write" value="글쓰기" onclick="location.href='../qna/Write.do';"><br> 
+            <%}  else {%>  
+              <input type="button" id="btn_write" name="btn_write" value="글쓰기" onclick="alert('로그인 후 이용해주세요.'); location.href='../mainPage/Main.do';"><br> 
+               <%} %>
             </ul>
             <hr>
 
@@ -114,10 +123,15 @@
         <%@ include file="../common/footer.jsp" %>
     </div>
 <script>
-    document.querySelector("#btn_write").addEventListener("click", function(){
-        alert("로그인 후 이용하세요.");
+   /*  document.querySelector("#btn_write").addEventListener("click", function(){
+      
         location.href="Write.do";
     });
+    
+    document.querySelector("#btn_nowrite").addEventListener("click", function(){
+        alert('로그인 후 이용해주세요.');
+        location.href='../mainPage/Main.do';
+    }); */
 </script>
 </body>
 </html>

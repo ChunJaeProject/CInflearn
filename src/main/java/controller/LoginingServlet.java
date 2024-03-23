@@ -43,12 +43,12 @@ public class LoginingServlet extends HttpServlet {
 		if(dto != null && dto.getEmail() !=null){
 			session.setAttribute("userId",dto.getEmail()); //성공한 변수를 모든 페이지에 사용하려고 session객체를 사용
 	
-			resp.sendRedirect("../mainPage/Main.jsp");
+			resp.sendRedirect("../mainPage/Main.do");
 		}
 
 		else{
 			req.setAttribute("loginError", "아이디와 비밀번호가 맞지 않습니다.");
-			req.getRequestDispatcher("../mainPage/Main.jsp").forward(req,resp);
+			req.getRequestDispatcher("../mainPage/Main.do").forward(req,resp);
 		}
 	}
 

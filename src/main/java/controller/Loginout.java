@@ -19,7 +19,7 @@ public class Loginout extends HttpServlet {
 		HttpSession session = req.getSession();
 		session.removeAttribute("userId");
 		session.removeAttribute("userName");
-		resp.sendRedirect("../mainPage/Main.jsp");
+		resp.sendRedirect("../mainPage/Main.do");
 		
 	}
 
