@@ -91,7 +91,6 @@ public class LectureDetailDAO extends JDBConnect {
 				dto.setReview_reg_date(rs.getDate("reg_date"));
 				lecture_list.add(dto);
 			}
-			System.out.println(lecture_list.get(0).getStarCount());
 		}catch(Exception e) {
 			System.out.println("수강평 불러오기 중 에러 발생");
 			e.printStackTrace();
