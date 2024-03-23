@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>회원가입 - 인프런 | 온라인 강의 플랫폼</title>
     <link rel="stylesheet" href="../css/login/SignUp.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> 
 <style>
@@ -71,11 +71,11 @@ text-decoration: underline}
            	
             <label for="password" class="form_email">비밀번호</label><br>
        
-            <input type="password" name ="password" id="password" class="password" placeholder="*******"><i class="fa fa-eye fa-lg"  id ="mask3"style="cursor:pointer; margin-left:10px;"></i><br><br><br>
+            <input type="password" name ="password" id="password" class="password" placeholder="*******"><i class="fas fa-eye"  id ="mask3"style="cursor:pointer; margin-left:10px;"></i><br><br><br>
             
             <label for="passwordConfirm" class="form_emailConfirm">비밀번호 확인</label><br>
        
-            <input type="password" id="passwordConfirm" class="form_emailConfirm" placeholder="*******"><i class="fa fa-eye fa-lg"  id ="mask4"style="cursor:pointer; margin-left:10px;"></i>
+            <input type="password" id="passwordConfirm" class="form_emailConfirm" placeholder="*******"><i class="fas fa-eye"  id ="mask4"style="cursor:pointer; margin-left:10px;"></i>
           	<p id="passwordMessage"></p>
             <input type="button"   name ="sign_button" id = "sign_button" value="회원가입"> <br><br>
     
@@ -100,9 +100,13 @@ text-decoration: underline}
  mask3.addEventListener("click",function(e){
  	if(pwd1.type==="password"){
  	pwd1.type="text";
+ 	mask3.classList.remove("fa-eye");
+ 	mask3.classList.add("fa-eye-slash");
  	}
  	else{
  		pwd1.type="password";
+ 	 	mask3.classList.remove("fa-eye-slash");
+ 	 	mask3.classList.add("fa-eye");
  	}
 
  	});
@@ -110,9 +114,13 @@ text-decoration: underline}
  mask4.addEventListener("click",function(e){
 	 	if(pwdCfrm.type==="password"){
 	 		pwdCfrm.type="text";
+	 	 	mask4.classList.remove("fa-eye");
+	 	 	mask4.classList.add("fa-eye-slash");
 	 	}
 	 	else{
 	 		pwdCfrm.type="password";
+	 	 	mask4.classList.remove("fa-eye-slash");
+	 	 	mask4.classList.add("fa-eye");
 	 	}
 
 	 	});
@@ -139,9 +147,11 @@ text-decoration: underline}
      const value = e.currentTarget.value;
      if (isEmail(value)) {
          p.style.color = 'green';
+         p.style.fontSize = "10px";
          p.textContent = '이메일 형식입니다';
      } else {
          p.style.color = 'red';
+         p.style.fontSize = "10px";
          p.textContent = '이메일 형식이 올바르지 않습니다.';
      }
  });
@@ -156,14 +166,17 @@ text-decoration: underline}
      // 먼저 비밀번호 유효성 검사를 수행
      if (!validatePassword(password.value)) {
          passwordMessage.style.color = 'red';
+         passwordMessage.style.fontSize = "10px";
          passwordMessage.textContent = '비밀번호는 8글자 이상 32글자 이하이며, 특수 문자를 포함해야 합니다.';
      } else {
          // 비밀번호 유효성 검사를 통과한 경우, 비밀번호 일치 여부 검사
          if (password.value === passwordConfirm.value) {
              passwordMessage.style.color = 'green';
+             passwordMessage.style.fontSize = "10px";
              passwordMessage.textContent = '비밀번호가 올바릅니다.';
          } else {
              passwordMessage.style.color = 'red';
+             passwordMessage.style.fontSize = "10px";
              passwordMessage.textContent = '비밀번호가 일치하지 않습니다.';
          }
      }
