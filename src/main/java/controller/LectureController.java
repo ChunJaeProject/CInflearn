@@ -45,6 +45,7 @@ public class LectureController extends HttpServlet {
 		technology_search_word = req.getParameter("technology_search_word");
 		lecture_search_word = req.getParameter("lecture_search_word");
 		
+		
 		page_no = (req.getParameter("page_no")!=null) ? Integer.parseInt(req.getParameter("page_no")) : 1;
 		page_skip_cnt = (page_no-1)*page_size;
 		
@@ -57,12 +58,16 @@ public class LectureController extends HttpServlet {
 		
 		
 		
-		if(category2!= null && category2!="")
+		if(category2!=null)
 			params.put("category2", category2);
-		if(technology_search_word!= null && technology_search_word!="")
+		if(technology_search_word !=null && technology_search_word!="") {
 			params.put("technology_search_word", technology_search_word);
-		if(lecture_search_word!= null && lecture_search_word!="")
+		}
+		if(lecture_search_word!="") {
 			params.put("lecture_search_word", lecture_search_word);
+		}
+		
+		
 		total_count = dao.lectureTotalCount(params);
 		total_page = (int)Math.ceil(total_count/(double)page_size);
 		
@@ -84,12 +89,15 @@ public class LectureController extends HttpServlet {
 		String pagingArea = "";
 		String pageUri = "/ChunjaeProject/mainPage/Main.do?";
 		
-		if(category2!= null && category2!="")
+		if(category2!= null && category2!="") {
 			pageUri = pageUri + "category2=" + category2 + "&";
-		if(technology_search_word!= null && technology_search_word!="")
+		}
+		if(technology_search_word!= null && technology_search_word!="") {
 			pageUri = pageUri + "technology_search_word=" + technology_search_word + "&";
-		if(lecture_search_word!= null && lecture_search_word!="")
+		}
+		if(lecture_search_word!= null && lecture_search_word!="") {
 			pageUri = pageUri + "lecture_search_word=" + lecture_search_word + "&";
+		}
 		
 		
 		pagingArea = CommonPage.pagingArea(total_page, page_no, page_block_start, page_block_end, pageUri );

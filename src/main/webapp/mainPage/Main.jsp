@@ -187,11 +187,11 @@
                     <p>총 게시글 ${ params.total_count }</p>
                     <form action="" id="lecture_frm" name="lecture_frm" method="get">
                         <div id="technology_search_wrap">
-                            <input id="technology_search_word" name="technology_search_word" type="text" placeholder="기술검색" value="">
+                            <input id="technology_search_word" name="technology_search_word" type="text" placeholder="기술검색" value="<%=request.getParameter("technology_search_word") ==null? "":request.getParameter("technology_search_word")%>">
                             <input id="technology_search_btn" name="technology_search_btn" type="submit" value="검색">
                         </div>
                         <div id="lecture_search_wrap">
-                            <input id="lecture_search_word" name="lecture_search_word" type="text" placeholder="강의명/강사명검색">
+                            <input id="lecture_search_word" name="lecture_search_word" type="text" placeholder="강의명/강사명검색" value="<%=request.getParameter("lecture_search_word") ==null? "":request.getParameter("lecture_search_word")%>">
                             <input id="lecture_btn" name="lecture_btn" type="submit" value="검색">
                         </div>
                     </form>             
@@ -243,6 +243,8 @@
 <script>
 const categoryDepth1DOM = document.querySelector("#category_depth1");
 const totalLectureDOM = document.querySelector("#total_lecture");
+const technology_search_word= document.getElementById("technology_search_word");
+const lecture_search_word = document.getElementById("lecture_search_word");
 categoryDepth1DOM.addEventListener("click", function(e) {
 	if (totalLectureDOM == e.target) {
 		location.href = "/ChunjaeProject/mainPage/Main.do";
@@ -258,12 +260,14 @@ categoryDepth1DOM.addEventListener("click", function(e) {
 const category_list = document.querySelectorAll(".category_depth2 li");
 for(i=0;i<category_list.length;i++){
 	category_list[i].addEventListener("click",function(e){
+		
 		const category2 = this.textContent;
-		location.href = "/ChunjaeProject/mainPage/Main.do?category2=" + category2;
+		location.href = "/ChunjaeProject/mainPage/Main.do?category2=" + category2 + "&"
 	}, false);
 }
 const lecture_list = document.querySelectorAll(".lecture_content_wrap");
 const lecture_idx = document.querySelectorAll(".lecture_idx");
+
 
 </script>
 
