@@ -111,6 +111,38 @@
 #popup_infor{
     height: 500px;
 }
+
+#curr_mentoringInfo {
+	text-align: start;
+	padding: 20px;
+}
+#curr_mentoringInfo #popupMentorName {
+	margin-bottom: 24px;
+	font-size: 14px;
+}
+
+#curr_mentoringInfo #popupMentoringName {
+	margin-bottom: 24px;
+	font-size: 18px;
+	font-weight: bold;
+	
+}
+
+#curr_mentoringInfo #popupMentorJob {
+	margin-bottom: 12px;
+	font-size: 12px;
+}
+
+#curr_mentoringInfo #popupMentorcareer {
+	margin-bottom: 24px;
+	font-size: 12px;
+}
+
+#curr_mentoringInfo #popupMentoringInfor {
+	font-size: 14px;	
+}
+
+
 #mentoring_sign_form p{
     text-align: left;
     padding-left: 30px;

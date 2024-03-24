@@ -188,7 +188,7 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                     <br>
                     <p style="text-align: left;">&nbsp;&nbsp;총 게시글 00<p>
                 </div>
-                <div id="mentoring_contents_area" class="grid">
+                <div id="mentoring_contents_area" class="grid" style="grid-gap: 20px; margin: 30px 0 80px 0">
 
                     <!--                     <article class="mentoring_content_wrap h250">    -->
                     <!--                         <div class="mentoring_content"> -->
@@ -292,6 +292,7 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                         <p id="popupMentoringName"></p>
                         <p id="popupMentorJob"></p>
                         <p id="popupMentorcareer"></p>
+                        <hr>
                         <p id="popupMentoringInfor"></p>
                     </div>
                     <div id="popup_infor_sign">
