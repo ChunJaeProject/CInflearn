@@ -7,17 +7,20 @@
 }
 #header {
     width: 100%;
-    min-width: 1200px;
     height: 64px;
     padding: 0 20px;
     position: fixed;
-    display: flex;
     line-height: 64px;
     background-color: white;
     justify-content: space-between;
     border-bottom:1px solid #ced4da;
     box-shadow: 0  1px #ced4da;
     z-index: 9999;
+}
+#header #header_container {
+	width: 1200px;
+	display: flex;
+	justify-content: space-between;
 }
 #header #logo{
     height: 60px;

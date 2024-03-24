@@ -167,7 +167,7 @@
 	         border : none;
 	         cursor :pointer;
         }
-        
+       
 </style>
  <link rel="stylesheet" href="../css/common/base.css">
     <link rel="stylesheet" href="../css/common/frame.css">
@@ -183,8 +183,9 @@ String id =((String) session.getAttribute("userId") != null ? (String) session.g
 
 %>
 	 <header id="header">
-        <div id="logo"></div>
-        <div id="menuBox">
+	 	<div id="header_container">
+ 	        <div id="logo"></div>
+        	<div id="menuBox">
             <nav id="menu">
                 <ul id="menuUl">
                     <li>멘토링</li>
@@ -193,15 +194,14 @@ String id =((String) session.getAttribute("userId") != null ? (String) session.g
                     <li>멘토링후기</li>
                 </ul>
             </nav>
-        </div>
-        <div id="headerBtnBox">
+        	</div>
+        	<div id="headerBtnBox">
 			<span><%=id %>님 환영합니다</span>
 			<button class="login_btn"  value = "<%=id.equals("고객") ? "로그인" : "로그아웃" %>"><%= id.equals("고객") ? "로그인" : "로그아웃" %></button>
-			
 			<button class="out_btn"  value = "<%=id.equals("고객") ? "회원가입" : "회원탈퇴" %>"><%= id.equals("고객") ? "회원가입" : "회원탈퇴" %></button>
+        	</div>
+	 	</div>
 
-
-        </div>
     </header>
 <div id="login_popupContainer"> 
         <div class="modal_signUp"> 
