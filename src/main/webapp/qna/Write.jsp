@@ -9,19 +9,27 @@
  <link rel="stylesheet" href="../css/common/frame.css">
  <link rel="stylesheet" href="../css/qna/write.css">
  <style>
+	 #container {
+	 	height: 900px;
+	 }
       #section {
           width: 100%;
           height:700px;
           padding-top: calc(var(--header-height) + 50px) ;
           margin: 0 auto;
+          display : flex;
+          justify-content: center;
       }
       #content {
 	    border: 1px solid #ccc;
 	    border-radius: 7px;
 	  }
 	  #btnDiv{
-	  width:500px;
-	  margin : 0px auto;
+		  width:500px;
+		  margin : 0px auto;
+		  display : flex;
+	      justify-content: center;
+	      margin-bottom: 50px;
 	  }
  </style>
 </head>
@@ -33,10 +41,9 @@
             <form id="frm" name="frm" action="../qna/Write.do" method="post">
                 <span style="color: red;">*</span> <input type="text" id="title" name="title" placeholder="제목에 핵심 내용을 요약해보세요."><br><br>
                 &nbsp;&nbsp;<input type="text" id="tag" name="tag" placeholder="태그를 설정하세요.(최대 10개)"><br><br>
-                <span style="vertical-align: top; color: red;">*</span> 
+                <span style="vertical-align: top; color: red; float: left;">* </span> 
                 <textarea id="content" name="content" maxlength="3000" style="width:700px; height:400px " placeholder="-학습 관련 질문을 남겨주세요. 상세히 작성하면 더 좋아요!&#13;&#10-먼저 유사한 질문이 있었는지 검색해보세요.&#13;&#10-서로 예의를 지키며 존중하는 문화를 만들어가요."
                 ></textarea><br><br>
-                
                   </section>
                 <div id ="btnDiv">
                     <input type="reset" id="btn_reset" name="btn_reset" value="취소">&nbsp;

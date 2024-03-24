@@ -28,13 +28,21 @@
     </style>
 </head>
 <body>
+
+<%
+String sessionId =((String) session.getAttribute("userId") != null ? (String) session.getAttribute("userId") : "고객");
+%>
+
 <%@ include file="../common/header.jsp" %>
 <%@ include file="../common/top.jsp" %>
-    <div id="container">
-        <div id="contents_top_area" class="cal_h100">
-            <p style="font-size: large; font-weight: bold;">묻고 답해요</p>
-            <p>126만명의 커뮤니티 !! 함께 토론해봐요.</p>
-        </div>
+<div id="container">
+   	<main id="contents"> 
+        <section id="contents_top_area">
+            <div id="contents_top_area_text">
+                <p id="contents_title">묻고 답해요</p>
+                <p id="contents_sub_title">126만명의 커뮤니티 !! 함께 토론해봐요.</p>
+            </div>
+        </section>
         <section id="section">
             <div id="sidebar_left">
                 <ul id="sidebar_ul">
@@ -59,9 +67,13 @@
                 </form>
             </div>
             <ul id="order_ul">
-                <li><a href="#">최신순</a></li>
+                <li><a href="Qna.do">최신순</a></li>
                 <li><a href="Qna.do?like=1" style="margin-right: 415px;">좋아요순</a></li>
-                <input type="button" id="btn_write" name="btn_write" value="글쓰기"><br> 
+            <%if (!sessionId.equals("고객")) { %>
+                <input type="button" id="btn_write" name="btn_write" value="글쓰기" onclick="location.href='../qna/Write.do';"><br> 
+            <%}  else {%>  
+              <input type="button" id="btn_write" name="btn_write" value="글쓰기" onclick="alert('로그인 후 이용해주세요.'); location.href='../qna/Qna.do';"><br> 
+               <%} %>
             </ul>
             <hr>
 
@@ -90,7 +102,7 @@
                  	<p>아직 관련 글이 없습니다. 첫 글을 남겨주세요!</p>
 	             </div>
 			</c:otherwise>
-			</c:choose>
+			</c:choose>	
                 
             <div class="paging_area">
                 ${maps.paging}
@@ -108,16 +120,22 @@
 						<span>태그2</span><br><br><span>태그3</span><span>태그4</span><br><br><span>태그5</span>
 					</c:otherwise>
 				</c:choose>
-			</div>
-	            
+			</div>  
         </section>
-        <%@ include file="../common/footer.jsp" %>
-    </div>
+	</main>
+    <%@ include file="../common/footer.jsp" %>
+</div>
 <script>
-    document.querySelector("#btn_write").addEventListener("click", function(){
-        alert("로그인 후 이용하세요.");
+   /*  document.querySelector("#btn_write").addEventListener("click", function(){
+      
         location.href="Write.do";
     });
+   s
+    
+    document.querySelector("#btn_nowrite").addEventListener("click", function(){
+        alert('로그인 후 이용해주세요.');
+        location.href='../mainPage/Main.do';
+    }); */
 </script>
 </body>
 </html>

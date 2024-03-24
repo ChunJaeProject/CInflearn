@@ -42,13 +42,17 @@ public class LoginingServlet extends HttpServlet {
 		//로그인 세션 저장
 		if(dto != null && dto.getEmail() !=null){
 			session.setAttribute("userId",dto.getEmail()); //성공한 변수를 모든 페이지에 사용하려고 session객체를 사용
-	
-			resp.sendRedirect("../mainPage/Main.jsp");
+			session.setAttribute("memberNo", dto.getNo()); //맴버 no 세션에 저장
+			if(session.getAttribute("loginError") != null ) {
+			session.removeAttribute("loginError");
+			}
+			resp.sendRedirect("../mainPage/Main.do");
 		}
 
 		else{
-			req.setAttribute("loginError", "아이디와 비밀번호가 맞지 않습니다.");
-			req.getRequestDispatcher("../mainPage/Main.jsp").forward(req,resp);
+			System.out.println("로그인실패");
+			session.setAttribute("loginError", "아이디와 비밀번호가 맞지 않습니다."); // 세션에 메시지 저장
+			resp.sendRedirect("../mainPage/Main.do");
 		}
 	}
 

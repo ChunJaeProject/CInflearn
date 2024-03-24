@@ -30,9 +30,8 @@
     color: #fff;
 }
 #btn {
-    float: right;
     margin-top: 10px;
-    margin-right: 110px;
+	text-align: center;
 }
 #btn a:active {
     color: #000;

@@ -8,48 +8,62 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import dao.CommentDAO;
 import dao.QnADAO;
+import dto.CommentDTO;
 import dto.QnADTO;
 
-@WebServlet("/qna/Write.do")
-public class QnaWriteServlet extends HttpServlet {
+/**
+ * Servlet implementation class CommentServlet
+ */
+@WebServlet("/qna/comment.do")
+public class CommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		req.getRequestDispatcher("./Write.jsp").forward(req, resp);
+		
 	}
 
-
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//세션에서 맴버정보 가져오기
+		//세션 처리
 		HttpSession session = req.getSession();
 		
-		
-		String title = req.getParameter("title");
-		String content = req.getParameter("content");
+		int qna_no  = Integer.parseInt(req.getParameter("no"));
+
+
+		String content = req.getParameter("answerWrite");
 		int member_no = (int)(session.getAttribute("memberNo"));
 		
-		
 
-		QnADTO dto = new QnADTO ();
-		dto.setQuestion_title(title);
-		dto.setQuestion_content(content);
-		dto.setMember_no(member_no);
+		CommentDTO dto = new CommentDTO ();
 		
-		QnADAO dao =  new QnADAO();
-		int result = dao.QnARegist(dto);
+		dto.setContent(content);
+		dto.setMember_no(member_no);
+		dto.setQna_no(qna_no);
+
+		
+		CommentDAO dao =  new CommentDAO();
+		int result = dao.CommentRegist(dto);
 		req.setAttribute("result" ,result);
 		
 		if(result==1) {
-			resp.sendRedirect("../qna/Qna.do");
+			resp.sendRedirect("../qna/QnaDetail.do?no="+qna_no);
 		}
 		else {
 			System.out.println("글쓰기에 실패하였습니다.");
-			resp.sendRedirect("../qna/Qna.do");
-	}
+			resp.sendRedirect("../qna/QnaDetail.do?no="+qna_no);
 	}
 
+}
 }

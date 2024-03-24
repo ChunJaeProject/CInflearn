@@ -42,8 +42,8 @@
 }
 #resetBtn:hover{
     cursor: pointer;
-}
 
+<<<<<<< HEAD
 #contents {
 	margin-bottom: 150px;
 }
@@ -58,10 +58,12 @@
 
 #contetns_top_area_text {
 	padding: 135px 0 0 24px;
+=======
+>>>>>>> 880df831ad97a1ade1521470241d63b93224a947
 }
 
 #mentoring_contents_area{
-    padding : 60px 24px 0 35px;
+    padding : 0 20px;
 }
 .mentoring_content{
     height: 250px;
@@ -75,7 +77,7 @@
 .mentoring_content_wrap:hover{
     transform: translateY(-10px);
     cursor: pointer;
-    
+
 }
 #popupContainer{
     position: fixed;
@@ -85,9 +87,8 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 10000;
 }
-#closePopup{
+#popup{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -97,15 +98,11 @@
     border-radius: 15px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     width: 500px;
-    text-align: center;
     min-height: 30vh;
     max-height: 70vh;
-    overflow-y: auto;
-  
-}
+    overflow-y: scroll;
+    text-align: center;
 
-#close_btn_wrap {
-	background-color: red;
 }
 .popupTitle{
     height: 30px;
@@ -124,10 +121,45 @@
 .close_btn {
     position: sticky;
     top: 0px;
-    font-size: 24px;
     float: right;
+    font-size: 25px;
     cursor: pointer;
 }
+#popup_infor{
+    height: 500px;
+}
+
+#curr_mentoringInfo {
+	text-align: start;
+	padding: 20px;
+}
+#curr_mentoringInfo #popupMentorName {
+	margin-bottom: 24px;
+	font-size: 14px;
+}
+
+#curr_mentoringInfo #popupMentoringName {
+	margin-bottom: 24px;
+	font-size: 18px;
+	font-weight: bold;
+	
+}
+
+#curr_mentoringInfo #popupMentorJob {
+	margin-bottom: 12px;
+	font-size: 12px;
+}
+
+#curr_mentoringInfo #popupMentorcareer {
+	margin-bottom: 24px;
+	font-size: 12px;
+}
+
+#curr_mentoringInfo #popupMentoringInfor {
+	font-size: 14px;	
+}
+
+
 #mentoring_sign_form p{
     text-align: left;
     padding-left: 30px;
@@ -138,13 +170,6 @@
     margin-bottom: 20px;
 }
 .paging_num:hover{
-	cursor:pointer;
-	color:red;
+    cursor:pointer;
+    color:red;
 }
-
-
-.no_result {
-	text-align: center;
-	padding: 100px;
-}
-

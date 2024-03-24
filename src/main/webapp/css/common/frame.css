@@ -7,17 +7,21 @@
 }
 #header {
     width: 100%;
-    min-width: 1200px;
     height: 64px;
     padding: 0 20px;
     position: fixed;
-    display: flex;
     line-height: 64px;
     background-color: white;
     justify-content: space-between;
     border-bottom:1px solid #ced4da;
     box-shadow: 0  1px #ced4da;
     z-index: 9999;
+}
+#header #header_container {
+	width: 1200px;
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
 }
 #header #logo{
     height: 60px;
@@ -54,6 +58,7 @@
 }
 #contents {
     width: 100%;
+    padding-bottom: 100px;
 }
 .contents_wrap {
     display: flex;
@@ -63,11 +68,25 @@
     overflow: hidden;
 }
 #contents_top_area {
-    margin: 0 auto;
-    width: 1200px;
-    line-height: 20px;
-    padding-top: 100px;
+	width: 100%;
+    background-color: #303740;
+    color: #ffffff;
+    border: 1px solid #ccc;
+    height: calc(var(--header-height) + 200px);
+    padding-top: calc(var(--header-height) + 50px);
 }
+#contents_top_area_text {
+	width: 1200px;
+	margin: 0 auto;
+}
+#contents_title {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 12px;
+}
+/* #contents_sub_title {
+	
+} */
 
 #contents_top_Btn_Box{
     float: right;
@@ -102,10 +121,10 @@
 #sidebar {
     height: 100%;
 }
-#contents_area {
+/* #contents_area {
     width: 100%;
     float: left;
-}
+} */
 
 /* .wd1000 {
     width: 1000px;
@@ -123,7 +142,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    grid-gap: 20px;
+    grid-gap: 5px;
 }
 .lecture_content_wrap, .mentoring_content_wrap, .qna_content_wrap,
 .lecture_review_content_wrap, .mentoring_review_content_wrap {
@@ -172,11 +191,28 @@
     height: 35px;
     text-align: center;
 }
+
+/* footer */
 #footer {
     width: 100%;
-    height: 180px;
-    background-color: #000;
-    color: #FFFFFF;
+    height: 200px;
+    background-color: #303740;
+    color: rgba(255, 255, 255, 0.5);
+}
+#footer_contatiner {
+	width: 1200px;
+	margin: 0 auto;
+}
+#footer_menu {
+	display: flex;
+}
+#footer_menu li {
+	line-height : 25px;
+	margin: 25px;
+}
+.footerWrap {
+	margin-left: 25px;
+	line-height: 1.2;
 }
 /*   input{
          border-radius : 5px;	

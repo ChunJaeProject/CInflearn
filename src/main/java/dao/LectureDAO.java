@@ -15,25 +15,31 @@ public class LectureDAO extends JDBConnect {
 		super(application);
 	}
 	
+	
 	public int lectureTotalCount(Map<String, Object> map) {
 		int total_count = 0;
 		
 		StringBuilder sb = new StringBuilder();
 		sb.append("SELECT COUNT(*) FROM tbl_lecture");
-		
+		sb.append(" WHERE 1 = 1");
+		if(map.get("category2")!=null) {
+			sb.append(" AND " + "category2");
+			sb.append(" LIKE '%" + map.get("category2") + "%'");
+		}
 		if ( map.get("technology_search_word") != null ) {
-			sb.append(" WHERE " + map.get("technology_tag"));
+			sb.append(" AND " + "technology_tag");
 			sb.append(" LIKE '%" + map.get("technology_search_word") + "%'");
 		}
 		if ( map.get("lecture_search_word") != null ) {
-			sb.append(" WHERE " + map.get("title"));
+			sb.append(" AND " + "lecture_title");
 			sb.append(" LIKE '%" + map.get("lecture_search_word") + "%'");
-			sb.append(" AND " + map.get("professor"));
+			sb.append(" OR " + "professor");
 			sb.append(" LIKE '%" + map.get("lecture_search_word") + "%'");
 		}
 		
 		try {
 			String sql = sb.toString();
+			System.out.println(sql);
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			rs.next();
@@ -52,23 +58,25 @@ public class LectureDAO extends JDBConnect {
 		List<LectureDTO> lecture_list = new Vector<LectureDTO>();
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT lecture_no, lecture_title, image, professor, category2, difficulty_grade, technology_tag");
-		sb.append(" FROM tbl_lecture");
+		sb.append("SELECT tl.lecture_no, lecture_title, image, professor, category2, difficulty_grade, technology_tag, ifNULL(avg(tr.star), 0) AS star");
+		sb.append(" FROM tbl_lecture AS tl LEFT OUTER JOIN tbl_review AS tr");
+		sb.append(" on tl.lecture_no = tr.lecture_no");
+		sb.append(" WHERE 1 = 1");
 		if ( map.get("technology_search_word") != "" && map.get("technology_search_word") != null ) {
-			sb.append(" WHERE technology_tag ");
+			sb.append(" AND technology_tag ");
 			sb.append(" LIKE '%" + map.get("technology_search_word") + "%'");
 		}
 		if ( map.get("lecture_search_word") != "" && map.get("lecture_search_word") != null ) {
-			sb.append(" WHERE lecture_title ");
+			sb.append(" AND lecture_title ");
 			sb.append(" LIKE '%" + map.get("lecture_search_word") + "%'");
 			sb.append(" OR professor ");
 			sb.append(" LIKE '%" + map.get("lecture_search_word") + "%'");
 		}
 		
 		if ( map.get("category2") != "" && map.get("category2") != null) {
-			sb.append(" WHERE category2 =" + "'" + map.get("category2") + "'"); 
+			sb.append(" AND category2 =" + "'" + map.get("category2") + "'"); 
 		}
-	
+		sb.append(" GROUP BY lecture_no");
 		sb.append(" ORDER BY lecture_no DESC");
 		sb.append(" LIMIT "+map.get("page_skip_cnt")+ ", "+map.get("page_size"));
 		System.out.println(sb.toString());
@@ -86,6 +94,7 @@ public class LectureDAO extends JDBConnect {
 				dto.setDifficulty_grade(rs.getString("difficulty_grade"));
 				dto.setTechnology_tag(rs.getString("technology_tag"));
 				dto.setCategory2(rs.getString("category2"));
+				dto.setStar(rs.getInt("star"));
 				lecture_list.add(dto);
 			}
 		}

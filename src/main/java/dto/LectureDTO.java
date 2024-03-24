@@ -1,5 +1,6 @@
 package dto;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 public class LectureDTO {
@@ -15,11 +16,15 @@ public class LectureDTO {
 	private String lecture_period;
 	private String certificate_yn;
 	private String difficulty_grade;
+	private int star;
+	private String comment;
+	private String writer;
 	private int curriculum_no;
 	private String curriculum_name;
 	private String curriculum_time;
 	private LocalDateTime regist_date;
-	
+	private Date review_reg_date;
+	private String starCount;
 	public LectureDTO(){}
 	/**
 	 * @return the lecture_no
@@ -206,6 +211,36 @@ public class LectureDTO {
 	 */
 	public String getCertificate_yn() {
 		return certificate_yn;
+	}
+	public int getStar() {
+		return star;
+	}
+	public void setStar(int star) {
+		this.star = star;
+	}
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+	public Date getReview_reg_date() {
+		return review_reg_date;
+	}
+	public void setReview_reg_date(Date date) {
+		this.review_reg_date = date;
+	}
+	public String getStarCount() {
+		return starCount;
+	}
+	public void setStarCount(String starCount) {
+		this.starCount = starCount;
 	}
 	
 	
