@@ -54,6 +54,7 @@
 }
 #contents {
     width: 100%;
+    padding-bottom: 100px;
 }
 .contents_wrap {
     display: flex;
@@ -186,11 +187,28 @@
     height: 35px;
     text-align: center;
 }
+
+/* footer */
 #footer {
     width: 100%;
-    height: 180px;
-    background-color: #000;
-    color: #FFFFFF;
+    height: 200px;
+    background-color: #303740;
+    color: rgba(255, 255, 255, 0.5);
+}
+#footer_contatiner {
+	width: 1200px;
+	margin: 0 auto;
+}
+#footer_menu {
+	display: flex;
+}
+#footer_menu li {
+	line-height : 25px;
+	margin: 25px;
+}
+.footerWrap {
+	margin-left: 25px;
+	line-height: 1.2;
 }
 /*   input{
          border-radius : 5px;	

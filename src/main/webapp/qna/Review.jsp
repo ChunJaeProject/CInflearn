@@ -22,6 +22,8 @@
 <body>
 <%@ include file="../common/header.jsp" %>
 <%@ include file="../common/top.jsp" %>
+<div id="container">
+   	<main id="contents">
         <section id="contents_top_area">
             <div id="contents_top_area_text">
                 <p id="contents_title">수강평</span><span>(${maps.total_count})</span></p>
@@ -71,8 +73,9 @@
                 </div>
             </div>
         </section>
-        <%@ include file="../common/footer.jsp" %>
-    </div>
+    </main>
+    <%@ include file="../common/footer.jsp" %>
+</div>
 <script>
     document.querySelector("#btn_go").addEventListener("click", function(){
         location.href="#";

@@ -44,8 +44,12 @@ margin: 0 auto;
         border-radius :5px;
         background : rgb(14,192,12);
 }
-.term{
+#footer {
+	position: fixed;
+	bottom: 0;
+}
 
+.term{
 text-decoration: underline}
 </style>
 

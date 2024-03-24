@@ -151,23 +151,34 @@
 .lecture_content_hover .lecture_title {
     font-size: 18px;
     margin-bottom: 24px;
+    color: transparent;
 }
 
 .lecture_content_hover .difficulty_grade,
 .lecture_content_hover .category {
     font-size: 14px;
     margin-bottom: 4px;
+    color: transparent;
 }
 
 .lecture_content_hover .technology_tag {
     font-size: 12px;
+    color: transparent;
 }
 
 .lecture_content_hover:hover {
-    color: #ffffff;
     background-color:  rgba(24, 24, 24, 0.8);
     cursor: pointer;
 }
+
+.lecture_content_hover:hover .lecture_title,
+.lecture_content_hover:hover .difficulty_grade,
+.lecture_content_hover:hover .category,
+.lecture_content_hover:hover .technology_tag {
+	color: #ffffff
+}
+
+
 
 .lecture_content {
     padding: 4px;

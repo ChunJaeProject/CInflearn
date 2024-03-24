@@ -35,7 +35,8 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
 
 <%@ include file="../common/header.jsp" %>
 <%@ include file="../common/top.jsp" %>
-    <div id="container">
+<div id="container">
+   	<main id="contents"> 
         <section id="contents_top_area">
             <div id="contents_top_area_text">
                 <p id="contents_title">묻고 답해요</p>
@@ -119,11 +120,11 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
 						<span>태그2</span><br><br><span>태그3</span><span>태그4</span><br><br><span>태그5</span>
 					</c:otherwise>
 				</c:choose>
-			</div>
-	            
+			</div>  
         </section>
-        <%@ include file="../common/footer.jsp" %>
-    </div>
+	</main>
+    <%@ include file="../common/footer.jsp" %>
+</div>
 <script>
    /*  document.querySelector("#btn_write").addEventListener("click", function(){
       

@@ -8,8 +8,9 @@
     position: fixed;
 }
 #section {
-    width: 1210px;   
-    margin : 0 auto;      
+    width: 1200px;   
+    margin : 0 auto;
+    display: flex;      
 }
 #sidebar_left {
     width: 147px;
