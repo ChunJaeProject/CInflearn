@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="../css/common/base.css">
     <link rel="stylesheet" href="../css/common/frame.css">
     <link rel="stylesheet" href="../css/lecture/lecture.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div id="container">
@@ -33,7 +32,7 @@
 								<c:set var= "total" value="${total + star}"/>
 							</c:forEach>
                     	<c:forEach begin="1" end="${total/fn:length(lectureReviewList)}" step="1">
-                        	<i class="fa fa-star" aria-hidden="true"></i>
+                        	<i class="fas fa-star"></i>
                         </c:forEach>
                         <span>(
 							<fmt:formatNumber value="${empty lectureReviewList?0: total/fn:length(lectureReviewList)}" pattern  ="0.0" var="avg"/>
@@ -41,7 +40,7 @@
 						</span>
                     </div>
                     <div id="professor">
-                        <i class="fa fa-user" aria-hidden="true"> ${lectureList[0].professor }</i>
+                        <i class="fas fa-user"></i> ${lectureList[0].professor }</i>
                     </div>
                     <div id="technology_tag">
                         <i class="fa fa-hashtag" aria-hidden="true"></i>
@@ -101,7 +100,7 @@
                                             </p>
                                             <p class="star_avg_icon">
                                             	<c:forEach begin="1" end="${total/fn:length(lectureReviewList)}" step="1">
-                                            		<i class="fa fa-star" aria-hidden="true"></i>
+                                            		<i class="fas fa-star"></i>
                                             	</c:forEach>
                                             </p>
                                         </div>
@@ -166,7 +165,7 @@
 		                                        <p class="review_member_name">${item.writer}</p>
 		                                        <div id="review_grade">
 		                                        	<c:forEach begin="1" end="${item.star}" step="1">
-		                                           		<i class="fa fa-star" aria-hidden="true"></i>
+		                                           		<i class="fas fa-star"></i>
 		                                            </c:forEach>
 		                                        </div>
 		                                        <div id="review_detail">

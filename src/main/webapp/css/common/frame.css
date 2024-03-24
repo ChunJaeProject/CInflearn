@@ -121,10 +121,10 @@
 #sidebar {
     height: 100%;
 }
-#contents_area {
+/* #contents_area {
     width: 100%;
     float: left;
-}
+} */
 
 /* .wd1000 {
     width: 1000px;
@@ -142,7 +142,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    grid-gap: 20px;
+    grid-gap: 5px;
 }
 .lecture_content_wrap, .mentoring_content_wrap, .qna_content_wrap,
 .lecture_review_content_wrap, .mentoring_review_content_wrap {

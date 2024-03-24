@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="../css/common/base.css">
     <link rel="stylesheet" href="../css/common/frame.css">
     <link rel="stylesheet" href="../css/mainPage/main.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
     
     </style>
@@ -100,7 +99,7 @@
                             </ul>
                         </li>
                         <li>
-                            <i class="fa fa-shield" aria-hidden="true"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
                             보안 · 네트워크
                             <ul class="category_depth2">
                                 <li>보안</li>
@@ -213,10 +212,10 @@
 			                            <p class="lecture_professor">${ lectureList.professor }</p>
 			                            <p class="lecture_grade">
 			                            	<c:forEach begin="1" end = "${lectureList.star}" step="1" >
-				                       			<i class="fa fa-star" aria-hidden="true"></i>
+				                       			<i class="fas fa-star"></i>
 				                       		</c:forEach>
 				                       		<c:forEach begin="${lectureList.star}" end ="4" step="1" >
-				                       			<i class="fa fa-star-o" aria-hidden="true"></i>
+				                       			<i class="far fa-star"></i>
 				                       		</c:forEach>
 
 			                            </p>
