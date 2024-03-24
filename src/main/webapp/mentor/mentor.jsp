@@ -3,7 +3,6 @@
 <%@page import="java.util.Map"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="dao.MentoringDAO"%>
-<%@ include file="../common/top.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
@@ -113,10 +112,6 @@ pageEncoding="UTF-8"%>
             font-weight: bold;
             font-size: medium;
         }
-        #contents_top_area {
-            background-color: rgb(201, 194, 194);
-            border: 1px solid #ccc;
-        }
         #contents_top_Btn_Box {
             margin-right : 10px;
         }
@@ -148,10 +143,10 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
     <%@ include file="../common/top.jsp" %>
     <!-- jsp에서 include해서 사용 -->
     <main id="contents">
-        <section id="contents_top_area" class="cal_h100">
-            <div  id="contents_top_area_text">
-                <span style="font-size: large; font-weight: bold;">멘토링</span><br>
-                <span>업계 선배, 동료들과 만나 서로의 인사이트를 나누어 보아요! 더 빨리, 더 멀리 갈 수 있어요!</span>
+        <section id="contents_top_area">
+            <div id="contents_top_area_text">
+                <p id="contents_title">멘토링</p>
+                <p id="contents_sub_title">업계 선배, 동료들과 만나 서로의 인사이트를 나누어 보아요! 더 빨리, 더 멀리 갈 수 있어요!</p>
                 <div id="contents_top_Btn_Box">
                     <button id="mentoringCreate_Btn">멘토링 개설</button>
                     <button id="mentoringReview_Btn">멘토링 후기보기</button>
@@ -162,7 +157,7 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
             <section id="sidebar_area">
                 <aside id="sidebar">
                     <form action="" id="searchForm" name="searchForm">
-                        <input type="text" name="search_word" id="search_word" value="">
+                        <input type="text" name="search_word" id="search_word" value="<%=search_value%>">
                         <input type="submit" id="searchBtn" value="검색">
                         <select id="sortList">
                             <option >최근 등록순</option>
@@ -186,8 +181,6 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                         <img src="../assets/image/reset.png" width="17px">
                         <input id="resetBtn" type="reset" value="필터 초기화">
                     </form>
-
-
                 </aside>
             </section>
             <section id="contents_area" class="wd1000">

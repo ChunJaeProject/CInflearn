@@ -36,10 +36,12 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
 <%@ include file="../common/header.jsp" %>
 <%@ include file="../common/top.jsp" %>
     <div id="container">
-        <div id="contents_top_area" class="cal_h100">
-            <p style="font-size: large; font-weight: bold;">묻고 답해요</p>
-            <p>126만명의 커뮤니티 !! 함께 토론해봐요.</p>
-        </div>
+        <section id="contents_top_area">
+            <div id="contents_top_area_text">
+                <p id="contents_title">묻고 답해요</p>
+                <p id="contents_sub_title">126만명의 커뮤니티 !! 함께 토론해봐요.</p>
+            </div>
+        </section>
         <section id="section">
             <div id="sidebar_left">
                 <ul id="sidebar_ul">

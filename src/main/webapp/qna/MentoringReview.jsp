@@ -14,25 +14,21 @@
     <title>멘토링 후기</title>
     <link rel="stylesheet" href="../css/common/base.css">
     <link rel="stylesheet" href="../css/common/frame.css">
+    <link rel="stylesheet" href="../css/qna/qna.css">
     <link rel="stylesheet" href="../css/qna/review.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        #contents_top_area {
-            background-color: rgb(201, 194, 194);
-            border: 1px solid #ccc;
-            width: 1200px;
-            margin: 0 auto;
-        }
-    </style>
 </head>
 <body>
 <%@ include file="../common/top.jsp" %>
 <%@ include file="../common/header.jsp" %>
     <div id="container">
         <main id="contents">
-	        <div id="contents_top_area" class="cal_h100">
-	            <br><span style="font-size: large; font-weight: bold;padding-top: 10px;">멘토링 후기</span><span>(${maps.total_count})</span>
-	        </div>
+	        <section id="contents_top_area">
+	            <div id="contents_top_area_text">
+	                <p id="contents_title">멘토링 후기</span><span>(${maps.total_count})</span></p>
+	                <p id="contents_sub_title">선배와 동료들에게 조언을 구해보세요. 더 빨리, 멀리 갈 수 있어요.</p>
+	            </div>
+	        </section>
         	<section id="section">
             	<div id="sidebar_left" style="height: 1390px;">
 	                <ul id="sidebar_ul" >

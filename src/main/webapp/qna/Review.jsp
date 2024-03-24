@@ -15,24 +15,19 @@
     <title>수강평</title>
     <link rel="stylesheet" href="../css/common/base.css">
     <link rel="stylesheet" href="../css/common/frame.css">
+    <link rel="stylesheet" href="../css/qna/qna.css">
     <link rel="stylesheet" href="../css/qna/review.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        #contents_top_area {
-            background-color: rgb(201, 194, 194);
-            border: 1px solid #ccc;
-            width: 1200px;
-            margin: 0 auto;
-        }
-    </style>
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
 <%@ include file="../common/top.jsp" %>
-    <div id="container">
-        <div id="contents_top_area" class="cal_h100">
-            <br><span style="font-size: large; font-weight: bold;">수강평</span><span>(${maps.total_count})</span>
-        </div>
+        <section id="contents_top_area">
+            <div id="contents_top_area_text">
+                <p id="contents_title">수강평</span><span>(${maps.total_count})</span></p>
+                <p id="contents_sub_title">수강생분들이 직접 작성하신 수강평입니다.</p>
+            </div>
+        </section>
         <section id="section">
             <div id="sidebar_left" style="height: 1390px;">
                 <ul id="sidebar_ul">

@@ -63,11 +63,25 @@
     overflow: hidden;
 }
 #contents_top_area {
-    margin: 0 auto;
-    width: 1200px;
-    line-height: 20px;
-    padding-top: 100px;
+	width: 100%;
+    background-color: #303740;
+    color: #ffffff;
+    border: 1px solid #ccc;
+    height: calc(var(--header-height) + 200px);
+    padding-top: calc(var(--header-height) + 50px);
 }
+#contents_top_area_text {
+	width: 1200px;
+	margin: 0 auto;
+}
+#contents_title {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 12px;
+}
+/* #contents_sub_title {
+	
+} */
 
 #contents_top_Btn_Box{
     float: right;
