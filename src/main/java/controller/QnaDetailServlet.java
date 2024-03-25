@@ -31,7 +31,7 @@ public class QnaDetailServlet extends HttpServlet {
 		List<CommentDTO> commList = cdao.commentList(cparams,no);
 	
 		int total_count = cdao.commentCount(params,no); //댓글 수
-		
+			
 		
 		if(no > 0) {
 			QnADAO dao = new QnADAO();
