@@ -18,7 +18,7 @@ public class LikeServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
+		
 		
 		
 		int like = Integer.parseInt(req.getParameter("like"));
