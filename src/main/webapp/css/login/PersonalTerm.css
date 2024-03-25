@@ -51,23 +51,23 @@ a{
 }
 .li1{
     font-size:15px;
-    border-top : 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    border-left: 1px solid #ccc;;
+    border-top : 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 .li2{
     font-size:15px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid black;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 .li0{
 
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid black;
 }
 .li3{
     
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid black;
 }
