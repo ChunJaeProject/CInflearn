@@ -9,23 +9,24 @@ public class CommonPage {
 		
 		System.out.print(linkUrl);
 		
-		
-		sb.append((page_no>1? "<a href='"+tmpLinkURL+"page_no=1'><strong><<</strong></a>&nbsp;&nbsp;" : "<<&nbsp;&nbsp;"));
-		sb.append((page_no>1? "<a href='"+tmpLinkURL+"page_no="+(page_no-1)+"'><strong><</strong></a>&nbsp;&nbsp;" : "<&nbsp;&nbsp;"));
-		for (int i=page_block_start; i<=page_block_end; i++) {
-			if ( page_no == i ){
-				sb.append("<strong>"+i+"</strong>");
-			} else {
-				sb.append("<a href='"+tmpLinkURL+"page_no="+i+"'>"+i+"</a>");
+		if(total_page!=0) {
+			sb.append((page_no>1? "<a href='"+tmpLinkURL+"page_no=1'><strong><<</strong></a>&nbsp;&nbsp;" : "<<&nbsp;&nbsp;"));
+			sb.append((page_no>1? "<a href='"+tmpLinkURL+"page_no="+(page_no-1)+"'><strong><</strong></a>&nbsp;&nbsp;" : "<&nbsp;&nbsp;"));
+			for (int i=page_block_start; i<=page_block_end; i++) {
+				if ( page_no == i ){
+					sb.append("<strong>"+i+"</strong>");
+				} else {
+					sb.append("<a href='"+tmpLinkURL+"page_no="+i+"'>"+i+"</a>");
+				}
+				if (i!=page_block_end) {
+					sb.append("&nbsp;|&nbsp;");
+				}
 			}
-			if (i!=page_block_end) {
-				sb.append("&nbsp;|&nbsp;");
-			}
+	
+			sb.append((page_no<total_page? "&nbsp;&nbsp;<a href='"+tmpLinkURL+"page_no="+(page_no+1)+"'><strong>></strong></a>" : "&nbsp;&nbsp;>"));
+			sb.append((page_no<total_page? "&nbsp;&nbsp;<a href='"+tmpLinkURL+"page_no="+(total_page)+"'><strong>>></strong></a>" : "&nbsp;&nbsp;>>"));
+			
 		}
-
-		sb.append((page_no<total_page? "&nbsp;&nbsp;<a href='"+tmpLinkURL+"page_no="+(page_no+1)+"'><strong>></strong></a>" : "&nbsp;&nbsp;>"));
-		sb.append((page_no<total_page? "&nbsp;&nbsp;<a href='"+tmpLinkURL+"page_no="+(total_page)+"'><strong>>></strong></a>" : "&nbsp;&nbsp;>>"));
-
 		return sb.toString();
 	}
 }
