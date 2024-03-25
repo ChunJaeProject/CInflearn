@@ -36,7 +36,7 @@ text-decoration: underline;
         </ul>
     </div>
     <div class= "person_term">
-        <span>
+        <span style="line-height: 40px;">
             <h3>개인정보처리방침</h3>
         인프랩 (이하 "회사")는 개인정보를 소중하게 생각하고 개인정보를 보호하기 위하여 최선을 다하고 있습니다. <br>
         "회사"는 본 개인정보처리방침을 통하여 이용자가 제공하는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며<br>
@@ -47,7 +47,7 @@ text-decoration: underline;
         <a href="https://www.inflearn.com/policy/privacy"  class="term">개인정보처리방침 바로가기</a>
     </div>
     <div class="use_term">
-        <span>
+        <span style="line-height: 40px;">
             <h3>제1장. 약관 및 계약</h3>
             <h3>제  제1조. 목적</h3>
             이 이용약관(이하 ”본 약관”이라 합니다)은 인프랩(이하 ”회사”라 합니다)<br>
