@@ -449,9 +449,9 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
             msg.focus();
             return false;
         }
-        for(j=0;j<popups.length;j++)
-           	popups[j].style.display="none";
-            popups[3].style.display="block";
+//         for(j=0;j<popups.length;j++)
+//            	popups[j].style.display="none";
+//             popups[3].style.display="block";
             
             
             
@@ -472,8 +472,8 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                 curr_mentoringInfo[4].textContent = mentoringContents[13].textContent;
             });
         } */
-            
-        /* frm.submit(); */
+            alert("신청완료");
+       document.sign_frm.submit();
     }, false);
     
     document.querySelector("#btn_prev").addEventListener("click", function(e) {
