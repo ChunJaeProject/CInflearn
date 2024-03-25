@@ -176,12 +176,8 @@ public class QnADAO extends JDBConnect {
 				dto.setAnswer(rs.getString("answer"));
 				dto.setSolution_state(rs.getString("solution_state"));
 				dto.setLike(rs.getInt("like"));
-
 				dto.setMember_no(rs.getInt("member_no"));
-				
-
 				dto.setNickname(rs.getString("nickname"));
-
 				dto.setReg_date(rs.getDate("reg_date"));
 
 			}
@@ -192,6 +188,29 @@ public class QnADAO extends JDBConnect {
 		}
 		return dto;
 	 }
+	 //작성한 게시글 수
+	public int QuestionTotalCount(Map<String, Object> map, int no) {
+		int q_total_count = 0;
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT COUNT(*) FROM tbl_qna");
+		sb.append(" WHERE member_no = ?");
+		try {
+			String sql = sb.toString();
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			rs.next();
+			q_total_count = rs.getInt(1);			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			System.out.print("작성한 게시글 수 조회 에러");
+		}
+	
+		return q_total_count;
+	}
+	
+	
 
 	 //게시글 등록
 	 public int QnARegist(QnADTO dto) {

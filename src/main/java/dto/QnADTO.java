@@ -20,15 +20,7 @@ public class QnADTO {
 	/**
 	 * @return the no
 	 */
-	public int getNo() {
-		return no;
-	}
-	/**
-	 * @param no the no to set
-	 */
-	public void setNo(int no) {
-		this.no = no;
-	}
+
 	/**
 	 * @return the question_title
 	 */
@@ -161,4 +153,22 @@ public class QnADTO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+
+	/**
+	 * @return the no
+	 */
+	public int getNo() {
+		return no;
+	}
+
+	/**
+	 * @param no the no to set
+	 */
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+	/**
+	 * @return the qna_no
+	 */
 }

@@ -43,18 +43,23 @@ h3 {
 }
 #box1 {
     padding: 30px;   
+    display : flex;
+    flex-direction: column;
 }
 #likeFrm {
     margin-bottom: 30px;
+    display: flex;
+    flex-wrap: nowrap;
 }
 #qContent {
-    display: flex;
+	display: flex;
+    justify-content: space-between;;
+    margin-left: 300px;
 }
 #qContent p {
     margin-left: 20px;
 }
 #box2 {
-    display: flex;
 }
 #box2 a:link, a:visited {
     color: black;

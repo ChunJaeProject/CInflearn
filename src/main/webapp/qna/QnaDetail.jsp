@@ -28,32 +28,47 @@
 		.commentList{
 			height:80px;
 			width:500px;
-			border :1px solid gray;
 			padding :10px;
 			border-radius:10px;
 			}
-			p{
-			width: 200px;
-			}
-			#btn_delete {
-				width: 80px;
-			    height: 35px;
-			    background-color: darkgrey;
-			    color: #fff;
-			    border: none;
-			    border-radius: 8px;
-			}
-			#btn_update {
-				width: 100px;
-			    height: 35px;
-			    background-color: #1dc078;
-			    color: #fff;
-			    border: none;
-			    border-radius: 8px;
-			}
-			#btn_write input:active {
-				color : #ccc;
-			}
+		p{
+		width: 200px;
+		}
+		#btn_delete {
+			width: 80px;
+		    height: 35px;
+		    background-color: darkgrey;
+		    color: #fff;
+		    border: none;
+		    border-radius: 8px;
+		}
+		#btn_update {
+			width: 100px;
+		    height: 35px;
+		    background-color: #1dc078;
+		    color: #fff;
+		    border: none;
+		    border-radius: 8px;
+		}
+		#btn_write input:active {
+			color : #ccc;
+		}
+		.userInfo {
+			margin-bottom: 30px;
+			border-bottom: 1px solid #ccc;
+    		padding-bottom: 20px; 
+		}
+		#no_comment {
+			text-align : center;
+			border-bottom: 1px solid #ccc;
+    		padding-bottom: 20px;
+    		width: 600px;
+    		display: flex;
+		    align-content: flex-start;
+		    flex-direction: column;
+		    justify-content: space-evenly;
+		   	align-items: center;
+		}
     </style>
 </head>
 <body>
@@ -61,7 +76,7 @@
         <%@ include file="../common/header.jsp" %>
         <div id="Writer">
 	             <h4>${params.nickname }</h4><br>
-	            <p style="font-size: small; color:darkgray; font-weight: bold;">작성한 질문수 (개수)</p><br>
+	            <p style="font-size: small; color:darkgray; font-weight: bold;">작성한 질문수 ()</p><br>
                 <img src="../assets/image/check.png" style="width: 20px;">&nbsp;<span style="color:dimgrey; font-weight: bold;">해결 여부</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>${QnADetail.solution_state }</span><br>
                 <input type="button" id="btn_go" name="btn_go" value="목록으로">
          </div>
@@ -72,42 +87,54 @@
                     <p>${QnADetail.reg_date }</p>
                 </div>
                 <div id="box1">
-                    <div id="qContent">
-                        <form id="likeFrm" name="likeFrm"   >
-							<input type="hidden" name="no" value="${params.idx}"/>
-                            <input type="image" src="../assets/image/like.png" id="btn_like" name="btn_like" alt="좋아요" onclick="count('plus')"><br><br>   
-                            <div id="result">0</div><br>   
-                            <input type="image" src="../assets/image/hate.png" id="btn_hate" name="btn_hate" alt="싫어요" onclick="count('minus')"><br>    
-                        	
-                        </form>
-                        <p>${params.question_content }</p>             
-                    </div>
+                <p>${params.question_content }</p><br><br>
+                    
                     <div id="box2">
-                        <input type="image" src="../assets/image/uncheck.png" id="btn_check" name="btn_check" alt="해결" style="margin-right: 20px;">
-                        <div class="qTag" style="margin-right: 600px; margin-top: 5px;"><span>${QnADetail.question_hashtag }</span></div><br>
-                        <div id ="btn_write" style="margin-top: 5px;">
-                        <input type="button" name ="btn_update"  id="btn_update" value="수정하기">&nbsp;|&nbsp;
-                        <input type="button" id="btn_delete" name="btn_delete" value="삭제" >
+                        <!-- <input type="image" src="../assets/image/uncheck.png" id="btn_check" name="btn_check" alt="해결" style="margin-right: 20px;"> -->
+                        <div class="qTag" style="margin-right: 600px; margin-top: 5px;"><span>${QnADetail.question_hashtag }</span></div>
+						<div id="qContent">
+	                        <form id="likeFrm" name="likeFrm"   >
+								<input type="hidden" name="no" value="${params.idx}"/>
+	                            <input type="image" src="../assets/image/like.png" id="btn_like" name="btn_like" alt="좋아요" onclick="count('plus')">&nbsp;&nbsp;
+	                            <div id="result">0</div>&nbsp;&nbsp;
+	                            <input type="image" src="../assets/image/hate.png" id="btn_hate" name="btn_hate" alt="싫어요" onclick="count('minus')"><br>         	
+	                        </form>             
+	                        <div id ="btn_write" style="margin-top: 5px;">
+	                        <input type="button" name ="btn_update"  id="btn_update" value="수정하기">&nbsp;&nbsp;
+	                        <input type="button" id="btn_delete" name="btn_delete" value="삭제" >
+	                        </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
             <div id="answer">
             	<form name = "commentSubmit"  id="commentSubmit" method="post" action="../qna/comment.do?no=${params.idx }">
-        
             	<span style="font-weight: bold;">답변</span><span style="color:#1dc078 ;"> 개수 : ${params.total_count}</span><br><br>
 	            <input type="text" id="answerWrite" name="answerWrite" placeholder="답변을 작성해보세요." maxlength="300">
 	            <input type="submit" id="btn_answer" name="btn_answer" value="댓글 등록"><br><br>
 	            </form>
-	            <div class="commentList">
-	           <c:forEach var="dto" items="${commList}" varStatus="status">
-                <div class="userInfo">
-	               <span class="user"> <i class="fa fa-user" aria-hidden="true"></i>   ${dto.email} &nbsp;   </span> <span class="reg" style="margin-right:10px;"> ${dto.reg_date } </span><Br><br>
-	      			<span class= "commetValue">    ${dto.content} </span>
-      			</div>
-    			</c:forEach>
-	            </div>  
+	            <c:choose>
+            		<c:when test ="${not empty commList }">
+			           <c:forEach var="dto" items="${commList}" varStatus="status">
+			           	<div class="commentList">
+			                <div class="userInfo">
+				               <span class="user"> <i class="fa fa-user" aria-hidden="true"></i>   ${dto.email} &nbsp;   </span> <span class="reg" style="margin-right:10px;"> ${dto.reg_date } </span><Br><br>
+				      			<span class= "commetValue">    ${dto.content} </span>
+			      			</div>
+			      		</div>	
+		    			</c:forEach>
+    				</c:when>
+    				<c:otherwise>
+    					<div id="no_comment">
+	    					<span>답변을 기다리고 있는 질문이에요.</span>
+	    					<p>첫 번째 답변을 남겨주세요.</p>
+    					</div>
+    				</c:otherwise>
+    			</c:choose> 
+	         </div> 
             </div>
+            
         </section> 
         <%@ include file="../common/footer.jsp" %>
     </div>
@@ -121,10 +148,9 @@
 		
 	})
  */
- 
 
 	//해결 체크 버튼
-    let check = document.querySelector("#btn_check");
+/*     let check = document.querySelector("#btn_check");
     let flag = 1;
     check.addEventListener("click", function(e) {
     	e.preventDefault();
@@ -140,7 +166,7 @@
     }, false);
     document.querySelector("#btn_go").addEventListener("click", function(){
         location.href="Qna.do";
-    });
+    }); */
     
     //좋아요 버튼
     function count(type) {
