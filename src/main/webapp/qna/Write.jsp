@@ -77,12 +77,6 @@
             return false;
         }
 
-        let tag = document.querySelector("#tag");
-        if(tag.value.length > 21) {
-            alert("태그는 최대 20자까지 가능합니다.");
-            tag.focus();
-            return false;
-        }
 
         let content = document.querySelector("#content");
         if(content.value.length == "") {
