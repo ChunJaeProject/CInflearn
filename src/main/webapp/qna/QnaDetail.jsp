@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="../css/common/frame.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <style>
+    	#container {
+    		height: 100%;
+    	}
 		#section {
 		    width: 900px;
 		    height: calc(var(--header-height) + 800px);
@@ -31,9 +34,6 @@
 			padding :10px;
 			border-radius:10px;
 			}
-		p{
-		width: 200px;
-		}
 		#btn_delete {
 			width: 80px;
 		    height: 35px;
@@ -133,11 +133,9 @@
     				</c:otherwise>
     			</c:choose> 
 	         </div> 
-            </div>
-            
-        </section> 
+        </section>
+ 		</div>
         <%@ include file="../common/footer.jsp" %>
-    </div>
 </body>
 <script>
 	//댓글 등록
