@@ -22,9 +22,6 @@
             width: 1200px;
             margin: 0 auto;
         }
-        .qBtn {
-		    margin-left: 470px;
-		}
 		#btn_write ,#btn_search,#btn_reset {
 		cursor: pointer ;
 		}
