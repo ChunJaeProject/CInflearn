@@ -143,7 +143,6 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
     <%@ include file="../common/top.jsp" %>
     <!-- jsp에서 include해서 사용 -->
     <main id="contents">
-<<<<<<< HEAD
         <section id="contents_top_area" class="cal_h200">
             <div id="contents_top_area_text">
             	<span style="font-size: large; font-weight: bold;">멘토링</span><br>
@@ -153,7 +152,6 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
 	                <button id="mentoringReview_Btn">멘토링 후기보기</button>
             	</div>
             </div>   
-=======
         <section id="contents_top_area">
             <div id="contents_top_area_text">
                 <p id="contents_title">멘토링</p>
@@ -163,7 +161,6 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                     <button id="mentoringReview_Btn">멘토링 후기보기</button>
                 </div>
             </div>
->>>>>>> 880df831ad97a1ade1521470241d63b93224a947
         </section>
         <div class="contents_wrap">
             <section id="sidebar_area">
@@ -241,7 +238,6 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                 </div>
             </section>
         </div>
-<<<<<<< HEAD
         <div id="popupContainer">
 			<div id="popup">
 				<span id="closePopup" class="close-btn">×</span>
@@ -335,8 +331,6 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
 				</div>
 			</div>
 		</div>
-=======
-
         <div id="popupContainer">
             <div id="popup">
                 <span id="closePopup" class="close_btn">×</span>
@@ -458,14 +452,11 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
 
 
         </div>
-
->>>>>>> 880df831ad97a1ade1521470241d63b93224a947
     </main>
     <%@ include file="../common/footer.jsp" %>
 </div>
 
 <script>
-<<<<<<< HEAD
 	let popupContainer = document.getElementById("popupContainer");
 	let contents = document.getElementsByClassName("mentoring_content");
 	let popups = document.getElementsByClassName("popup_contents");
@@ -484,7 +475,6 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
 	        curr_mentoringInfo[4].textContent = mentoringContents[5].textContent;
 	    });
 	}
-=======
     //멘토링개설 세션처리
     var sessionId = '<%= sessionId %>';
 
@@ -507,7 +497,6 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
             curr_mentoringInfo[4].textContent = mentoringContents[13].textContent;
         });
     }
->>>>>>> 880df831ad97a1ade1521470241d63b93224a947
     document.getElementById("closePopup").addEventListener("click",function(e){
         popupContainer.style.display="none";
     });
