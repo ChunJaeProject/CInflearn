@@ -23,23 +23,22 @@
         <section id="img_slide">
     		<div class="slide_wrapper">
 	            <ul class="slides">
-	                <li><img src="../assets/image/main_banner01.png" alt=""></li>
-	                <li><img src="../assets/image/main_banner02.png" alt=""></li>
-	                <li><img src="../assets/image/main_banner03.png" alt=""></li>
-	                <li><img src="../assets/image/main_banner04.png" alt=""></li>
-	                <li><img src="../assets/image/main_banner05.png" alt=""></li>
-	                <li><img src="../assets/image/main_banner06.png" alt=""></li>
-	                <li><img src="../assets/image/main_banner07.png" alt=""></li>
-	                <li><img src="../assets/image/main_banner08.png" alt=""></li>
-	                <li><img src="../assets/image/main_banner09.png" alt=""></li>
+	                <li style="display:block;"><img src="../assets/image/main_banner01.png" alt=""></li>
+	                <li style="display:none;"><img src="../assets/image/main_banner02.png" alt=""></li>
+	                <li style="display:none;"><img src="../assets/image/main_banner03.png" alt=""></li>
+	                <li style="display:none;"><img src="../assets/image/main_banner04.png" alt=""></li>
+	                <li style="display:none;"><img src="../assets/image/main_banner05.png" alt=""></li>
+	                <li style="display:none;"><img src="../assets/image/main_banner06.png" alt=""></li>
+	                <li style="display:none;"><img src="../assets/image/main_banner07.png" alt=""></li>
+	                <li style="display:none;"><img src="../assets/image/main_banner08.png" alt=""></li>
+	                <li style="display:none;"><img src="../assets/image/main_banner09.png" alt=""></li>
 	            </ul>
-	        <div class="controls">
-                <a href="#" id="prev_slide_btn">◀</a>
-                <a>1 / 9</a>
-                <a href="#" id="next_slide_btn">▶</a>
-            </div>
+		        <div class="controls">
+	                <a href="#" id="prev_slide_btn">◀</a>
+	                <a><span id="cur_num">1</span> / 9</a>
+	                <a href="#" id="next_slide_btn">▶</a>
+	            </div>
         	</div>
-
         </section>
         <div class="contents_wrap">
             <section id="sidebar_area">
@@ -268,13 +267,49 @@ const lecture_list = document.querySelectorAll(".lecture_content_wrap");
 const lecture_idx = document.querySelectorAll(".lecture_idx");
 
 
+const slidesDOM = document.querySelector(".slides");
+const nextSlideBtn = document.querySelector("#next_slide_btn");
+const prevSlideBtn = document.querySelector("#prev_slide_btn");
+nextSlideBtn.addEventListener("click", function(e) {
+	let count = 0;
+ 	for (let i = 0; i < slidesDOM.children.length; i++) {
+ 		if (slidesDOM.children[i].style.display == "block") {
+ 			count = i;
+			if (i == slidesDOM.children.length -1) {
+				slidesDOM.children[i].style.display = "none";
+				slidesDOM.children[0].style.display = "block";
+				document.querySelector("#cur_num").textContent = 1;
+				break;
+			} else {
+	 			slidesDOM.children[i].style.display = "none";
+ 				slidesDOM.children[i + 1].style.display = "block";
+ 				document.querySelector("#cur_num").textContent = parseInt(document.querySelector("#cur_num").textContent)+ 1;
+ 				break;
+			}
+ 		}
+ 	}
+}, false)
+
+
+prevSlideBtn.addEventListener("click", function(e) {
+	let count = 0;
+ 	for (let i = 0; i < slidesDOM.children.length; i++) {
+ 		if (slidesDOM.children[i].style.display == "block") {
+ 			count = i;
+			if (i == 0) {
+				slidesDOM.children[0].style.display = "none";
+				slidesDOM.children[slidesDOM.children.length -1].style.display = "block";
+				document.querySelector("#cur_num").textContent = 9;
+				break;
+			} else {
+	 			slidesDOM.children[i].style.display = "none";
+ 				slidesDOM.children[i - 1].style.display = "block";
+				document.querySelector("#cur_num").textContent -= 1;
+ 				break;
+			}
+ 		}
+ 	}
+}, false)
 </script>
-
-
-
-
-
-
-
 </body>
 </html>
