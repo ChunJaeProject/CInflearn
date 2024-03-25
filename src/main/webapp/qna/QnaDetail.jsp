@@ -87,17 +87,17 @@
                     <p>${QnADetail.reg_date }</p>
                 </div>
                 <div id="box1">
-                <p>${params.question_content }</p><br><br>
+                <p style="height: 120px;">${params.question_content }</p><br><br>
                     
                     <div id="box2">
                         <!-- <input type="image" src="../assets/image/uncheck.png" id="btn_check" name="btn_check" alt="해결" style="margin-right: 20px;"> -->
-                        <div class="qTag" style="margin-right: 600px; margin-top: 5px;"><span>${QnADetail.question_hashtag }</span></div>
+                        <div class="qTag" style="margin-right: 600px; margin-top: 5px;"></div>
 						<div id="qContent">
 	                        <form id="likeFrm" name="likeFrm"   >
 								<input type="hidden" name="no" value="${params.idx}"/>
-	                            <input type="image" src="../assets/image/like.png" id="btn_like" name="btn_like" alt="좋아요" onclick="count('plus')">&nbsp;&nbsp;
-	                            <div id="result">0</div>&nbsp;&nbsp;
-	                            <input type="image" src="../assets/image/hate.png" id="btn_hate" name="btn_hate" alt="싫어요" onclick="count('minus')"><br>         	
+	                            <input type="image" src="../assets/image/like.png" id="btn_like" name="btn_like" alt="좋아요"  >&nbsp;&nbsp;
+	                            <div id="result">${QnADetail.like }</div>&nbsp;&nbsp;
+	                            <input type="image" src="../assets/image/hate.png" id="btn_hate" name="btn_hate" alt="싫어요" ><br>         	
 	                        </form>             
 	                        <div id ="btn_write" style="margin-top: 5px;">
 	                        <input type="button" name ="btn_update"  id="btn_update" value="수정하기">&nbsp;&nbsp;
@@ -167,11 +167,39 @@
     }); */
     
     //좋아요 버튼
-    function count(type) {
+    
+    const btn_like = document.querySelector("#btn_like");
+    const btn_hate = document.querySelector("#btn_hate");
+    
+    btn_like.addEventListener("click",function(e){
+    	e.preventDefault();
+    	 var sessionUserId = '<%=(session.getAttribute("userId") !=null ? session.getAttribute("userId") : "고객" )%>';
+    	  if(sessionUserId==="고객") {
+    	      alert("로그인이 필요합니다.");
+    	      return false;}
+    	      else{	
+    	location.href="../qna/like.do?like=${params.like}&no=${params.idx}&state=1"
+    	      }
+    });
+    
+    btn_hate.addEventListener("click",function(e){
+    	e.preventDefault();
+     	 var sessionUserId = '<%=(session.getAttribute("userId") !=null ? session.getAttribute("userId") : "고객" )%>';
+     	  if(sessionUserId==="고객") {
+    	      alert("로그인이 필요합니다.");
+    	      return false;}
+    	      else{	
+    	location.href="../qna/like.do?like=${params.like}&no=${params.idx}&state=-1"
+    	      }
+    	
+    });
+  /*   function count(type) {
+    	
     	const resultElment = document.getElementById('result');
     	let number = resultElment.innerText;
     	
     	if(type === 'plus') {
+    
     		number = parseInt(number) + 1;
     		console.log(number);
     	}
@@ -180,7 +208,7 @@
     	}
     	
     	resultElment.innerText = number;
-    }
+    } */
     //삭제 기능
     document.querySelector("#btn_delete").addEventListener("click", function(e) {
     	  var sessionMemberNo = '<%=session.getAttribute("memberNo")%>';

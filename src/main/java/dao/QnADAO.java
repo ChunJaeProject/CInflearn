@@ -328,5 +328,28 @@ public class QnADAO extends JDBConnect {
 		System.out.println("result : "+ result);
 		return result;
 		}
+	//좋아요 수정
+	public int likeUpdate(QnADTO dto ,int state) {
+		int result =0;
+		int updateValue = state;
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("UPDATE tbl_qna SET `like` = `like` + ?");
+		sb.append(" WHERE `no` = ? ");
+		
+		
+		try {
+		psmt =conn.prepareStatement(sb.toString());
+		psmt.setInt(1, updateValue);
+		psmt.setInt(2,  dto.getNo());
+		result = psmt.executeUpdate();
+		
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("result : "+ result);
+		return result;
+		}
 
 }
