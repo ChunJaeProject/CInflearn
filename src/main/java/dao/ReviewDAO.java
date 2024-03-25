@@ -43,8 +43,11 @@ public class ReviewDAO extends JDBConnect {
 		
 		StringBuilder sb = new StringBuilder();
 
-		sb.append("SELECT * ");
-		sb.append("	FROM tbl_review");
+		sb.append("SELECT tl.lecture_no, SUBSTRING_INDEX(tm.email, '@', 1) AS nickname,"
+				+ " tr.reg_date, tr.content, tr.star, tl.image, tl.lecture_title");
+		sb.append("	FROM tbl_review as tr inner join tbl_lecture as tl"
+				+ " on tr.lecture_no = tl.lecture_no inner join"
+				+ " tbl_member as tm on tm.member_no = tr.member_no");
 		sb.append(" ORDER BY lecture_no DESC ");
 		sb.append(" limit " + map.get("page_skip_cnt") + ", " + map.get("page_size"));
 
@@ -56,7 +59,7 @@ public class ReviewDAO extends JDBConnect {
 			while(rs.next()) {
 				LectureReviewDTO dto = new LectureReviewDTO();
 				dto.setNo(rs.getInt("lecture_no"));
-				dto.setWriter(rs.getString("writer"));
+				dto.setWriter(rs.getString("nickname"));
 				dto.setReg_date(rs.getDate("reg_date"));
 				dto.setContent(rs.getString("content"));
 				dto.setStar(rs.getInt("star"));

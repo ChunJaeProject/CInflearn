@@ -94,8 +94,9 @@ public class MentoringDAO extends JDBConnect {
 		sb.append("INSERT INTO tbl_mentoring (`member_email`, `member_name`, `member_tel`,"
 				+ " `career`, `now_job`, `start_date`, `end_date`, `mentoring_name`,"
 				+ " `metoring_intro`, `job_code`, `member_no`)"
-				+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)");
+				+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		try {
+			System.out.println("dto.getMember_no() " + dto.getMember_no());
 			psmt = conn.prepareStatement(sb.toString());
 			psmt.setString(1, dto.getMember_email());
 			psmt.setString(2, dto.getMember_name());
@@ -107,7 +108,7 @@ public class MentoringDAO extends JDBConnect {
 			psmt.setString(8, dto.getMentoring_name());
 			psmt.setString(9, dto.getMentoring_intro());
 			psmt.setString(10, dto.getJob_code());
-			//psmt.setInt(11, dto.getMember_no());
+			psmt.setInt(11, dto.getMember_no());
 			
 			System.out.println(sb.toString());
 			int result = psmt.executeUpdate();

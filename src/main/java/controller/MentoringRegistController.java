@@ -5,6 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 
 import dao.MentoringDAO;
@@ -20,6 +22,10 @@ public class MentoringRegistController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		HttpSession session = req.getSession();
+		
+		
 		String career = req.getParameter("career");
 		String job = req.getParameter("job");
 		String email = req.getParameter("email");
@@ -30,6 +36,8 @@ public class MentoringRegistController extends HttpServlet {
 		String endDate = req.getParameter("endDate");
 		String mentoringName = req.getParameter("mentoringName");
 		String mentoringInfo = req.getParameter("mentoringInfo");
+		int memberNo = (int)session.getAttribute("memberNo");
+		System.out.println("memberNo"  +memberNo);
 		
 		MentoringDTO dto = new MentoringDTO();
 		
@@ -43,6 +51,7 @@ public class MentoringRegistController extends HttpServlet {
 		dto.setEnd_date(endDate);
 		dto.setMentoring_name(mentoringName);
 		dto.setMentoring_intro(mentoringInfo);
+		dto.setMember_no(memberNo);
 		
 		MentoringDAO dao = new MentoringDAO();
 		

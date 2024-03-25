@@ -45,9 +45,8 @@ public class MentoringReviewDAO extends JDBConnect {
 		
 		StringBuilder sb = new StringBuilder();
 
-		sb.append("SELECT * ");
-		sb.append("	FROM tbl_mentoring_review");
-
+		sb.append("SELECT writer, reg_date, content, grade");
+		sb.append(" from tbl_mentoring_review");
 		sb.append(" ORDER BY reg_date DESC");
 		sb.append(" LIMIT "+map.get("page_skip_cnt")+ ", "+map.get("page_size"));
 		try {

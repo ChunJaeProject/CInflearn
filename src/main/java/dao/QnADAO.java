@@ -49,7 +49,8 @@ public class QnADAO extends JDBConnect {
 		int unsolve_count=0;
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT COUNT(*) FROM tbl_qna WHERE solution_state = 'N'");
+		sb.append("SELECT COUNT(*) FROM tbl_qna "
+				+ "WHERE solution_state = 'N'");
 		
 		try {
 			String sql = sb.toString();
@@ -71,7 +72,8 @@ public class QnADAO extends JDBConnect {
 			int solve_count=0;
 			
 			StringBuilder sb = new StringBuilder();
-			sb.append("SELECT COUNT(*) FROM tbl_qna WHERE solution_state = 'Y'");
+			sb.append("SELECT COUNT(*) FROM tbl_qna "
+					+ "WHERE solution_state = 'Y'");
 			
 			try {
 				String sql = sb.toString();
