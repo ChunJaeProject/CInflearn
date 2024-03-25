@@ -21,6 +21,7 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
 
 <div id="container">
     <%@ include file="../common/header.jsp" %>
+    <%@ include file="../common/top.jsp" %>
     <main id="contents">
         <section id="contents_top_area2" class="cal_h320">
             <div id="lecture_info">
