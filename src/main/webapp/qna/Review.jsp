@@ -58,7 +58,9 @@
 		                       <p> 강의명 : ${list.lecture_title } </p>
 		                   </div>
 		                   		
-			                <div id="box2"><input type="image" id="btn_go" name="btn_go" src="${list.image }" width="300px" height="200px"></div>
+			                <div id="box2">
+			                	
+			                	<input type="image" id="btn_go" name="btn_go" data-idx ="${list.lecture_no}" src="${list.image }" width="300px" height="200px"></div>
 			               </div>
 					</c:forEach>
 				</c:when>
@@ -78,7 +80,7 @@
 </div>
 <script>
     document.querySelector("#btn_go").addEventListener("click", function(){
-        location.href="#";
+        location.href="../lecture/lecture.do?no=" + this.getAttribute("data-idx");
     });
 </script>
 </body>
