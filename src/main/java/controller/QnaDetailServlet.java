@@ -25,15 +25,21 @@ public class QnaDetailServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int no = CommonUtil.parseInt(req.getParameter("no"));
-		HttpSession session = req.getSession();
+		
 		QnADTO QnADetail = new QnADTO();
 		CommentDAO cdao = new CommentDAO();
-		
+		int memberno =0;
 		Map<String, Object> params = new HashMap<String,Object>();
 
 		Map<String, Object> cparams = new HashMap<String,Object>(); //댓글파람
 		List<CommentDTO> commList = cdao.commentList(cparams,no);
-		int memberno = ((int)session.getAttribute("memberNo"));
+		
+		HttpSession session = req.getSession();
+		if(session.getAttribute("memberNo") != null) {
+		
+		memberno = ((int)session.getAttribute("memberNo"));
+		}
+		
 		int total_count = cdao.commentCount(params,no); //댓글 수
 			int count =0;
 		
