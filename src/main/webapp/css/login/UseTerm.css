@@ -29,6 +29,7 @@
         width: 150px;
         float: left;
         list-style: none;
+        padding-top: 15px;
         
     }
     .person_term{
@@ -41,23 +42,27 @@
     
     
 }
-    .person_term{
-        width: 600px;
-         margin:20px auto;
-    }
-    .li0{
-        border-bottom: 1px solid black;
-    }
-    .li3{
-        border-bottom: 1px solid black;
-    }
-    .li1{
-        font-size:15px; 
-        border-bottom: 1px solid black;
-    }
-    .li2{
-        font-size:15px;
-        border-top:1px solid black;
-        border-right:1px solid black;
-        border-left:1px solid black;
-    }
+.person_term{
+    width: 600px;
+     margin:20px auto;
+}
+.li0{
+    border-bottom: 1px solid #ccc;
+}
+.li3{
+    border-bottom: 1px solid #ccc;
+}
+.li1{
+    font-size:15px; 
+    border-bottom: 1px solid #ccc;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.li2{
+    font-size:15px;
+    border-top:1px solid #ccc;
+    border-right:1px solid #ccc;
+    border-left:1px solid #ccc;
+    border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
