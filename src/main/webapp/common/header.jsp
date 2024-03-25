@@ -131,6 +131,7 @@
         border : none;
         border-radius :5px;
         background : rgb(14,192,12);
+        cursor: pointer;
         }
         .header_logo{
         margin-top:45px;
@@ -166,6 +167,9 @@
 	         color : white;
 	         border : none;
 	         cursor :pointer;
+        }
+        #header #headerBtnBox button {
+        	cursor : pointer;
         }
        
 </style>

@@ -70,6 +70,7 @@
 }
 #sidebar_area {
     margin-left: 24px;
+    cursor: pointer;
 }
 #category_depth1 > li  {
     border: 1px solid rgba(24, 24, 24, 0.2);
@@ -211,4 +212,10 @@
 .no_result {
 	text-align: center;
 	padding: 100px;
+}
+#technology_search_btn  {
+	cursor : pointer;
+}
+#lecture_btn {
+	cursor : pointer;
 }
