@@ -8,6 +8,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import dao.MentoringDAO;
 import dao.MentoringSignUpDAO;
@@ -25,13 +29,15 @@ public class MentoringSignController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("여기로 안들어옴?");
+
 		HttpSession session = req.getSession();
 		String id = req.getParameter("ap_name");
 		String email = req.getParameter("ap_email");
 		int tel = Integer.parseInt(req.getParameter("ap_tel"));
 		String msg = req.getParameter("ap_msg");
+		String date = req.getParameter("endDate");
 		
+
 		MentoringSignUpDTO dto = new MentoringSignUpDTO();
 		dto.setMessage(msg);
 		dto.setMentoring_no(2);
@@ -40,6 +46,7 @@ public class MentoringSignController extends HttpServlet {
 		dto.setMember_name(id);
 		dto.setMember_email(email);
 		dto.setMember_tel(tel);
+		dto.setRegdate(date);
 		
 		
 		

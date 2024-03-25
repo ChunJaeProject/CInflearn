@@ -12,7 +12,7 @@ public class MentoringSignUpDTO {
 	private String message;
 	private int member_no;
 	private int mentoring_no;
-	private java.sql.Date reg_date;
+	private String reg_date;
 	
 	public MentoringSignUpDTO(){}
 	/**
@@ -114,13 +114,13 @@ public class MentoringSignUpDTO {
 	/**
 	 * @return the reg_date
 	 */
-	public Date getRegdate() {
+	public String getRegdate() {
 		return reg_date;
 	}
 	/**
 	 * @param reg_date the reg_date to set
 	 */
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.reg_date = regdate;
 	}
 	

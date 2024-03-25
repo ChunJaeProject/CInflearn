@@ -250,7 +250,7 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                             <li><p>직무 <span class="star">*</span></p></li><br>
                             <select  name="cate">
                                 <option value="0">직무선택</option>
-                                <option value="1">${params.checked} 개발 프로그래밍</option>
+                                <option value="1">${params.checked[1]} 개발 프로그래밍</option>
                                 <option value="2"${params.checked[2] }>게임 개발</option>
                                 <option value="3"${params.checked[3] }>데이터 사이언스</option>
                                 <option value="4"${params.checked[4] }>인공지능</option>
@@ -292,10 +292,12 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                     <div class="popupTitle"><h2 style="display : block; border-bottom : 2px solid #1dc078; font-size:large; padding : 10px;">멘토링 신청(1/2)</h2></div>
                     <form id="sign_frm" name="sign_frm" action="/ChunjaeProject/mentor/mentoringSign.do" method="post">
                         <h3>-날짜 선택 <span style="color:red">*</span></h3>
-                        <select id ="date">
-                            <option value="choice" selected>날짜 선택</option>
-                            <option value="date_0">3월 5일</option>
-                        </select><br>
+<!--                         <select id ="date"> -->
+<!--                             <option value="choice" selected>날짜 선택</option> -->
+<!--                             <option value="date_0">3월 5일</option> -->
+<!--                         </select><br> -->
+							<input name="endDate" id= "endDate" type="date" value = >
+<!-- 						<input name="regDate" id= "endDate" type="date"> -->
                         <h3>-실명 <span style="color:red">*</span></h3>
                         <input type="text" id="ap_name" name="ap_name" placeholder="실명을 입력해주세요." maxlength="10"><br>
                         <h3>-연락 가능한 이메일 <span style="color:red">*</span></h3>

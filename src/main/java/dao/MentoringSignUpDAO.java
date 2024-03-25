@@ -19,7 +19,7 @@ public class MentoringSignUpDAO extends JDBConnect {
 		
 		StringBuilder sb = new StringBuilder();
 		sb.append("INSERT INTO tbl_mentoring_regist (mentoring_name, member_name, member_email, member_tel, message, member_no, mentoring_no,regdate)");
-		sb.append(" VALUES (?, ?, ?, ?,?,?,?,now())");
+		sb.append(" VALUES (?, ?, ?, ?,?,?,?,?)");
 		try {
 		psmt =conn.prepareStatement(sb.toString());
 		psmt.setString(1, dto.getMentoring_name());
@@ -29,6 +29,7 @@ public class MentoringSignUpDAO extends JDBConnect {
 		psmt.setString(5, dto.getMessage());
 		psmt.setInt(6, dto.getMember_no() );
 		psmt.setInt(7,dto.getMentoring_no()  );
+		psmt.setString(8,dto.getRegdate()  );
 		result = psmt.executeUpdate();
 		
 		}
