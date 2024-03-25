@@ -154,7 +154,7 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                 </div>
             </div>
         </section>
-        <div class="contents_wrap">
+        <div class="contents_wrap" style="justify-content: flex-start;">
             <section id="sidebar_area">
                 <aside id="sidebar">
                     <form action="/ChunjaeProject/mentor/mentor.do" id="searchForm" name="searchForm">
@@ -184,25 +184,14 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                     </form>
                 </aside>
             </section>
-            <section id="contents_area" class="wd1000">
+            <section id="contents_area" style="width: 100%">
                 <div id="contents_info_wrap">
                     <br>
                     <p style="text-align: left;">&nbsp;&nbsp;총 게시글 ${params.total_count }<p>
                 </div>
-                <div id="mentoring_contents_area" class="grid" style="grid-gap: 20px; margin: 30px 0 80px 0">
-
-                    <!--                     <article class="mentoring_content_wrap h250">    -->
-                    <!--                         <div class="mentoring_content"> -->
-                    <!--                             <p class="mentoring_title">멘토링명</p> -->
-                    <!--                             <p class="mentoring_job_title">직무</p> -->
-                    <!--                             <p class="mentoring_career">겅력</p> -->
-                    <!--                             <p class="mentoring_now_job">현직</p> -->
-                    <!--                             <p class="mentoring_member_name">멘토실명</p> -->
-                    <!--                             <p hidden>멘토링 소개</p> -->
-                    <!--                         </div> -->
-                    <!--                     </article> -->
                     <c:choose>
                         <c:when test= "${not empty mentoringList}">
+                        <div id="mentoring_contents_area" class="grid" style="grid-gap: 20px; margin: 30px 0 80px 0; min-width: 1000px;">
                             <c:forEach var="list" items="${mentoringList}" varStatus="loop">
                                 <article class="mentoring_content_wrap h250">
                                     <div class="mentoring_content">
@@ -218,13 +207,12 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                                     </div>
                                 </article>
                             </c:forEach>
+                 		</div>
                         </c:when>
                         <c:otherwise>
-                            <article class="mentoring_content_wrap h250">
-                            </article>
+                            <div class="no_result">해당하는 맨토링이 없습니다🥹</div>
                         </c:otherwise>
                     </c:choose>
-                </div>
                 <div class="paging_area">
                     ${params.paging}
                 </div>

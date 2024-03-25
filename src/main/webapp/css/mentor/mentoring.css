@@ -156,3 +156,7 @@
     cursor:pointer;
     color:red;
 }
+.no_result {
+	text-align: center;
+	padding: 100px;
+}
