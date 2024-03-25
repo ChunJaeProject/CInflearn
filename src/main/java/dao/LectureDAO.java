@@ -58,7 +58,7 @@ public class LectureDAO extends JDBConnect {
 		List<LectureDTO> lecture_list = new Vector<LectureDTO>();
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT tl.lecture_no, lecture_title, image, professor, category2, difficulty_grade, technology_tag, ifNULL(avg(tr.star), 0) AS star");
+		sb.append("SELECT tl.lecture_no, tl.lecture_title, tl.image, professor, category2, difficulty_grade, technology_tag, ifNULL(avg(tr.star), 0) AS star");
 		sb.append(" FROM tbl_lecture AS tl LEFT OUTER JOIN tbl_review AS tr");
 		sb.append(" on tl.lecture_no = tr.lecture_no");
 		sb.append(" WHERE 1 = 1");
