@@ -301,7 +301,7 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                 </div>
                 <div id="popup_sign" class="popup_contents" style="height: 600px; line-height: 30px;">
                     <div class="popupTitle"><h2 style="display : block; border-bottom : 2px solid #1dc078; font-size:large; padding : 10px;">멘토링 신청(1/2)</h2></div>
-                    <form id="sign_frm" name="sign_frm" action="" method="post">
+                    <form id="sign_frm" name="sign_frm" action="/ChunjaeProject/mentor/mentoringSign.do" method="post">
                         <h3>-날짜 선택 <span style="color:red">*</span></h3>
                         <select id ="date">
                             <option value="choice" selected>날짜 선택</option>
@@ -318,9 +318,10 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                         <br><br>
                         <div id="btn">
                             <input type="reset" id="btn_reset" name="btn_reset" value="취소">
-                            <input type="button" id="btn_next" name="btn_next" value="다음으로">
+                            <input type="button" id="btn_next" name="btn_next" value="신청완료">
                         </div>
                     </form>
+                    
                 </div>
                 <div id="popup_sign2" class="popup_contents" style="height: 600px; line-height: 30px;">
                     <div class="popupTitle"><h2 style="display : block; border-bottom : 2px solid #1dc078; font-size:large; padding : 10px;">신청 확인(2/2)</h2></div>
@@ -449,9 +450,9 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
             msg.focus();
             return false;
         }
-        for(j=0;j<popups.length;j++)
+ /*        for(j=0;j<popups.length;j++)
            	popups[j].style.display="none";
-            popups[3].style.display="block";
+            popups[3].style.display="block"; */
             
             
             
@@ -474,6 +475,8 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
         } */
             
         /* frm.submit(); */
+        alert("신청완료");
+      document.sign_frm.submit();
     }, false);
     
     document.querySelector("#btn_prev").addEventListener("click", function(e) {
