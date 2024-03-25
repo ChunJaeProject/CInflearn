@@ -219,3 +219,7 @@
 #lecture_btn {
 	cursor : pointer;
 }
+#sidebar li:hover, li:focus {
+	color:#1dc078;
+    font-weight: bold;
+}
