@@ -50,9 +50,12 @@ public class QnADAO extends JDBConnect {
 		int unsolve_count=0;
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT COUNT(*) FROM tbl_qna "
-				+ "WHERE solution_state = 'N'");
-		
+		sb.append("SELECT COUNT(*) FROM tbl_qna"
+				+ " WHERE 1 = 1 "
+				+ " AND solution_state = 'N'");
+		if(map.get("search_word")!=null) {
+			sb.append(" AND question_title LIKE '%" + map.get("search_word") + "%'");
+		}
 		try {
 			String sql = sb.toString();
 			psmt = conn.prepareStatement(sql);
@@ -73,9 +76,12 @@ public class QnADAO extends JDBConnect {
 			int solve_count=0;
 			
 			StringBuilder sb = new StringBuilder();
-			sb.append("SELECT COUNT(*) FROM tbl_qna "
-					+ "WHERE solution_state = 'Y'");
-			
+			sb.append("SELECT COUNT(*) FROM tbl_qna"
+					+ " WHERE 1 = 1 "
+					+ " AND solution_state = 'Y'");
+			if(map.get("search_word")!=null) {
+				sb.append(" AND question_title LIKE '%" + map.get("search_word") + "%'");
+			}
 			try {
 				String sql = sb.toString();
 				psmt = conn.prepareStatement(sql);
