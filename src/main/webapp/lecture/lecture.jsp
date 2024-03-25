@@ -50,6 +50,9 @@
                        		</c:forTokens>
                         </ul>
                     </div>
+                   	<div id="play_btn_wrap">
+                   		<button type="button" id="play_btn">수강하러가기</button>
+                   	</div>
                 </div>
             </div>
         </section>

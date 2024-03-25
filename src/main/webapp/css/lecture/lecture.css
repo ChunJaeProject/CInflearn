@@ -49,6 +49,7 @@
 
 #technology_tag {
     display: flex;
+    margin-bottom: 15px;
 }
 .fa-hashtag {
     vertical-align: middle;
@@ -71,6 +72,14 @@
 #tag_wrap li:hover {
     background-color: #1dc078;
     color: #ffffff;
+}
+
+#play_btn {
+	background-color: #1dc078;
+	padding: 10px 15px;
+	border-radius: 5px;
+	border: none;
+	color: #ffffff;
 }
 
 
