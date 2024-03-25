@@ -5,6 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
@@ -23,19 +25,22 @@ public class QnaDetailServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int no = CommonUtil.parseInt(req.getParameter("no"));
+		HttpSession session = req.getSession();
 		QnADTO QnADetail = new QnADTO();
 		CommentDAO cdao = new CommentDAO();
+		
 		Map<String, Object> params = new HashMap<String,Object>();
 
 		Map<String, Object> cparams = new HashMap<String,Object>(); //댓글파람
 		List<CommentDTO> commList = cdao.commentList(cparams,no);
-	
+		int memberno = ((int)session.getAttribute("memberNo"));
 		int total_count = cdao.commentCount(params,no); //댓글 수
-			
+			int count =0;
 		
 		if(no > 0) {
 			QnADAO dao = new QnADAO();
 			QnADetail = dao.QnADetail(no);
+			count = dao.QuestionTotalCount( memberno);
 			dao.close();
 		} else {
 			resp.sendRedirect("Qna.do");
@@ -63,7 +68,7 @@ public class QnaDetailServlet extends HttpServlet {
 		}
 		
 		params.put("idx",no);
-
+	params.put("totalCount", count);
 		params.put("question_title",question_title);
 		params.put("question_hashtag",question_hashtag);
 		params.put("question_content",question_content);

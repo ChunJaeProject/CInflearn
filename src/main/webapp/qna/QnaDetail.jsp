@@ -76,7 +76,7 @@
         <%@ include file="../common/header.jsp" %>
         <div id="Writer">
 	             <h4>${params.nickname }</h4><br>
-	            <p style="font-size: small; color:darkgray; font-weight: bold;">작성한 질문수 ()</p><br>
+	            <p style="font-size: small; color:darkgray; font-weight: bold;"> 작성한 글 : ${params.totalCount}</p><br>
                 <img src="../assets/image/check.png" style="width: 20px;">&nbsp;<span style="color:dimgrey; font-weight: bold;">해결 여부</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>${QnADetail.solution_state }</span><br>
                 <input type="button" id="btn_go" name="btn_go" value="목록으로">
          </div>

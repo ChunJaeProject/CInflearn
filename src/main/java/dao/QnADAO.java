@@ -195,7 +195,7 @@ public class QnADAO extends JDBConnect {
 		return dto;
 	 }
 	 //작성한 게시글 수
-	public int QuestionTotalCount(Map<String, Object> map, int no) {
+	public int QuestionTotalCount(int no) {
 		int q_total_count = 0;
 		
 		StringBuilder sb = new StringBuilder();
@@ -204,6 +204,7 @@ public class QnADAO extends JDBConnect {
 		try {
 			String sql = sb.toString();
 			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, no);
 			rs = psmt.executeQuery();
 			rs.next();
 			q_total_count = rs.getInt(1);			
