@@ -47,12 +47,12 @@ public class MentoringSignController extends HttpServlet {
 		
 		int result = dao.getMentoringSignUpInfo(dto);
 		if(result==1) {
-			System.out.println("신청완료");
-			resp.sendRedirect("./mentor.jsp");
+			
+			resp.sendRedirect("/ChunjaeProject/mentor/mentor.do");
 		}
 		else {
-			System.out.println("신청실패");
-			resp.sendRedirect("./mentor.jsp");
+			
+			resp.sendRedirect("/ChunjaeProject/mentor/mentor.do");
 	}
 
 }
