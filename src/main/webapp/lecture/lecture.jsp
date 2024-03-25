@@ -52,6 +52,7 @@
                     </div>
                    	<div id="play_btn_wrap">
                    		<button type="button" id="play_btn">수강하러가기</button>
+                   	
                    	</div>
                 </div>
             </div>
@@ -198,5 +199,13 @@
     </main>
     <%@ include file="../common/footer.jsp" %>
 </div>
+<script>
+document.querySelector("#play_btn").addEventListener('click',()=>{
+ 	
+ 	
+ 	window.open("./videoPlayer.jsp", "PopupWin", "width=560,height=400");
+ });
+
+</script>
 </body>
 </html>
