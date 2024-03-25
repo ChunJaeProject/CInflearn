@@ -25,10 +25,11 @@ public class QnADAO extends JDBConnect {
 		
 		StringBuilder sb = new StringBuilder();
 		sb.append("SELECT COUNT(*) FROM tbl_qna");
-		/*
-		 * if(map.get("search_title") != null){
-		 * sb.append(" LIKE '%"+map.get("search_title") + "%'"); }
-		 */
+		sb.append(" WHERE 1 = 1");
+		if(map.get("search_word")!=null) {
+			sb.append(" AND question_title LIKE '%" + map.get("search_word") + "%'");
+		}
+		System.out.println(sb.toString());
 		try {
 			String sql = sb.toString();
 			psmt = conn.prepareStatement(sql);
@@ -102,6 +103,7 @@ public class QnADAO extends JDBConnect {
 		sb.append(", SUBSTRING_INDEX(M.email, '@', 1) AS nickname");
 		sb.append("	FROM tbl_qna AS Q");
 		sb.append(" INNER JOIN tbl_member AS M ON Q.member_no = M.member_no");
+		sb.append(" WHERE 1 = 1");
 		
 		if(map.get("solve")!=null) {
 			sb.append(" AND solution_state = " + "'" + map.get("solve") +"'");

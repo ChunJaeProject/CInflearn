@@ -54,8 +54,7 @@ public class QnaListServlet extends HttpServlet {
 		
 		//DAO 생성
 		QnADAO dao = new QnADAO();
-		total_count = dao.QnATotalCount(maps);
-		int real_total_count = dao.QnATotalCount(maps);
+		
 		
 		if(solve !=null && solve!= "") {
 			System.out.println(solve);
@@ -67,7 +66,8 @@ public class QnaListServlet extends HttpServlet {
 		if(like != null) {
 			maps.put("like", like);
 		}
-		
+		total_count = dao.QnATotalCount(maps);
+		int real_total_count = dao.QnATotalCount(maps);
 
 		//미해결 해결 페이지 카운트
 		if(solve !=null) {	
