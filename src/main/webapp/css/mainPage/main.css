@@ -95,7 +95,10 @@
 .category_depth2 li:last-child {
     border-bottom: none;
 }
-
+.category_depth2 li:hover{
+	color:#1DC078;
+	cursor: pointer;
+}
 /* contents_area */
 #contents_area {
     width: 1000px;

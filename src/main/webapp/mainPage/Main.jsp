@@ -263,6 +263,9 @@ for(i=0;i<category_list.length;i++){
 		const category2 = this.textContent;
 		location.href = "/ChunjaeProject/mainPage/Main.do?category2=" + category2 + "&"
 	}, false);
+// 	category_list[i].addEventListener("mouseover",function(e){
+// 		this.color = "#1DC078";
+// 	});
 }
 const lecture_list = document.querySelectorAll(".lecture_content_wrap");
 const lecture_idx = document.querySelectorAll(".lecture_idx");
