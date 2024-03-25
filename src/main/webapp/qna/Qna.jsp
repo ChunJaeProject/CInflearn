@@ -86,7 +86,7 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
 	                        <a href ="QnaDetail.do?no=${list.no }">&nbsp;<span style="font-weight: bold;">${list.question_title }</span></a>
 	                    </div><br>
 	                    <p class="qContent">${list.question_content }</p><br>
-	                    <div class="qTag"><span>${list.question_hashtag }</span></div><br>
+	                    <div class="qTag"></div><br>
 	                    <div id="bottom">
 	                        <p class="qName">닉네임 : ${list.nickname} | 작성 시간 : ${list.reg_date }</p><br>
 	                        <div class="qBtn">
@@ -109,17 +109,7 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
             </div>
             </div>
             <div id="sidebar_right">
-            	<p>인기태그</p><br>
-	            <c:choose>
-					<c:when test="${not empty QnAList }">
-						<c:forEach var="list" items="${QnAList }" varStatus="loop">
-				            <span>${list.question_hashtag }</span><br><br>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<span>태그2</span><br><br><span>태그3</span><span>태그4</span><br><br><span>태그5</span>
-					</c:otherwise>
-				</c:choose>
+            
 			</div>  
         </section>
 	</main>

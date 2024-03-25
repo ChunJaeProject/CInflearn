@@ -47,7 +47,7 @@ public class QnaDetailServlet extends HttpServlet {
 		String answer="";
 		int member_no =1;
 		String nickname="";
-
+		int like = 0;
 		
 		if(QnADetail != null) {
 			no = QnADetail.getNo();
@@ -59,10 +59,11 @@ public class QnaDetailServlet extends HttpServlet {
 			nickname = QnADetail.getNickname();
 			answer = QnADetail.getAnswer();
 			member_no = QnADetail.getMember_no();
+			like = QnADetail.getLike();
 		}
 		
 		params.put("idx",no);
-		System.out.println("params.idx 값 : " +params.get("idx"));
+
 		params.put("question_title",question_title);
 		params.put("question_hashtag",question_hashtag);
 		params.put("question_content",question_content);
@@ -70,13 +71,14 @@ public class QnaDetailServlet extends HttpServlet {
 		params.put("total_count", total_count);
 		params.put("memberNo", member_no);
 		params.put("nickname", nickname);
+		params.put("like", like);
 
-			
+	
 		req.setAttribute("commList", commList);
 		req.setAttribute("params", params);
 		req.setAttribute("QnADetail", QnADetail);
 		req.getRequestDispatcher("/qna/QnaDetail.jsp").forward(req, resp);
-
+		
 
 		
 	}
