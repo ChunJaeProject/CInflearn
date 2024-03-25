@@ -53,7 +53,7 @@
 		                       		</c:forEach>
 		                       </div>
 		                       <br><br>
-		                       <p>${list.content}</p><br><br>
+		                       <p style="line-height: normal; padding: 5px;">${list.content}</p><br><br>
 		                       <p id="bottom" style="border-bottom: none;">작성자 : ${list.writer } <p>  
 		                       <p> 강의명 : ${list.lecture_title } </p>
 		                   </div>
