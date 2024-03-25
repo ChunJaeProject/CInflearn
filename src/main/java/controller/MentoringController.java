@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,9 +40,18 @@ public class MentoringController extends HttpServlet {
 		
 		String[] category = null;
 		String append_category="";
+		int[] indexCategory = new int[11]; 
+		String[] checked = new String[11]; 
+		
 		
 		category = req.getParameterValues("cate");
+		
+		System.out.println(Arrays.toString(category));
 		if(category!=null) {
+			for(int i=0;i<category.length;i++) {
+				indexCategory[Integer.parseInt(category[i])]++;
+			}
+			
 			for(int i=0;i<category.length-1;i++) {
 				append_category += category[i] + ", ";
 			}
@@ -49,10 +59,22 @@ public class MentoringController extends HttpServlet {
 			System.out.println(append_category);
 			params.put("append_category", append_category);
 		}
+		for(int i=0;i<checked.length;i++) {
+			if(indexCategory[i] != 0)
+				checked[i] = "checked";
+			else
+				checked[i] = "";
+		}
+		req.setAttribute("checked", checked);
 		
+		System.out.println(Arrays.toString(checked));
+		params.put("checked", checked);
 		
 		
 		String search_word = req.getParameter("search_word");
+		if(search_word != null) {
+			params.put("search_word", search_word);
+		}
 		page_no = (req.getParameter("page_no")!=null) ? Integer.parseInt(req.getParameter("page_no")) : 1;
 		page_skip_cnt = (page_no-1)*page_size;
 		

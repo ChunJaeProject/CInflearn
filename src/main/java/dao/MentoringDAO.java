@@ -22,6 +22,16 @@ public class MentoringDAO extends JDBConnect {
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("SELECT COUNT(*) FROM tbl_mentoring");
+		sb.append(" WHERE 1=1");
+		if(map.get("search_word") != null && map.get("search_word")!="") {
+			sb.append(" AND " + "mentoring_name");
+			sb.append(" LIKE '%" + map.get("search_word") + "%'");
+			sb.append(" or member_name LIKE '%" + map.get("search_word") + "%'");
+		}
+		if(map.get("append_category") != null) {
+			sb.append(" AND " + "job_code");
+			sb.append(" IN( " + map.get("append_category") + ")");
+		}
 		
 		try {
 			String sql = sb.toString();

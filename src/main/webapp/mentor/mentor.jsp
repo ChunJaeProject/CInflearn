@@ -7,6 +7,7 @@
 pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -156,7 +157,7 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
         <div class="contents_wrap">
             <section id="sidebar_area">
                 <aside id="sidebar">
-                    <form action="" id="searchForm" name="searchForm">
+                    <form action="/ChunjaeProject/mentor/mentor.do" id="searchForm" name="searchForm">
                         <input type="text" name="search_word" id="search_word" value="<%=search_value%>">
                         <input type="submit" id="searchBtn" value="검색">
                         <select id="sortList">
@@ -167,16 +168,16 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                             <span>분야별</span>
                         </div>
                         <div id="categoryBox">
-                            <input type="checkbox" name ="cate" value="1"> 개발 · 프로그래밍<br>
-                            <input type="checkbox" name ="cate" value="2"> 게임 개발<br>
-                            <input type="checkbox" name ="cate" value="3"> 데이터 사이언스<br>
-                            <input type="checkbox" name ="cate" value="4"> 인공지능<br>
-                            <input type="checkbox" name ="cate" value="5"> 보안 / 네트워크<br>
-                            <input type="checkbox" name ="cate" value="6"> 비즈니스 / 마케팅<br>
-                            <input type="checkbox" name ="cate" value="7"> 하드웨어<br>
-                            <input type="checkbox" name ="cate" value="8"> 학문 / 외국어<br>
-                            <input type="checkbox" name ="cate" value="9"> 커리어<br>
-                            <input type="checkbox" name ="cate" value="10"> 자기계발<br>
+                            <input type="checkbox" name ="cate" value="1" ${checked[1] }> 개발 · 프로그래밍<br>
+                            <input type="checkbox" name ="cate" value="2" ${checked[2] }> 게임 개발<br>
+                            <input type="checkbox" name ="cate" value="3" ${checked[3] }> 데이터 사이언스<br>
+                            <input type="checkbox" name ="cate" value="4" ${checked[4] }> 인공지능<br>
+                            <input type="checkbox" name ="cate" value="5" ${checked[5] }> 보안 / 네트워크<br>
+                            <input type="checkbox" name ="cate" value="6" ${checked[6] }> 비즈니스 / 마케팅<br>
+                            <input type="checkbox" name ="cate" value="7" ${checked[7] }> 하드웨어<br>
+                            <input type="checkbox" name ="cate" value="8" ${checked[8] }> 학문 / 외국어<br>
+                            <input type="checkbox" name ="cate" value="9" ${checked[9] }> 커리어<br>
+                            <input type="checkbox" name ="cate" value="10" ${checked[10] }> 자기계발<br>
                         </div>
                         <img src="../assets/image/reset.png" width="17px">
                         <input id="resetBtn" type="reset" value="필터 초기화">
@@ -186,7 +187,7 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
             <section id="contents_area" class="wd1000">
                 <div id="contents_info_wrap">
                     <br>
-                    <p style="text-align: left;">&nbsp;&nbsp;총 게시글 00<p>
+                    <p style="text-align: left;">&nbsp;&nbsp;총 게시글 ${params.total_count }<p>
                 </div>
                 <div id="mentoring_contents_area" class="grid" style="grid-gap: 20px; margin: 30px 0 80px 0">
 
@@ -261,16 +262,16 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                             <li><p>직무 <span class="star">*</span></p></li><br>
                             <select  name="cate">
                                 <option value="0">직무선택</option>
-                                <option value="1">개발 프로그래밍</option>
-                                <option value="2">게임 개발</option>
-                                <option value="3">데이터 사이언스</option>
-                                <option value="4">인공지능</option>
-                                <option value="5">보안 / 네트워크</option>
-                                <option value="6">비즈니스 / 마케팅</option>
-                                <option value="7">하드웨어</option>
-                                <option value="8">학문 / 외국어</option>
-                                <option value="9">커리어</option>
-                                <option value="10">자기계발</option>
+                                <option value="1">${params.checked} 개발 프로그래밍</option>
+                                <option value="2"${params.checked[2] }>게임 개발</option>
+                                <option value="3"${params.checked[3] }>데이터 사이언스</option>
+                                <option value="4"${params.checked[4] }>인공지능</option>
+                                <option value="5"${params.checked[5] }>보안 / 네트워크</option>
+                                <option value="6"${params.checked[6] }>비즈니스 / 마케팅</option>
+                                <option value="7"${params.checked[7] }>하드웨어</option>
+                                <option value="8"${params.checked[8] }>학문 / 외국어</option>
+                                <option value="9"${params.checked[9] }>커리어</option>
+                                <option value="10"${params.checked[10] }>자기계발</option>
                             </select>
                             <br><br>
                             <li><p>멘토링 기간 <span class="star">*</span></p></li><br>
@@ -412,10 +413,12 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
         popups[2].style.display="block";
     });
 
-    document.getElementById("searchBtn").addEventListener("click",function(e){
-        e.preventDefault();
+//     document.getElementById("searchBtn").addEventListener("click",function(e){
+//         e.preventDefault();
+        
+        
 
-    });
+//     });
 
     document.querySelector("#btn_next").addEventListener("click", function(e) {
         e.preventDefault();
@@ -488,6 +491,7 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
     document.querySelector("#mentoringReview_Btn").addEventListener("click", function(e) {
         location.href="../qna/MentoringReview.do";
     });
+    
 </script>
 </body>
 </html>
