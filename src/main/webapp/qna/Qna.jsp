@@ -25,6 +25,9 @@
         .qBtn {
 		    margin-left: 470px;
 		}
+		#btn_write ,#btn_search,#btn_reset {
+		cursor: pointer ;
+		}
     </style>
 </head>
 <body>
