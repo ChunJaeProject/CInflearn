@@ -20,6 +20,14 @@
 		}    
 		textarea {
 			margin-bottom:20px;
+	
+    height: 30.25em;
+    border: none;
+    resize: none;
+    margin: auto 0px;'
+		}
+		#btn_reset, #btn_submit{
+		cursor: pointer;
 		}
     </style>
 </head>
@@ -35,7 +43,7 @@
    			
                     <span style="color: red;">*</span> 
                     <input type="text" id="title" name="title" value=" ${params.title } " ><br><br>
-                    &nbsp;&nbsp;<input type="text" id="tag" name="tag" value="" ><br><br>
+                  
                     <span style="vertical-align: top; color: red; float:left;">*</span> 
                     <textarea style="margin-bottom:20px;" id="content" name="content" cols="96" rows="25" maxlength="3000" placeholder="-학습 관련 질문을 남겨주세요. 상세히 작성하면 더 좋아요!&#13;&#10-먼저 유사한 질문이 있었는지 검색해보세요.&#13;&#10-서로 예의를 지키며 존중하는 문화를 만들어가요."
                     ;> ${params.content } </textarea><br><br>
@@ -67,7 +75,9 @@
         
         document.frm.submit();
     }, false);
-
+    document.querySelector("#btn_reset").addEventListener("click", function(e) { 
+    	window.history.back();
+    });
 </script>
 </body>
 </html>

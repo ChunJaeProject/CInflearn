@@ -225,7 +225,7 @@
           
           if(sessionMemberNo === authorMemberNo) {
               // 회원 번호가 일치할 경우 삭제 확인
-              if(confirm("삭제하시겠습니까?")) {
+              if(confirm("삭제하시겠습니까? (댓글도 다 삭제됩니다)")) {
                   alert("정상적으로 삭제되었습니다.");
                   
                   // 삭제 처리를 위한 서버 요청 URL로 이동
@@ -233,7 +233,7 @@
               }
           } else {
               // 회원 번호가 일치하지 않을 경우
-              alert("본인만 삭제가 가능합니다.");
+              alert("작성자만 삭제할 수 있습니다..");
           }
     	
 		
@@ -261,7 +261,7 @@
         }
         else {
             
-           alert("본인만 수정할 수 있습니다.");
+           alert("작성자만 수정할 수 있습니다.");
            window.location = "../qna/QnaDetail.do?no=${params.idx}";  
         }
 
