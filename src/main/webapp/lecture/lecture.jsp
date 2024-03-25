@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix = "c" uri="jakarta.tags.core" %>
@@ -14,6 +15,10 @@
     <link rel="stylesheet" href="../css/lecture/lecture.css">
 </head>
 <body>
+<%
+String sessionId =((String) session.getAttribute("userId") != null ? (String) session.getAttribute("userId") : "고객");
+%>
+
 <div id="container">
     <%@ include file="../common/header.jsp" %>
     <main id="contents">
@@ -51,7 +56,9 @@
                         </ul>
                     </div>
                    	<div id="play_btn_wrap">
+                
                    		<button type="button" id="play_btn">수강하러가기</button>
+         
                    	
                    	</div>
                 </div>
@@ -201,10 +208,24 @@
 </div>
 <script>
 document.querySelector("#play_btn").addEventListener('click',()=>{
+	  var sessionUserId = '<%=(session.getAttribute("userId") !=null ? session.getAttribute("userId") : "고객" )%>';
+ 		console.log(sessionUserId);
  	
- 	
+	  if(sessionUserId==="고객") {
+	     
+	      alert("로그인이 필요합니다.");
+	      return false;
+	  }
+	  else{
  	window.open("./videoPlayer.jsp", "PopupWin", "width=560,height=400");
+	  }
  });
+ 
+
+
+  
+
+
 
 </script>
 </body>
