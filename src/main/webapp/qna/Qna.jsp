@@ -53,9 +53,9 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
             </div>
             <div id="content">
                 <ul id="content_ul" >
-                    <li><a href="Qna.do">전체(${maps.real_total_count })</a></li>
-                    <li><a href="Qna.do?solve=N">미해결(${maps.unsolve_count })</a></li>
-                    <li><a href="Qna.do?solve=Y">해결됨(${maps.solve_count })</a></li>
+                    <li><a href="Qna.do?search_title=${maps.search_word}">전체(${maps.real_total_count })</a></li>
+                    <li><a href='Qna.do?solve=N&search_title=${maps.search_word}'>미해결(${maps.unsolve_count })</a></li>
+                    <li><a href="Qna.do?solve=Y?solve=N&search_title=${maps.search_word}">해결됨(${maps.solve_count })</a></li>
                 </ul>
                 <hr>
             <div id ="search">
@@ -126,6 +126,9 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
     <%@ include file="../common/footer.jsp" %>
 </div>
 <script>
+	document.getElementById("btn_reset").addEventListener("click",function(e){
+		location.replace('./Qna.do'); 
+	});
    /*  document.querySelector("#btn_write").addEventListener("click", function(){
       
         location.href="Write.do";
