@@ -143,15 +143,6 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
     <%@ include file="../common/top.jsp" %>
     <!-- jsp에서 include해서 사용 -->
     <main id="contents">
-        <section id="contents_top_area" class="cal_h200">
-            <div id="contents_top_area_text">
-            	<span style="font-size: large; font-weight: bold;">멘토링</span><br>
-            	<span>업계 선배, 동료들과 만나 서로의 인사이트를 나누어 보아요! 더 빨리, 더 멀리 갈 수 있어요!</span>
-            	<div id="contents_top_Btn_Box">
-	                <button id="mentoringCreate_Btn">멘토링 개설</button>
-	                <button id="mentoringReview_Btn">멘토링 후기보기</button>
-            	</div>
-            </div>   
         <section id="contents_top_area">
             <div id="contents_top_area_text">
                 <p id="contents_title">멘토링</p>
@@ -238,99 +229,7 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
                 </div>
             </section>
         </div>
-        <div id="popupContainer">
-			<div id="popup">
-				<span id="closePopup" class="close-btn">×</span>
-		
-				<div id="popup_create" class="popup_contents">
-					<div class="popupTitle"><h2 style="border-bottom : 2px solid #1dc078; font-size:large; padding:5px;">멘토링 개설 신청서</h2></div>
-					<form action="/ChunjaeProject/mentor/mentoringRegist.do" id="mentoring_sign_form" name="metoring_sign_form" method="post">
-						<ul>
-								<p id="member_no" name="member_no" value="${session.member_no }" hidden></p>
-							<li><p>경력(택 1) <span class="star">*</span></p></li><br>
-								<input type="radio" name="carear" id="carear_0" value="신입(1~3년)"><label for="carear_0"> 신입(1~3년)</label>
-								<input type="radio" name="carear" id="carear_1" value="미들(4~9년)"><label for="carear_1"> 미들(4~9년)</label>
-								<input type="radio" name="carear" id="carear_2" value="시니어(10년 이상)"><label for="carear_2"> 시니어(10년 이상)</label>
-							<br><br>
-							<li><p>현직(택 1) <span class="star">*</span></p></li><br>
-								<input type="radio" name="job" id="job_0" value="현직(대기업)"><label for="job_0"> 현직(대기업)</label>
-								<input type="radio" name="job" id="job_1" value="현직(중견)"><label for="job_1"> 현직(중견)</label>
-								<input type="radio" name="job" id="job_2" value="현직(스타트업)"><label for="job_2"> 현직(스타트업)</label>
-							<br><br>    
-							<li><p>연락 받을 이메일 <span class="star">*</span></p></li><br>
-								<input class="h30 w400" type="email" name="email" id="email" placeholder="자주 사용하는 이메일을 입력하세요">
-							<br><br>
-							<li><p>멘토 실명 <span class="star">*</span></p></li><br>
-								<input class="h30 w400" type="text" name="name" id="name" placeholder="실명을 입력해주세요">
-							<br><br>
-							<li><p>연락처 <span class="star">*</span></p></li><br>
-								<input class="h30 w400" type="text" name="phone" id="phone"  placeholder=" - 없이 입력해주세요">
-							<br><br>
-							<li><p>직무 <span class="star">*</span></p></li><br>
-								<select  name="cate">
-									<option value="0">직무선택</option>
-									<option value="1">개발 프로그래밍</option>
-									<option value="2">게임 개발</option>
-									<option value="3">데이터 사이언스</option>
-									<option value="4">인공지능</option>
-									<option value="5">보안 / 네트워크</option>
-									<option value="6">비즈니스 / 마케팅</option>
-									<option value="7">하드웨어</option>
-									<option value="8">학문 / 외국어</option>
-									<option value="9">커리어</option>
-									<option value="10">자기계발</option>
-								</select>
-							<br><br>
-							<li><p>멘토링 기간 <span class="star">*</span></p></li><br>
-								<input name = "startDate" id = "startDate" type="date"> ~ <input name="endDate" id= "endDate" type="date">
-							<br><br>
-							<li><p>멘토링 명 <span class="star">*</span></p></li><br>
-								<input class="h30 w400" type="text" name="mentoringName" id="mentoringName" maxlength="100" placeholder="100자 이내로 입력해주세요">
-							<br><br>
-							<li><p>멘토링 소개 <span class="star">*</span></p></li><br>
-								<textarea name="mentoringInfo" id="mentoringInfo" class="w400" cols="30" rows="5" style="resize: none;" placeholder="300자 이내 입력" maxlength="300"></textarea>
-						</ul>
-						<div id="sumbit1"><input type="submit" value="제출하기"></div>
-					</form>
-				</div>
-				<div id="popup_infor" class="popup_contents">
-					<div class="popupTitle"><h2 style="border-bottom : 2px solid #1dc078; font-size:large; padding : 15px;">멘토링 소개</h2></div>
-					<div id="curr_mentoringInfo">
-						<p id="popupMentorName"></p>
-						<p id="popupMentoringName"></p>
-						<p id="popupMentorJob"></p>
-						<p id="popupMentorCarear"></p>
-						<p id="popupMentoringInfor"></p>
-					</div>
-					<div id="popup_infor_sign">
-						<button id="popup_infor_sign_Btn">신청하기</button>
-					</div>
-				</div>
-				<div id="popup_sign" class="popup_contents" style="height: 600px; line-height: 30px;">
-					<div class="popupTitle"><h2 style="display : block; border-bottom : 2px solid #1dc078; font-size:large; padding : 10px;">멘토링 신청(1/2)</h2></div>
-					<form id="sign_frm" name="sign_frm" action="" method="post">
-						<h3>-날짜 선택 <span style="color:red">*</span></h3>
-						<select id ="date">
-							<option value="choice" selected>날짜 선택</option>
-							<option value="date_0">3월 5일</option>
-						</select><br>
-						<h3>-실명 <span style="color:red">*</span></h3>
-						<input type="text" id="ap_name" name="ap_name" placeholder="실명을 입력해주세요." maxlength="10"><br>
-						<h3>-연락 가능한 이메일 <span style="color:red">*</span></h3>
-						<input type="email" id="ap_email" name="ap_email" placeholder="자주 사용하는 이메일을 입력해주세요." maxlength="200"><br>
-						<h3>-연락 가능한 연락처 <span style="color:red">*</span></h3>
-						<input type="tel" id="ap_tel" name="ap_tel" placeholder="하이픈 없이 휴대폰 번호 입력" maxlength="11"><br>
-						<h3>-남길 메시지 <span style="color:red">*</span></h3>
-						<textarea id="ap_msg" name="ap_msg" placeholder="300자 이내로 입력해주세요." maxlength="300" cols="40" rows="10"></textarea>
-						<br><br>
-						<div id="btn">
-							<input type="reset" id="btn_reset" name="btn_reset" value="취소">
-							<input type="submit" id="btn_next" name="btn_next" value="다음으로">
-						</div>
-					</form>	
-				</div>
-			</div>
-		</div>
+
         <div id="popupContainer">
             <div id="popup">
                 <span id="closePopup" class="close_btn">×</span>
@@ -452,29 +351,12 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
 
 
         </div>
+
     </main>
     <%@ include file="../common/footer.jsp" %>
 </div>
 
 <script>
-	let popupContainer = document.getElementById("popupContainer");
-	let contents = document.getElementsByClassName("mentoring_content");
-	let popups = document.getElementsByClassName("popup_contents");
-	for(i=0;i<contents.length;i++){
-	    contents[i].addEventListener("click",function(e){
-	        popupContainer.style.display="block";
-	        for(j=0;j<popups.length;j++)
-	            popups[j].style.display="none";
-	        popups[1].style.display="block";
-	        let mentoringContents = this.children;
-	        let curr_mentoringInfo = document.querySelectorAll('#curr_mentoringInfo p');
-	        curr_mentoringInfo[0].textContent = mentoringContents[4].textContent;
-	        curr_mentoringInfo[1].textContent = mentoringContents[0].textContent;
-	        curr_mentoringInfo[2].textContent = mentoringContents[3].textContent;
-	        curr_mentoringInfo[3].textContent = mentoringContents[2].textContent;
-	        curr_mentoringInfo[4].textContent = mentoringContents[5].textContent;
-	    });
-	}
     //멘토링개설 세션처리
     var sessionId = '<%= sessionId %>';
 

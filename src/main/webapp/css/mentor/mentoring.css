@@ -43,20 +43,6 @@
 #resetBtn:hover{
     cursor: pointer;
 
-#contents {
-	margin-bottom: 150px;
-}
-
-#contents_top_area {
-	width: 100%;
-	background-color: #303740;
-	color: #ffffff;
-    border: 1px solid #ccc;
-    overflow: hidden;
-}
-
-#contetns_top_area_text {
-	padding: 135px 0 0 24px;
 }
 
 #mentoring_contents_area{
