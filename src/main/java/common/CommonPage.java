@@ -23,8 +23,8 @@ public class CommonPage {
 			}
 		}
 
-		sb.append((page_no<page_block_end? "&nbsp;&nbsp;<a href='"+tmpLinkURL+"page_no="+(page_no+1)+"'><strong>></strong></a>" : "&nbsp;&nbsp;>"));
-		sb.append((page_no<page_block_end? "&nbsp;&nbsp;<a href='"+tmpLinkURL+"page_no="+(total_page)+"'><strong>>></strong></a>" : "&nbsp;&nbsp;>>"));
+		sb.append((page_no<total_page? "&nbsp;&nbsp;<a href='"+tmpLinkURL+"page_no="+(page_no+1)+"'><strong>></strong></a>" : "&nbsp;&nbsp;>"));
+		sb.append((page_no<total_page? "&nbsp;&nbsp;<a href='"+tmpLinkURL+"page_no="+(total_page)+"'><strong>>></strong></a>" : "&nbsp;&nbsp;>>"));
 
 		return sb.toString();
 	}
