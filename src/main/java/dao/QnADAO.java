@@ -106,9 +106,10 @@ public class QnADAO extends JDBConnect {
 		
 		sb.append("SELECT Q.no, Q.question_title, Q.question_content, Q.question_hashtag");
 		sb.append(", Q.answer, Q.solution_state, Q.like, Q.reg_date, Q.member_no");
-		sb.append(", SUBSTRING_INDEX(M.email, '@', 1) AS nickname");
+		sb.append(", SUBSTRING_INDEX(M.email, '@', 1) AS nickname, COUNT(tc.`no`) AS comment_count");
 		sb.append("	FROM tbl_qna AS Q");
-		sb.append(" INNER JOIN tbl_member AS M ON Q.member_no = M.member_no");
+		sb.append(" INNER JOIN tbl_member AS M ON Q.member_no = M.member_no"
+				+ " left JOIN tbl_comment AS tc ON Q.`no` = tc.qna_no");
 		sb.append(" WHERE 1 = 1");
 		
 		if(map.get("solve")!=null) {
@@ -117,6 +118,7 @@ public class QnADAO extends JDBConnect {
 		if(map.get("search_word")!=null) {
 			sb.append(" AND question_title LIKE '%" + map.get("search_word") + "%'");
 		}
+		sb.append(" GROUP BY Q.`no`");
 		if(map.get("like") != null) {
 		    sb.append(" ORDER BY Q.like DESC");
 		} else {
@@ -144,6 +146,7 @@ public class QnADAO extends JDBConnect {
 				dto.setReg_date(rs.getDate("reg_date"));
 				dto.setMember_no(rs.getInt("member_no"));
 				dto.setNickname(rs.getString("nickname"));
+				dto.setComment_count(rs.getInt("comment_count"));
 				
 				list.add(dto);
 			}
@@ -352,5 +355,6 @@ public class QnADAO extends JDBConnect {
 		System.out.println("result : "+ result);
 		return result;
 		}
+	
 
 }

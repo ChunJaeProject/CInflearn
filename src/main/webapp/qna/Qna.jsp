@@ -91,7 +91,7 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
 	                        <p class="qName">닉네임 : ${list.nickname} | 작성 시간 : ${list.reg_date }</p><br>
 	                        <div class="qBtn">
 	                            <img src="../assets/image/like.png" width="20px">&nbsp;${list.like }&nbsp;&nbsp;
-	                            <img src="../assets/image/comment.png" width="20px">&nbsp;1&nbsp;&nbsp;
+	                            <img src="../assets/image/comment.png" width="20px">&nbsp;${list.comment_count}&nbsp;&nbsp;
 	                        </div>
 	                    </div>                  
                 	</div>
