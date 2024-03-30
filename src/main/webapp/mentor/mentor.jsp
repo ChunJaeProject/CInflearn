@@ -355,6 +355,10 @@ String sessionId =((String) session.getAttribute("userId") != null ? (String) se
     let popupContainer = document.getElementById("popupContainer");
     let contents = document.getElementsByClassName("mentoring_content");
     let popups = document.getElementsByClassName("popup_contents");
+    let resetBtn = document.getElementById("resetBtn");
+    resetBtn.addEventListener("click", function(e){
+    	window.location.replace("../mentor/mentor.do");
+    });
     for(i=0;i<contents.length;i++){
         contents[i].addEventListener("click",function(e){
             popupContainer.style.display="block";
