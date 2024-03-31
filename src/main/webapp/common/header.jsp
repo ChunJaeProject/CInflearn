@@ -194,7 +194,7 @@ String id =((String) session.getAttribute("userId") != null ? (String) session.g
                 <ul id="menuUl">
                     <li>멘토링</li>
                     <li>질문&답변</li>
-                    <li>강의평</li>
+                    <li>수강평</li>
                     <li>멘토링후기</li>
                 </ul>
             </nav>
