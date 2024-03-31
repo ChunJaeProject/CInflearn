@@ -25,8 +25,9 @@
 
 .slides li {
 	position: absolute;
-	left: 0;
+	left: 50%;
 	top: 0;
+	transform: translateX(-50%);
 }
 
 .controls {

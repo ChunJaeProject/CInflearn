@@ -29,9 +29,9 @@ public class LectureController extends HttpServlet {
 		int all_count =0;
 		int total_count = 0;
 		int page_no = 1;
-		int page_size = 16;
+		int page_size = 12;
 		int total_page = 1;
-		int page_skip_cnt = 16;
+		int page_skip_cnt = 12;
 		int page_block_size = 10;
 		int page_block_start = 1;
 		int page_block_end = 1;
