@@ -35,3 +35,6 @@
 
 # 🎈 시연연상
 
+**교육강의 시청**
+![bandicam2024-04-0118-41-12-592--ezgif com-speed](https://github.com/ChunJaeProject/CInflearn/assets/140371161/46cdb6b8-fd74-4f77-b1b4-680dc9465ad3)
+
