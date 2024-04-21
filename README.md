@@ -1,4 +1,4 @@
-# 인프런 클론 웹사이트
+# 🎈 인프런 클론 웹사이트
  인프런 클론 사이트 개발
 
 
@@ -9,7 +9,7 @@
 <br/>
 
 
-# 기술스택
+# 🎈 기술스택
 |||
 |---|---|
 | **Frontend** |<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white"> <img src="https://img.shields.io/badge/jsp-004088?style=for-the-badge&logo=jsp&logoColor=white"> |
@@ -18,4 +18,20 @@
 | **Tool** |  <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/slack-000000?style=for-the-badge&logo=slack&logoColor=white"> |
 |||
 <br/>
+
+
+## 🎈 주요 기능
+### 💡교육강의 시청
+
+
+### 💡 멘토링 신청과 등록
+
+
+### 💡 질문과 답변 기능
+
+
+
+<br/>
+
+# 🎈 시연연상
 
