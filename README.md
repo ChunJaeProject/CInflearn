@@ -36,5 +36,18 @@
 # 🎈 시연연상
 
 **교육강의 시청**
+<br/>
 ![bandicam2024-04-0118-41-12-592--ezgif com-speed](https://github.com/ChunJaeProject/CInflearn/assets/140371161/46cdb6b8-fd74-4f77-b1b4-680dc9465ad3)
 
+**멘토링 신청과 등록**
+<br/>
+
+![bandicam2024-04-0118-50-55-881--ezgif com-speed](https://github.com/ChunJaeProject/CInflearn/assets/140371161/43d0c984-b014-4ee9-979b-3893230e7ddc)
+
+
+**질문과 답변 기능**
+
+![bandicam2024-04-0119-22-52-031QNA-ezgif com-speed](https://github.com/ChunJaeProject/CInflearn/assets/140371161/ac3ddb2c-74f2-4fa5-97c3-c135030e9684)
+
+
+<br/>
